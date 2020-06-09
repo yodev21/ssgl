@@ -13,7 +13,9 @@
       <li><%= link_to "所属チーム一覧", "#", class: "list-group-item list-group-item-action" %></li>
       <li><%= link_to "ユーザー検索", "#", class: "list-group-item list-group-item-action" %></li>
       <li><%= link_to "設定", "#", class: "list-group-item list-group-item-action" %></li>
-      <li><%= link_to "サインアウト", "#", method: :delete, class: "list-group-item list-group-item-action" %></li>
+      <% if user_signed_in? %>
+      <li><%= link_to "サインアウト", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" %></li>
+      <% end %>
     </ul>
     </div>
 </div>
