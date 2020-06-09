@@ -31,6 +31,11 @@ class TeamsController < ApplicationController
     end
   end
 
+  def destroy
+    @team.destroy
+    redirect_to teams_path, notice: "チームを削除しました！"
+  end
+
   private
   def set_params
     @team = Team.find(params[:id])
