@@ -1,0 +1,40 @@
+<div class="col-md-offset-2 md-4 edit-profile-wrapper">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="profile-form-wrap">
+        <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), local: true, method: :patch do |f| %>
+          
+          <div class="form-group">
+            <%= f.label :name, "名前" %>
+            <%= f.text_field :name, autofocus: true, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :email, "メールアドレス" %>
+            <%= f.email_field :email, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.file_field :image, placeholder:"アイコン", class: "fom-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.text_area :profile, placeholder: "プロフィール", class: "form-control"%>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password, "パスワード" %>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password_confirmation, "パスワード確認" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+          </div>
+
+          <%= f.submit "更新", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

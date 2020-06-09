@@ -1,1 +1,9 @@
 @import "bootstrap";
+
+@import "common";
+@import "layouts/colors";
+
+@import "layouts/navbar";
+@import "users/devise";
+@import "users/show";
+@import "users/edit";
