@@ -11,25 +11,12 @@
   </head>
 
   <body>
-    <div id="wrapper">
       <%= render 'partial/navbar' %>
-    <div>
-      <% if flash[:notice] %>
-        <div class="alert alert-info">
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-      <% if flash[:alert] %>
-        <div class="alert alert-danger">
-          <%= flash[:alert] %>
-        </div>
-      <% end %>
-    </div>
       <div class="container">
+        <%= render 'partial/flash'%>
         <%= yield %>
       </div>
 
       <%= render 'partial/footer' %>
-    </div>
   </body>
 </html>

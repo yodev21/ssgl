@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   controllers: { registrations: 'registrations' }
   root to: "teams#index"
   resources :users, only: [:index, :show, :destroy]
-  resources :teams, only: [:index]
+  resources :teams
 end
