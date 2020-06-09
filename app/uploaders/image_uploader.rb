@@ -16,6 +16,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :medium do
     process resize_to_fill: [1080, 1080]
+    # process resize_to_fill: [500, 500]
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

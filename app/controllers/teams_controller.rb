@@ -18,6 +18,8 @@ class TeamsController < ApplicationController
     @teams = Team.all.order(created_at: :desc)
   end
 
+  def show; end
+
   private
   def set_params
     @team = Team.find(params[:id])

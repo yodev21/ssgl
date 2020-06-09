@@ -1,16 +1,8 @@
 <% @teams.each do |team|%>
-  <div class="col-md-8 col-md-2 mx-auto">
+  <div class="d-flex flex-row  col-md-3 col-md-1 mx-auto">
     <div class="card-wrap">
       <div class="card">
-        <div class="card-header align-items-center d-flex">
-          <%= link_to team_path(team), class: "black-color no-text-decoration" do %>
-            <%= image_tag avatar_url(team), class: "team-profile-icon" %>
-          <% end %>
-          <%= link_to team_path(team), class: "black-color no-text-decoration" do %>
-            <strong><%= team.name %></strong>
-          <% end %>
-        </div>
-        <%= image_tag team.image.url(:medium), class: "card-img-top" %>
+        <%= link_to (image_tag team.image.url(:medium)), team_path(team), class: "card-img-top image-size" %>
         <div class="card-body">
           <div class="row parts">
             <%= link_to "詳細" %>

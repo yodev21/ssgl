@@ -1,0 +1,19 @@
+<div class="profile-wrap">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <%= image_tag avatar_url(@team), class: "round-img" %>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <h1><%= @team.name %></h1>
+        <% if @team.user_id == current_user.id %>
+          <%= link_to "プロフィール編集", team_path(@team), class: "btn btn-outline-dark  edit-profile-btn" %>
+          <%= link_to "チーム削除", team_path(@team), class: "btn btn-danger  edit-profile-btn", method: :delete, data: { confirm: "チームを削除してもよろしいですか？"} %>
+        <% end %>
+      </div>
+      <div class="row">
+        <%= @team.remarks %>
+      </div>
+    </div>
+  </div>
+</div>
