@@ -1,0 +1,14 @@
+@import "layouts/colors";
+.profile-form-wrap {
+  background: $white;
+  padding: 50px;
+  border: 1px solid $gray;
+}
+
+.profile-form-wrap label {
+  font-weight: bold;
+}
+
+.edit-profile-wrapper {
+  margin-top: 80px;
+}
