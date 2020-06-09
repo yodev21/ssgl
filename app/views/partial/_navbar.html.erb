@@ -8,13 +8,16 @@
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
       <li><%= link_to "ホーム", "#", class: "list-group-item list-group-item-action" %></li>
+      <% if user_signed_in?%>
       <li><%= link_to "プロフィール", user_path(current_user),class: "nav-link", class: "list-group-item list-group-item-action" %></li>
+      <% end %>
       <li><%= link_to "チーム検索", "#", class: "list-group-item list-group-item-action"%></li>
       <li><%= link_to "所属チーム一覧", "#", class: "list-group-item list-group-item-action" %></li>
       <li><%= link_to "ユーザー検索", "#", class: "list-group-item list-group-item-action" %></li>
       <li><%= link_to "設定", "#", class: "list-group-item list-group-item-action" %></li>
       <% if user_signed_in? %>
       <li><%= link_to "サインアウト", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" %></li>
+      <li><%= link_to "退会", user_path(current_user), method: :delete, data: { confirm: "退会してもよろしいでしょうか？" } %></li>
       <% else %>
       <li><%= link_to "サインアップ", new_user_registration_path %></li>
       <li><%= link_to "サインイン", new_user_session_path %></li>
