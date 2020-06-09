@@ -1,0 +1,19 @@
+<div class="header">
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" />
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <li><%= link_to "ホーム", "#", class: "list-group-item list-group-item-action" %></li>
+      <li><%= link_to "プロフィール", "#", class: "list-group-item list-group-item-action" %></li>
+      <li><%= link_to "チーム検索", "#", class: "list-group-item list-group-item-action"%></li>
+      <li><%= link_to "所属チーム一覧", "#", class: "list-group-item list-group-item-action" %></li>
+      <li><%= link_to "ユーザー検索", "#", class: "list-group-item list-group-item-action" %></li>
+      <li><%= link_to "設定", "#", class: "list-group-item list-group-item-action" %></li>
+      <li><%= link_to "サインアウト", "#", method: :delete, class: "list-group-item list-group-item-action" %></li>
+    </ul>
+    </div>
+</div>
