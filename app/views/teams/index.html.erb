@@ -1,1 +1,26 @@
-<h1>トップページです。（仮）</h1>
+<% @teams.each do |team|%>
+  <div class="col-md-8 col-md-2 mx-auto">
+    <div class="card-wrap">
+      <div class="card">
+        <div class="card-header align-items-center d-flex">
+          <%= link_to team_path(team), class: "black-color no-text-decoration" do %>
+            <%= image_tag avatar_url(team), class: "team-profile-icon" %>
+          <% end %>
+          <%= link_to team_path(team), class: "black-color no-text-decoration" do %>
+            <strong><%= team.name %></strong>
+          <% end %>
+        </div>
+        <%= image_tag team.image.url(:medium), class: "card-img-top" %>
+        <div class="card-body">
+          <div class="row parts">
+            <%= link_to "詳細" %>
+          </div>
+          <div>
+            <span><strong><%= team.user.name %></strong></span>
+            <%= link_to time_ago_in_words(team.created_at).upcase + "前", "#", class: "team-time no-text-decoration" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
