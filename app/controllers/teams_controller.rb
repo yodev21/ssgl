@@ -20,6 +20,17 @@ class TeamsController < ApplicationController
 
   def show; end
 
+  def edit; end
+ 
+  def update
+    if @team.update(team_params)
+      redirect_to teams_path, notice: "チーム情報を更新しました！"
+    else
+      flash.now[:alert] = "チーム情報の更新に失敗しました！"
+      render :edit
+    end
+  end
+
   private
   def set_params
     @team = Team.find(params[:id])
