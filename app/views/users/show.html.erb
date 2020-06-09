@@ -1,0 +1,19 @@
+<div class="profile-wrap">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <%= image_tag avatar_url(@user), class: "round-img" %>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <h1><%= @user.name %></h1>
+        <%= link_to "プロフィール編集", edit_user_registration_path, class: "btn btn-outline-dark common-btn edit-profile-btn" %>
+
+      </div>
+      <% if @user = current_user %>
+        <div class="row">
+          <%= @user.email %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

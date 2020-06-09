@@ -8,7 +8,7 @@
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
       <li><%= link_to "ホーム", "#", class: "list-group-item list-group-item-action" %></li>
-      <li><%= link_to "プロフィール", "#", class: "list-group-item list-group-item-action" %></li>
+      <li><%= link_to "プロフィール", user_path(current_user),class: "nav-link", class: "list-group-item list-group-item-action" %></li>
       <li><%= link_to "チーム検索", "#", class: "list-group-item list-group-item-action"%></li>
       <li><%= link_to "所属チーム一覧", "#", class: "list-group-item list-group-item-action" %></li>
       <li><%= link_to "ユーザー検索", "#", class: "list-group-item list-group-item-action" %></li>
