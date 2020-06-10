@@ -4,9 +4,9 @@ class AssignsController < ApplicationController
     team = Team.find(params[:team_id])
     @assign = Assign.new(status: :member, team_id: team.id, user_id: current_user.id)
     if @assign.save
-      redirect_to team_path(team.id), notice: "チームに加入しました！"
+      redirect_to team_assign_tasks_path(assign_id: @assign.id), notice: "チームに加入しました！"
     else
-      redirect_to team_pat(team.id), alert: "チームの加入に失敗しました！"
+      redirect_to team_path(team.id), alert: "チームの加入に失敗しました！"
     end
   end
 end

@@ -19,6 +19,11 @@ class TeamsController < ApplicationController
     @teams = Team.all.order(created_at: :desc)
   end
 
+  def belong_team_index
+    @teams = Team.where(id: Assign.where(user_id: current_user.id).select("team_id")).order(created_at: :desc)
+    render 'teams/index'
+  end
+
   def show; end
 
   def edit; end
