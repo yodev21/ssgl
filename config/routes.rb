@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :destroy]
   resources :teams do
     collection do
-      get '/belong', to: "teams#belong_team_index"
+      get '/belong', to: "teams#belong_teams_index"
     end
     resources :assigns do
       resources :tasks
