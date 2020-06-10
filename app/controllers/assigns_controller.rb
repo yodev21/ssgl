@@ -9,4 +9,11 @@ class AssignsController < ApplicationController
       redirect_to team_path(team.id), alert: "チームの加入に失敗しました！"
     end
   end
+
+  def destroy
+    @assign = Assign.find(params[:id])
+    @assign.destroy
+    redirect_to teams_path, notice: "チームの退会しました！"
+  end
+
 end
