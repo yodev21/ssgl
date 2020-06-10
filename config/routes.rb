@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'belong_teams/index'
+  get 'belong_teams/show'
   devise_for :users,
   controllers: { registrations: 'registrations' }
   root to: "teams#index"
