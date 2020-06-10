@@ -1,0 +1,2 @@
+class Assign < ApplicationRecord
+end
