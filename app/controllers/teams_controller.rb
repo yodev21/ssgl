@@ -7,6 +7,7 @@ class TeamsController < ApplicationController
   def create
     @team = current_user.teams.build(team_params)
     if @team.save
+      @team.join_team(status: 0, user: @team.user_id )
       redirect_to teams_path, notice: "チームを作成しました！"
     else
       flash.now[:danger] = "チームの作成に失敗しました！"

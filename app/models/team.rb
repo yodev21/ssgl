@@ -6,4 +6,8 @@ class Team < ApplicationRecord
   validates :image, presence: true
   
   mount_uploader :image, ImageUploader
+
+  def join_team(status: status, user: user)
+    assigns.create(status: status, user_id: user.to_i)
+  end
 end
