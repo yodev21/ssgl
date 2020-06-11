@@ -1,18 +1,21 @@
-<% @teams.each do |team|%>
-  <div class="d-flex flex-row  col-md-3 col-md-1 mx-auto">
-    <div class="card-wrap">
-      <div class="card">
-        <%= link_to (image_tag team.image.url(:medium)), team_path(team), class: "card-img-top image-size" %>
-        <div class="card-body">
-          <div class="row parts">
-            <%= link_to "詳細" %>
-          </div>
-          <div>
-            <span><strong><%= team.user.name %></strong></span>
-            <%= link_to time_ago_in_words(team.created_at).upcase + "前", "#", class: "team-time no-text-decoration" %>
+<div class="main_index">
+  <h2>チーム一覧</h2>
+  <div class="row">
+    <% @teams.each do |team|%>
+      <div class="col-md-4">
+        <div class="image-box">
+        <%= link_to (image_tag team.image.url(:medium),class: "image-size"), team_path(team) %>
+          <div class="card-body">
+            <div class="row parts">
+              <%= link_to "詳細" %>
+            </div>
+            <div>
+              <span><strong><%= team.user.name %></strong></span>
+              <%= link_to time_ago_in_words(team.created_at).upcase + "前", "#", class: "team-time no-text-decoration" %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
+</div>
