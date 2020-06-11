@@ -7,11 +7,11 @@
         <%= link_to (image_tag team.image.url(:medium),class: "image-size"), team_path(team) %>
           <div class="card-body">
             <div class="row parts">
-              <%= link_to "詳細" %>
+              <%= link_to "詳細", team_path(team) %>
             </div>
             <div>
               <span><strong><%= team.user.name %></strong></span>
-              <%= link_to time_ago_in_words(team.created_at).upcase + "前", "#", class: "team-time no-text-decoration" %>
+              <%= link_to time_ago_in_words(team.created_at).upcase + "前", team_path(team), class: "team-time no-text-decoration" %>
             </div>
           </div>
         </div>
