@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_084611) do
+ActiveRecord::Schema.define(version: 2020_06_11_111738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,20 @@ ActiveRecord::Schema.define(version: 2020_06_10_084611) do
     t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_assigns_on_team_id"
     t.index ["user_id"], name: "index_assigns_on_user_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "content", null: false
+    t.text "image", null: false
+    t.bigint "user_id", null: false
+    t.bigint "team_id", null: false
+    t.bigint "assign_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assign_id"], name: "index_tasks_on_assign_id"
+    t.index ["team_id"], name: "index_tasks_on_team_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -52,5 +66,8 @@ ActiveRecord::Schema.define(version: 2020_06_10_084611) do
 
   add_foreign_key "assigns", "teams"
   add_foreign_key "assigns", "users"
+  add_foreign_key "tasks", "assigns"
+  add_foreign_key "tasks", "teams"
+  add_foreign_key "tasks", "users"
   add_foreign_key "teams", "users"
 end
