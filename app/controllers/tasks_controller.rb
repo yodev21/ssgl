@@ -42,7 +42,9 @@ class TasksController < ApplicationController
   end
 
   def destroy
-
+    @task = Task.find_by(id: params[:id])
+    @task.destroy
+    redirect_to team_assign_tasks_path(team_id: @task.team_id, assign_id: @task.assign_id), notice: "課題を削除しました！"
   end
 
   private
