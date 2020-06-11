@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :belong_teams, only: [:index, :show, :destroy]
     end
 
-    resources :assigns do
+    resources :assigns, only: [:create, :destroy, :update] do
       resources :tasks
       resources :belong_team_users, only: [:index, :show]
     end

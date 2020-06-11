@@ -4,6 +4,6 @@ class BelongTeamUsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @assign_user = Assign.where(id: params[:assign_id]).includes(:user)
   end
 end
