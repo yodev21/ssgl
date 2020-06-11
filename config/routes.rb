@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
     resources :assigns do
       resources :tasks
-      resources :belong_team_users, only: [:index]
+      resources :belong_team_users, only: [:index, :show]
     end
     
   end

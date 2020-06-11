@@ -1,0 +1,16 @@
+<div class="profile-wrap">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <%= image_tag avatar_url(@user), class: "round-img" %>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <h1><%= @user.name %></h1>
+      </div>
+      <div class="row">
+        <%= @user.profile %>
+      </div>
+        <%= link_to "削除", team_assign_path(@user), method: :delete, data: {confirm: "ユーザーを削除してもよろしいですか？"}, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>

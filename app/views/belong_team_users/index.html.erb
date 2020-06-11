@@ -5,7 +5,7 @@
       <%= image_tag avatar_url(user), class: "round-img" %>
         <div class="card-body">
           <div class="row parts">
-            <%= link_to "詳細", "#" %>
+            <%= link_to "詳細", team_assign_belong_team_user_path(team_id: user.assigns.first.team.id, assign_id: user.assigns.first, id: user.id) %>
           </div>
           <div>
             <span><strong><%= user.name %></strong></span>
