@@ -1,21 +1,21 @@
-<% @teams.each do |team|%>
-  <div class="d-flex flex-row  col-md-3 col-md-1 mx-auto">
-    <div class="card-wrap">
-      <div class="card">
-        <%= team.assigns.each do |assign|%>
-          <%= link_to "チーム詳細", belong_team_path(id: team.id) %>
-          <%= link_to (image_tag team.image.url(:medium)), "#", class: "card-img-top image-size" %>
-          <div class="card-body">
-            <div class="row parts">
-              <%= link_to "課題の詳細", "#" %>
-            </div>
-            <div>
-              <span><strong><%= team.user.name %></strong></span>
-              <%= link_to time_ago_in_words(assign.team.updated_at).upcase + "前", "#", class: "team-time no-text-decoration" %>
+<div class="main_index">
+  <h2>課題一覧</h2>
+  <div class="row">
+    <% @teams.each do |team|%>
+      <div class="col-md-4">
+        <div class="image-box">
+        <%= link_to (image_tag team.image.url(:medium), class: "image-size"), team_assign_tasks_path(assign_id: team.assigns.first.id, team_id: team.assigns.first.team_id)%>
+        <div class="card-body">
+          <div class="row parts">
+            <%= link_to "詳細", team_assign_tasks_path(assign_id: team.assigns.first.id, team_id: team.assigns.first.team_id), class: "team_info" %>
+          </div>
+          <div>
+            <span><strong><%= team.user.name %></strong></span>
+            <%= link_to time_ago_in_words(team.assigns.first.team.updated_at).upcase + "前", team_assign_tasks_path(assign_id: team.assigns.first.id, team_id: team.assigns.first.team_id), class: "team-time no-text-decoration" %>
             </div>
           </div>
-        <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
+</div>
