@@ -1,4 +1,4 @@
-<div class="profile-wrap">
+<div class="main">
   <div class="row">
     <div class="col-md-4 text-center">
       <%= image_tag avatar_url(@assign_user.first.user), class: "round-img" %>
@@ -11,7 +11,7 @@
         <h1><%= @assign_user.first.status %></h1>
       </div>
       <div class="row">
-        <%= @assign_user.first.user.profile %>
+        <p class="profile"><%= @assign_user.first.user.profile %></p>
       </div>
         <% if current_user.assigns.first.status == "admin" ||  current_user.assigns.first.status == "memtor"%>
           <% if @assign_user.first.status == "memtor" %>
