@@ -1,2 +1,17 @@
-<h1>BelongTeamUsers#index</h1>
-<p>Find me in app/views/belong_team_users/index.html.erb</p>
+<% @users.each do |user|%>
+  <div class="d-flex flex-row  col-md-3 col-md-1 mx-auto">
+    <div class="card-wrap">
+      <div class="card">
+      <%= image_tag avatar_url(user), class: "round-img" %>
+        <div class="card-body">
+          <div class="row parts">
+            <%= link_to "詳細", "#" %>
+          </div>
+          <div>
+            <span><strong><%= user.name %></strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -7,6 +7,7 @@
           <div class="card-body">
             <div class="row parts">
               <%= link_to "詳細", team_assign_tasks_path(assign_id: assign.id, team_id: assign.team_id) %>
+              <%= link_to "所属ユーザー一覧", team_assign_belong_team_users_path(assign_id: assign.id, team_id: assign.team_id) %>
             </div>
             <div>
               <span><strong><%= team.user.name %></strong></span>
