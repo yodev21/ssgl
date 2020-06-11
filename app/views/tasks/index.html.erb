@@ -1,0 +1,21 @@
+<% @teams.each do |team|%>
+  <div class="d-flex flex-row  col-md-3 col-md-1 mx-auto">
+    <div class="card-wrap">
+      <div class="card">
+        <%= team.assigns.each do |assign|%>
+          <%= link_to "チーム詳細", belong_team_path(id: team.id) %>
+          <%= link_to (image_tag team.image.url(:medium)), "#", class: "card-img-top image-size" %>
+          <div class="card-body">
+            <div class="row parts">
+              <%= link_to "課題の詳細", "#" %>
+            </div>
+            <div>
+              <span><strong><%= team.user.name %></strong></span>
+              <%= link_to time_ago_in_words(assign.team.updated_at).upcase + "前", "#", class: "team-time no-text-decoration" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

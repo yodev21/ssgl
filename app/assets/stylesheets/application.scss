@@ -1,12 +1,12 @@
 @import "bootstrap";
 
-@import "common";
+@import "layouts/common";
 @import "layouts/colors";
 
 @import "layouts/navbar";
 @import "layouts/flash";
+@import "layouts/common_index";
+
 @import "users/form";
 @import "users/show";
 @import "users/edit";
-
-@import "teams";

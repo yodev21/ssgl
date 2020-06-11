@@ -1,0 +1,16 @@
+<div class="profile-wrap">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <%= image_tag avatar_url(@team), class: "round-img" %>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <h1><%= @team.name %></h1>
+        <%= link_to "チームを退会する", team_assign_path(team_id: @team.id, id: current_user.id), method: :delete, data: { confirm: "チームを退会してもよろしいですか？" }, class: "btn btn-outline-dark edit-profile-btn" %>
+      </div>
+      <div class="row">
+        <%= @team.remarks %>
+      </div>
+    </div>
+  </div>
+</div>
