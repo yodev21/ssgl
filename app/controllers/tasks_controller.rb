@@ -24,6 +24,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    @task = Task.find_by(assign_id: params[:assign_id], team_id: params[:team_id], id: params[:id])
   end
 
 
