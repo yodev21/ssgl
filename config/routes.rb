@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
-  get 'belong_teams/index'
-  get 'belong_teams/show'
   devise_for :users,
   controllers: { registrations: 'registrations' }
   root to: "teams#index"
   resources :users, only: [:index, :show, :destroy]
   resources :teams do
     collection do
-      get '/belong', to: "teams#belong_teams_index"
+      resources :belong_teams, only: [:index, :show, :destroy]
     end
     resources :assigns do
       resources :tasks

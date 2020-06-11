@@ -19,11 +19,6 @@ class TeamsController < ApplicationController
     @teams = Team.all.order(created_at: :desc)
   end
 
-  def belong_teams_index
-    @teams = Team.where(id: Assign.where(user_id: current_user.id).select("team_id")).includes(:assigns).order(created_at: :desc)
-    # render 'teams/belongindex'
-  end
-
   def show; end
 
   def edit; end

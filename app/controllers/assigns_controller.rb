@@ -11,7 +11,7 @@ class AssignsController < ApplicationController
   end
 
   def destroy
-    @assign = Assign.find(params[:id])
+    @assign = Assign.find_by(user_id: params[:id])
     @assign.destroy
     redirect_to teams_path, notice: "チームの退会しました！"
   end
