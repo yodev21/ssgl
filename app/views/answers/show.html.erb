@@ -15,7 +15,11 @@
         <%= @answer.content %>
       </div>
       <div class="row">
-        <h3>コメント</h3>
+        <h3>コメント一覧</h3>
+        <%= render partial: 'comments/form', locals: { comment: @comment } %>
+        <div id="comments_area">
+          <%= render partial: 'comments/index', locals: { comments: @comments } %>
+        </div>
       </div>
     </div>
   </div>
