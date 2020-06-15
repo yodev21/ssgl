@@ -3,6 +3,7 @@ class ChallengeStart < ApplicationRecord
   belongs_to :team
   belongs_to :assign
   belongs_to :task
+  has_many :answers, dependent: :destroy
 
   enum status: { complete: 0 , underway: 1 }
 

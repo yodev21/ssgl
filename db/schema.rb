@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_061907) do
+ActiveRecord::Schema.define(version: 2020_06_15_073223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.text "url"
+    t.text "content"
+    t.text "image"
+    t.bigint "user_id", null: false
+    t.bigint "team_id", null: false
+    t.bigint "assign_id", null: false
+    t.bigint "task_id", null: false
+    t.bigint "challenge_start_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assign_id"], name: "index_answers_on_assign_id"
+    t.index ["challenge_start_id"], name: "index_answers_on_challenge_start_id"
+    t.index ["task_id"], name: "index_answers_on_task_id"
+    t.index ["team_id"], name: "index_answers_on_team_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
+  end
 
   create_table "assigns", force: :cascade do |t|
     t.integer "status", null: false
@@ -79,6 +97,11 @@ ActiveRecord::Schema.define(version: 2020_06_15_061907) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "assigns"
+  add_foreign_key "answers", "challenge_starts"
+  add_foreign_key "answers", "tasks"
+  add_foreign_key "answers", "teams"
+  add_foreign_key "answers", "users"
   add_foreign_key "assigns", "teams"
   add_foreign_key "assigns", "users"
   add_foreign_key "challenge_starts", "assigns"

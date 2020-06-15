@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :assigns, dependent: :destroy
   has_many :tasks, dependent: :destroy
   has_many :challenge_starts, dependent: :destroy
+  has_many :answers, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
