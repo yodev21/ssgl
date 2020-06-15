@@ -14,8 +14,14 @@
       <div class="row">
         <%= @task.content %>
       </div>
-
-      <%= link_to "課題に取り組む！", "#", method: :post, class: "btn btn-primary edit-profile-btn" %>
+      <% if @answer.nil? %>
+        <%= link_to "課題に取り組む！", team_assign_task_challenge_starts_path(team_id: @task.team_id, assign_id: @task.assign_id, task_id: @task.id), method: :post, class: "btn btn-primary edit-profile-btn" %>
+      <% elsif  @answer.challenge_start.status == "awaiting_review" %>
+        <%= link_to "回答を修正する", edit_team_assign_task_challenge_start_answer_path(team_id: @answer.team_id, assign_id: @answer.assign_id, task_id: @answer.task_id, challenge_start_id: @answer.challenge_start_id, id: @answer.id), class: "btn btn-success edit-profile-btn" %>
+      <% else %>
+        <%= link_to "回答する", new_team_assign_task_challenge_start_answer(team_id: @answer.team_id, assign_id: @answer.assign_id, task_id: @answer.task_id, challenge_start_id: @answer.challenge_start_id), class: "btn btn-success edit-profile-btn" %>
+        <%= link_to "課題を諦める", team_assign_task_challenge_start_path(team_id: @task.team_id, assign_id: @task.assign_id, task_id: @task.id), method: :delete, data: { confirm: "本当に諦めますか？"}, class: "btn btn-danger edit-profile-btn" %>
+      <% end %>
     </div>
   </div>
 </div>

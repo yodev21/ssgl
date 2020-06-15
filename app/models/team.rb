@@ -2,6 +2,8 @@ class Team < ApplicationRecord
   belongs_to :user
   has_many :assigns, dependent: :destroy
   has_many :tasks, dependent: :destroy
+  has_many :challenge_starts, dependent: :destroy
+  has_many :answers, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :image, presence: true
