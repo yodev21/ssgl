@@ -16,7 +16,7 @@
         <li><%= link_to "所属チーム一覧", belong_teams_path, class: "list-group-item list-group-item-action" %></li>
         <li><%= link_to "ユーザー検索", "#", class: "list-group-item list-group-item-action" %></li>
         <li><%= link_to "ユーザー一覧", users_path, class: "list-group-item list-group-item-action" %></li>
-        <li><%= link_to "設定", "#", class: "list-group-item list-group-item-action" %></li>
+        <li><%= link_to "着手中課題一覧", challenge_starts_path, class: "list-group-item list-group-item-action" %></li>
         <li><%= link_to "サインアウト", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" %></li>
         <li><%= link_to "退会", user_path(current_user), method: :delete, data: { confirm: "退会してもよろしいでしょうか？" }, class: "list-group-item list-group-item-action" %></li>
       <% else %>

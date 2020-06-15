@@ -1,4 +1,9 @@
 class ChallengeStartsController < ApplicationController
+
+  def index
+    @challenge_tasks = ChallengeStart.get_ansers(user: current_user).includes(:task)
+  end
+
   def create
     @challenge = ChallengeStart.create_challenge_start(task: params[:task_id])
     redirect_to team_assign_task_path(team_id: params[:team_id],

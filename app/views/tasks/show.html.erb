@@ -14,11 +14,13 @@
       <div class="row">
         <%= @task.content %>
       </div>
-      <% if @task.challenge_starts.first.nil? %>
+      <% if @challenge_task.nil? %>
         <%= link_to "課題に取り組む！", team_assign_task_challenge_starts_path(team_id: @task.team_id, assign_id: @task.assign_id, task_id: @task.id), method: :post, class: "btn btn-primary edit-profile-btn" %>
+      <% elsif  @challenge_task.status == "awaiting_review" %>
+        <%= link_to "回答を修正する", "#", class: "btn btn-success edit-profile-btn" %>
       <% else %>
+        <%= link_to "回答する", "#", class: "btn btn-success edit-profile-btn" %>
         <%= link_to "課題を諦める", team_assign_task_challenge_start_path(team_id: @task.team_id, assign_id: @task.assign_id, task_id: @task.id), method: :delete, data: { confirm: "本当に諦めますか？"}, class: "btn btn-danger edit-profile-btn" %>
-        <%= link_to "課題に回答する！", "#", class: "btn btn-danger edit-profile-btn" %>
       <% end %>
     </div>
   </div>

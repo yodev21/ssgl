@@ -4,4 +4,5 @@ class Answer < ApplicationRecord
   belongs_to :assign
   belongs_to :task
   belongs_to :challenge_start
+
 end

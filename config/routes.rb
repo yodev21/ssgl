@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   controllers: { registrations: 'registrations' }
 
   resources :users, only: [:index, :show, :destroy]
-  
+  resources :challenge_starts, only: [:index]
+
   resources :teams do
 
     collection do
@@ -14,10 +15,11 @@ Rails.application.routes.draw do
 
     resources :assigns, only: [:create, :destroy, :update] do
       resources :tasks do
-        resources :challenge_starts, only: [:create, :destroy]
+        resources :challenge_starts, only: [:create, :destroy] do
+          resources :answers
+        end
       end
       resources :belong_team_users, only: [:index, :show]
     end
-    
   end
 end

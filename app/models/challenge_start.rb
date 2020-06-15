@@ -5,7 +5,7 @@ class ChallengeStart < ApplicationRecord
   belongs_to :task
   has_many :answers, dependent: :destroy
 
-  enum status: { complete: 0 , underway: 1 }
+  enum status: { complete: 0 , underway: 1 , awaiting_review: 2}
 
   private
   scope :create_challenge_start, -> (task: task, deadline: "") do
@@ -25,5 +25,9 @@ class ChallengeStart < ApplicationRecord
   scope :find_challenge_start, -> (task: task) do
     next if task.nil?
     ChallengeStart.find_by(task_id: task)
+  end
+
+  scope :get_ansers, -> (user: user) do
+    where(user_id: user.id)
   end
 end
