@@ -1,0 +1,13 @@
+<ul>
+  <% comments.each do |comment| %>
+    <% if comment.id.present? %>
+      <li>
+      <div class="comment-content" id="this_comment_<%= comment.id %>">
+        <p><%= comment.content %></p>
+        <p><%= link_to "コメント編集", "#" %>
+        <p><%= link_to "コメント削除", "#" %>
+      </div>
+      </li>   
+    <% end %>
+  <% end %>
+</ul>

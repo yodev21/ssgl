@@ -3,7 +3,16 @@ class AnswersController < ApplicationController
   def index
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+    @comment.team_id = params[:team_id]
+    @comment.assign_id = params[:assign_id]
+    @comment.task_id = params[:task_id]
+    @comment.challenge_start_id = params[:challenge_start_id]
+    @comment.answer_id = params[:id]
+    @comment.user_id = current_user.id
+    @comments = Comment.where(team_id: @answer.team_id, task_id: @answer.task_id, answer_id: @answer.id)
+  end
 
   def edit; end
 
