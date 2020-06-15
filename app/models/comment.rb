@@ -1,4 +1,4 @@
-class Answer < ApplicationRecord
+class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :team
   belongs_to :assign
