@@ -4,6 +4,7 @@ class ChallengeStart < ApplicationRecord
   belongs_to :assign
   belongs_to :task
   has_many :answers, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   enum status: { complete: 0 , underway: 1 , awaiting_review: 2}
 
