@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment = Comment.find(paramas[:id])
+    @comment = Comment.find(params[:id])
     respond_to do |format|
       if @comment.update(comment_params)
         flash.now[:notice] = "コメントが編集されました。"
@@ -41,10 +41,11 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    @comments = Comment.where(answer_id: @comment.answer_id)
     @comment.destroy
     respond_to do |format|
-      flash.now[:notice] = "コメントが削除されました。"
-      format.js { render :index }
+      flash.now[:alert] = "コメントが削除されました。"
+      format.js { render :index}
     end
   end
 

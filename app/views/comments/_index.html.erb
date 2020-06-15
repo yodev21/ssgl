@@ -5,7 +5,7 @@
       <div class="comment-content" id="this_comment_<%= comment.id %>">
         <p><%= comment.content %></p>
         <p><%= link_to "コメント編集", edit_team_assign_task_challenge_start_answer_comments_path(team_id: comment.team_id, assign_id: comment.assign_id, task_id: comment.task_id, challenge_start_id: comment.challenge_start_id, answer_id: comment.answer_id, id: comment.id), remote: true %>
-        <p><%= link_to "コメント削除", team_assign_task_challenge_start_answer_comments_path(team_id: comment.team_id, assign_id: comment.assign_id, task_id: comment.task_id, challenge_start_id: comment.challenge_start_id, answer_id: comment.answer_id, id: comment.id) %>
+        <p><%= link_to "コメント削除", team_assign_task_challenge_start_answer_comments_path(team_id: comment.team_id, assign_id: comment.assign_id, task_id: comment.task_id, challenge_start_id: comment.challenge_start_id, answer_id: comment.answer_id, id: comment.id), method: :delete, data: {confirm: "削除してもよろしいですか？"}, remote: true %>
       </div>
       </li>   
     <% end %>
