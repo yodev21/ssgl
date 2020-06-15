@@ -1,0 +1,26 @@
+<div class="main">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="profile-form-wrap">
+        <%= form_with model: @team, local: true do |f| %>
+          
+          <div class="form-group">
+            <%= f.label :name, "チーム名" %>
+            <%= f.text_field :name, autofocus: true, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :image, "チームアイコン" %>
+            <%= f.file_field :image, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.text_area :remarks, placeholder: "備考", class: "form-control"%>
+          </div>
+
+          <%= f.submit "更新", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

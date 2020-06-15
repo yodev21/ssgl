@@ -1,0 +1,21 @@
+<div class="main">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <%= image_tag avatar_url(@task), class: "round-img" %>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <h1><%= @task.title %></h1>
+        <% if @task.user_id == current_user.id %>
+          <%= link_to "課題編集", edit_team_assign_task_path(@task), class: "btn btn-outline-dark  edit-profile-btn" %>
+          <%= link_to "課題削除", team_assign_task_path(@task), class: "btn btn-danger  edit-profile-btn", method: :delete, data: { confirm: "課題を削除してもよろしいですか？"} %>
+        <% end %>
+      </div>
+      <div class="row">
+        <%= @task.content %>
+      </div>
+
+      <%= link_to "課題に取り組む！", "#", method: :post, class: "btn btn-primary edit-profile-btn" %>
+    </div>
+  </div>
+</div>

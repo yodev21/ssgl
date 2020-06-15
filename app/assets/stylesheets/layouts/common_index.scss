@@ -1,0 +1,49 @@
+@import "layouts/colors";
+.team-profile-icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.card-wrap {
+  margin: 40px 0px;
+}
+
+.no-text-decoration:hover {
+  text-decoration: none;
+}
+
+.black-color {
+  color: $black;
+}
+
+.parts {
+  margin: 12px 0;
+}
+
+.team-time {
+  margin: 0;
+  color: $light_gray;
+  font-size: 10px;
+}
+
+.image-size {
+  width: 20rem;
+  margin: auto;
+}
+
+.main_index {
+  max-width: 960px;
+  margin: auto;
+  padding-top: 100px;
+  box-sizing: border-box;
+}
+
+.card_width {
+  margin: 5px;
+}
+.image-box {
+  width: 20rem;
+  margin: auto;
+}

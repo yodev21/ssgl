@@ -1,0 +1,29 @@
+<div class="main">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <%= image_tag avatar_url(@assign_user.first.user), class: "round-img" %>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <h1><%= @assign_user.first.user.name %></h1>
+      </div>
+      <div class="row">
+        <h1><%= @assign_user.first.status %></h1>
+      </div>
+      <div class="row">
+        <p class="profile"><%= @assign_user.first.user.profile %></p>
+      </div>
+        <% if current_user.assigns.first.status == "admin" ||  current_user.assigns.first.status == "memtor"%>
+          <% if @assign_user.first.status == "memtor" %>
+            <%= link_to "メンバーにする", team_assign_path(@assign_user.first.user, status: "member"), method: :PATCH, data: {confirm: "メンバーにしてもよろしいですか？"}, class: "btn btn-success" %>
+          <% elsif @assign_user.first.status == "member" %>
+            <%= link_to "メンターにする", team_assign_path(@assign_user.first.user, status: "memtor"), method: :PATCH, data: {confirm: "メンターにしてもよろしいですか？"}, class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
+
+        <% if @assign_user.first.status != "admin"%>
+          <%= link_to "チーム退会", team_assign_path(@assign_user.first.user), method: :delete, data: {confirm: "ユーザーを削除してもよろしいですか？"}, class: "btn btn-danger" %>
+        <% end %>
+    </div>
+  </div>
+</div>

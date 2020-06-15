@@ -1,0 +1,21 @@
+<div class="main_index">
+  <h2>所属ユーザー一覧</h2>
+  <div class="row">
+<% @users.each do |user|%>
+      <div class="col-md-4">
+        <div class="image-box">
+      <%= image_tag avatar_url(user), class: "round-img" %>
+        <div class="card-body">
+          <div class="row parts">
+            <%= link_to "詳細", team_assign_belong_team_user_path(team_id: user.assigns.first.team.id, assign_id: user.assigns.first, id: user.id) %>
+          </div>
+          <div>
+            <span><strong><%= user.name %></strong></span>
+            <%= link_to time_ago_in_words(user.assigns.first.updated_at).upcase + "前", team_assign_belong_team_user_path(team_id: user.assigns.first.team.id, assign_id: user.assigns.first, id: user.id), class: "team-time no-text-decoration" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

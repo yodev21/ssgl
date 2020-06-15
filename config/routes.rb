@@ -1,3 +1,21 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: "teams#index"
+
+  devise_for :users,
+  controllers: { registrations: 'registrations' }
+
+  resources :users, only: [:index, :show, :destroy]
+  
+  resources :teams do
+
+    collection do
+      resources :belong_teams, only: [:index, :show, :destroy]
+    end
+
+    resources :assigns, only: [:create, :destroy, :update] do
+      resources :tasks
+      resources :belong_team_users, only: [:index, :show]
+    end
+    
+  end
 end
