@@ -13,7 +13,9 @@ Rails.application.routes.draw do
     end
 
     resources :assigns, only: [:create, :destroy, :update] do
-      resources :tasks
+      resources :tasks do
+        resources :challenge_starts, only: [:create, :destroy]
+      end
       resources :belong_team_users, only: [:index, :show]
     end
     
