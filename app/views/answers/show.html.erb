@@ -16,10 +16,8 @@
       </div>
       <div class="row">
         <h3>コメント一覧</h3>
-        <% binding.irb%>
         <%= render partial: 'comments/form', locals: { comment: @comment } %>
         <div id="comments_area">
-        <% binding.irb%>
           <%= render partial: 'comments/index', locals: { comments: @comments } %>
         </div>
       </div>

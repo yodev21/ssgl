@@ -21,8 +21,8 @@ class CommentsController < ApplicationController
   def edit
     @comment = Comment.find(params[:id])
     respond_to do |format|
-      flash.now[:notice] = "編集中"
-      format.js {render :edit }
+      flash.now[:notice] = 'コメントの編集中'
+      format.js { render :edit }
     end
   end
 

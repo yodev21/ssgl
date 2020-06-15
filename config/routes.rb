@@ -17,12 +17,12 @@ Rails.application.routes.draw do
       resources :tasks do
         resources :challenge_starts, only: [:create, :destroy] do
           resources :answers do
-            resource :comments, only: [:create, :destroy]
+            resource :comments, only: [:create, :edit, :update, :destroy]
           end
         end
       end
       resources :belong_team_users, only: [:index, :show]
     end
-    
+
   end
 end
