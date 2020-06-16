@@ -10,7 +10,7 @@
       <li class="list-group-item"><%= link_to(image_tag(avatar_url(current_user), class: "round-img"), user_path(current_user)) %></li>
       <% if user_signed_in?%>
         <li class="list-group-item list-group-item-action"><%= link_to "プロフィール", user_path(current_user) %></li>
-        <li class="list-group-item list-group-item-action"><%= link_to "ユーザー一覧", "#" %></li>
+        <li class="list-group-item list-group-item-action"><%= link_to "ユーザー一覧", users_path %></li>
         <li class="list-group-item list-group-item-action"><%= link_to "ラベル作成", "#" %></li>
         <li class="list-group-item list-group-item-action"><%= link_to "サインアウト", destroy_user_session_path, method: :delete %></>
       <% else %>

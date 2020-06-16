@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_params, only: [:show, :edit, :update, :destroy]
+  before_action :admin_check
   def new
     @team = Team.new
   end
@@ -46,4 +47,9 @@ class TeamsController < ApplicationController
     params.require(:team).permit(:name,:image,:remarks)
   end
 
+  def admin_check
+    if current_user.present? && current_user.admin?
+      redirect_to administrator_top_path(administrator_id: current_user.id)
+    end
+  end
 end
