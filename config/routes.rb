@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'administrators/new'
+  get 'administrators/index'
+  get 'administrators/show'
+  get 'administrators/edit'
   root to: "teams#index"
 
   devise_for :users,
