@@ -31,10 +31,9 @@ class TasksController < ApplicationController
     @task = Task.find_by(assign_id: params[:assign_id],
                          team_id: params[:team_id],
                          id: params[:id])
-                         binding.pry
     @challenge_task = ChallengeStart.find_by( team_id: params[:team_id],
                                               assign_id: params[:assign_id], 
-                                              task_id: params[:task_id], 
+                                              task_id: @task.id, 
                                               user_id: current_user.id )
   end
 
