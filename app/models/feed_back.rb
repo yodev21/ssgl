@@ -1,4 +1,4 @@
-class Comment < ApplicationRecord
+class FeedBack < ApplicationRecord
   belongs_to :user
   belongs_to :team
   belongs_to :assign

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :challenge_starts, only: [:index]
 
   resources :teams do
-
+    resources :feed_backs, only: [:index, :show]
     collection do
       resources :belong_teams, only: [:index, :show, :destroy]
     end
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         resources :challenge_starts, only: [:create, :destroy] do
           resources :answers do
             resource :comments, only: [:create, :edit, :update, :destroy]
+            resource :feed_backs, only: [:create]
           end
         end
       end

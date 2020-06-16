@@ -5,13 +5,15 @@ class AnswersController < ApplicationController
 
   def show
     @comment = Comment.new
+    @comment.user_id = current_user.id
     @comment.team_id = params[:team_id]
     @comment.assign_id = params[:assign_id]
     @comment.task_id = params[:task_id]
     @comment.challenge_start_id = params[:challenge_start_id]
     @comment.answer_id = params[:id]
-    @comment.user_id = current_user.id
-    @comments = Comment.where(team_id: @answer.team_id, task_id: @answer.task_id, answer_id: @answer.id)
+    @comments = Comment.where(team_id: @answer.team_id, 
+                              task_id: @answer.task_id, 
+                              answer_id: @answer.id)
   end
 
   def edit; end
@@ -33,28 +35,29 @@ class AnswersController < ApplicationController
 
   def new
     @answer = Answer.new
+    @answer.user_id = current_user.id
     @answer.team_id = params[:team_id]
     @answer.assign_id = params[:assign_id]
     @answer.task_id = params[:task_id]
     @answer.challenge_start_id = params[:challenge_start_id]
-    @answer.user_id = current_user.id
   end
 
   def create
     @answer = Answer.new(answer_params)
+    @answer.user_id = current_user.id
     @answer.team_id = params[:team_id]
     @answer.assign_id = params[:assign_id]
     @answer.task_id = params[:task_id]
     @answer.challenge_start_id = params[:challenge_start_id]
-    @answer.user_id = current_user.id
 
     if @answer.save
-       ChallengeStart.update(status: :awaiting_review)
-      redirect_to team_assign_task_challenge_start_answer_path( team_id: @answer.team_id,
-                                                                assign_id: @answer.assign_id,
-                                                                task_id: @answer.task_id,
-                                                                challenge_start_id: @answer.challenge_start_id,
-                                                                id: @answer.id),notice: "回答しました！"
+      ChallengeStart.update(status: :awaiting_review)
+      redirect_to new_team_assign_task_challenge_start_answer_feed_backs_path(team_id: @answer.team_id,
+                                                                              assign_id: @answer.assign_id,
+                                                                              task_id: @answer.task_id,
+                                                                              challenge_start_id: @answer.challenge_start_id,
+                                                                              answer_id: @answer.id),
+                                                                              notice: "回答しました。"
     else
       flash.now[:alert] = "課題投稿に失敗しました！"
       render :new

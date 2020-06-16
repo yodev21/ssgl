@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_121102) do
+ActiveRecord::Schema.define(version: 2020_06_16_060935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,25 @@ ActiveRecord::Schema.define(version: 2020_06_15_121102) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "feed_backs", force: :cascade do |t|
+    t.integer "feeling_number", null: false
+    t.text "reason"
+    t.bigint "user_id", null: false
+    t.bigint "team_id", null: false
+    t.bigint "assign_id", null: false
+    t.bigint "task_id", null: false
+    t.bigint "challenge_start_id", null: false
+    t.bigint "answer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_feed_backs_on_answer_id"
+    t.index ["assign_id"], name: "index_feed_backs_on_assign_id"
+    t.index ["challenge_start_id"], name: "index_feed_backs_on_challenge_start_id"
+    t.index ["task_id"], name: "index_feed_backs_on_task_id"
+    t.index ["team_id"], name: "index_feed_backs_on_team_id"
+    t.index ["user_id"], name: "index_feed_backs_on_user_id"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
@@ -133,6 +152,12 @@ ActiveRecord::Schema.define(version: 2020_06_15_121102) do
   add_foreign_key "comments", "tasks"
   add_foreign_key "comments", "teams"
   add_foreign_key "comments", "users"
+  add_foreign_key "feed_backs", "answers"
+  add_foreign_key "feed_backs", "assigns"
+  add_foreign_key "feed_backs", "challenge_starts"
+  add_foreign_key "feed_backs", "tasks"
+  add_foreign_key "feed_backs", "teams"
+  add_foreign_key "feed_backs", "users"
   add_foreign_key "tasks", "assigns"
   add_foreign_key "tasks", "teams"
   add_foreign_key "tasks", "users"
