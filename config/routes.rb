@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         resources :challenge_starts, only: [:create, :destroy] do
           resources :answers do
             resource :comments, only: [:create, :edit, :update, :destroy]
+            resource :feed_backs
           end
         end
       end

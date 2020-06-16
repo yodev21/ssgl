@@ -50,11 +50,11 @@ class AnswersController < ApplicationController
 
     if @answer.save
        ChallengeStart.update(status: :awaiting_review)
-      redirect_to team_assign_task_challenge_start_answer_path( team_id: @answer.team_id,
+      redirect_to new_team_assign_task_challenge_start_answer_feed_backs_path( team_id: @answer.team_id,
                                                                 assign_id: @answer.assign_id,
                                                                 task_id: @answer.task_id,
                                                                 challenge_start_id: @answer.challenge_start_id,
-                                                                id: @answer.id),notice: "回答しました！"
+                                                                answer_id: @answer.id),notice: "回答しました！"
     else
       flash.now[:alert] = "課題投稿に失敗しました！"
       render :new
