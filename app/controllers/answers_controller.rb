@@ -57,7 +57,7 @@ class AnswersController < ApplicationController
                                                                               task_id: @answer.task_id,
                                                                               challenge_start_id: @answer.challenge_start_id,
                                                                               answer_id: @answer.id),
-                                                                              notice: "回答しました！"
+                                                                              notice: "回答しました。"
     else
       flash.now[:alert] = "課題投稿に失敗しました！"
       render :new
