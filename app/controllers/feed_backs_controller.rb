@@ -1,0 +1,2 @@
+class FeedBacksController < ApplicationController
+end
