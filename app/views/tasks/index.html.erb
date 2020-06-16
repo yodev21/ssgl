@@ -10,22 +10,23 @@
       <% @tasks.each do |task|%>
         <div class="col-md-4">
           <div class="image-box">
-          <%= link_to (image_tag task.image.url(:medium), class: "image-size"), team_assign_task_path(assign_id: task.assign.id, 
-                                                                                                      team_id: task.assign.team_id, 
+          <%= link_to (image_tag task.image.url(:medium), class: "image-size"), team_assign_task_path(team_id: task.assign.team_id, 
+                                                                                                      assign_id: task.assign.id, 
                                                                                                       id: task.id)%>
           <div class="card-body">
             <div class="row parts">
-              <%= link_to "詳細", team_assign_task_path(assign_id: task.assign.id, 
-                                                      　team_id: task.assign.team_id, 
-                                                      　id: task.id), 
-                                                      　class: "team_info" %>
+              <%= link_to "詳細", team_assign_task_path(team_id: task.assign.team_id, 
+                                                        assign_id: task.assign.id, 
+                                                        id: task.id), 
+                                                        class: "team_info" %>
+                                                      
             </div>
             <div>
               <span><strong><%= task.user.name %></strong></span>
               <%= link_to time_ago_in_words(task.updated_at).upcase + "前", team_assign_task_path(assign_id: task.assign.id, 
                                                                                                   team_id: task.assign.team_id, 
                                                                                                   id: task.id), 
-                                                                                                  lass: "team-time no-text-decoration" %>
+                                                                                                  class: "team-time no-text-decoration" %>
               </div>
             </div>
           </div>
