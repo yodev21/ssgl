@@ -28,13 +28,20 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find_by(assign_id: params[:assign_id],
+    @task = Task.find_by(user_id: current_user.id,
+                         assign_id: params[:assign_id],
                          team_id: params[:team_id],
                          id: params[:id])
-    @challenge_task = ChallengeStart.find_by( team_id: params[:team_id],
-                                              assign_id: params[:assign_id], 
-                                              task_id: @task.id, 
-                                              user_id: current_user.id )
+
+    @answer = Answer.find_by(user_id: current_user.id,
+                             team_id: params[:team_id],
+                             assign_id: params[:assign_id],
+                             task_id: @task.id)
+
+    @challenge_task = ChallengeStart.find_by(user_id: current_user.id,
+                                             team_id: params[:team_id],
+                                             assign_id: params[:assign_id], 
+                                             task_id: @task.id)
   end
 
 
