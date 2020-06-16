@@ -1,0 +1,23 @@
+<div class="header">
+  <input type="checkbox" id="openSidebarMenu" checked />
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <li class="list-group-item"><%= link_to(image_tag(avatar_url(current_user), class: "round-img"), user_path(current_user)) %></li>
+      <% if user_signed_in?%>
+        <li class="list-group-item list-group-item-action"><%= link_to "プロフィール", user_path(current_user) %></li>
+        <li class="list-group-item list-group-item-action"><%= link_to "ユーザー一覧", "#" %></li>
+        <li class="list-group-item list-group-item-action"><%= link_to "ラベル作成", "#" %></li>
+        <li class="list-group-item list-group-item-action"><%= link_to "サインアウト", destroy_user_session_path, method: :delete %></>
+      <% else %>
+        <li class="list-group-item list-group-item-action"><%= link_to "サインアップ", new_user_registration_path %></li>
+        <li class="list-group-item list-group-item-action"><%= link_to "サインイン", new_user_session_path %></li>
+      <% end %>
+
+    </ul>
+    </div>
+</div>

@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  get 'administrators/new'
-  get 'administrators/index'
-  get 'administrators/show'
-  get 'administrators/edit'
+  
   root to: "teams#index"
+
+  resources :administrators
 
   devise_for :users,
   controllers: { registrations: 'registrations' }
