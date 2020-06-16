@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   
   root to: "teams#index"
 
-  resources :administrators
+  resources :administrators do
+    get 'top', to: "administrators#top"
+  end
 
   devise_for :users,
   controllers: { registrations: 'registrations' }

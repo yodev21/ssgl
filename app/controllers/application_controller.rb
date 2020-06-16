@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :admin_check
   layout :set_layout
 
   protect_from_forgery with: :exception
@@ -19,5 +20,10 @@ class ApplicationController < ActionController::Base
       "application"
     end
   end
-  
+
+  def admin_check
+    if current_user.admin?
+      redirect_to administrator_top_path(administrator_id: current_user.id).admin?
+    end
+  end
 end
