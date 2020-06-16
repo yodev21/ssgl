@@ -15,15 +15,15 @@ class ApplicationController < ActionController::Base
 
   def set_layout
     if params[:controller].match(%r{\A(administrators)})
-      Regexp.last.match[1]
+      Regexp.last_match[1]
     else
       "application"
     end
   end
 
   def admin_check
-    if current_user.admin?
-      redirect_to administrator_top_path(administrator_id: current_user.id).admin?
+    if current_user.present? && current_user.admin?
+      redirect_to administrator_top_path(administrator_id: current_user.id)
     end
   end
 end

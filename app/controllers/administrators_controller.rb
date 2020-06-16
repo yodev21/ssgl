@@ -1,4 +1,5 @@
 class AdministratorsController < ApplicationController
+  skip_before_action :admin_check
   def top
 
   end

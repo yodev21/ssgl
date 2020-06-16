@@ -7,8 +7,8 @@
   </label>
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
-      <li class="list-group-item"><%= link_to(image_tag(avatar_url(current_user), class: "round-img"), user_path(current_user)) %></li>
       <% if user_signed_in?%>
+        <li class="list-group-item"><%= link_to(image_tag(avatar_url(current_user), class: "round-img"), user_path(current_user)) %></li>
         <li class="list-group-item list-group-item-action"><%= link_to "プロフィール", user_path(current_user) %></li>
         <li class="list-group-item list-group-item-action"><%= link_to "チーム作成", new_team_path %></li>
         <li class="list-group-item list-group-item-action"><%= link_to "チーム一覧", teams_path %></li>
@@ -21,5 +21,5 @@
       <% end %>
 
     </ul>
-    </div>
+  </div>
 </div>
