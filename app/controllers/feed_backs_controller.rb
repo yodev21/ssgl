@@ -31,7 +31,14 @@ class FeedBacksController < ApplicationController
                                                                alert: "送信に失敗しました。"
     
     end
+  end
 
+  def index
+    @feed_backs = FeedBack.where(team_id: params[:team_id])
+  end
+
+  def show
+    @feed_back = FeedBack.find(params[:id])
   end
 
   private
