@@ -2,10 +2,14 @@
   <div class="card form-card">
     <div class="form-wrap">
       <div class="form-group text-center">
-        <h3>課題回答</h3>
+        <h3>フィードバック</h3>
       </div>
       <% binding.pry%>
-      <%= form_with model: @answer, url: team_assign_task_challenge_start_answers_path(team_id: @answer.team_id, assign_id: @answer.assign_id, task_id: @answer.task_id, challenge_start_id: @answer.challenge_start_id), local: true do |f| %>
+      <%= form_with model: @answer, url: team_assign_task_challenge_start_answers_path(team_id: @answer.team_id, 
+                                                                                       assign_id: @answer.assign_id, 
+                                                                                       task_id: @answer.task_id, 
+                                                                                       challenge_start_id: @answer.challenge_start_id), 
+                                                                                       local: true do |f| %>
         
         <div class="form-group">
           <%= f.text_field :url, autofocus: true, placeholder: "URL（任意）", class: "form-control" %>

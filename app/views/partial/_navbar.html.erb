@@ -10,7 +10,7 @@
       <li><%= link_to "ホーム", "#", class: "list-group-item list-group-item-action" %></li>
 
       <% if user_signed_in?%>
-        <li><%= link_to "プロフィール", user_path(current_user),class: "nav-link", class: "list-group-item list-group-item-action" %></li>
+        <li><%= link_to "プロフィール", user_path(current_user),　class: "nav-link　list-group-item list-group-item-action" %></li>
         <li><%= link_to "チーム作成", new_team_path, class: "list-group-item list-group-item-action"%></li>
         <li><%= link_to "チーム一覧", teams_path, class: "list-group-item list-group-item-action"%></li>
         <li><%= link_to "所属チーム一覧", belong_teams_path, class: "list-group-item list-group-item-action" %></li>
