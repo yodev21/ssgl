@@ -10,10 +10,9 @@
       <% if user_signed_in?%>
         <li class="list-group-item"><%= link_to(image_tag(avatar_url(current_user), class: "round-img"), user_path(current_user)) %></li>
         <li class="list-group-item list-group-item-action"><%= link_to "プロフィール", user_path(current_user) %></li>
-        <li class="list-group-item list-group-item-action"><%= link_to "チーム作成", new_team_path %></li>
-        <li class="list-group-item list-group-item-action"><%= link_to "チーム一覧", teams_path %></li>
-        <li class="list-group-item list-group-item-action"><%= link_to "所属チーム一覧", belong_teams_path %></li>
-        <li class="list-group-item list-group-item-action"><%= link_to "着手中課題一覧", challenge_starts_path %></li>
+        <li class="list-group-item list-group-item-action"><%= link_to "チーム", teams_path %></li>
+        <li class="list-group-item list-group-item-action"><%= link_to "所属チーム", belong_teams_path %></li>
+        <li class="list-group-item list-group-item-action"><%= link_to "課題", challenge_starts_path %></li>
         <li class="list-group-item list-group-item-action"><%= link_to "サインアウト", destroy_user_session_path, method: :delete %></li>
       <% else %>
         <li class="list-group-item list-group-item-action"><%= link_to "サインアップ", new_user_registration_path %></li>
