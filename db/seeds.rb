@@ -6,6 +6,16 @@ User.create(
   password: "administrator00"
 )
 
+p "Create Guest User"
+User.create(
+  email: "guest@example.com",
+  name: "ゲストユーザー",
+  password: "testtest",
+  profile: "プログラミングの学習を始めて１ヶ月目です！\n
+            早く一人前のエンジニアになれるように頑張ります！",
+)
+
+p "Create Users"
 p "Create Strart"
 10.times do |n|
   # ユーザー作成
