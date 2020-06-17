@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  root to: "teams#index"
+  root to: "top#top"
 
   resources :administrators do
     get 'top', to: "administrators#top"

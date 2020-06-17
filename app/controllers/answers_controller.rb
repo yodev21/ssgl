@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
   before_action :set_params, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   def index
   end
 

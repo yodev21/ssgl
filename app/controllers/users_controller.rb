@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_params, only: [:show, :destroy]
+  # before_action :authenticate_user!
   def index
     @users = User.all.order(created_at: :desc)
   end
