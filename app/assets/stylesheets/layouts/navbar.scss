@@ -5,7 +5,15 @@
   width: 100%;
   max-width: 100%;
   box-shadow: none;
-  background-color: $light_blue;
+  // background-color: $light_blue;
+
+  background: -webkit-linear-gradient(
+    128deg,
+    rgb(103, 62, 255),
+    rgb(70, 119, 255)
+  );
+  background: linear-gradient(128deg, rgb(103, 62, 255), rgb(70, 119, 255));
+
   position: fixed;
   height: 60px !important;
   overflow: hidden;

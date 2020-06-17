@@ -5,6 +5,7 @@ class Team < ApplicationRecord
   has_many :challenge_starts, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :feed_backs, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :image, presence: true

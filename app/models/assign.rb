@@ -4,6 +4,7 @@ class Assign < ApplicationRecord
   has_many :tasks, dependent: :destroy
   has_many :challenge_starts, dependent: :destroy
   has_many :answers, dependent: :destroy
+  has_many :feed_backs, dependent: :destroy
 
   validates :status, presence: true
 

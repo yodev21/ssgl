@@ -7,20 +7,42 @@
   </label>
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
-      <li><%= link_to "ホーム", "#", class: "list-group-item list-group-item-action" %></li>
-
       <% if user_signed_in?%>
-        <li><%= link_to "プロフィール", user_path(current_user),class: "nav-link", class: "list-group-item list-group-item-action" %></li>
-        <li><%= link_to "チーム作成", new_team_path, class: "list-group-item list-group-item-action"%></li>
-        <li><%= link_to "チーム一覧", teams_path, class: "list-group-item list-group-item-action"%></li>
-        <li><%= link_to "所属チーム一覧", belong_teams_path, class: "list-group-item list-group-item-action" %></li>
-        <li><%= link_to "着手中課題一覧", challenge_starts_path, class: "list-group-item list-group-item-action" %></li>
-        <li><%= link_to "サインアウト", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" %></li>
+      
+        <li class="list-group-item"><%= link_to(image_tag(avatar_url(current_user), class: "round-img"), user_path(current_user)) %></li>
+        
+        <%= link_to user_path(current_user), class: "list-group-item list-group-item-action" do %>
+          <span><strong>プロフィール</strong></span>
+        <% end %>
+
+        <%= link_to  teams_path, class: "list-group-item list-group-item-action" do %>
+          <span><strong>チーム</strong></span>
+        <% end %>
+
+        <%= link_to belong_teams_path, class: "list-group-item list-group-item-action" do %>
+          <span><strong>所属チーム</strong></span>
+        <% end %>
+
+        <%= link_to challenge_starts_path, class:"list-group-item list-group-item-action" do %>
+          <span><strong>課題</strong></span>
+        <% end %>
+
+        <%= link_to destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" do %>
+          <span><strong>サインアウト</strong></span>
+        <% end %>
+
       <% else %>
-        <li><%= link_to "サインアップ", new_user_registration_path, class: "list-group-item list-group-item-action" %></li>
-        <li><%= link_to "サインイン", new_user_session_path, class: "list-group-item list-group-item-action" %></li>
+
+        <%= link_to new_user_registration_path, class: "list-group-item list-group-item-action" do %>
+          <span><strong>サインアップ</strong></span>
+        <% end %>
+
+        <%= link_to new_user_session_path, class: "list-group-item list-group-item-action" do %>
+          <span><strong>サインイン</strong></span>
+        <% end %>
+
       <% end %>
 
     </ul>
-    </div>
+  </div>
 </div>

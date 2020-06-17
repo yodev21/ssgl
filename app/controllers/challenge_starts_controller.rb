@@ -1,4 +1,5 @@
 class ChallengeStartsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @challenge_tasks = ChallengeStart.get_ansers(user: current_user).includes(:task)

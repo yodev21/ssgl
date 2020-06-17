@@ -1,7 +1,50 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+p "Create Administrators"
+User.create(
+  email: "admin@example.com",
+  name: "administrator",
+  admin: true,
+  password: "administrator00"
+)
+
+p "Create Guest User"
+User.create(
+  email: "guest@example.com",
+  name: "ゲストユーザー",
+  password: "testtest",
+  profile: "プログラミングの学習を始めて１ヶ月目です！\n
+            早く一人前のエンジニアになれるように頑張ります！",
+)
+
+p "Create Users"
+p "Create Strart"
+10.times do |n|
+  # ユーザー作成
+  @user = User.create!(
+    email: "test#{n}@example.com",
+    password: "testtest",
+    name: "テスト ユーザー#{n}",
+    profile: "プログラミングの学習を始めて１ヶ月目です！\n
+              早く一人前のエンジニアになれるように頑張ります！",
+    image: open("#{Rails.root}/db/users/#{n}.png")
+  )
+  p "Create テスト ユーザー#{n} Success"
+  
+  # チーム作成
+  langs = ["Ruby", "Python", "Go", "C++", "VB.NET", "C#", "React", "Vue", "JavaScript", "HTML/CSS", "jQuery"]
+  @team = Team.create!(
+    name: "テスト チーム#{n}",
+    image: open("#{Rails.root}/db/teams/#{n}.png"),
+    remarks: "#{langs[n]} をメインに学習しています！ \n
+              初心者大歓迎です。!! \n
+              楽しくプログラミングをしましょう！！",
+    user_id: @user.id
+  )
+  p "Create テスト チーム#{n} Success"
+
+  # チームアサイン
+  assign = Assign.create(
+
+  )
+end
+
+

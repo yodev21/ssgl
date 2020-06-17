@@ -5,18 +5,29 @@
       <% @challenge_tasks.each do |challenge_task|%>
         <div class="col-md-4">
           <div class="image-box">
-          <%= link_to (image_tag challenge_task.task.image.url(:medium), class: "image-size"), team_assign_task_path(assign_id: challenge_task.assign.id, team_id: challenge_task.assign.team_id, id: challenge_task.task.id)%>
+          <%= link_to (image_tag challenge_task.task.image.url(:medium), class: "image-size"), team_assign_task_path(assign_id: challenge_task.assign.id, 
+                                                                                                                     team_id: challenge_task.assign.team_id, 
+                                                                                                                     id: challenge_task.task.id)%>
           <div class="card-body">
             <div class="row parts">
-              <%= link_to "詳細", team_assign_task_path(assign_id: challenge_task.assign.id, team_id: challenge_task.assign.team_id, id: challenge_task.task.id), class: "team_info" %>
-              <% binding.irb %>
+              <%= link_to "詳細", team_assign_task_path(assign_id: challenge_task.assign.id, 
+                                                       team_id: challenge_task.assign.team_id, 
+                                                       id: challenge_task.task.id), 
+                                                       class: "team_info" %>
               <% if challenge_task.status == "underway" %>
-                <%= link_to "回答する", new_team_assign_task_challenge_start_answer_path(assign_id: challenge_task.assign.id, team_id: challenge_task.assign.team_id, task_id: challenge_task.task.id, challenge_start_id: challenge_task.id), class: "team_info" %>
+                <%= link_to "回答する", new_team_assign_task_challenge_start_answer_path(assign_id: challenge_task.assign.id, 
+                                                                                        team_id: challenge_task.assign.team_id, 
+                                                                                        task_id: challenge_task.task.id, 
+                                                                                        challenge_start_id: challenge_task.id), 
+                                                                                        class: "team_info" %>
               <% end %>
             </div>
             <div>
               <span><strong><%= challenge_task.user.name %></strong></span>
-              <%= link_to time_ago_in_words(challenge_task.updated_at).upcase + "前", team_assign_task_path(assign_id: challenge_task.assign.id, team_id: challenge_task.assign.team_id, id: challenge_task.task.id), class: "team-time no-text-decoration" %>
+              <%= link_to time_ago_in_words(challenge_task.updated_at).upcase + "前", team_assign_task_path(assign_id: challenge_task.assign.id, 
+                                                                                                            team_id: challenge_task.assign.team_id, 
+                                                                                                            id: challenge_task.task.id), 
+                                                                                                            class: "team-time no-text-decoration" %>
               </div>
             </div>
           </div>
