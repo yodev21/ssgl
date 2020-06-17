@@ -23,10 +23,17 @@ class AdministratorsController < ApplicationController
     @users = User.all.order(created_at: :desc)
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
+  def edit; end
+
+  def update
+    if @user.update(admin_params)
+      redirect_to administrators_path, notice: 'ユーザー情報を更新しました。'
+    else
+      flash.now[:alert] = "ユーザー情報の更新に失敗しました。"
+      render :edit
+    end
   end
 
   def destroy
@@ -40,8 +47,16 @@ class AdministratorsController < ApplicationController
   end
 
   def admin_params
-    binding.pry
     params.require(:user).permit(:name,
+                                 :email,
+                                 :image,
+                                 :admin,
+                                 :password,
+                                 :password_confirmation)
+  end
+  
+  def current_user_admin_params
+    params.require(:administrators).permit(:name,
                                  :email,
                                  :image,
                                  :admin,
