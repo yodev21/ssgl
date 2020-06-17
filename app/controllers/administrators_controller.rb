@@ -5,6 +5,17 @@ class AdministratorsController < ApplicationController
   end
   
   def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(admin_params)
+    if @user.save
+      redirect_to administrators_path, notice: 'ユーザーを登録しました。'
+    else
+      flash.now[:alert] = "ユーザー登録に失敗しました。"
+      render :new
+    end
   end
 
   def index
@@ -24,5 +35,15 @@ class AdministratorsController < ApplicationController
   private
   def set_params
     @user = User.find(params[:id])
+  end
+
+  def admin_params
+    binding.pry
+    params.require(:user).permit(:name,
+                                 :email,
+                                 :image,
+                                 :admin,
+                                 :password,
+                                 :password_confirmation)
   end
 end
