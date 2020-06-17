@@ -24,7 +24,11 @@
           アカウントをお持ちでないですか？
           <%= link_to "サインアップ", new_user_registration_path %>
         </p>
-        
+
+        <p class="form-link">
+          <%= link_to "ゲストアカウントでログイン", guest_sign_in_path, method: :post %>
+        </p>
+          
       <% end %>
     </div>
   </div>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-  root to: "teams#index"
+  root to: "top#top"
+  post '/guest_sign_in', to: 'guest_users#new_guest'
 
   resources :administrators do
     get 'top', to: "administrators#top"

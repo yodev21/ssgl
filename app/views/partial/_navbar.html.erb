@@ -8,15 +8,39 @@
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
       <% if user_signed_in?%>
+      
         <li class="list-group-item"><%= link_to(image_tag(avatar_url(current_user), class: "round-img"), user_path(current_user)) %></li>
-        <li class="list-group-item list-group-item-action"><%= link_to "プロフィール", user_path(current_user) %></li>
-        <li class="list-group-item list-group-item-action"><%= link_to "チーム", teams_path %></li>
-        <li class="list-group-item list-group-item-action"><%= link_to "所属チーム", belong_teams_path %></li>
-        <li class="list-group-item list-group-item-action"><%= link_to "課題", challenge_starts_path %></li>
-        <li class="list-group-item list-group-item-action"><%= link_to "サインアウト", destroy_user_session_path, method: :delete %></li>
+        
+        <%= link_to user_path(current_user), class: "list-group-item list-group-item-action" do %>
+          <span><strong>プロフィール</strong></span>
+        <% end %>
+
+        <%= link_to  teams_path, class: "list-group-item list-group-item-action" do %>
+          <span><strong>チーム</strong></span>
+        <% end %>
+
+        <%= link_to belong_teams_path, class: "list-group-item list-group-item-action" do %>
+          <span><strong>所属チーム</strong></span>
+        <% end %>
+
+        <%= link_to challenge_starts_path, class:"list-group-item list-group-item-action" do %>
+          <span><strong>課題</strong></span>
+        <% end %>
+
+        <%= link_to destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" do %>
+          <span><strong>サインアウト</strong></span>
+        <% end %>
+
       <% else %>
-        <li class="list-group-item list-group-item-action"><%= link_to "サインアップ", new_user_registration_path %></li>
-        <li class="list-group-item list-group-item-action"><%= link_to "サインイン", new_user_session_path %></li>
+
+        <%= link_to new_user_registration_path, class: "list-group-item list-group-item-action" do %>
+          <span><strong>サインアップ</strong></span>
+        <% end %>
+
+        <%= link_to new_user_session_path, class: "list-group-item list-group-item-action" do %>
+          <span><strong>サインイン</strong></span>
+        <% end %>
+
       <% end %>
 
     </ul>

@@ -40,6 +40,9 @@
         アカウントをお持ちですか？
         <%= link_to "サインイン", new_user_session_path %>
       </p>
+      <p class="form-card">
+          <%= link_to "ゲストアカウントでログイン", guest_sign_in_path, method: :post %>
+      </p>
     </div>
   </div>
 </div>

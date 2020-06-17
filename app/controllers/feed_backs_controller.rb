@@ -1,4 +1,5 @@
 class FeedBacksController < ApplicationController
+  before_action :authenticate_user!
   def new
     @answer = Answer.find(params[:answer_id])
     @feed_back = FeedBack.new

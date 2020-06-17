@@ -1,4 +1,5 @@
 class BelongTeamUsersController < ApplicationController
+  before_action :authenticate_user!
   def index
     @users = User.where(id: Assign.where(team_id: params[:team_id]).select("user_id")).includes(:assigns).order(created_at: :desc)
   end

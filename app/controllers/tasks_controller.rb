@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_params, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
   def new
     @assign = Assign.find_by(id: params[:assign_id])
     @task = @assign.tasks.build

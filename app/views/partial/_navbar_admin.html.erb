@@ -9,14 +9,24 @@
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
       <li class="list-group-item"><%= link_to(image_tag(avatar_url(current_user), class: "round-img"), administrator_path(current_user)) %></li>
-      <% if user_signed_in?%>
-        <li class="list-group-item list-group-item-action"><%= link_to "プロフィール", administrator_path(current_user) %></li>
-        <li class="list-group-item list-group-item-action"><%= link_to "ユーザー", administrators_path %></li>
-        <li class="list-group-item list-group-item-action"><%= link_to "ラベル", "#" %></li>
-        <li class="list-group-item list-group-item-action"><%= link_to "サインアウト", destroy_user_session_path, method: :delete %></>
-      <% else %>
-        <li class="list-group-item list-group-item-action"><%= link_to "サインアップ", new_user_registration_path %></li>
-        <li class="list-group-item list-group-item-action"><%= link_to "サインイン", new_user_session_path %></li>
+      <% if user_signed_in? %>
+
+        <%= link_to administrator_path(current_user), class: "list-group-item list-group-item-action" do %>
+          <span><strong>プロフィール</strong></span>
+        <% end %>
+
+        <%= link_to administrators_path, class: "list-group-item list-group-item-action" do %>
+          <span><strong>ユーザー</strong></span>
+        <% end %>
+
+        <%= link_to  "#", class: "list-group-item list-group-item-action" do %>
+          <span><strong>ラベル</strong></span>
+        <% end %>
+
+        <%= link_to destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" do %>
+          <span><strong>サインアウト</strong></span>
+        <% end %>
+        
       <% end %>
     </ul>
   </div>

@@ -1,4 +1,5 @@
 class AssignsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     team = Team.find(params[:team_id])
