@@ -19,6 +19,8 @@ class AdministratorsController < ApplicationController
   end
 
   def index
+    @user_count = User.all.count
+    @users = User.all.order(created_at: :desc)
   end
 
   def show
