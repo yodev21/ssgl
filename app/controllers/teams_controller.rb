@@ -21,7 +21,9 @@ class TeamsController < ApplicationController
     @teams = Team.all.order(created_at: :desc)
   end
 
-  def show; end
+  def show
+    @assign = Assign.find_by(user_id: current_user, team_id: @team.id)
+  end
 
   def edit; end
  

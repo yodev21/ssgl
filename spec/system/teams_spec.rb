@@ -7,7 +7,7 @@ RSpec.describe 'Teams', type: :system do
     before do
       @user = FactoryBot.create(:user, email: "testUserSystem@example.com")
       visit new_user_session_path
-      fill_in "user_email", with: "test@example.com"
+      fill_in "user_email", with: "testUserSystem@example.com"
       fill_in "user_password", with: "testtest"
       click_button "サインイン"
     end

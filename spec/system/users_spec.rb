@@ -22,7 +22,7 @@ RSpec.describe 'Users', type: :system do
 
     example "正常な入力であればサインインできること" do
       visit new_user_session_path
-      fill_in "user_email", with: "test@example.com"
+      fill_in "user_email", with: "testUser@example.com"
       fill_in "user_password", with: "testtest"
       click_button "サインイン"
       wait.until{ expect(page).to have_content "ログインしました。" }
@@ -67,7 +67,7 @@ RSpec.describe 'Users', type: :system do
 
     example "情報の更新ができること" do
       visit new_user_session_path
-      fill_in "user_email", with: "test@example.com"
+      fill_in "user_email", with: "testUserInformation@example.com"
       fill_in "user_password", with: "testtest"
       click_button "サインイン"
       click_link "プロフィール"
