@@ -10,9 +10,9 @@ class TeamsController < ApplicationController
     @team = current_user.teams.build(team_params)
     if @team.save
       @team.join_team(status: :admin, user: @team.user_id )
-      redirect_to teams_path, notice: "チームを作成しました！"
+      redirect_to teams_path, notice: "チームを作成しました。"
     else
-      flash.now[:danger] = "チームの作成に失敗しました！"
+      flash.now[:danger] = "チームの作成に失敗しました。"
       render :new
     end
   end
@@ -27,16 +27,16 @@ class TeamsController < ApplicationController
  
   def update
     if @team.update(team_params)
-      redirect_to teams_path, notice: "チーム情報を更新しました！"
+      redirect_to teams_path, notice: "チーム情報を更新しました。"
     else
-      flash.now[:alert] = "チーム情報の更新に失敗しました！"
+      flash.now[:alert] = "チーム情報の更新に失敗しました。"
       render :edit
     end
   end
 
   def destroy
     @team.destroy
-    redirect_to teams_path, notice: "チームを削除しました！"
+    redirect_to teams_path, notice: "チームを削除しました。"
   end
 
   private

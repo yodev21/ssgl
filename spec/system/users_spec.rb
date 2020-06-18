@@ -5,7 +5,7 @@ RSpec.describe 'Users', type: :system do
 
   describe "サインイン機能" do
     before do
-      @user = FactoryBot.create(:user)
+      @user = FactoryBot.create(:user, email: "testUser@example.com")
     end
     
     example "ゲストユーザーとしてサインインできること(サインイン画面)" do
@@ -62,7 +62,7 @@ RSpec.describe 'Users', type: :system do
 
   describe "ユーザー情報機能" do
     before do
-      @user = FactoryBot.create(:user)
+      @user = FactoryBot.create(:user, email: "testUserInformation@example.com")
     end
 
     example "情報の更新ができること" do

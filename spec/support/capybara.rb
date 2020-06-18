@@ -1,15 +1,17 @@
-require 'capybara/rspec'
-require 'selenium-webdriver'
+Capybara.register_driver :chrome do |app|
+  args = %w(disable-gpu mute-audio window-size=1280,800 lang=ja)
+  args << 'headless' unless ENV['NO_HEADLESS']
 
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app,
+  Capybara::Selenium::Driver.new(
+    app,
     browser: :chrome,
     desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(
       chrome_options: {
-        args: %w(headless disable-gpu window-size=1680,1050),
-      },
+        args: args,
+        w3c: false
+      }
     )
   )
 end
 
-Capybara.javascript_driver = :selenium
+Capybara.default_driver = :chrome
