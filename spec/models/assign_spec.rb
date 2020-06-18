@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Assign, type: :model do
   describe "アサイン機能" do
     before do 
-      @user = FactoryBot.create(:user)
+      @user = FactoryBot.create(:user, email: "testAssign@example.com")
       @team = FactoryBot.create(:team, user_id: @user.id)
       @assign = FactoryBot.create(:assign, user_id: @user.id, team_id: @team.id)
     end

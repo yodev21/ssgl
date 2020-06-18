@@ -1,19 +1,17 @@
 <div class="main_index">
   <h2>チーム一覧</h2>
+  <%= link_to "チーム作成", new_team_path, class: "btn btn-primary"%>
   <div class="row">
     <% @teams.each do |team|%>
       <div class="col-md-4">
         <div class="image-box">
-        <%= link_to (image_tag team.image.url(:medium),class: "image-size"), team_path(team) %>
-          <div class="card-body">
-            <div class="row parts">
-              <%= link_to "詳細", team_path(team) %>
-            </div>
-            <div>
-              <span><strong><%= team.user.name %></strong></span>
+          <%= link_to  team_path(team)  do %>
+            <%= image_tag team_icon_url(team),class: "image-size" %>
+            <div class="card-body">
+              <span><strong><%= team.name %></strong></span>
               <%= link_to time_ago_in_words(team.created_at).upcase + "前", team_path(team), class: "team-time no-text-decoration" %>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
     <% end %>
