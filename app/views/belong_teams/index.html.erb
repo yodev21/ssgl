@@ -4,7 +4,7 @@
     <% @teams.each do |team|%>
       <div class="col-md-4">
         <div class="image-box">
-        <%= link_to (image_tag team.image.url(:medium), class: "image-size"), team_assign_tasks_path(assign_id: team.assigns.first.id, 
+        <%= link_to (image_tag team_icon_url(team),class: "image-size"), team_assign_tasks_path(assign_id: team.assigns.first.id, 
                                                                                                      team_id: team.assigns.first.team_id)%>
         <div class="card-body">
           <div class="row parts">
@@ -19,10 +19,10 @@
                                                                             class: "team_info" %>
           </div>
           <div>
-            <span><strong><%= team.user.name %></strong></span>
-            <%= link_to time_ago_in_words(team.assigns.first.team.updated_at).upcase + "前", team_assign_tasks_path(assign_id: team.assigns.first.id, 
-                                                                                                                    team_id: team.assigns.first.team_id), 
-                                                                                                                    class: "team-time no-text-decoration" %>
+            <span><strong><%= team.name %></strong></span>
+            <%= link_to time_ago_in_words(team.updated_at).upcase + "前", team_assign_tasks_path(assign_id: team.assigns.first.id, 
+                                                                                                 team_id: team.assigns.first.team_id), 
+                                                                                                 class: "team-time no-text-decoration" %>
             </div>
           </div>
         </div>
