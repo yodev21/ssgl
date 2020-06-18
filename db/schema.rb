@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_091343) do
+ActiveRecord::Schema.define(version: 2020_06_18_023802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,8 +39,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_091343) do
     t.bigint "team_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_assigns_on_team_id"
-    t.index ["user_id"], name: "index_assigns_on_user_id"
+    t.index ["team_id", "user_id"], name: "index_assigns_on_team_id_and_user_id", unique: true
   end
 
   create_table "challenge_starts", force: :cascade do |t|
@@ -112,7 +111,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_091343) do
 
   create_table "teams", force: :cascade do |t|
     t.string "name", null: false
-    t.text "image", null: false
+    t.text "image"
     t.text "remarks"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

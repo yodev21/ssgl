@@ -21,6 +21,14 @@ RSpec.configure do |config|
   config.around :each, :js do |ex|
     ex.run_with_retry retry: 3
   end
+  max_window_width = 1024
+  config.before(:all) do
+    screen_height = Capybara.page.execute_script("return screen.height;")
+    screen_width = Capybara.page.execute_script("return screen.width;")
+    screen_width = [screen_width, max_window_width].min
+    Capybara.page.driver.browser.manage.window.move_to(0, 0)
+    Capybara.page.driver.browser.manage.window.resize_to(screen_width, screen_height)
+  end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

@@ -2,40 +2,21 @@ require 'rails_helper'
 
 RSpec.describe Team, type: :model do
   describe "チーム機能" do
-    example "名前、アイコンがあれば有効な状態であること" do
-      user = User.create(
-        name: "test User",
-        email: "test@example.com",
-        password: "testtest"
-      )
+    before do
+      @user = FactoryBot.create(:user, email: "testTeam@example.com")
+    end
+    example "名前があれば有効な状態であること" do
       team = Team.new(
         name: "test Team",
         image: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/images/yay.png')),
-        user_id: user.id
+        user_id: @user.id
       )
       expect(team).to be_valid
     end
     example "名前がなければ無効な状態であること" do
-      user = User.create(
-        name: "test User",
-        email: "test@example.com",
-        password: "testtest"
-      )
       team = Team.new(
         image: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/images/yay.png')),
-        user_id: user.id
-      )
-      expect(team).not_to be_valid
-    end
-    example "アイコンがなければ無効な状態であること" do
-      user = User.create(
-        name: "test User",
-        email: "test@example.com",
-        password: "testtest"
-      )
-      team = Team.new(
-        name: "test User",
-        user_id: user.id
+        user_id: @user.id
       )
       expect(team).not_to be_valid
     end

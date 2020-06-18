@@ -34,7 +34,7 @@
 }
 
 .main_index {
-  max-width: 960px;
+  max-width: 1060px;
   margin: auto;
   padding-top: 100px;
   box-sizing: border-box;
@@ -45,5 +45,7 @@
 }
 .image-box {
   width: 20rem;
-  margin: auto;
+  margin: 10px auto 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
 }
