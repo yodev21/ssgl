@@ -8,5 +8,5 @@ class Answer < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :feed_backs, dependent: :destroy
 
-
+  validates :content, presence: true
 end
