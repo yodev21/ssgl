@@ -21,7 +21,7 @@ class AnswersController < ApplicationController
 
   def update
     if @answer.update(answer_params)
-      redirect_to team_assign_task_challenge_start_answers_path( team_id: @answer.team_id,
+      redirect_to team_assign_task_challenge_start_answer_path( team_id: @answer.team_id,
                                                                 assign_id: @answer.assign_id,
                                                                 task_id: @answer.task_id,
                                                                 challenge_start_id: @answer.challenge_start_id,

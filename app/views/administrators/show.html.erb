@@ -8,14 +8,14 @@
         <h1><%= @user.name %></h1>
         <% if @user == current_user %>
           <%= link_to "プロフィール編集", edit_administrator_path(current_user), 
-                                       class: "btn btn-outline-dark common-btn edit-profile-btn" %>
+                                       class: "btn btn-outline-dark common-btn profile-btn" %>
           
         <% end %>
         <% if current_user.admin? %>
           <%= link_to "削除", administrator_path(@user.id), 
                                               method: :delete, 
                                               data: {confirm: "本当に削除してもよろしいですか"}, 
-                                              class: "btn btn-danger  edit-profile-btn" %>
+                                              class: "btn btn-danger  profile-btn" %>
         <% end %>
 
       </div>
