@@ -4,11 +4,12 @@
                                                                                          challenge_starts: @comment.challenge_start_id, 
                                                                                          answer_id: @comment.answer_id), 
                                                                                          method: :post) do |f| %>
-<div class="field">
-  <%= f.label :content %>
-  <%= f.text_area :content %>
+
+<div class="form-group">
+  <%= f.text_area :content,  placeholder: "コメント", class: "form-control",rows: "15" %>
 </div>
+
 <div class="actions">
-  <%= f.submit %>
+  <%= f.submit "コメント", class: "btn btn-primary w-100" %>
 </div>
 <% end %>
