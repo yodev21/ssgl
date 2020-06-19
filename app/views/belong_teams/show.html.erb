@@ -9,7 +9,7 @@
         <%= link_to "チームを退会する", team_assign_path(team_id: @team.id, id: current_user.id), 
                                                       method: :delete, 
                                                       data: { confirm: "チームを退会してもよろしいですか？" }, 
-                                                      class: "btn btn-outline-dark edit-profile-btn" %>
+                                                      class: "btn btn-outline-dark profile-btn" %>
       </div>
       <div class="row">
         <%= @team.remarks %>
