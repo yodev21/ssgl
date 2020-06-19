@@ -20,7 +20,6 @@ gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'unicorn'
 gem 'mini_racer', platforms: :ruby 
-gem "native"
 gem "ovirt-engine-sdk"
 # gem "fog-aws"
 # gem "ovirt-engine-sdk"
