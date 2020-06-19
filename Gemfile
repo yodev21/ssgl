@@ -18,8 +18,14 @@ gem 'jquery-rails'
 gem 'devise', '~> 4.6.1'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
-
+gem 'unicorn'
+gem 'mini_racer', platforms: :ruby 
 group :development, :test do
+  gem 'capistrano', '3.6.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   
   gem "rspec-rails", '~> 3.8.0'
