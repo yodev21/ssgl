@@ -20,6 +20,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'unicorn'
 gem 'mini_racer', platforms: :ruby 
+gem "fog"
 group :development, :test do
   gem 'capistrano', '3.6.0'
   gem 'capistrano-bundler'
@@ -27,6 +28,8 @@ group :development, :test do
   gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
   
   gem "rspec-rails", '~> 3.8.0'
   gem "factory_bot_rails", "~> 4.10.0"
