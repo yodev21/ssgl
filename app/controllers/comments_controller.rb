@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
+        send_user(@comment)
         @comments = Comment.where(answer_id: @comment.answer_id)
         format.js { render :index}
       else
@@ -53,5 +54,15 @@ class CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comment).permit(:content, :image)
+  end
+
+  def send_user(comment)
+    if current_user.id == comment.answer.user_id
+      comment.assign.each
+        CommentMailer.comment_mail(@comment.user.email).deliver
+      
+    else
+
+    end
   end
 end
