@@ -58,11 +58,13 @@ class CommentsController < ApplicationController
 
   def send_user(comment)
     if current_user.id == comment.answer.user_id
-      comment.assign.each
-        CommentMailer.comment_mail(@comment.user.email).deliver
-      
+      comment.team.assigns.each do |assign|
+        if assign.status == "admin" || assign.status == "memtor"
+          CommentMailer.comment_mail(assign.user.email).deliver
+        end
+      end
     else
-
+      CommentMailer.comment_mail(comment.answer.user.email).deliver
     end
   end
 end
