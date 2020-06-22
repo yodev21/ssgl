@@ -57,8 +57,7 @@
 </div>
 <div class="main_index">
   <div class="row">
-  <% binding.pry %>
-    <% if @challenge_users.present? && @answer.present? && @user_status.status == "admin" %>
+    <% if @challenge_users.present?  && @answer && @user_status.status == "admin" %>
       <% @challenge_users.each do |challenge_user| %>
         <div class="col-md-4">
           <div class="image-box">

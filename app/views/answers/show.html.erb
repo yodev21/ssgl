@@ -31,7 +31,7 @@
                                                                                 method: :delete, 
                                                                                 data: { confirm: "課題を削除してもよろしいですか？"} %>
           <% end %>
-          <% if @answer.assign.status == "admin" || @answer.assign.status == "memtor" %>
+          <% if @answer_user.status == "admin" || @answer_user.status == "memtor" %>
             <%= link_to "完了", team_assign_task_challenge_start_path(team_id: @answer.team_id, 
                                                                       assign_id: @answer.assign_id, 
                                                                       task_id: @answer.task_id, 

@@ -34,14 +34,14 @@ class TasksController < ApplicationController
                          assign_id: params[:assign_id],
                          team_id: params[:team_id],
                          id: params[:id])
-    @answer = Answer.find_by(user_id: params[:user_id],
+    @answer = Answer.find_by(
+                             user_id: params[:user_id],
                              team_id: params[:team_id],
                              assign_id: params[:assign_id],
                              task_id: @task.id)
 
     @user_status = Assign.find_by(user_id: current_user.id)
 
-    binding.pry
     @challenge_task = ChallengeStart.find_by(user_id: params[:user_id],
                                              team_id: params[:team_id],
                                              assign_id: params[:assign_id], 
@@ -50,6 +50,9 @@ class TasksController < ApplicationController
     @challenge_users = ChallengeStart.where(team_id: params[:team_id],
                                            assign_id: params[:assign_id], 
                                            task_id: @task.id)
+    @answers = ChallengeStart.where(user_id: Answer.where(team_id: params[:team_id],
+                                                          assign_id: params[:assign_id], 
+                                                          task_id: @task.id).select("user_id"))
   end
 
 

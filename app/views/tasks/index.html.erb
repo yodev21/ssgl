@@ -12,7 +12,7 @@
       <% @tasks.each do |task|%>
         <div class="col-md-4">
           <div class="image-box">
-          <%= link_to (image_tag task.image.url(:medium), class: "image-size"), team_assign_task_path(user_id: task.user_id,
+          <%= link_to (image_tag task.image.url(:medium), class: "image-size"), team_assign_task_path(user_id: current_user,
                                                                                                       team_id: task.assign.team_id, 
                                                                                                       assign_id: task.assign.id, 
                                                                                                       id: task.id)%>
