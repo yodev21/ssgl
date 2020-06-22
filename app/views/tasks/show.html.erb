@@ -16,7 +16,7 @@
         <% end %>
       </div>
       <div class="row">
-        <%= @task.content %>
+        <p class="content"><%= @task.content %></p>
       </div>
       <% if @challenge_task.nil? %>
         <%= link_to "課題に取り組む！", team_assign_task_challenge_starts_path(user_id: current_user.id,
