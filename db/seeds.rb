@@ -1,3 +1,5 @@
+p "-------------------------- Create Strart ----------------------------"
+
 p "Create Administrators"
 User.create(
   email: "admin@example.com",
@@ -15,10 +17,9 @@ User.create(
             早く一人前のエンジニアになれるように頑張ります！",
 )
 
-p "Create Users"
-p "Create Strart"
 10.times do |n|
   # ユーザー作成
+  p "Create test User#{n}"
   @user = User.create!(
     email: "test#{n}@example.com",
     password: "testtest",
@@ -27,10 +28,11 @@ p "Create Strart"
               早く一人前のエンジニアになれるように頑張ります！",
     image: open("#{Rails.root}/app/assets/images/users/#{n}.png")
   )
-  p "Create テスト ユーザー#{n} Success"
+  p "test User#{n} Success"
   
   # チーム作成
   langs = ["Ruby", "Python", "Go", "C++", "VB.NET", "C#", "React", "Vue", "JavaScript", "HTML/CSS", "jQuery"]
+  p "Create test Team#{n}"
   @team = Team.create!(
     name: "テスト チーム#{n}",
     image: open("#{Rails.root}/app/assets/images/teams/#{n}.png"),
@@ -39,12 +41,39 @@ p "Create Strart"
               楽しくプログラミングをしましょう！！",
     user_id: @user.id
   )
-  p "Create テスト チーム#{n} Success"
+  p "test Team#{n} Success"
 
   # チームアサイン
-  assign = Assign.create(
-
+  p "Create test Assign#{n}"
+  @assign = Assign.create!(
+    status: :admin,
+    user_id: @user.id,
+    team_id: @team.id
   )
+  p "test Assign#{n} Success"
+
+  p "Create test Task#{n}"
+  @task = Task.create!(
+    title: "テスト タイトル#{n}",
+    content: "#{langs[n]}をテストサイトを参考に学習してください。\n
+              課題が完了しましたらこちらにお知らせください。",
+    image: open("#{Rails.root}/app/assets/images/tasks/#{n}.png"),
+    user_id: @user.id,
+    team_id: @team.id,
+    assign_id: @assign.id
+  )
+  p "test Team#{n} Success"
+
+  p "Create test ChallengeStart#{n}"
+  @ChallengeStart = ChallengeStart.create!(
+    status: :underway,
+    user_id: @user.id,
+    team_id: @team.id,
+    assign_id: @assign.id,
+    task_id: @task.id
+  )
+  p "test Team#{n} Success"
+
 end
 
-
+p "-------------------------- complete ---------------------------------"

@@ -24,18 +24,8 @@ class ChallengeStart < ApplicationRecord
            task_id: task.id)
   end
 
-  scope :complete_challenge_start, -> (task: task, deadline: "", user: current_user) do
-    next if task.nil?
-    task = Task.find(task)
-    user = user
-    team = Team.find(task.team_id)
-    assign = Assign.find(task.assign_id)
-    update(status: :complete,
-           deadline: "",
-           user_id: user.id,
-           team_id: team.id,
-           assign_id: assign.id,
-           task_id: task.id)
+  scope :complete_challenge_start, ->  do
+    update(status: :complete)
   end
 
   scope :find_challenge_start, -> (task: task) do

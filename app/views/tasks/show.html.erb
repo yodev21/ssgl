@@ -58,7 +58,6 @@
 </div>
 <div class="main_index">
   <div class="row">
-<% binding.pry %>
     <% if @challenge_users.present?  && @user_status.status == "admin" %>
       <% @challenge_users.each do |challenge_user| %>
         <div class="col-md-4">
@@ -72,9 +71,7 @@
                     <span><strong><%= challenge_user.user.name %></strong></span>
                     <%= link_to time_ago_in_words(challenge_user.updated_at).upcase + "前", user_path(challenge_user.user_id), class: "team-time no-text-decoration" %><br/>
                     <% if @answer %>
-                    <%binding.pry%>
                       <% if challenge_user.status == "awaiting_review" %>
-                      <% binding.pry%>
                         <%= link_to "課題確認", team_assign_task_challenge_start_answer_path(user_id: challenge_user.user_id,
                                                                                             team_id: challenge_user.assign.team_id, 
                                                                                             assign_id: challenge_user.assign.id, 

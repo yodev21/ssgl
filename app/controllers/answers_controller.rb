@@ -5,7 +5,6 @@ class AnswersController < ApplicationController
   end
 
   def show
-    binding.pry
     @comment = Comment.new
     @comment.user_id = current_user.id
     @comment.team_id = params[:team_id]
