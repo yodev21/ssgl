@@ -6,7 +6,7 @@ class ChallengeStartsController < ApplicationController
   end
 
   def create
-    @challenge = ChallengeStart.create_challenge_start(task: params[:task_id])
+    @challenge = ChallengeStart.create_challenge_start(task: params[:task_id], user: current_user)
     redirect_to team_assign_task_path(user_id: current_user.id,
                                       team_id: params[:team_id],
                                       assign_id: params[:assign_id],
@@ -15,7 +15,7 @@ class ChallengeStartsController < ApplicationController
   end
 
   def update
-    @challenge = ChallengeStart.complete_challenge_start(task: params[:task_id])
+    @challenge = ChallengeStart.complete_challenge_start(task: params[:task_id], user: current_user)
     redirect_to team_assign_task_path(user_id: current_user.id,
                                       team_id: params[:team_id],
                                       assign_id: params[:assign_id],

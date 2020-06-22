@@ -10,10 +10,10 @@ class ChallengeStart < ApplicationRecord
   enum status: { complete: 0 , underway: 1 , awaiting_review: 2}
 
   private
-  scope :create_challenge_start, -> (task: task, deadline: "") do
+  scope :create_challenge_start, -> (task: task, deadline: "", user: current_user) do
     next if task.nil?
     task = Task.find(task)
-    user = User.find(task.user_id)
+    user = user
     team = Team.find(task.team_id)
     assign = Assign.find(task.assign_id)
     create(status: :underway,
@@ -24,10 +24,10 @@ class ChallengeStart < ApplicationRecord
            task_id: task.id)
   end
 
-  scope :complete_challenge_start, -> (task: task, deadline: "") do
+  scope :complete_challenge_start, -> (task: task, deadline: "", user: current_user) do
     next if task.nil?
     task = Task.find(task)
-    user = User.find(task.user_id)
+    user = user
     team = Team.find(task.team_id)
     assign = Assign.find(task.assign_id)
     update(status: :complete,
