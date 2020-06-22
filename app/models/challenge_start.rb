@@ -7,7 +7,7 @@ class ChallengeStart < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :feed_backs, dependent: :destroy
 
-  enum status: { complete: 0 , underway: 1 , awaiting_review: 2}
+  enum status: { complete: 0 , underway: 1 , awaiting_review: 2, remand: 3}
 
   private
   scope :create_challenge_start, -> (task: task, deadline: "", user: current_user) do

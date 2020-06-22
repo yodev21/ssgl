@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         send_user(@comment)
+        change_status(@comment)
         @comments = Comment.where(answer_id: @comment.answer_id)
         format.js { render :index}
       else
@@ -65,6 +66,14 @@ class CommentsController < ApplicationController
       end
     else
       CommentMailer.comment_mail(comment.answer.user.email).deliver
+    end
+  end
+
+  def change_status(comment)
+    if current_user.id == comment.answer.user_id
+      ChallengeStart.update(status: "awaiting_review")
+    else
+      ChallengeStart.update(status: "remand")
     end
   end
 end
