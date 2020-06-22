@@ -11,6 +11,8 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
+        send_user(@comment)
+        change_status(@comment)
         @comments = Comment.where(answer_id: @comment.answer_id)
         format.js { render :index}
       else
@@ -53,5 +55,25 @@ class CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comment).permit(:content, :image)
+  end
+
+  def send_user(comment)
+    if current_user.id == comment.answer.user_id
+      comment.team.assigns.each do |assign|
+        if assign.status == "admin" || assign.status == "memtor"
+          CommentMailer.comment_mail(assign.user.email).deliver
+        end
+      end
+    else
+      CommentMailer.comment_mail(comment.answer.user.email).deliver
+    end
+  end
+
+  def change_status(comment)
+    if current_user.id == comment.answer.user_id
+      ChallengeStart.update(status: "awaiting_review")
+    else
+      ChallengeStart.update(status: "remand")
+    end
   end
 end

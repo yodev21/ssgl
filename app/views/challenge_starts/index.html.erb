@@ -5,7 +5,8 @@
 
         <div class="col-md-4">
           <div class="image-box">
-          <%= link_to (image_tag challenge_task.task.image.url(:medium), class: "image-size"), team_assign_task_path(assign_id: challenge_task.assign.id, 
+          <%= link_to (image_tag challenge_task.task.image.url(:medium), class: "image-size"), team_assign_task_path(user_id: challenge_task.user_id,
+                                                                                                                     assign_id: challenge_task.assign.id, 
                                                                                                                      team_id: challenge_task.assign.team_id, 
                                                                                                                      id: challenge_task.task.id)%>
           <div class="card-body">

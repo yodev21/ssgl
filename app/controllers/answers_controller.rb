@@ -15,6 +15,8 @@ class AnswersController < ApplicationController
     @comments = Comment.where(team_id: @answer.team_id, 
                               task_id: @answer.task_id, 
                               answer_id: @answer.id)
+    @answer_user = Assign.find_by(user_id: current_user.id, team_id: @answer.team_id)
+    
   end
 
   def edit; end
