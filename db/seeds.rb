@@ -25,7 +25,7 @@ p "Create Strart"
     name: "テスト ユーザー#{n}",
     profile: "プログラミングの学習を始めて１ヶ月目です！\n
               早く一人前のエンジニアになれるように頑張ります！",
-    image: open("#{Rails.root}/db/users/#{n}.png")
+    image: open("#{Rails.root}/app/assets/images/users/#{n}.png")
   )
   p "Create テスト ユーザー#{n} Success"
   
@@ -33,7 +33,7 @@ p "Create Strart"
   langs = ["Ruby", "Python", "Go", "C++", "VB.NET", "C#", "React", "Vue", "JavaScript", "HTML/CSS", "jQuery"]
   @team = Team.create!(
     name: "テスト チーム#{n}",
-    image: open("#{Rails.root}/db/teams/#{n}.png"),
+    image: open("#{Rails.root}/app/assets/images/teams/#{n}.png"),
     remarks: "#{langs[n]} をメインに学習しています！ \n
               初心者大歓迎です。!! \n
               楽しくプログラミングをしましょう！！",
