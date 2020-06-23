@@ -9,6 +9,7 @@ class Task < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 50}
   validates :content, presence: true
+  validates :image, presence: true
 
   private
   scope :belong_to_team_all, -> (id: id, team_id: team_id, assign_id: assign_id) do
