@@ -5,6 +5,7 @@ p "Create Administrators"
 User.create(
   email: "admin@example.com",
   name: "administrator",
+  image: open("#{Rails.root}/app/assets/images/users/1.png"),
   admin: true,
   password: "administrator00"
 )
@@ -12,11 +13,12 @@ User.create(
 # ゲストユーザー作成
 p "Create Guest User"
 @guest_user = User.create(
-              email: "guest@example.com",
-              name: "ゲスト ユーザー",
-              password: "testtest",
-              profile: "プログラミングの学習を始めて１ヶ月目です！\n
-                        早く一人前のエンジニアになれるように頑張ります！",
+  email: "guest@example.com",
+  name: "ゲスト ユーザー",
+  image: open("#{Rails.root}/app/assets/images/users/1.png"),
+  password: "testtest",
+  profile: "プログラミングの学習を始めて１ヶ月目です！\n
+            早く一人前のエンジニアになれるように頑張ります！",
 )
 p "Guest User Success"
 
@@ -54,19 +56,6 @@ p "Create Guest Task"
 )
 p "Guest Task Success"
 
-# ゲストチャレンジタスク作成
-p "Create Guest ChallengeStart"
-@ChallengeStart = ChallengeStart.create!(
-  status: :underway,
-  user_id: @guest_user.id,
-  team_id: @guest_team.id,
-  assign_id: @guest_assign.id,
-  task_id: @guest_task.id
-)
-p "Guest ChallengeStart Success"
-
-
-
 10.times do |n|
   # ユーザー作成
   p "Create test User#{n}"
@@ -97,20 +86,20 @@ p "Guest ChallengeStart Success"
   @assign = Assign.create!(
     status: :admin,
     user_id: @user.id,
-    team_id: @team.id
+    team_id: @guest_team.id
   )
   p "test Assign#{n} Success"
 
   # タスク作成
   p "Create test Task#{n}"
   @task = Task.create!(
-    title: "テスト タイトル#{n}",
-    content: "#{langs[n]}をテストサイトを参考に学習してください。\n
+    title: "#{langs[n]}チュートリアル#{n}",
+    content: "#{langs[n]}チュートリアルをサイトを参考に学習してください。\n
               課題が完了しましたらこちらにお知らせください。",
     image: open("#{Rails.root}/app/assets/images/tasks/#{n}.png"),
     user_id: @user.id,
-    team_id: @team.id,
-    assign_id: @assign.id
+    team_id: @guest_team.id,
+    assign_id: @guest_assign.id
   )
   p "test Team#{n} Success"
 
@@ -119,9 +108,9 @@ p "Guest ChallengeStart Success"
   @ChallengeStart = ChallengeStart.create!(
     status: :underway,
     user_id: @user.id,
-    team_id: @team.id,
-    assign_id: @assign.id,
-    task_id: @task.id
+    team_id: @guest_team.id,
+    assign_id: @guest_assign.id,
+    task_id: @guest_task.id
   )
   p "test Team#{n} Success"
 

@@ -24,10 +24,6 @@ class ChallengeStart < ApplicationRecord
            task_id: task.id)
   end
 
-  scope :complete_challenge_start, ->  do
-    update(status: :complete)
-  end
-
   scope :find_challenge_start, -> (task: task) do
     next if task.nil?
     ChallengeStart.find_by(task_id: task)

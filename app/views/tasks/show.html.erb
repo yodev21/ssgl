@@ -18,7 +18,6 @@
       <div class="row">
         <p class="content"><%= @task.content %></p>
       </div>
-
       <% if @challenge_task.nil? %>
         <%= link_to "課題に取り組む！", team_assign_task_challenge_starts_path(user_id: current_user.id,
                                                                             team_id: @task.team_id,
@@ -26,7 +25,7 @@
                                                                             task_id: @task.id), 
                                                                             method: :post,
                                                                             class: "btn btn-primary profile-btn" %>
-      <% elsif  @challenge_task.status == "awaiting_review" && @answer.present? %>
+      <% elsif  @challenge_task.status == "awaiting_review" || @challenge_task.status == "remand" && @answer.present? %>
         <%= link_to "回答を修正する", edit_team_assign_task_challenge_start_answer_path(team_id: @challenge_task.team_id,
                                                                                       assign_id: @challenge_task.assign_id, 
                                                                                       task_id: @challenge_task.task_id, 
@@ -81,6 +80,7 @@
                   <div>
                     <span><strong><%= challenge_user.user.name %></strong></span>
                     <%= link_to time_ago_in_words(challenge_user.updated_at).upcase + "前", user_path(challenge_user.user_id), class: "team-time no-text-decoration" %><br/>
+                    
                     <% if @answer %>
                       <% if challenge_user.status == "awaiting_review" %>
                         <%= link_to "課題確認", team_assign_task_challenge_start_answer_path(user_id: challenge_user.user_id,
@@ -89,7 +89,7 @@
                                                                                             task_id: challenge_user.task_id,
                                                                                             challenge_start_id: challenge_user.id,
                                                                                             id: @answer.id),
-                                                                                            class: "btn btn-primary" %>
+                                                                                            class: "btn btn-warning" %>
                       <% elsif challenge_user.status == "remand"%>
                         <%= link_to "修正中", team_assign_task_challenge_start_answer_path(user_id: challenge_user.user_id,
                                                                                             team_id: challenge_user.assign.team_id, 
@@ -98,8 +98,10 @@
                                                                                             challenge_start_id: challenge_user.id,
                                                                                             id: @answer.id),
                                                                                             class: "btn btn-success" %>
-                        <% else %>
-                        <p class="btn btn-success">課題完了</p>
+                      <% elsif challenge_user.status == "complete" %>
+                        <p class="btn btn-muted">課題完了</p>
+                      <% else %>
+                        <p class="btn btn-info">着手中</p>
                       <% end %>
                     <% end %>
                   </div>
