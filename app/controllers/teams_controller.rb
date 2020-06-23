@@ -41,6 +41,12 @@ class TeamsController < ApplicationController
     redirect_to teams_path, notice: "チームを削除しました。"
   end
 
+  def search
+    team_search = TeamSearch.new(params_team_search)
+    @teams = team_search.execute
+    render 'teams/index'
+  end
+
   private
   def set_params
     @team = Team.find(params[:id])
@@ -55,4 +61,9 @@ class TeamsController < ApplicationController
       redirect_to administrator_top_path(administrator_id: current_user.id)
     end
   end
+
+def params_team_search
+  params.permit(:search_name)
+end
+
 end

@@ -1,6 +1,10 @@
 <div class="main_index">
   <h2>チーム一覧</h2>
   <%= link_to "チーム作成", new_team_path, class: "btn btn-primary"%>
+  <%= form_with(url: teams_search_path, local: true, method: :get) do |f| %>
+    <%= f.text_field :search_name %>
+    <%= f.submit '検索'%>
+  <% end %>
   <div class="row">
     <% @teams.each do |team|%>
       <div class="col-md-4">

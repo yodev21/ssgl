@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+  get '/teams/search', to: 'teams#search'
   root to: "top#top"
   post '/guest_sign_in', to: 'guest_users#new_guest'
 
