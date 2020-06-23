@@ -9,4 +9,18 @@ class Task < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 50}
   validates :content, presence: true
+  validates :image, presence: true
+
+  private
+  scope :belong_to_team_all, -> (id: id, team_id: team_id, assign_id: assign_id) do
+    next if id.nil? && team_id.nil? && assign_id.nil?
+    Task.where(team_id: team_id,
+               assign_id: assign_id)
+  end
+
+  scope :with_title, -> (title) do
+    next if title.nil?
+    where("title LIKE ?", "%#{title}%")
+  end
+
 end

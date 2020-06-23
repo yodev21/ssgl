@@ -7,4 +7,16 @@ class BelongTeamsController < ApplicationController
   def show 
     @team = Team.find(params[:id])
   end
+
+  def search
+    team_search = BelongTeamSearch.new(params_team_search)
+    @teams = team_search.execute
+    render 'belong_teams/index'
+  end
+
+  private
+  def params_team_search
+    params.permit(:search_name)
+  end
+
 end

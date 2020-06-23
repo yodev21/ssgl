@@ -27,15 +27,18 @@
                                                                                 task_id: @answer.task_id, 
                                                                                 challenge_start_id: @answer.challenge_start_id, 
                                                                                 id: @answer.id), 
-                                                                                class: "btn btn-danger  profile-btn", method: :delete, data: { confirm: "課題を削除してもよろしいですか？"} %>
+                                                                                class: "btn btn-danger profile-btn", 
+                                                                                method: :delete, 
+                                                                                data: { confirm: "課題を削除してもよろしいですか？"} %>
           <% end %>
-          <% if @answer.challenge_start.status == "admin" || @answer.challenge_start.status == "memtor" %>
-            <%= link_to "完了", team_assign_task_challenge_start_answer_path(team_id: @answer.team_id, 
-                                                                            assign_id: @answer.assign_id, 
-                                                                            task_id: @answer.task_id, 
-                                                                            challenge_start_id: @answer.challenge_start_id, 
-                                                                            id: @answer.id), 
-                                                                            class: "btn btn-danger  profile-btn", method: :delete, data: { confirm: "課題を削除してもよろしいですか？"} %>
+          <% if @answer_user.status == "admin" || @answer_user.status == "memtor" %>
+            <%= link_to "完了", team_assign_task_challenge_start_path(team_id: @answer.team_id, 
+                                                                      assign_id: @answer.assign_id, 
+                                                                      task_id: @answer.task_id, 
+                                                                      id: @answer.challenge_start_id),
+                                                                      class: "btn btn-success profile-btn", 
+                                                                      method: :patch, 
+                                                                      data: { confirm: "課題を完了してもよろしいですか？"} %>
           <% end %>
           <%= render partial: 'comments/form', locals: { comment: @comment } %>
           <div id="comments_area">

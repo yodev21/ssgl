@@ -11,7 +11,7 @@
             <div class="card-body">
               <div>
                 <div class="form-group">
-                  <textarea class="form-control", rows="10"><%= comment.content %></textarea>
+                  <textarea  class="form-control comment_form" rows="10"><%= safe_join(comment.content.split("\n")) %></textarea>
                 </div>
                   <span><%= link_to "コメント削除", team_assign_task_challenge_start_answer_comments_path(team_id: comment.team_id, 
                                                                                                         assign_id: comment.assign_id, 

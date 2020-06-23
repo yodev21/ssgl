@@ -8,8 +8,7 @@
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
       <% if user_signed_in?%>
-      
-        <li class="list-group-item"><%= link_to(image_tag(avatar_url(current_user), class: "round-img"), user_path(current_user)) %></li>
+        <li class="list-group-item"><%= link_to(image_tag(avatar_url(current_user), class: "round-img"), user_path(id: current_user.id)) %></li>
         
         <%= link_to user_path(current_user), class: "list-group-item list-group-item-action" do %>
           <span><strong>プロフィール</strong></span>
@@ -40,7 +39,9 @@
         <%= link_to new_user_session_path, class: "list-group-item list-group-item-action" do %>
           <span><strong>サインイン</strong></span>
         <% end %>
-
+        <%= link_to guest_sign_in_path, method: :post, class: "list-group-item list-group-item-action" do %>
+          <span><strong>ゲストログイン</strong></span>
+        <% end %>
       <% end %>
 
     </ul>

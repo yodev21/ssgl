@@ -19,10 +19,14 @@ gem 'devise', '~> 4.6.1'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'unicorn'
+gem 'ransack'
+gem "kaminari"
+gem 'acts-as-taggable-on', '~> 6.0'
+
 gem 'mini_racer', platforms: :ruby 
 gem "ovirt-engine-sdk"
 # gem "fog-aws"
-# gem "ovirt-engine-sdk"
+gem "ovirt-engine-sdk"
 group :development, :test do
   gem 'capistrano', '3.6.0'
   gem 'capistrano-bundler'
@@ -32,6 +36,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'ed25519'
   gem 'bcrypt_pbkdf'
+  gem 'letter_opener_web'
   
   gem "rspec-rails", '~> 3.8.0'
   gem "factory_bot_rails", "~> 4.10.0"

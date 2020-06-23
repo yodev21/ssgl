@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  
   root to: "top#top"
+
+  # 検索処理
+  get '/teams/search', to: 'teams#search'
+  # ゲストログイン
   post '/guest_sign_in', to: 'guest_users#new_guest'
 
   resources :administrators do
@@ -21,7 +24,7 @@ Rails.application.routes.draw do
 
     resources :assigns, only: [:create, :destroy, :update] do
       resources :tasks do
-        resources :challenge_starts, only: [:create, :destroy] do
+        resources :challenge_starts, only: [:create, :update, :destroy] do
           resources :answers do
             resource :comments, only: [:create, :edit, :update, :destroy]
             resource :feed_backs, only: [:new, :create]
@@ -32,4 +35,5 @@ Rails.application.routes.draw do
     end
 
   end
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

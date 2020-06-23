@@ -5,7 +5,8 @@
 
         <div class="col-md-4">
           <div class="image-box">
-          <%= link_to (image_tag challenge_task.task.image.url(:medium), class: "image-size"), team_assign_task_path(assign_id: challenge_task.assign.id, 
+          <%= link_to (image_tag challenge_task.task.image.url(:medium), class: "image-size"), team_assign_task_path(user_id: challenge_task.user_id,
+                                                                                                                     assign_id: challenge_task.assign.id, 
                                                                                                                      team_id: challenge_task.assign.team_id, 
                                                                                                                      id: challenge_task.task.id)%>
           <div class="card-body">
@@ -23,10 +24,12 @@
                                                                                         challenge_start_id: challenge_task.id,
                                                                                         id: challenge_task.answers.first.id),
                                                                                         class: "team_info btn btn-success profile-btn" %>
+              <% else %>
+                <p class="btn btn-success">完了</p>
               <% end %>
             </div>
             <div>
-              <span><strong><%= challenge_task.user.name %></strong></span>
+              <span><strong><%= challenge_task.task.title %></strong></span>
               <%= link_to time_ago_in_words(challenge_task.updated_at).upcase + "前", team_assign_task_path(assign_id: challenge_task.assign.id, 
                                                                                                             team_id: challenge_task.assign.team_id, 
                                                                                                             id: challenge_task.task.id), 

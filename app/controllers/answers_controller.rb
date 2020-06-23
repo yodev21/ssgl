@@ -15,6 +15,8 @@ class AnswersController < ApplicationController
     @comments = Comment.where(team_id: @answer.team_id, 
                               task_id: @answer.task_id, 
                               answer_id: @answer.id)
+    @answer_user = Assign.find_by(user_id: current_user.id, team_id: @answer.team_id)
+    
   end
 
   def edit; end
@@ -52,7 +54,8 @@ class AnswersController < ApplicationController
     @answer.challenge_start_id = params[:challenge_start_id]
 
     if @answer.save
-      ChallengeStart.update(status: :awaiting_review)
+      challenge_start = ChallengeStart.find(params[:challenge_start_id])
+      challenge_start.update(status: :awaiting_review)
       redirect_to new_team_assign_task_challenge_start_answer_feed_backs_path(team_id: @answer.team_id,
                                                                               assign_id: @answer.assign_id,
                                                                               task_id: @answer.task_id,
