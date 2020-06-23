@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   layout :set_layout
-  rescue_from StandardError, with: :rescue500
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -19,9 +18,4 @@ class ApplicationController < ActionController::Base
       "application"
     end
   end
-
-  def rescue500(e)
-    render "errors/internal_server_error", status: 500
-  end
-
 end
