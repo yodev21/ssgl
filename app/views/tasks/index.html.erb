@@ -32,7 +32,7 @@
                                                       
             </div>
             <div>
-              <span><strong><%= task.user.name %></strong></span>
+              <span><strong><%= task.title %></strong></span>
               <%= link_to time_ago_in_words(task.updated_at).upcase + "前", team_assign_task_path(assign_id: task.assign.id, 
                                                                                                   team_id: task.assign.team_id, 
                                                                                                   id: task.id), 
