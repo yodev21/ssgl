@@ -24,8 +24,9 @@ class TasksController < ApplicationController
   
   def index
     @assign = Assign.find_by( id: params[:assign_id] )
-    @tasks = Task.where( team_id: params[:team_id],
-                         assign_id: params[:assign_id] )
+    @tasks = Task.belong_to_team_all(team_id: params[:team_id],
+                                     assign_id: params[:assign_id]).
+                  with_title(params[:title])
   end
 
   def show
@@ -46,8 +47,11 @@ class TasksController < ApplicationController
                                              team_id: params[:team_id],
                                              assign_id: params[:assign_id], 
                                              task_id: @task.id)
+
     @challenge_users = ChallengeStart.where(team_id: params[:team_id],
-                                           task_id: @task.id)
+                                           task_id: @task.id).
+                                      with_challenge_start_name(params[:name]).
+                                      with_challenge_start_status(params[:status])
 
     @answers = ChallengeStart.where(user_id: Answer.where(team_id: params[:team_id],
                                                           assign_id: params[:assign_id], 

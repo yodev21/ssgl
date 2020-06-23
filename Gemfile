@@ -19,6 +19,10 @@ gem 'devise', '~> 4.6.1'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'unicorn'
+gem 'ransack'
+gem "kaminari"
+gem 'acts-as-taggable-on', '~> 6.0'
+
 gem 'mini_racer', platforms: :ruby 
 gem "ovirt-engine-sdk"
 # gem "fog-aws"

@@ -1,12 +1,19 @@
 <div class="main_index">
   <h2>課題一覧</h2>
-  <% if current_user.id == @assign.team.user_id %>
-    <%= link_to "課題作成", new_team_assign_task_path(assign_id: @assign.id, 
-                                                    team_id: @assign.team.id), 
-                                                    class: "btn btn-primary"%>
-    <%= link_to "フィードバック一覧", team_feed_backs_path(team_id: @assign.team_id),
-                                                       class: "btn btn-success"%>
-  <% end %>
+  <div class="row">
+    <%= form_with(url: team_assign_tasks_path, local: true, method: :get, class: "form-inline",assign_id: 1) do |f| %>
+      <%= f.text_field :title, class: "form-control mr-sm-2", placeholder: "課題名" %>
+      <%= f.submit '検索', class: "btn btn-outline-success form-control" %>
+    <% end %>
+    <% if current_user.id == @assign.team.user_id %>
+      <%= link_to "課題作成", new_team_assign_task_path(assign_id: @assign.id, 
+                                                      team_id: @assign.team.id), 
+                                                      class: "btn btn-primary"%>
+      <%= link_to "フィードバック一覧", team_feed_backs_path(team_id: @assign.team_id),
+                                                        class: "btn btn-success"%>
+    <% end %>
+  </div>
+
   <div class="row">
     <% unless @tasks.nil? %>
       <% @tasks.each do |task|%>
@@ -25,7 +32,7 @@
                                                       
             </div>
             <div>
-              <span><strong><%= task.user.name %></strong></span>
+              <span><strong><%= task.title %></strong></span>
               <%= link_to time_ago_in_words(task.updated_at).upcase + "前", team_assign_task_path(assign_id: task.assign.id, 
                                                                                                   team_id: task.assign.team_id, 
                                                                                                   id: task.id), 

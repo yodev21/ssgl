@@ -1,0 +1,22 @@
+@import "layouts/colors";
+.title {
+  text-align: center;
+  position: relative;
+  top: -1rem;
+  font-size: 7rem;
+  padding-top: 10rem;
+  color: $light_blue;
+  text-shadow: -1px -2px 3px #808080;
+}
+
+.copy {
+  text-align: center;
+  background: $white;
+  color: $light_gray;
+  font-size: 1.5rem;
+  padding: 2rem 0;
+  margin-top: 4rem;
+  position: relative;
+  top: -1rem;
+  box-shadow: 0 2px 5px #ccc;
+}

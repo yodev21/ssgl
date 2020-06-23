@@ -15,7 +15,9 @@ class ChallengeStartsController < ApplicationController
   end
 
   def update
-    @challenge = ChallengeStart.complete_challenge_start
+    # challenge = ChallengeStart.find(params[:id])
+    challenge = ChallengeStart.find(params[:id])
+    challenge.update(status: :complete)
     redirect_to team_assign_task_path(user_id: current_user.id,
                                       team_id: params[:team_id],
                                       assign_id: params[:assign_id],

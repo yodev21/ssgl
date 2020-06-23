@@ -24,10 +24,6 @@ class ChallengeStart < ApplicationRecord
            task_id: task.id)
   end
 
-  scope :complete_challenge_start, ->  do
-    update(status: :complete)
-  end
-
   scope :find_challenge_start, -> (task: task) do
     next if task.nil?
     ChallengeStart.find_by(task_id: task)
@@ -35,5 +31,14 @@ class ChallengeStart < ApplicationRecord
 
   scope :get_ansers, -> (user: user) do
     where(user_id: user.id)
+  end
+
+  scope :with_challenge_start_name, -> (name) do
+    next if name.nil?
+    where(user_id: User.where("name LIKE ?", "%#{name}%").select("id"))
+  end
+  scope :with_challenge_start_status, -> (status) do
+    next if status.nil? || status.blank?
+    where(status: status)
   end
 end

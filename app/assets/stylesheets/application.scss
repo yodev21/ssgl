@@ -2,11 +2,16 @@
 
 @import "layouts/common";
 @import "layouts/colors";
+@import "layouts/top";
 
 @import "layouts/navbar";
 @import "layouts/flash";
 @import "layouts/common_index";
 
+@import "devise/errors";
+
 @import "users/form";
 @import "users/show";
 @import "users/edit";
+
+@import "comment/index";

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  
   root to: "top#top"
+
+  # 検索処理
+  get '/teams/search', to: 'teams#search'
+  # ゲストログイン
   post '/guest_sign_in', to: 'guest_users#new_guest'
 
   resources :administrators do
