@@ -7,10 +7,7 @@
       <%= link_to "チーム作成", new_team_path, class: "btn btn-outline-primary form-control"%>
     <% end %>
   </div>
-  <div class="mb-3">
-    <%= paginate @teams %>
-    <%= page_entries_info @teams%>
-  </div>
+
   <div class="row">
     <% @teams.each do |team|%>
       <div class="col-md-4">
@@ -25,5 +22,9 @@
         </div>
       </div>
     <% end %>
+  </div>
+  <div class="mb-3">
+    <%= paginate @teams %>
+    <%= page_entries_info @teams%>
   </div>
 </div>
