@@ -53,6 +53,17 @@
                                                                         data: { confirm: "本当に諦めますか？"}, 
                                                                         class: "btn btn-danger profile-btn" %>
       <% end %>
+      <%= form_with(url: team_assign_task_path, local: true, method: :get, class: "form-inline",assign_id: 1) do |f| %>
+        <%= f.text_field :name, class: "form-control mr-sm-2", placeholder: "名前" %>
+        <select class="form-control" id="number" name="status">
+          <option value="" selected="selected">課題状況</option>
+          <option value="complete">完了</option>
+          <option value="underway">着手中</option>
+          <option value="awaiting_review">レビュー待ち</option>
+          <option value="remand">修正中</option>
+        </select>
+        <%= f.submit '検索', class: "btn btn-outline-success form-control" %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -87,6 +98,8 @@
                                                                                             challenge_start_id: challenge_user.id,
                                                                                             id: @answer.id),
                                                                                             class: "btn btn-success" %>
+                        <% else %>
+                        <p class="btn btn-success">課題完了</p>
                       <% end %>
                     <% end %>
                   </div>

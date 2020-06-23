@@ -17,8 +17,9 @@ class Task < ApplicationRecord
                assign_id: assign_id)
   end
 
-  scope :with_name, -> (title: title) do
+  scope :with_title, -> (title) do
     next if title.nil?
     where("title LIKE ?", "%#{title}%")
   end
+
 end

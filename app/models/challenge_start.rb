@@ -36,4 +36,13 @@ class ChallengeStart < ApplicationRecord
   scope :get_ansers, -> (user: user) do
     where(user_id: user.id)
   end
+
+  scope :with_challenge_start_name, -> (name) do
+    next if name.nil?
+    where(user_id: User.where("name LIKE ?", "%#{name}%").select("id"))
+  end
+  scope :with_challenge_start_status, -> (status) do
+    next if status.nil? || status.blank?
+    where(status: status)
+  end
 end
