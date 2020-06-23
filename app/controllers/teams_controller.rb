@@ -18,7 +18,7 @@ class TeamsController < ApplicationController
   end
 
   def index
-    @teams = Team.all.order(created_at: :desc)
+    @teams = Team.all.order(created_at: :desc).page(params[:page])
   end
 
   def show
