@@ -8,6 +8,8 @@
 @import "layouts/flash";
 @import "layouts/common_index";
 
+@import "devise/errors";
+
 @import "users/form";
 @import "users/show";
 @import "users/edit";

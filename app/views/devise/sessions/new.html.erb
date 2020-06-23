@@ -4,6 +4,15 @@
       <div class="form-group text-center">
         <p>サインイン</p>
       </div>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
       <%= form_with scope: resource, as: resource_name, url: session_path(resource_name), local: true do |f| %>
         <%= devise_error_messages! %>
         <div class="form-group">
