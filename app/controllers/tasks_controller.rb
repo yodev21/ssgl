@@ -24,8 +24,9 @@ class TasksController < ApplicationController
   
   def index
     @assign = Assign.find_by( id: params[:assign_id] )
-    @tasks = Task.where( team_id: params[:team_id],
-                         assign_id: params[:assign_id] )
+    @tasks = Task.belong_to_team_all(team_id: params[:team_id],
+                                     assign_id: params[:assign_id]).
+                  with_name(title: params[:title])
   end
 
   def show

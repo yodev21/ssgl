@@ -62,8 +62,8 @@ class TeamsController < ApplicationController
     end
   end
 
-def params_team_search
-  params.permit(:search_name)
-end
+  def params_team_search
+    params.permit(:search_name)
+  end
 
 end

@@ -1,10 +1,12 @@
 <div class="main_index">
   <h2>チーム一覧</h2>
-  <%= link_to "チーム作成", new_team_path, class: "btn btn-primary"%>
-  <%= form_with(url: teams_search_path, local: true, method: :get) do |f| %>
-    <%= f.text_field :search_name %>
-    <%= f.submit '検索'%>
-  <% end %>
+  <div class="row">
+    <%= form_with(url: teams_search_path, local: true, method: :get, class: "form-inline") do |f| %>
+      <%= f.text_field :search_name, class: "form-control mr-sm-2", placeholder: "チーム名" %>
+      <%= f.submit '検索', class: "btn btn-outline-success form-control" %>
+      <%= link_to "チーム作成", new_team_path, class: "btn btn-outline-primary form-control"%>
+    <% end %>
+  </div>
   <div class="row">
     <% @teams.each do |team|%>
       <div class="col-md-4">
