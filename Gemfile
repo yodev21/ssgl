@@ -25,7 +25,7 @@ gem 'acts-as-taggable-on', '~> 6.0'
 
 gem 'mini_racer', platforms: :ruby 
 gem "ovirt-engine-sdk"
-# gem "fog-aws"
+gem "fog-aws"
 gem "ovirt-engine-sdk"
 group :development, :test do
   gem 'capistrano', '3.6.0'
