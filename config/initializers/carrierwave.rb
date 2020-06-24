@@ -18,7 +18,7 @@ CarrierWave.configure do |config|
       config.fog_directory = 'ssgl-puroduction'
       config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/ssgl-puroduction'
     when 'development'
-      config.fog_directory = 'task-app-development'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/task-app-development'
+      config.fog_directory = 'ssgl-development'
+      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/ssgl-development'
   end
 end
