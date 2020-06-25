@@ -7,8 +7,9 @@
         <%= f.submit '検索', class: "btn btn-outline-success form-control search_left" %>
         <% if current_user.id == @assign.team.user_id %>
           <%= link_to "タスク作成", new_team_assign_task_path(assign_id: @assign.id, 
-                                                          team_id: @assign.team.id), 
-                                                          class: "btn btn-outline-info form-control button_right"%>
+                                                            team_id: @assign.team.id), 
+                                                            class: "btn btn-outline-info form-control button_right",
+                                                            id: "task_create"%>
           <%= link_to "フィードバック", team_feed_backs_path(team_id: @assign.team_id),
                                                             class: "btn btn-outline-primary form-control button_right"%>
         <% end %>

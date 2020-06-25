@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
-  wait = Selenium::WebDriver::Wait.new(:timeout => 100) 
+  wait = Selenium::WebDriver::Wait.new(:timeout => 500) 
 
   describe "サインイン機能" do
     before do
@@ -66,7 +66,7 @@ RSpec.describe 'Users', type: :system do
       @user = FactoryBot.create(:user, email: "testUserInformation@example.com")
     end
 
-    example "情報の更新ができること" do
+    example "情報の更新ができること", :retry => 3 do
       visit new_user_session_path
       fill_in "user_email", with: "testUserInformation@example.com"
       fill_in "user_password", with: "testtest"
