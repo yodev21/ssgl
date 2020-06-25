@@ -10,10 +10,10 @@
           <div class="row parts">
             <%= link_to "タスク", team_assign_tasks_path(assign_id: team.assigns.first.id,  
                                                         team_id: team.assigns.first.team_id), 
-                                                        class: "btn btn-info team_info" %>
+                                                        class: "btn btn-outline-info" %>
             <%= link_to "メンバー", team_assign_belong_team_users_path(assign_id: team.assigns.first.id, 
                                                                       team_id: team.assigns.first.team_id), 
-                                                                      class: "btn btn-warning team_info btn_right" %>
+                                                                      class: "btn btn-outline-warning btn_right" %>
           </div>
 
           <div class="row parts">

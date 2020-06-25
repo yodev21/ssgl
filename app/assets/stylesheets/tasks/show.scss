@@ -93,9 +93,13 @@
     box-shadow: 0 2px 5px #ccc;
   }
 
+  .show_search_left {
+    position: relative;
+    left: -1rem;
+  }
   .show_button_right {
     margin-right: 1rem;
     position: relative;
-    left: 22rem;
+    left: 21rem;
   }
 }

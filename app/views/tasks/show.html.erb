@@ -21,21 +21,21 @@
 
         <% if @task.user_id == current_user.id %>
           <%= link_to "課題編集", edit_team_assign_task_path(@task),
-                                  class: "btn btn-outline-info form-control show_button_right" %>
+                                  class: "btn btn-outline-success form-control show_button_right" %>
           <%= link_to "課題削除", team_assign_task_path(@task),
                                   method: :delete,
                                   data: { confirm: "課題を削除してもよろしいですか？"},
                                   class: "btn btn-outline-danger form-control show_button_right" %>
         <% end %>
         <% if @challenge_task.nil? %>
-          <%= link_to "課題に取り組む！", team_assign_task_challenge_starts_path(user_id: current_user.id,
+          <%= link_to "取り組む", team_assign_task_challenge_starts_path(user_id: current_user.id,
                                                                               team_id: @task.team_id,
                                                                               assign_id: @task.assign_id,
                                                                               task_id: @task.id), 
                                                                               method: :post,
                                                                               class: "btn btn-outline-primary form-control show_button_right" %>
         <% elsif  @challenge_task.status == "awaiting_review" || @challenge_task.status == "remand" && @answer.present? %>
-          <%= link_to "回答を修正する", edit_team_assign_task_challenge_start_answer_path(team_id: @challenge_task.team_id,
+          <%= link_to "回答修正", edit_team_assign_task_challenge_start_answer_path(team_id: @challenge_task.team_id,
                                                                                         assign_id: @challenge_task.assign_id, 
                                                                                         task_id: @challenge_task.task_id, 
                                                                                         challenge_start_id: @challenge_task.id, 
@@ -49,17 +49,17 @@
                                                                               id: @answer.id), 
                                                                               class: "btn btn-outline-info form-control show_button_right" %>
         <% else %>
-          <%= link_to "回答する", new_team_assign_task_challenge_start_answer_path(team_id: @challenge_task.team_id,
+          <%= link_to "回答", new_team_assign_task_challenge_start_answer_path(team_id: @challenge_task.team_id,
                                                                                 assign_id: @challenge_task.assign_id,
                                                                                 task_id: @challenge_task.task_id,
                                                                                 challenge_start_id: @challenge_task.id), 
-                                                                                class: "btn btn-success profile-btn show_button_right" %>
-          <%= link_to "課題を諦める", team_assign_task_challenge_start_path(team_id: @task.team_id, 
+                                                                                class: "btn btn-outline-primary form-control show_button_right" %>
+          <%= link_to "諦める", team_assign_task_challenge_start_path(team_id: @task.team_id, 
                                                                           assign_id: @task.assign_id, 
                                                                           task_id: @task.id), 
                                                                           method: :delete, 
                                                                           data: { confirm: "本当に諦めますか？"}, 
-                                                                          class: "btn btn-danger profile-btn  show_button_right" %>
+                                                                          class: "btn btn-outline-danger form-control  show_button_right" %>
         <% end %>
       <% end %>
     </div>
@@ -94,9 +94,9 @@
                                                                                             id: @answer.id),
                                                                                             class: "btn btn-success" %>
                       <% elsif challenge_user.status == "complete" %>
-                        <p class="btn btn-muted">課題完了</p>
+                        <span class="badge badge-light">課題完了</span>
                       <% else %>
-                        <p class="btn btn-info">着手中</p>
+                        <span class="badge badge-info">着手中</span>
                       <% end %>
                     <% end %>
                   </div>
