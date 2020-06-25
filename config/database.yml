@@ -76,8 +76,15 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# production:
+#   <<: *default
+#   database: ssgl_production
+#   username: ssgl
+#   password: <%= ENV['SSGL_DATABASE_PASSWORD'] %>
+
 production:
   <<: *default
-  database: ssgl_production
-  username: ssgl
-  password: <%= ENV['SSGL_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOSTNAME'] %>

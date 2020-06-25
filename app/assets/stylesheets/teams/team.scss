@@ -1,0 +1,42 @@
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .search_left {
+    position: relative;
+    left: 6rem;
+  }
+  .button_right {
+    margin-top: 1rem;
+    margin-right: 1rem;
+    position: relative;
+    left: 6rem;
+  }
+}
+@media screen and (min-width: 767px) and (max-width: 992px) {
+  .search_left {
+    position: relative;
+    left: 4rem;
+  }
+  .button_right {
+    // margin-top: 1rem;
+    margin-right: 1rem;
+    position: relative;
+    left: 10rem;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .search_left {
+    position: relative;
+    left: 4rem;
+  }
+  .button_right {
+    margin-right: 1rem;
+    position: relative;
+    left: 26rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .button_right {
+    margin-right: 1rem;
+    position: relative;
+    left: 38rem;
+  }
+}

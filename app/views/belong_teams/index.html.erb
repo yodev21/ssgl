@@ -1,21 +1,24 @@
 <div class="main_index">
-  <h2>所属チーム一覧</h2>
+  <h2>マイチーム</h2>
   <div class="row">
     <% @teams.each do |team|%>
       <div class="col-md-4">
         <div class="image-box">
-        <%= link_to (image_tag team_icon_url(team),class: "image-size"), team_path(team.id)%>
+        <%= link_to (image_tag team_icon_url(team),class: "image-size"), team_assign_tasks_path(assign_id: team.assigns.first.id,  
+                                                                                                team_id: team.assigns.first.team_id)%>
         <div class="card-body">
           <div class="row parts">
-            <%= link_to "課題を始める！", team_assign_tasks_path(assign_id: team.assigns.first.id,  
-                                                               team_id: team.assigns.first.team_id), 
-                                                               class: "team_info" %>
+            <%= link_to "タスク", team_assign_tasks_path(assign_id: team.assigns.first.id,  
+                                                        team_id: team.assigns.first.team_id), 
+                                                        class: "btn btn-outline-info",
+                                                        id: "task_link" %>
+            <%= link_to "メンバー", team_assign_belong_team_users_path(assign_id: team.assigns.first.id, 
+                                                                      team_id: team.assigns.first.team_id), 
+                                                                      class: "btn btn-outline-warning btn_right" %>
           </div>
 
           <div class="row parts">
-            <%= link_to "所属ユーザー一覧", team_assign_belong_team_users_path(assign_id: team.assigns.first.id, 
-                                                                            team_id: team.assigns.first.team_id), 
-                                                                            class: "team_info" %>
+
           </div>
           <div>
             <span><strong><%= link_to team.name, team_path(team.id) %></strong></span>

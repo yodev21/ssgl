@@ -72,9 +72,9 @@ class CommentsController < ApplicationController
   def change_status(comment)
      challenge_start_id = ChallengeStart.find(comment.challenge_start_id)
     if current_user.id == comment.answer.user_id
-      challenge_start_id.update(status: "remand")
-    else
       challenge_start_id.update(status: "awaiting_review")
+    else
+      challenge_start_id.update(status: "remand")
     end
   end
 end

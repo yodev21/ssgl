@@ -9,6 +9,8 @@ class ChallengeStart < ApplicationRecord
 
   enum status: { complete: 0 , underway: 1 , awaiting_review: 2, remand: 3}
 
+  validates :status, presence: true
+
   private
   scope :create_challenge_start, -> (task: task, deadline: "", user: current_user) do
     next if task.nil?

@@ -1,16 +1,15 @@
 <div class="main_index">
-  <h2>チーム一覧</h2>
   <div class="row">
-    <%= form_with(url: teams_search_path, local: true, method: :get, class: "form-inline") do |f| %>
-      <%= f.text_field :search_name, class: "form-control mr-sm-2", placeholder: "チーム名" %>
-      <%= f.submit '検索', class: "btn btn-outline-success form-control" %>
-      <%= link_to "チーム作成", new_team_path, class: "btn btn-outline-primary form-control"%>
-    <% end %>
-  </div>
-
-  <div class="row">
+    <div class="col-sm-6 col-md-12">
+      <%= form_with(url: teams_search_path, local: true, method: :get, class: "form-inline") do |f| %>
+        <%= f.text_field :search_name, class: "form-control mr-sm-2 search_left", placeholder: "チーム名" %>
+        <%= f.submit '検索', class: "btn btn-outline-success form-control search_left" %>
+        <%= link_to "マイチーム", belong_teams_path, class: "btn btn-outline-info form-control button_right"%>
+        <%= link_to "チーム作成", new_team_path, class: "btn btn-outline-primary form-control button_right"%>
+      <% end %>
+    </div>
     <% @teams.each do |team|%>
-      <div class="col-md-4">
+      <div class="col-sm-12 col-lg-6 col-xl-4">
         <div class="image-box">
           <%= link_to  team_path(team)  do %>
             <%= image_tag team_icon_url(team),class: "image-size" %>
