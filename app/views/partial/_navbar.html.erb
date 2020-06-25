@@ -1,5 +1,5 @@
 <div class="header">
-  <input type="checkbox" id="openSidebarMenu" checked />
+  <input type="checkbox" id="openSidebarMenu"  />
   <label for="openSidebarMenu" class="sidebarIconToggle">
     <div class="spinner diagonal part-1"></div>
     <div class="spinner horizontal"></div>
@@ -19,11 +19,11 @@
         <% end %>
 
         <%= link_to belong_teams_path, class: "list-group-item list-group-item-action" do %>
-          <span><strong>所属チーム</strong></span>
+          <span><strong>マイチーム</strong></span>
         <% end %>
 
         <%= link_to challenge_starts_path, class:"list-group-item list-group-item-action" do %>
-          <span><strong>課題</strong></span>
+          <span><strong>タスク</strong></span>
         <% end %>
 
         <%= link_to destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" do %>
