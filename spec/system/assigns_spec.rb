@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Assigns', type: :system do
-  wait = Selenium::WebDriver::Wait.new(:timeout => 100) 
+  wait = Selenium::WebDriver::Wait.new(:timeout => 500) 
 
   describe "チームアサイン機能" do
     before do
