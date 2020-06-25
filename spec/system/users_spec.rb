@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
-  wait = Selenium::WebDriver::Wait.new(:timeout => 100) 
+  wait = Selenium::WebDriver::Wait.new(:timeout => 500) 
 
   describe "サインイン機能" do
     before do
@@ -25,7 +25,7 @@ RSpec.describe 'Users', type: :system do
       fill_in "user_email", with: "testUser@example.com"
       fill_in "user_password", with: "testtest"
       click_button "サインイン"
-      wait.until{ expect(page).to have_content "ログインしました。" }
+      wait.until{ expect(page).to have_content "今日も1日頑張りましょう！" }
     end
 
     example "不正な入力であればサインインできないこと" do
@@ -45,8 +45,9 @@ RSpec.describe 'Users', type: :system do
       fill_in "user_email", with: "testnew@example.com"
       fill_in "user_password", with: "testtest"
       fill_in "user_password_confirmation", with: "testtest"
+      attach_file 'user_image', "#{Rails.root}/app/assets/images/users/1.png"      
       click_button "サインアップ"
-      wait.until{ expect(page).to have_content "アカウント登録が完了しました。" }
+      wait.until{ expect(page).to have_content "今日も1日頑張りましょう！" }
     end
 
     example "不正な情報であればサインアップできること" do
@@ -65,12 +66,12 @@ RSpec.describe 'Users', type: :system do
       @user = FactoryBot.create(:user, email: "testUserInformation@example.com")
     end
 
-    example "情報の更新ができること" do
+    example "情報の更新ができること", :retry => 3 do
       visit new_user_session_path
       fill_in "user_email", with: "testUserInformation@example.com"
       fill_in "user_password", with: "testtest"
       click_button "サインイン"
-      click_link "プロフィール"
+      visit user_path(@user.id)
       click_link "プロフィール編集"
       fill_in "user_name", with: "テストユーザー アップデート"
       click_button "更新"

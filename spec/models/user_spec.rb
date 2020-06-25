@@ -6,6 +6,7 @@ RSpec.describe User, type: :model do
       user = User.new(
         name: "test User",
         email: "testUser1@example.com",
+        image: open("#{Rails.root}/app/assets/images/users/1.png"),
         password: "testtest"
       )
       expect(user).to be_valid

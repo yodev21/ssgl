@@ -13,8 +13,31 @@ RSpec.describe Assign, type: :model do
     end
 
     example "ステータスがなければ無効な状態であること" do
-      assign = Assign.new(status: nil, user_id: @user.id, team_id: @team.id)
+      assign = Assign.new(
+        status: nil, 
+        user_id: @user.id, 
+        team_id: @team.id
+        )
+      expect(assign).not_to be_valid
+    end
+
+    example "ユーザーIDが無効な値であれば無効な状態であること" do
+      assign = Assign.new(
+        status: 0, 
+        user_id: 1, 
+        team_id: @team.id
+        )
+      expect(assign).not_to be_valid
+    end
+
+    example "チームIDが無効な値であれば無効な状態であること" do
+      assign = Assign.new(
+        status: 0, 
+        user_id: @user.id, 
+        team_id: 1
+        )
       expect(assign).not_to be_valid
     end
   end
+  
 end
