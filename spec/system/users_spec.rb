@@ -25,7 +25,7 @@ RSpec.describe 'Users', type: :system do
       fill_in "user_email", with: "testUser@example.com"
       fill_in "user_password", with: "testtest"
       click_button "サインイン"
-      wait.until{ expect(page).to have_content "ログインしました。" }
+      wait.until{ expect(page).to have_content "サインインしました。" }
     end
 
     example "不正な入力であればサインインできないこと" do
@@ -45,8 +45,9 @@ RSpec.describe 'Users', type: :system do
       fill_in "user_email", with: "testnew@example.com"
       fill_in "user_password", with: "testtest"
       fill_in "user_password_confirmation", with: "testtest"
+      attach_file 'user_image', "#{Rails.root}/app/assets/images/users/1.png"      
       click_button "サインアップ"
-      wait.until{ expect(page).to have_content "アカウント登録が完了しました。" }
+      wait.until{ expect(page).to have_content "サインアップしました。" }
     end
 
     example "不正な情報であればサインアップできること" do
