@@ -6,12 +6,12 @@
           
           <div class="form-group">
             <%= f.label :name, "チーム名" %>
-            <%= f.text_field :name, autofocus: true, class: "form-control" %>
+            <%= f.text_field :name, autofocus: true, class: "form-control", required: true %>
           </div>
 
           <div class="form-group">
-            <%= f.label :image, "チームアイコン" %>
-            <%= f.file_field :image, class: "form-control" %>
+            <%= f.label :image, "camera_alt", class: "material-icons" %>
+            <%= f.file_field :image, required: true %>
           </div>
 
           <div class="form-group">

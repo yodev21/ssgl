@@ -84,7 +84,7 @@ p "Guest Task Success"
   # チームアサイン
   p "Create test Assign#{n}"
   @assign = Assign.create!(
-    status: :admin,
+    status: :member,
     user_id: @user.id,
     team_id: @guest_team.id
   )

@@ -16,15 +16,15 @@
       <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), local: true do |f| %>
 
         <div class="form-group">
-          <%= f.text_field :name, autofocus: true, placeholder: "フルネーム", class: "form-control" %>
+          <%= f.text_field :name, autofocus: true, placeholder: "フルネーム", class: "form-control", required: true %>
         </div>
 
         <div class="form-group">
-          <%= f.email_field :email, placeholder: "メールアドレス", class: "form-control" %>
+          <%= f.email_field :email, placeholder: "メールアドレス", class: "form-control", required: true %>
         </div>
 
         <div class="form-group">
-          <%= f.file_field :image, placeholder:"アイコン", class: "fom-control" %>
+          <%= f.file_field :image, placeholder:"アイコン", class: "fom-control", required: true %>
         </div>
 
         <div class="form-group">
@@ -32,11 +32,11 @@
         </div>
 
         <div class="form-group">
-          <%= f.password_field :password, placeholder: "パスワード", class: "form-control" %>
+          <%= f.password_field :password, placeholder: "パスワード", class: "form-control", required: true %>
         </div>
 
         <div class="form-group">
-          <%= f.password_field :password_confirmation, placeholder: "パスワード確認", class: "form-control" %>
+          <%= f.password_field :password_confirmation, placeholder: "パスワード確認", class: "form-control", required: true %>
         </div>
 
         <div class="actions">

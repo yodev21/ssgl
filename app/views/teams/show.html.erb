@@ -7,8 +7,8 @@
       <div class="row">
         <h1><%= @team.name %></h1>
         <% if @team.user_id == current_user.id %>
-          <%= link_to "チーム情報編集", edit_team_path(@team), class: "btn btn-outline-dark  profile-btn" %>
-          <%= link_to "チーム削除", team_path(@team), class: "btn btn-danger  profile-btn", method: :delete, 
+          <%= link_to "チーム情報編集", edit_team_path(@team), class: "btn btn-outline-success  profile-btn" %>
+          <%= link_to "チーム削除", team_path(@team), class: "btn btn-outline-danger  profile-btn", method: :delete, 
                                                                                                data: { confirm: "チームを削除してもよろしいですか？"} %>
         <% elsif @assign.nil? %>
           <%= link_to "このチームに参加する！", team_assigns_path(@team), method: :post, 
