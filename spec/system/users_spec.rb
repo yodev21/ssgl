@@ -33,7 +33,7 @@ RSpec.describe 'Users', type: :system do
       fill_in "user_email", with: ""
       fill_in "user_password", with: ""
       click_button "サインイン"
-      wait.until{ expect(page).to have_content "メールアドレス もしくはパスワードが不正です。" }
+      wait.until{ expect(page).to have_content "ゲストアカウントでログイン" }
     end
 
   end
@@ -74,6 +74,7 @@ RSpec.describe 'Users', type: :system do
       visit user_path(@user.id)
       click_link "プロフィール編集"
       fill_in "user_name", with: "テストユーザー アップデート"
+      attach_file 'user_image', "#{Rails.root}/app/assets/images/users/1.png" 
       click_button "更新"
       wait.until{ expect(page).to have_content "テストユーザー アップデート" }
     end

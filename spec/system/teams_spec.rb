@@ -15,6 +15,7 @@ RSpec.describe 'Teams', type: :system do
     example "正常な入力であればチームが作成できること" do
       visit new_team_path
       fill_in "team_name", with: "テスト チーム"
+      attach_file 'team_image', "#{Rails.root}/app/assets/images/teams/1.png"  
       click_button "登録"
       wait.until{ expect(page).to have_content "テスト チーム" }
     end
@@ -37,6 +38,7 @@ RSpec.describe 'Teams', type: :system do
       click_button "サインイン"
       visit new_team_path
       fill_in "team_name", with: "テスト チーム"
+      attach_file 'team_image', "#{Rails.root}/app/assets/images/teams/1.png" 
       click_button "登録" 
     end
 
@@ -44,6 +46,7 @@ RSpec.describe 'Teams', type: :system do
       visit team_path(id: @user.teams.first)
       click_on "チーム情報編集"
       fill_in "team_name", with: "テスト チーム アップデート"
+      attach_file 'team_image', "#{Rails.root}/app/assets/images/teams/1.png" 
       click_button "更新"
       wait.until{ expect(page).to have_content "テスト チーム アップデート" }
     end
@@ -57,6 +60,7 @@ RSpec.describe 'Teams', type: :system do
       click_button "サインイン"
       visit new_team_path
       fill_in "team_name", with: "テスト チーム"
+      attach_file 'team_image', "#{Rails.root}/app/assets/images/teams/1.png" 
       click_button "登録" 
     end
     example "チーム削除を行った場合削除されること" do
