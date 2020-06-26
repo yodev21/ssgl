@@ -32,11 +32,11 @@
         <% end %>
 
         <% if @admin_user.status != "admin"%>
-          <%= link_to "チーム退会", team_assign_path(id: @assigin_user.user_id,
-                                                   team_id: @assign_user.team_id, 
+          <%= link_to "チーム退会", team_assign_path(id: @assign_user.first.user_id,
+                                                   team_id: @assign_user.first.team_id, 
                                                    method: :delete, 
                                                    data: {confirm: "ユーザーを削除してもよろしいですか？"}, 
-                                                   class: "btn btn-danger") %>
+                                                   class: "btn btn-outline-danger waves-effect") %>
         <% end %>
     </div>
   </div>
