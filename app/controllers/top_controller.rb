@@ -2,7 +2,6 @@ class TopController < ApplicationController
   before_action :login_check
 
   def top
-    binding.pry
   end
 
   private
