@@ -6,16 +6,16 @@
           
           <div class="form-group">
             <%= f.label :name, "名前" %>
-            <%= f.text_field :name, autofocus: true, class: "form-control" %>
+            <%= f.text_field :name, autofocus: true, class: "form-control", required: true %>
           </div>
 
           <div class="form-group">
             <%= f.label :email, "メールアドレス" %>
-            <%= f.email_field :email, class: "form-control" %>
+            <%= f.email_field :email, class: "form-control", required: true %>
           </div>
 
           <div class="form-group">
-            <%= f.file_field :image, placeholder:"アイコン", class: "fom-control" %>
+            <%= f.file_field :image, placeholder:"アイコン", class: "fom-control", required: true %>
           </div>
 
           <div class="form-group">
