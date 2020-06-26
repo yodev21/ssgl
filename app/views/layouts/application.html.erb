@@ -33,56 +33,56 @@
           <% if user_signed_in?%>
             <li class="nav-item">
               <%= link_to user_path(current_user), class: "nav-link" do %>
-                <i class="material-icons">dashboard</i>
+                <i class="material-icons">account_box</i>
                 <p>プロフィール</p>
               <% end %>
             </li>
 
             <li class="nav-item">
               <%= link_to teams_path, class: "nav-link" do %>
-                <i class="material-icons">dashboard</i>
+                <i class="material-icons">supervised_user_circle</i>
                 <p>チーム</p>
               <% end %>
             </li>
 
             <li class="nav-item">
               <%= link_to belong_teams_path, class: "nav-link" do %>
-                <i class="material-icons">dashboard</i>
+                <i class="material-icons">group</i>
                 <p>マイチーム</p>
               <% end %>
             </li>
 
             <li class="nav-item">
               <%= link_to challenge_starts_path, class: "nav-link" do %>
-                <i class="material-icons">dashboard</i>
+                <i class="material-icons">school</i>
                 <p>タスク</p>
               <% end %>
             </li>
 
             <li class="nav-item">
               <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
-                <i class="material-icons">dashboard</i>
+                <i class="material-icons">arrow_back</i>
                 <p>サインアウト</p>
               <% end %>
             </li>
           <% else %>
             <li class="nav-item">
               <%= link_to new_user_registration_path, class: "nav-link" do %>
-                <i class="material-icons">dashboard</i>
+                <i class="material-icons">emoji_people</i>
                 <p>サインアップ</p>
               <% end %>
             </li>
 
             <li class="nav-item">
               <%= link_to new_user_session_path, class: "nav-link" do %>
-                <i class="material-icons">dashboard</i>
+                <i class="material-icons">login</i>
                 <p>サインイン</p>
               <% end %>
             </li>
 
            <li class="nav-item">
               <%= link_to guest_sign_in_path, method: :post, class: "nav-link" do %>
-                <i class="material-icons">dashboard</i>
+                <i class="material-icons">directions_run</i>
                 <p>ゲストログイン</p>
               <% end %>
             </li>
@@ -109,12 +109,10 @@
           </div>
         </div>
       </nav>
-      <div class="">
-        <div class="container-fluid">
-          <div class="container contents">
-            <%= render 'partial/flash'%>
-            <%= yield %>
-          </div>
+      <div class="container-fluid">
+        <div class="container">
+          <%= render 'partial/flash'%>
+          <%= yield %>
         </div>
       </div>
     </div>
