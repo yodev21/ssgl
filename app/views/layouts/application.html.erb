@@ -8,17 +8,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   </head>
 
   <body>
 
-      <%= render 'partial/navbar' %>
+      <!-- <%= render 'partial/navbar' %> -->
 
-
-      <div class="container contents">
-        <%= render 'partial/flash'%>
-        <%= yield %>
-        <%= render 'partial/footer' %>
+  <div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="white">
+      <div class="logo">
+        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+          
+        </a>
+        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+          Dashboard
+        </a>
       </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+
+
+          <% if user_signed_in?%>
+            <li class="nav-item">
+              <%= link_to user_path(current_user), class: "nav-link" do %>
+                <i class="material-icons">account_box</i>
+                <p>プロフィール</p>
+              <% end %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to teams_path, class: "nav-link" do %>
+                <i class="material-icons">supervised_user_circle</i>
+                <p>チーム</p>
+              <% end %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to belong_teams_path, class: "nav-link" do %>
+                <i class="material-icons">group</i>
+                <p>マイチーム</p>
+              <% end %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to challenge_starts_path, class: "nav-link" do %>
+                <i class="material-icons">school</i>
+                <p>タスク</p>
+              <% end %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+                <i class="material-icons">arrow_back</i>
+                <p>サインアウト</p>
+              <% end %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to new_user_registration_path, class: "nav-link" do %>
+                <i class="material-icons">emoji_people</i>
+                <p>サインアップ</p>
+              <% end %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to new_user_session_path, class: "nav-link" do %>
+                <i class="material-icons">login</i>
+                <p>サインイン</p>
+              <% end %>
+            </li>
+
+           <li class="nav-item">
+              <%= link_to guest_sign_in_path, method: :post, class: "nav-link" do %>
+                <i class="material-icons">directions_run</i>
+                <p>ゲストログイン</p>
+              <% end %>
+            </li>
+
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <a class="navbar-brand" href="javascript:;">SSGL</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end">
+
+          </div>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <div class="container">
+          <%= render 'partial/flash'%>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+            <%= render 'partial/footer' %>
   </body>
 </html>
