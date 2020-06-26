@@ -1,49 +1,94 @@
-<div class="header">
-  <input type="checkbox" id="openSidebarMenu"  />
-  <label for="openSidebarMenu" class="sidebarIconToggle">
-    <div class="spinner diagonal part-1"></div>
-    <div class="spinner horizontal"></div>
-    <div class="spinner diagonal part-2"></div>
-  </label>
-  <div id="sidebarMenu">
-    <ul class="sidebarMenuInner">
-      <% if user_signed_in?%>
-        <li class="list-group-item"><%= link_to(image_tag(avatar_url(current_user), class: "round-img"), user_path(id: current_user.id)) %></li>
-        
-        <%= link_to user_path(current_user), class: "list-group-item list-group-item-action" do %>
-          <span><strong>プロフィール</strong></span>
-        <% end %>
+<div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="white">
+      <div class="logo">
+        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+          
+        </a>
+        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+          Dashboard
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
 
-        <%= link_to  teams_path, class: "list-group-item list-group-item-action" do %>
-          <span><strong>チーム</strong></span>
-        <% end %>
 
-        <%= link_to belong_teams_path, class: "list-group-item list-group-item-action" do %>
-          <span><strong>マイチーム</strong></span>
-        <% end %>
+          <% if user_signed_in?%>
+            <li class="nav-item">
+              <%= link_to user_path(current_user), class: "nav-link" do %>
+                <i class="material-icons">account_box</i>
+                <p>プロフィール</p>
+              <% end %>
+            </li>
 
-        <%= link_to challenge_starts_path, class:"list-group-item list-group-item-action" do %>
-          <span><strong>タスク</strong></span>
-        <% end %>
+            <li class="nav-item">
+              <%= link_to teams_path, class: "nav-link" do %>
+                <i class="material-icons">supervised_user_circle</i>
+                <p>チーム</p>
+              <% end %>
+            </li>
 
-        <%= link_to destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" do %>
-          <span><strong>サインアウト</strong></span>
-        <% end %>
+            <li class="nav-item">
+              <%= link_to belong_teams_path, class: "nav-link" do %>
+                <i class="material-icons">group</i>
+                <p>マイチーム</p>
+              <% end %>
+            </li>
 
-      <% else %>
+            <li class="nav-item">
+              <%= link_to challenge_starts_path, class: "nav-link" do %>
+                <i class="material-icons">school</i>
+                <p>タスク</p>
+              <% end %>
+            </li>
 
-        <%= link_to new_user_registration_path, class: "list-group-item list-group-item-action" do %>
-          <span><strong>サインアップ</strong></span>
-        <% end %>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+                <i class="material-icons">arrow_back</i>
+                <p>サインアウト</p>
+              <% end %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to new_user_registration_path, class: "nav-link" do %>
+                <i class="material-icons">emoji_people</i>
+                <p>サインアップ</p>
+              <% end %>
+            </li>
 
-        <%= link_to new_user_session_path, class: "list-group-item list-group-item-action" do %>
-          <span><strong>サインイン</strong></span>
-        <% end %>
-        <%= link_to guest_sign_in_path, method: :post, class: "list-group-item list-group-item-action" do %>
-          <span><strong>ゲストログイン</strong></span>
-        <% end %>
-      <% end %>
+            <li class="nav-item">
+              <%= link_to new_user_session_path, class: "nav-link" do %>
+                <i class="material-icons">login</i>
+                <p>サインイン</p>
+              <% end %>
+            </li>
 
-    </ul>
-  </div>
-</div>
+           <li class="nav-item">
+              <%= link_to guest_sign_in_path, method: :post, class: "nav-link" do %>
+                <i class="material-icons">directions_run</i>
+                <p>ゲストログイン</p>
+              <% end %>
+            </li>
+
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <a class="navbar-brand" href="javascript:;">SSGL</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end">
+
+          </div>
+        </div>
+      </nav>
+   
