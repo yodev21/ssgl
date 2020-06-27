@@ -5,15 +5,15 @@
       <% unless @tasks.blank? %>
         <%= form_with(url: team_assign_tasks_path, local: true, method: :get, class: "form-inline",assign_id: 1) do |f| %>
           <%= f.text_field :title, class: "form-control mr-sm-2 search_left", placeholder: "タスク名" %>
-          <%= f.submit '検索', class: "btn btn-outline-success form-control search_left" %>
+          <%= f.submit '検索', class: "btn btn-outline-success  search_left" %>
 
           <% if @assign.status == "admin" || @assign.status == "memtor" %>
             <%= link_to "タスク作成", new_team_assign_task_path(assign_id: @assign.id, 
                                                               team_id: @assign.team.id), 
-                                                              class: "btn btn-outline-info form-control button_right",
+                                                              class: "btn btn-outline-info button_right",
                                                               id: "task_create"%>
             <%= link_to "フィードバック", team_feed_backs_path(team_id: @assign.team_id),
-                                                              class: "btn btn-outline-primary form-control button_right"%>
+                                                              class: "btn btn-outline-primary button_right"%>
           <% end %>
         <% end %>
       <% end %>

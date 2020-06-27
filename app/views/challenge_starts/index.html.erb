@@ -3,7 +3,7 @@
     <% unless @challenge_tasks.nil? %>
       <% @challenge_tasks.each do |challenge_task|%>
 
-        <div class="col-md-4">
+        <div class="col-sm-12 col-lg-6 col-xl-4">
           <div class="image-box">
           <%= link_to (image_tag challenge_task.task.image.url(:medium), class: "image-size"), team_assign_task_path(user_id: challenge_task.user_id,
                                                                                                                      assign_id: challenge_task.assign.id, 
@@ -16,16 +16,16 @@
                                                                                         team_id: challenge_task.assign.team_id, 
                                                                                         task_id: challenge_task.task.id, 
                                                                                         challenge_start_id: challenge_task.id), 
-                                                                                        class: "team_info btn btn-primary profile-btn" %>
+                                                                                        class: "team_info btn btn-outline-primary profile-btn" %>
               <% elsif challenge_task.status == "awaiting_review" %>
                 <%= link_to "修正する", edit_team_assign_task_challenge_start_answer_path(assign_id: challenge_task.assign.id, 
                                                                                         team_id: challenge_task.assign.team_id, 
                                                                                         task_id: challenge_task.task.id, 
                                                                                         challenge_start_id: challenge_task.id,
                                                                                         id: challenge_task.answers.first.id),
-                                                                                        class: "team_info btn btn-success profile-btn" %>
+                                                                                        class: "team_info btn btn-outline-success profile-btn" %>
               <% else %>
-                <p class="btn btn-success">完了</p>
+                <p class="btn btn-outline-dark">完了</p>
               <% end %>
             </div>
             <div>
