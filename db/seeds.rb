@@ -56,6 +56,17 @@ p "Create Guest Task"
 )
 p "Guest Task Success"
 
+# ゲストチャレンジタスク作成
+p "Create test ChallengeStart"
+@guest_challengeStart = ChallengeStart.create!(
+  status: :underway,
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  task_id: @guest_task.id
+)
+p "Guest Challenge Success"
+
 10.times do |n|
   # ユーザー作成
   p "Create test User#{n}"
@@ -81,12 +92,21 @@ p "Guest Task Success"
   )
   p "test Team#{n} Success"
 
+  # ゲストチームアサイン
+  p "Create test Assign#{n}"
+  @assign = Assign.create!(
+    status: :member,
+    user_id: @user.id,
+    team_id: @guest_team.id
+  )
+  p "test Assign#{n} Success"
+
   # チームアサイン
   p "Create test Assign#{n}"
   @assign = Assign.create!(
     status: :admin,
     user_id: @user.id,
-    team_id: @guest_team.id
+    team_id: @team.id
   )
   p "test Assign#{n} Success"
 

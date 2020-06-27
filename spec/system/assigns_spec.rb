@@ -18,6 +18,7 @@ RSpec.describe 'Assigns', type: :system do
     example "メンバーが他のチームに参加できること" do
       visit teams_path
       click_link "Other Team"
+      sleep(3)
       click_link "このチームに参加する！"
       wait.until{ expect(page).to have_content "チームに加入しました。" }
     end
@@ -25,6 +26,7 @@ RSpec.describe 'Assigns', type: :system do
     example "チームから退会することができること" do
       visit teams_path
       click_link "Other Team"
+      sleep(3)
       click_link "このチームに参加する！"
       visit teams_path
       click_link "Other Team"

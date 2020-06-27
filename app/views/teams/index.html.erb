@@ -3,9 +3,9 @@
     <div class="col-sm-6 col-md-12">
       <%= form_with(url: teams_search_path, local: true, method: :get, class: "form-inline") do |f| %>
         <%= f.text_field :search_name, class: "form-control mr-sm-2 search_left", placeholder: "チーム名" %>
-        <%= f.submit '検索', class: "btn btn-outline-success form-control search_left" %>
-        <%= link_to "マイチーム", belong_teams_path, class: "btn btn-outline-info form-control button_right"%>
-        <%= link_to "チーム作成", new_team_path, class: "btn btn-outline-primary form-control button_right"%>
+        <%= f.submit '検索', class: "btn btn-outline-success  search_left" %>
+        <%= link_to "マイチーム", belong_teams_path, class: "btn btn-outline-info waves-effect  button_right"%>
+        <%= link_to "チーム作成", new_team_path, class: "btn btn-outline-primary  button_right"%>
       <% end %>
     </div>
     <% @teams.each do |team|%>
@@ -21,9 +21,5 @@
         </div>
       </div>
     <% end %>
-  </div>
-  <div class="mb-3">
-    <%= paginate @teams %>
-    <%= page_entries_info @teams%>
   </div>
 </div>

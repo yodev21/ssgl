@@ -9,8 +9,10 @@ class TeamsController < ApplicationController
   def create
     @team = current_user.teams.build(team_params)
     if @team.save
-      @team.join_team(status: :admin, user: @team.user_id )
-      redirect_to teams_path, notice: "チームを作成しました。"
+      @assign = @team.join_team(status: :admin, user: @team.user_id )
+      redirect_to new_team_assign_task_path(assign_id: @assign.id,
+                                            team_id: @assign.team_id), 
+                                            notice: "チームを作成しました。 次に課題を作成してください。"
     else
       flash.now[:danger] = "チームの作成に失敗しました。"
       render :new
@@ -23,6 +25,7 @@ class TeamsController < ApplicationController
 
   def show
     @assign = Assign.find_by(user_id: current_user, team_id: @team.id)
+    @assigns = Assign.where(team_id: params[:id]).includes(:user)
   end
 
   def edit; end

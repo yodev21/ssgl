@@ -16,7 +16,7 @@ RSpec.describe 'Tasks', type: :system do
     example "タスクが登録できること" do
       visit new_team_assign_task_path(team_id: @team.id, assign_id: @assign.id)
       fill_in "task_title", with: "test Title"
-      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png"  
+      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png", make_visible: true 
       fill_in "task_content", with: "test Content"
       click_button "登録"
       wait.until{ expect(page).to have_content "test Title"}
@@ -25,22 +25,23 @@ RSpec.describe 'Tasks', type: :system do
     example "タスクが編集できること", :retry => 3 do
       visit new_team_assign_task_path(team_id: @team.id, assign_id: @assign.id)
       fill_in "task_title", with: "test Title"
-      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png"  
+      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png", make_visible: true 
       fill_in "task_content", with: "test Content"
       click_button "登録"
 
       visit edit_team_assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
       fill_in "task_title", with: "test Title Upate"
-      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png"  
+      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png", make_visible: true 
       fill_in "task_content", with: "test Content Update"
       click_button "登録"
+      sleep(5)
       wait.until{ expect(page).to have_content "test Title Upate"}
     end
 
     example "タスクが削除できること", :retry => 3 do
       visit new_team_assign_task_path(team_id: @team.id, assign_id: @assign.id)
       fill_in "task_title", with: "test Title"
-      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png"  
+      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png", make_visible: true 
       fill_in "task_content", with: "test Content"
       click_button "登録"
 
@@ -53,7 +54,7 @@ RSpec.describe 'Tasks', type: :system do
     example "タスクの検索ができること", :retry => 3 do
       visit new_team_assign_task_path(team_id: @team.id, assign_id: @assign.id)
       fill_in "task_title", with: "test Title"
-      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png"  
+      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png", make_visible: true 
       fill_in "task_content", with: "test Content"
       click_button "登録"
       visit team_assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
@@ -65,7 +66,7 @@ RSpec.describe 'Tasks', type: :system do
     example "名前でのタスクの絞り込み検索ができること(成功)", :retry => 3 do
       visit new_team_assign_task_path(team_id: @team.id, assign_id: @assign.id)
       fill_in "task_title", with: "test Title"
-      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png"  
+      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png", make_visible: true 
       fill_in "task_content", with: "test Content"
       click_button "登録"
       visit team_assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
@@ -78,7 +79,7 @@ RSpec.describe 'Tasks', type: :system do
     example "名前でのタスクの絞り込み検索ができること(失敗)", :retry => 3 do
       visit new_team_assign_task_path(team_id: @team.id, assign_id: @assign.id)
       fill_in "task_title", with: "test Title"
-      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png"  
+      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png", make_visible: true 
       fill_in "task_content", with: "test Content"
       click_button "登録"
       visit team_assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
@@ -91,7 +92,7 @@ RSpec.describe 'Tasks', type: :system do
     example "ステータスでのタスクの絞り込み検索ができること(成功)", :retry => 3 do
       visit new_team_assign_task_path(team_id: @team.id, assign_id: @assign.id)
       fill_in "task_title", with: "test Title"
-      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png"  
+      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png", make_visible: true 
       fill_in "task_content", with: "test Content"
       click_button "登録"
       visit team_assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
@@ -104,7 +105,7 @@ RSpec.describe 'Tasks', type: :system do
     example "ステータスでのタスクの絞り込み検索ができること(失敗)", :retry => 3 do
       visit new_team_assign_task_path(team_id: @team.id, assign_id: @assign.id)
       fill_in "task_title", with: "test Title"
-      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png"  
+      attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png", make_visible: true 
       fill_in "task_content", with: "test Content"
       click_button "登録"
       visit team_assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)

@@ -8,30 +8,41 @@
         <h1><%= @assign_user.first.user.name %></h1>
       </div>
       <div class="row">
-        <h1><%= @assign_user.first.status %></h1>
+        <% if @assign_user.first.status == "admin" %>
+          <h3>管理者</h3>
+        <% elsif @assign_user.first.status == "memtor" %>
+          <h3>メンター</h3>
+        <% elsif @assign_user.first.status == "member"%>
+          <h3>メンバー</h3>
+        <% end %>
       </div>
       <div class="row">
         <p class="profile"><%= @assign_user.first.user.profile %></p>
       </div>
-        <% if current_user.assigns.first.status == "admin" ||  current_user.assigns.first.status == "memtor"%>
+        <% if @admin_user && @admin_user.status == "admin" ||  @admin_user.status == "memtor"%>
           <% if @assign_user.first.status == "memtor" %>
-            <%= link_to "メンバーにする", team_assign_path(@assign_user.first.user, status: "member"), 
+            <%= link_to "メンバーにする", team_assign_path(@assign_user.first.user, 
+                                                        status: "member",
+                                                        team_id: @assign_user.first.team_id), 
                                                         method: :PATCH, 
                                                         data: {confirm: "メンバーにしてもよろしいですか？"}, 
                                                         class: "btn btn-success" %>
           <% elsif @assign_user.first.status == "member" %>
-            <%= link_to "メンターにする", team_assign_path(@assign_user.first.user, status: "memtor"), 
+            <%= link_to "メンターにする", team_assign_path(@assign_user.first.user, 
+                                                        status: "memtor",
+                                                        team_id: @assign_user.first.team_id), 
                                                         method: :PATCH, 
                                                         data: {confirm: "メンターにしてもよろしいですか？"}, 
                                                         class: "btn btn-primary" %>
           <% end %>
         <% end %>
 
-        <% if @assign_user.first.status != "admin"%>
-          <%= link_to "チーム退会", team_assign_path(@assign_user.first.user), 
+        <% if @admin_user.status == "admin" %>
+          <%= link_to "チーム退会", team_assign_path(id: @assign_user.first.user_id,
+                                                   team_id: @assign_user.first.team_id), 
                                                    method: :delete, 
                                                    data: {confirm: "ユーザーを削除してもよろしいですか？"}, 
-                                                   class: "btn btn-danger" %>
+                                                   class: "btn btn-danger waves-effect" %>
         <% end %>
     </div>
   </div>

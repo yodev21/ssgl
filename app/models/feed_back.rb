@@ -5,4 +5,7 @@ class FeedBack < ApplicationRecord
   belongs_to :task
   belongs_to :challenge_start
   belongs_to :answer
+
+  validates :feeling_number, presence: true
+  validates :reason, presence: true
 end

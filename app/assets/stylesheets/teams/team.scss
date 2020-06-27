@@ -34,9 +34,16 @@
   }
 }
 @media screen and (min-width: 1200px) {
+  .search_left {
+    height: 2.5rem;
+  }
+
   .button_right {
     margin-right: 1rem;
     position: relative;
-    left: 38rem;
+    left: 34rem;
+    padding: 5rem;
+    width: 8rem;
+    text-align: center;
   }
 }
