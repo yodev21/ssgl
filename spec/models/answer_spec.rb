@@ -1,19 +1,21 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Answer, type: :model do
-  describe "回答機能" do
+  describe '回答機能' do
     before do
-      @user = FactoryBot.create(:user, email: "testAnswer@example.com")
+      @user = FactoryBot.create(:user, email: 'testAnswer@example.com')
       @team = FactoryBot.create(
-        :team, 
-        name: "test Team",
+        :team,
+        name: 'test Team',
         image: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/images/yay.png')),
         user_id: @user.id
-        )
+      )
       @assign = FactoryBot.create(
         :assign,
         user_id: @user.id,
-        team_id: @team.id,
+        team_id: @team.id
       )
       @task = FactoryBot.create(
         :task,
@@ -30,10 +32,10 @@ RSpec.describe Answer, type: :model do
       )
     end
 
-    example "必要なデータがあれば有効な状態であること" do
+    example '必要なデータがあれば有効な状態であること' do
       answers = Answer.new(
-        url: "テスト ユーアールエル",
-        content: "テスト コメント",
+        url: 'テスト ユーアールエル',
+        content: 'テスト コメント',
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
@@ -43,10 +45,10 @@ RSpec.describe Answer, type: :model do
       expect(answers).to be_valid
     end
 
-    example "urlが空白でもコメントがあれば有効な状態であること" do
+    example 'urlが空白でもコメントがあれば有効な状態であること' do
       answers = Answer.new(
-        url: "",
-        content: "テスト コメント",
+        url: '',
+        content: 'テスト コメント',
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
@@ -56,10 +58,10 @@ RSpec.describe Answer, type: :model do
       expect(answers).to be_valid
     end
 
-    example "コメントが空白の場合無効な状態であること" do
+    example 'コメントが空白の場合無効な状態であること' do
       answers = Answer.new(
-        url: "テスト ユーアールエル",
-        content: "",
+        url: 'テスト ユーアールエル',
+        content: '',
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
@@ -69,10 +71,10 @@ RSpec.describe Answer, type: :model do
       expect(answers).not_to be_valid
     end
 
-    example "ユーザーIDが無効な値の場合無効な状態であること" do
+    example 'ユーザーIDが無効な値の場合無効な状態であること' do
       answers = Answer.new(
-        url: "テスト ユーアールエル",
-        content: "テスト コメント",
+        url: 'テスト ユーアールエル',
+        content: 'テスト コメント',
         user_id: nil,
         team_id: @team.id,
         assign_id: @assign.id,
@@ -82,10 +84,10 @@ RSpec.describe Answer, type: :model do
       expect(answers).not_to be_valid
     end
 
-    example "チームIDが無効な値の場合無効な状態であること" do
+    example 'チームIDが無効な値の場合無効な状態であること' do
       answers = Answer.new(
-        url: "テスト ユーアールエル",
-        content: "テスト コメント",
+        url: 'テスト ユーアールエル',
+        content: 'テスト コメント',
         user_id: @user.id,
         team_id: nil,
         assign_id: @assign.id,
@@ -94,11 +96,11 @@ RSpec.describe Answer, type: :model do
       )
       expect(answers).not_to be_valid
     end
-    
-    example "アサインIDが無効な値の場合無効な状態であること" do
+
+    example 'アサインIDが無効な値の場合無効な状態であること' do
       answers = Answer.new(
-        url: "テスト ユーアールエル",
-        content: "テスト コメント",
+        url: 'テスト ユーアールエル',
+        content: 'テスト コメント',
         user_id: @user.id,
         team_id: @team.id,
         assign_id: nil,
@@ -108,10 +110,10 @@ RSpec.describe Answer, type: :model do
       expect(answers).not_to be_valid
     end
 
-    example "タスクIDが無効な値の場合無効な状態であること" do
+    example 'タスクIDが無効な値の場合無効な状態であること' do
       answers = Answer.new(
-        url: "テスト ユーアールエル",
-        content: "テスト コメント",
+        url: 'テスト ユーアールエル',
+        content: 'テスト コメント',
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
@@ -121,10 +123,10 @@ RSpec.describe Answer, type: :model do
       expect(answers).not_to be_valid
     end
 
-    example "チャレンジスタートIDが無効な値の場合無効な状態であること" do
+    example 'チャレンジスタートIDが無効な値の場合無効な状態であること' do
       answers = Answer.new(
-        url: "テスト ユーアールエル",
-        content: "テスト コメント",
+        url: 'テスト ユーアールエル',
+        content: 'テスト コメント',
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,

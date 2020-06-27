@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :feed_back do
     feeling_number { 1 }
-    reason { "テスト リーズン" }
+    reason { 'テスト リーズン' }
     team_id { 1 }
     assign_id { 1 }
     task_id { 1 }

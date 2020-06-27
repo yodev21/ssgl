@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateChallengeStarts < ActiveRecord::Migration[5.2]
   def change
     create_table :challenge_starts do |t|
