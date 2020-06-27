@@ -2,7 +2,7 @@
   <h2>マイチーム</h2>
   <div class="row">
     <% @teams.each do |team|%>
-      <div class="col-md-4">
+      <div class="col-sm-12 col-lg-6 col-xl-4">
         <div class="image-box">
         <%= link_to (image_tag team_icon_url(team),class: "image-size"), team_assign_tasks_path(assign_id: team.assigns.first.id,  
                                                                                                 team_id: team.assigns.first.team_id)%>

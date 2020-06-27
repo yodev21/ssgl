@@ -3,7 +3,7 @@
     <% unless @challenge_tasks.nil? %>
       <% @challenge_tasks.each do |challenge_task|%>
 
-        <div class="col-md-4">
+        <div class="col-sm-12 col-lg-6 col-xl-4">
           <div class="image-box">
           <%= link_to (image_tag challenge_task.task.image.url(:medium), class: "image-size"), team_assign_task_path(user_id: challenge_task.user_id,
                                                                                                                      assign_id: challenge_task.assign.id, 
