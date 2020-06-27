@@ -92,12 +92,21 @@ p "Guest Challenge Success"
   )
   p "test Team#{n} Success"
 
-  # チームアサイン
+  # ゲストチームアサイン
   p "Create test Assign#{n}"
   @assign = Assign.create!(
     status: :member,
     user_id: @user.id,
     team_id: @guest_team.id
+  )
+  p "test Assign#{n} Success"
+
+  # チームアサイン
+  p "Create test Assign#{n}"
+  @assign = Assign.create!(
+    status: :admin,
+    user_id: @user.id,
+    team_id: @team.id
   )
   p "test Assign#{n} Success"
 

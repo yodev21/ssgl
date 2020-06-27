@@ -9,7 +9,7 @@
         <h1><%= @user.name %></h1>
         <% if @user == current_user %>
           <%= link_to "プロフィール編集", edit_user_registration_path, 
-                                       class: "btn btn-outline-dark common-btn profile-btn" %>
+                                       class: "btn btn-outline-success common-btn profile-btn" %>
           
         <% end %>
 
