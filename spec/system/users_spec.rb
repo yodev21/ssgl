@@ -45,7 +45,7 @@ RSpec.describe 'Users', type: :system do
       fill_in "user_email", with: "testnew@example.com"
       fill_in "user_password", with: "testtest"
       fill_in "user_password_confirmation", with: "testtest"
-      attach_file 'user_image', "#{Rails.root}/app/assets/images/users/1.png"      
+      attach_file 'user_image', "#{Rails.root}/app/assets/images/users/1.png", make_visible: true 
       click_button "サインアップ"
       wait.until{ expect(page).to have_content "今日も1日頑張りましょう！" }
     end
@@ -74,7 +74,7 @@ RSpec.describe 'Users', type: :system do
       visit user_path(@user.id)
       click_link "プロフィール編集"
       fill_in "user_name", with: "テストユーザー アップデート"
-      attach_file 'user_image', "#{Rails.root}/app/assets/images/users/1.png" 
+      attach_file 'user_image', "#{Rails.root}/app/assets/images/users/1.png", make_visible: true 
       click_button "更新"
       wait.until{ expect(page).to have_content "テストユーザー アップデート" }
     end
