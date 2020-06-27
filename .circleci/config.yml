@@ -13,7 +13,7 @@ jobs:
       - image: circleci/postgres:12.3
         environment:
           POSTGRES_USER: postgresql
-          POSTGRES_DB: postgresql-pass
+          POSTGRES_DB: db
     working_directory: ~/repo
     steps:
       - checkout
@@ -41,8 +41,8 @@ jobs:
           POSTGRES_HOST: 127.0.0.1
       - image: circleci/postgres:12.3
         environment:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: app_test
+          POSTGRES_USER: postgresql
+          POSTGRES_DB: db
     working_directory: ~/repo
     steps:
       - checkout
