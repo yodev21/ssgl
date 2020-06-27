@@ -1,0 +1,80 @@
+@import "layouts/colors";
+.image-box-feed-back {
+  background-color: $white;
+}
+
+@media screen and (max-width: 576px) {
+  .feed_back_form {
+    width: 25rem;
+    border: none;
+  }
+  .image-box-feed-back {
+    position: relative;
+    left: 1rem;
+    width: 28rem;
+    margin: 10px auto 20px;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px #ccc;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .feed_back_form {
+    width: 28rem;
+    border: none;
+  }
+  .image-box-feed-back {
+    position: relative;
+    left: 1rem;
+    width: 30rem;
+    margin: 10px auto 20px;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px #ccc;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 992px) {
+  .feed_back_form {
+    width: 37.5rem;
+    border: none;
+  }
+  .image-box-feed-back {
+    position: relative;
+    left: 2rem;
+    width: 40rem;
+    margin: 10px auto 20px;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px #ccc;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .feed_back_form {
+    width: 40rem;
+    border: none;
+  }
+  .image-box-feed-back {
+    position: relative;
+    left: 5rem;
+    width: 50rem;
+    margin: 10px auto 20px;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px #ccc;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .feed_back_form {
+    width: 63rem;
+    border: none;
+  }
+
+  .image-box-feed-back {
+    position: relative;
+    left: 1rem;
+    width: 66rem;
+    margin: 10px auto 20px;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px #ccc;
+  }
+}
