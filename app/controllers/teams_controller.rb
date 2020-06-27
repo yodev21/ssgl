@@ -56,6 +56,14 @@ class TeamsController < ApplicationController
     params.require(:team).permit(:name,:image,:remarks)
   end
 
+  def team_update_params
+    if params[:team][:image]==""
+      params.require(:team).permit(:name,:image,:remarks)
+    else
+      params.require(:team).permit(:name,:remarks)
+    end
+  end
+
   def admin_check
     if current_user.present? && current_user.admin?
       redirect_to administrator_top_path(administrator_id: current_user.id)
