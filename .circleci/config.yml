@@ -13,7 +13,7 @@ jobs:
       - image: circleci/postgres:12.3
         environment:
           POSTGRES_USER: postgresql
-          POSTGRES_DB: db
+          POSTGRES_DB: ssgl_test
     working_directory: ~/repo
     steps:
       - checkout
@@ -42,7 +42,7 @@ jobs:
       - image: circleci/postgres:12.3
         environment:
           POSTGRES_USER: postgresql
-          POSTGRES_DB: db
+          POSTGRES_DB: ssgl_test
     working_directory: ~/repo
     steps:
       - checkout
