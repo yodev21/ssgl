@@ -11,7 +11,8 @@
               <div class="row parts">
                 <%= link_to "詳細", team_assign_belong_team_user_path(team_id: assign.team.id, 
                                                                       assign_id: assign.id, 
-                                                                      id: assign.user_id) %>
+                                                                      id: assign.user_id),
+                                                                      class: "btn btn-outline-info" %>
               </div>
               <div>
                 <span><strong><%= assign.user.name %></strong></span>
