@@ -32,34 +32,5 @@
 </div>
 
 <% unless @assigns.nil? %>
-<div class="main_index">
-  <div class="row">
-    <div class="col-sm-6 col-md-12">
-      <h2>メンバー</h2>
-      <div class="row">
-        <% @assigns.each do |assign|%>
-          <div class="col-sm-12 col-lg-6 col-xl-4">
-            <div class="image-box">
-              <%= image_tag avatar_url(assign.user), class: "round-img" %>
-            <div class="card-body">
-              <div class="row parts">
-                <%= link_to "詳細", team_assign_belong_team_user_path(team_id: assign.team.id, 
-                                                                      assign_id: assign.id, 
-                                                                      id: assign.user_id) %>
-              </div>
-              <div>
-                <span><strong><%= assign.user.name %></strong></span>
-                <%= link_to time_ago_in_words(assign.updated_at).upcase + "前", team_assign_belong_team_user_path(team_id: assign.team.id, 
-                                                                                                                          assign_id: assign.id, 
-                                                                                                                          id: assign.user_id), 
-                                                                                                                          class: "team-time no-text-decoration" %>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+  <%= render 'partial/belong_users', assigns: @assigns%>
 <% end %>
