@@ -16,7 +16,7 @@
           <%= image_tag @user.image.url, id: :img_prev, class: "round-img" if @user.image? %>
           <div class="form-group">
             <%= f.label :image, "photo_size_select_actual", class: "material-icons" %>
-            <%= f.file_field :image, placeholder:"アイコン", class: "fom-control icon_image", required: true %>
+            <%= f.file_field :image, placeholder:"アイコン", class: "fom-control icon_image"%>
             <script type="text/javascript">
               $(function() {
                 function readURL(input) {
@@ -36,7 +36,7 @@
           </div>
 
           <div class="form-group">
-            <%= f.text_area :profile, placeholder: "プロフィール", class: "form-control"%>
+            <%= f.text_area :profile, placeholder: "プロフィール", class: "form-control", rows: "10" %>
           </div>
 
           <div class="form-group">
@@ -49,7 +49,7 @@
             <%= f.password_field :password_confirmation, class: "form-control" %>
           </div>
 
-          <%= f.submit "更新", class: "btn btn-primary" %>
+          <%= f.submit "更新", class: "btn btn-success" %>
         <% end %>
       </div>
     </div>

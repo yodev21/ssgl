@@ -31,7 +31,7 @@
           <% end %>
         <% end %>
 
-        <% if @admin_user.status != "admin"%>
+        <% if @admin_user.status == "admin" %>
           <%= link_to "チーム退会", team_assign_path(id: @assign_user.first.user_id,
                                                    team_id: @assign_user.first.team_id, 
                                                    method: :delete, 

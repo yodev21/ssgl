@@ -23,6 +23,8 @@ class TeamsController < ApplicationController
 
   def show
     @assign = Assign.find_by(user_id: current_user, team_id: @team.id)
+    binding.pry
+    @assigns = Assign.where(team_id: params[:id]).includes(:user)
   end
 
   def edit; end
