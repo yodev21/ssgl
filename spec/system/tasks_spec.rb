@@ -34,6 +34,7 @@ RSpec.describe 'Tasks', type: :system do
       attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png"  
       fill_in "task_content", with: "test Content Update"
       click_button "登録"
+      sleep(5)
       wait.until{ expect(page).to have_content "test Title Upate"}
     end
 
