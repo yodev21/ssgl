@@ -23,9 +23,10 @@ jobs:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-      # - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - run: gem install bundler
+      # - run: bundle install --jobs=4 --retry=3 --path vendor/
+      - run: gem install bundlerbundle
       - run: bundle install #--path vendor/bundle
+      - run: bundle update rubocop rubocop-performance rubocop-rails
       - run: bundle update --bundler
       - run: yarn install
       - save_cache:
