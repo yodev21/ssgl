@@ -22,7 +22,6 @@ class Task < ApplicationRecord
 
   scope :with_title, lambda { |title|
     next if title.nil?
-
-    where('tasks.title LIKE ?', "%#{title}%")
+    where('tasks.title LIKE ?', "%'#{title}'%")
   }
 end

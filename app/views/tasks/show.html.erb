@@ -11,7 +11,7 @@
       <%= form_with(url: team_assign_task_path, local: true, method: :get, class: "form-inline col-sm-4 col-lg-6 col-xl-12",assign_id: 1) do |f| %>
         <%= f.text_field :name, class: "form-control mr-sm-2 show_search_left", placeholder: "名前", id: "search_name" %>
         <select class="form-control show_search_left" id="number" name="status">
-          <option value="form-control show_search_left" selected="selected">課題状況</option>
+          <option selected="selected" value="">課題状況</option>
           <option value="complete">完了</option>
           <option value="underway">着手中</option>
           <option value="awaiting_review">レビュー待ち</option>
@@ -63,7 +63,7 @@
         <% end %>
       <% end %>
     </div>
-    <% if @challenge_users.present?  && @user_status.status == "admin" %>
+    <% if @challenge_users  && @user_status.status == "admin" %>
       <% @challenge_users.each do |challenge_user| %>
         <div class="col-sm-12 col-lg-6 col-xl-4">
           <div class="image-box">
