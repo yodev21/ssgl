@@ -1,4 +1,4 @@
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 575px) {
   .image-size {
     width: 20rem;
     margin: auto;
@@ -10,10 +10,6 @@
     background-color: #ffffff;
     box-shadow: 0 2px 5px #ccc;
   }
-  .search_left {
-    position: relative;
-    left: 6rem;
-  }
   .button_right {
     margin-top: 1rem;
     margin-right: 1rem;
@@ -21,7 +17,33 @@
     left: 6rem;
   }
 }
-@media screen and (min-width: 767px) and (max-width: 992px) {
+
+@media screen and (min-width: 575px) and (max-width: 768px) {
+  .image-size {
+    width: 20rem;
+    margin: auto;
+  }
+  .image-box {
+    width: 20rem;
+    margin: 10px auto 20px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px #ccc;
+  }
+  .button_right {
+    // margin-top: 1rem;
+    margin-right: 2rem;
+    position: relative;
+    left: 15rem;
+  }
+  .mobile_button {
+    position: relative;
+    left: 28.5rem;
+    top: -3.25rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
   .image-size {
     width: 20rem;
     margin: auto;
@@ -63,7 +85,7 @@
   .button_right {
     margin-right: 1rem;
     position: relative;
-    left: 26rem;
+    left: 15rem;
   }
 }
 
@@ -86,7 +108,7 @@
   .button_right {
     margin-right: 1rem;
     position: relative;
-    left: 34rem;
+    left: 25rem;
     padding: 5rem;
     width: 8rem;
     text-align: center;
