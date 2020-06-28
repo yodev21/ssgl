@@ -1,5 +1,24 @@
 @import "layouts/colors";
+@media screen and (max-width: 320px) {
+  .title {
+    position: relative;
+    top: 1rem;
+    left: 4rem;
+    width: 60%;
+  }
 
+  .copy {
+    position: relative;
+    top: -5rem;
+    text-align: center;
+    background: $white;
+    color: $light_gray;
+    font-size: 0.73rem;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    box-shadow: 0 2px 5px #ccc;
+  }
+}
 @media screen and (max-width: 500px) {
   .title {
     position: relative;
