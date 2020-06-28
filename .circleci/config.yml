@@ -24,8 +24,9 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       # - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - run: gem install bundler：2.1.4
+      - run: gem install bundler
       - run: bundle install  --path vendor/bundle
+      - run: bundle update --bundler
       - run: yarn install
       - save_cache:
           paths:
