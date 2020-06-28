@@ -14,6 +14,8 @@ AllCops:
     - "config/**/*"
     - "script/**/*"
     - !ruby/regexp /old_and_unused\.rb$/
+  Include:
+    - rubocop-rspec
 
 # 日本語でのコメントを許可
 AsciiComments:
@@ -43,8 +45,8 @@ Lint/DeprecatedOpenSSLConstant:
 Lint/MixedRegexpCaptureTypes:
   Enabled: true
 
-# Lint/RaiseException:
-#   Enabled: true
+Lint/RaiseException:
+  Enabled: true
 
 Lint/StructNewOverride:
   Enabled: true
