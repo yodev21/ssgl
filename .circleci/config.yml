@@ -68,6 +68,9 @@ jobs:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: DBの起動を待つ
+          command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
       # Rspec
