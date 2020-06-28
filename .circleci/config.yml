@@ -25,7 +25,7 @@ jobs:
             - v1-dependencies-
       # - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - run: gem install bundler
-      - run: bundle install  --path vendor/bundle
+      - run: bundle install #--path vendor/bundle
       - run: bundle update --bundler
       - run: yarn install
       - save_cache:
