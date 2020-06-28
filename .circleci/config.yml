@@ -16,10 +16,7 @@ jobs:
           POSTGRES_PASSWORD: "postgresql-pass"
           POSTGRES_DB: ssgl_test
     working_directory: ~/repo
-    AllCops:
-      TargetRubyVersion: 2.6.5
-      Exclude:
-        - "vendor/**/*"
+
     steps:
       - checkout
       - restore_cache:
