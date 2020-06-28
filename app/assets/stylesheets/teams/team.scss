@@ -1,4 +1,4 @@
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 375px) {
   .image-size {
     width: 20rem;
     margin: auto;
@@ -10,8 +10,18 @@
     background-color: #ffffff;
     box-shadow: 0 2px 5px #ccc;
   }
+  .mobile_button_left {
+    position: relative;
+    top: 3.4rem;
+    left: -5.5rem;
+  }
+  .mobile_button {
+    position: relative;
+    left: 8rem;
+    top: 0.1rem;
+  }
 }
-@media screen and (max-width: 575px) {
+@media screen and (min-width: 575px) {
   .image-size {
     width: 20rem;
     margin: auto;
