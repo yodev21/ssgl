@@ -43,6 +43,12 @@ class ChallengeStart < ApplicationRecord
 
     where(user_id: User.where('name LIKE ?', "%#{name}%").select('id'))
   }
+
+  scope :with_challenge_start_title, lambda { |title|
+    next if title.nil?
+
+    where(task_id: Task.where('title LIKE ?', "%#{title}%").select('id'))
+  }
   scope :with_challenge_start_status, lambda { |status|
     next if status.nil? || status.blank?
 
