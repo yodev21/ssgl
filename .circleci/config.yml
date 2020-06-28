@@ -26,7 +26,7 @@ jobs:
       # - run: bundle install --jobs=4 --retry=3 --path vendor/
       - run: gem install bundler
       - run: bundle install #--path vendor/bundle
-      - run: bundle update rubocop rubocop-performance rubocop-rails
+      - run: bundle update rubocop rubocop-rails
       - run: bundle update --bundler
       - run: yarn install
       - save_cache:
