@@ -10,7 +10,7 @@
                                                             　local: true do |f| %>
         
         <div class="form-group">
-          <%= f.text_field :title, autofocus: true, placeholder: "課題名", class: "form-control" %>
+          <%= f.text_field :title, autofocus: true, placeholder: "課題名", class: "form-control", required: true %>
         </div>
           
         <%= image_tag @task.image.url, id: :img_prev, class: "round-img" if @task.image? %>
@@ -36,7 +36,7 @@
         </div>
 
         <div class="form-group">
-          <%= f.text_area :content,  placeholder: "内容", class: "form-control",rows: "10" %>
+          <%= f.text_area :content,  placeholder: "内容", class: "form-control",rows: "10", required: true %>
         </div>
 
         <div class="actions">

@@ -1,33 +1,38 @@
 <div class="main_index">
   <h2>マイチーム</h2>
   <div class="row">
-    <% @teams.each do |team|%>
-      <div class="col-sm-12 col-lg-6 col-xl-4">
-        <div class="image-box">
-        <%= link_to (image_tag team_icon_url(team),class: "image-size"), team_assign_tasks_path(assign_id: team.assigns.first.id,  
-                                                                                                team_id: team.assigns.first.team_id)%>
-        <div class="card-body">
-          <div class="row parts">
-            <%= link_to "タスク", team_assign_tasks_path(assign_id: team.assigns.first.id,  
-                                                        team_id: team.assigns.first.team_id), 
-                                                        class: "btn btn-outline-info",
-                                                        id: "task_link" %>
-            <%= link_to "メンバー", team_assign_belong_team_users_path(assign_id: team.assigns.first.id, 
-                                                                      team_id: team.assigns.first.team_id), 
-                                                                      class: "btn btn-outline-warning btn_right" %>
-          </div>
+    <% unless @teams.blank? %>
+      <% @teams.each do |team|%>
+        <div class="col-sm-12 col-lg-6 col-xl-4">
+          <div class="image-box">
+          <%= link_to (image_tag team_icon_url(team),class: "image-size"), team_assign_tasks_path(assign_id: team.assigns.first.id,  
+                                                                                                  team_id: team.assigns.first.team_id)%>
+          <div class="card-body">
+            <div class="row parts">
+              <%= link_to "タスク", team_assign_tasks_path(assign_id: team.assigns.first.id,  
+                                                          team_id: team.assigns.first.team_id), 
+                                                          class: "btn btn-outline-info",
+                                                          id: "task_link" %>
+              <%= link_to "メンバー", team_assign_belong_team_users_path(assign_id: team.assigns.first.id, 
+                                                                        team_id: team.assigns.first.team_id), 
+                                                                        class: "btn btn-outline-warning btn_right" %>
+            </div>
 
-          <div class="row parts">
+            <div class="row parts">
 
-          </div>
-          <div>
-            <span><strong><%= link_to team.name, team_path(team.id) %></strong></span>
-            <%= link_to time_ago_in_words(team.updated_at).upcase + "前", team_path(team.id), 
-                                                                                    class: "team-time no-text-decoration" %>
+            </div>
+            <div>
+              <span><strong><%= link_to team.name, team_path(team.id) %></strong></span>
+              <%= link_to time_ago_in_words(team.updated_at).upcase + "前", team_path(team.id), 
+                                                                                      class: "team-time no-text-decoration" %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
+    <% else %>
+      <h3>どのチームにも所属しておりません！<br>チームから参加したいチームを選びましょう！</h3>
+      <h3>
     <% end %>
   </div>
 </div>

@@ -1,6 +1,25 @@
 <div class="main_index">
+
   <div class="row">
-    <% unless @challenge_tasks.nil? %>
+
+  <div class="row">
+  <h3>マイタスク</h3>
+    <% unless @challenge_tasks.blank? %>
+      <div class="col-sm-2 col-md-12">
+        <%= form_with(url: challenge_starts_path, local: true, method: :get, class: "form-inline col-sm-4 col-lg-6 col-xl-12") do |f| %>
+          <%= f.text_field :name, class: "form-control mr-sm-2 show_search_left", placeholder: "名前", id: "search_name" %>
+          <select class="form-control show_search_left" id="number" name="status">
+            <option value="" selected="selected">課題状況</option>
+            <option value="complete">完了</option>
+            <option value="underway">着手中</option>
+            <option value="awaiting_review">レビュー待ち</option>
+            <option value="remand">修正中</option>
+          </select>
+          <%= f.submit '検索', class: "btn btn-outline-success show_search_left" %>
+        <% end %>
+      </div>
+    <% end %>
+    <% unless @challenge_tasks.blank? %>
       <% @challenge_tasks.each do |challenge_task|%>
 
         <div class="col-sm-12 col-lg-6 col-xl-4">
@@ -17,6 +36,13 @@
                                                                                         task_id: challenge_task.task.id, 
                                                                                         challenge_start_id: challenge_task.id), 
                                                                                         class: "team_info btn btn-outline-primary profile-btn" %>
+                <%= link_to "諦める", team_assign_task_challenge_start_path(team_id: challenge_task.team_id, 
+                                                                          assign_id: challenge_task.assign_id, 
+                                                                          task_id: challenge_task.task_id,
+                                                                          id: challenge_task.id), 
+                                                                          method: :delete, 
+                                                                          data: { confirm: "本当に諦めますか？"}, 
+                                                                          class: "team_info btn btn-outline-danger profile-btn" %>
               <% elsif challenge_task.status == "awaiting_review" %>
                 <%= link_to "修正する", edit_team_assign_task_challenge_start_answer_path(assign_id: challenge_task.assign.id, 
                                                                                         team_id: challenge_task.assign.team_id, 
@@ -38,7 +64,10 @@
             </div>
           </div>
         </div>
-    <% end %>
+      <% end %>
+    <% else %>
+      <h3><br>まだ何も課題に取り組んでいません！<br>
+      マイチームから課題に挑戦しましょう！</h3>
     <% end %>
   </div>
 </div>

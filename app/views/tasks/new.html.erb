@@ -9,7 +9,7 @@
                                                               local: true do |f| %>
         
         <div class="form-group">
-          <%= f.text_field :title, autofocus: true, placeholder: "課題名", class: "form-control" %>
+          <%= f.text_field :title, autofocus: true, placeholder: "課題名", class: "form-control", required: true %>
         </div>
 
         <% unless @task.image? %>

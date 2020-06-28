@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :team do
-    name { "テストチーム" }
+    name { 'テストチーム' }
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/images/yay.png')) }
-    remarks { "テスト備考"}
+    remarks { 'テスト備考' }
     user_id { 1 }
   end
 end

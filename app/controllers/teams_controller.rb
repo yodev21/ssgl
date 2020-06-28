@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class TeamsController < ApplicationController
-  before_action :set_params, only: [:show, :edit, :update, :destroy]
+  before_action :set_params, only: %i[show edit update destroy]
   before_action :admin_check
   before_action :authenticate_user!
   def new
@@ -9,12 +11,12 @@ class TeamsController < ApplicationController
   def create
     @team = current_user.teams.build(team_params)
     if @team.save
-      @assign = @team.join_team(status: :admin, user: @team.user_id )
+      @assign = @team.join_team(status: :admin, user: @team.user_id)
       redirect_to new_team_assign_task_path(assign_id: @assign.id,
-                                            team_id: @assign.team_id), 
-                                            notice: "チームを作成しました。 次に課題を作成してください。"
+                                            team_id: @assign.team_id),
+                  notice: 'チームを作成しました。 次に課題を作成してください。'
     else
-      flash.now[:danger] = "チームの作成に失敗しました。"
+      flash.now[:danger] = 'チームの作成に失敗しました。'
       render :new
     end
   end
@@ -29,19 +31,19 @@ class TeamsController < ApplicationController
   end
 
   def edit; end
- 
+
   def update
     if @team.update(team_params)
-      redirect_to teams_path, notice: "チーム情報を更新しました。"
+      redirect_to teams_path, notice: 'チーム情報を更新しました。'
     else
-      flash.now[:alert] = "チーム情報の更新に失敗しました。"
+      flash.now[:alert] = 'チーム情報の更新に失敗しました。'
       render :edit
     end
   end
 
   def destroy
     @team.destroy
-    redirect_to teams_path, notice: "チームを削除しました。"
+    redirect_to teams_path, notice: 'チームを削除しました。'
   end
 
   def search
@@ -51,12 +53,13 @@ class TeamsController < ApplicationController
   end
 
   private
+
   def set_params
     @team = Team.find(params[:id])
   end
 
   def team_params
-    params.require(:team).permit(:name,:image,:remarks)
+    params.require(:team).permit(:name, :image, :remarks)
   end
 
   def admin_check
@@ -68,5 +71,4 @@ class TeamsController < ApplicationController
   def params_team_search
     params.permit(:search_name)
   end
-
 end

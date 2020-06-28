@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Assign < ApplicationRecord
   belongs_to :user
   belongs_to :team
@@ -9,6 +11,5 @@ class Assign < ApplicationRecord
   validates :status, presence: true
   validates :team_id, uniqueness: { scope: :user_id }
 
-  enum status: { admin: 0, memtor: 1, member: 2}
-
+  enum status: { admin: 0, memtor: 1, member: 2 }
 end

@@ -1,19 +1,21 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe FeedBack, type: :model do
-  describe "フィードバック機能" do
+  describe 'フィードバック機能' do
     before do
-      @user = FactoryBot.create(:user, email: "testAnswer@example.com")
+      @user = FactoryBot.create(:user, email: 'testAnswer@example.com')
       @team = FactoryBot.create(
-        :team, 
-        name: "test Team",
+        :team,
+        name: 'test Team',
         image: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/images/yay.png')),
         user_id: @user.id
-        )
+      )
       @assign = FactoryBot.create(
         :assign,
         user_id: @user.id,
-        team_id: @team.id,
+        team_id: @team.id
       )
       @task = FactoryBot.create(
         :task,
@@ -38,10 +40,10 @@ RSpec.describe FeedBack, type: :model do
       )
     end
 
-    example "必要なデータがあれば有効な状態であること" do
+    example '必要なデータがあれば有効な状態であること' do
       feed_back = FeedBack.new(
         feeling_number: 1,
-        reason: "テスト リーズン",
+        reason: 'テスト リーズン',
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
@@ -52,10 +54,10 @@ RSpec.describe FeedBack, type: :model do
       expect(feed_back).to be_valid
     end
 
-    example "フィーリングナンバーが無効な値であれば無効な状態であること" do
+    example 'フィーリングナンバーが無効な値であれば無効な状態であること' do
       feed_back = FeedBack.new(
         feeling_number: nil,
-        reason: "テスト リーズン",
+        reason: 'テスト リーズン',
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
@@ -66,7 +68,7 @@ RSpec.describe FeedBack, type: :model do
       expect(feed_back).not_to be_valid
     end
 
-    example "理由が無効な値であれば無効な状態であること" do
+    example '理由が無効な値であれば無効な状態であること' do
       feed_back = FeedBack.new(
         feeling_number: 1,
         reason: nil,
@@ -80,10 +82,10 @@ RSpec.describe FeedBack, type: :model do
       expect(feed_back).not_to be_valid
     end
 
-   example "ユーザーIDが無効な値であれば無効な状態であること" do
+    example 'ユーザーIDが無効な値であれば無効な状態であること' do
       feed_back = FeedBack.new(
         feeling_number: 1,
-        reason: "テスト リーズン",
+        reason: 'テスト リーズン',
         user_id: nil,
         team_id: @team.id,
         assign_id: @assign.id,
@@ -94,10 +96,10 @@ RSpec.describe FeedBack, type: :model do
       expect(feed_back).not_to be_valid
     end
 
-    example "チームIDが無効な値であれば無効な状態であること" do
+    example 'チームIDが無効な値であれば無効な状態であること' do
       feed_back = FeedBack.new(
         feeling_number: 1,
-        reason: "テスト リーズン",
+        reason: 'テスト リーズン',
         user_id: @user.id,
         team_id: nil,
         assign_id: @assign.id,
@@ -108,10 +110,10 @@ RSpec.describe FeedBack, type: :model do
       expect(feed_back).not_to be_valid
     end
 
-    example "アサインIDが無効な値であれば無効な状態であること" do
+    example 'アサインIDが無効な値であれば無効な状態であること' do
       feed_back = FeedBack.new(
         feeling_number: 1,
-        reason: "テスト リーズン",
+        reason: 'テスト リーズン',
         user_id: @user.id,
         team_id: @team.id,
         assign_id: nil,
@@ -122,10 +124,10 @@ RSpec.describe FeedBack, type: :model do
       expect(feed_back).not_to be_valid
     end
 
-    example "タスクIDが無効な値であれば無効な状態であること" do
+    example 'タスクIDが無効な値であれば無効な状態であること' do
       feed_back = FeedBack.new(
         feeling_number: 1,
-        reason: "テスト リーズン",
+        reason: 'テスト リーズン',
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
@@ -136,10 +138,10 @@ RSpec.describe FeedBack, type: :model do
       expect(feed_back).not_to be_valid
     end
 
-    example "チャレンジIDが無効な値であれば無効な状態であること" do
+    example 'チャレンジIDが無効な値であれば無効な状態であること' do
       feed_back = FeedBack.new(
         feeling_number: 1,
-        reason: "テスト リーズン",
+        reason: 'テスト リーズン',
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
@@ -150,10 +152,10 @@ RSpec.describe FeedBack, type: :model do
       expect(feed_back).not_to be_valid
     end
 
-    example "アンサーIDが無効な値であれば無効な状態であること" do
+    example 'アンサーIDが無効な値であれば無効な状態であること' do
       feed_back = FeedBack.new(
         feeling_number: 1,
-        reason: "テスト リーズン",
+        reason: 'テスト リーズン',
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
