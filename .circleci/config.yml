@@ -9,7 +9,8 @@ jobs:
       - image: circleci/ruby:2.6.5-node-browsers-legacy
         environment:
           RAILS_ENV: test
-          POSTGRES_HOST: 127.0.0.1
+          # POSTGRES_HOST: 127.0.0.1
+          POSTGRES_HOST: "db"
       - image: circleci/postgres
         environment:
           POSTGRES_USER: "postgresql"
@@ -44,7 +45,8 @@ jobs:
       - image: circleci/ruby:2.6.5-node-browsers-legacy
         environment:
           RAILS_ENV: test
-          POSTGRES_HOST: 127.0.0.1
+          # POSTGRES_HOST: 127.0.0.1
+          POSTGRES_HOST: "db"
       - image: circleci/postgres
         environment:
           POSTGRES_USER: "postgresql"
