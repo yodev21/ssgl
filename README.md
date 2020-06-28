@@ -147,29 +147,36 @@ https://drive.google.com/file/d/1GFX3bJS14JejGA8Xl1LPCGNLd505Y3kE/view?usp=shari
 
 https://drive.google.com/file/d/14jobJ0jIBX10wl9AzeKD5eLBJjNwAoom/view?usp=sharing
 
-# 使用予定 Gem
+# 使用 Gem
 
 - rails
 - pg
 - puma
-- uglifier
 - sass-rails
-- turbolinks
-- jbuilder
 - device
 - ransack
 - fog-aws
+- bootstrap
+- carrierwave
+- dotenv-rails
+- jquery-rails
+- mini_magick
+- unicorn
 
-- web-console
-- listen
-- spring
-- spring-watcher-listen
-
-- webdrivers
-- rspec-rails
-- capybara
+- capistrano
+- capistrano-bundler
+- capistrano-rails
+- capistrano-rbenv
+- capistrano3-unicorn
+- ed25519
 - factory_bot_rails
-- database_cleaner
+- pry-rails
+- rspec-rails
+- rubocop
+- rubocop-rails
+- webdrivers
+
+- rspec-retry
 
 # 就業 Term から 2 つ以上の技術
 
