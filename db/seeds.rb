@@ -103,27 +103,6 @@ p 'Guest Challenge Success'
   )
   p "test Assign#{n} Success"
 
-  # チームアサイン
-  p "Create test Assign#{n}"
-  @assign = Assign.create!(
-    status: :admin,
-    user_id: @user.id,
-    team_id: @team.id
-  )
-  p "test Assign#{n} Success"
-
-  # タスク作成
-  # p "Create test Task#{n}"
-  # @task = Task.create!(
-  #   title: "#{langs[n]}チュートリアル#{n}",
-  #   content: "#{langs[n]}チュートリアルをサイトを参考に学習してください。\n
-  #             課題が完了しましたらこちらにお知らせください。",
-  #   image: open("#{Rails.root}/app/assets/images/tasks/#{n}.png"),
-  #   user_id: @user.id,
-  #   team_id: @guest_team.id,
-  #   assign_id: @guest_assign.id
-  # )
-  # p "test Team#{n} Success"
 
   # チャレンジタスク作成
   p "Create test ChallengeStart#{n}"

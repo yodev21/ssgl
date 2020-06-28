@@ -20,6 +20,24 @@
                                                                                                                               assign_id: user.assigns.first, 
                                                                                                                               id: user.id), 
                                                                                                                               class: "team-time no-text-decoration" %>
+                <% if user.assigns.first.status == "admin" %>
+                  <%= link_to "管理者", team_assign_belong_team_user_path(team_id: user.assigns.first.team.id, 
+                                                                        assign_id: user.assigns.first.id, 
+                                                                        id: user.assigns.first.user_id),
+                                                                        class: "badge badge-primary" %>
+
+                <% elsif user.assigns.first.status == "memtor" %>
+                  <%= link_to "メンター", team_assign_belong_team_user_path(team_id: user.assigns.first.team.id, 
+                                                                        assign_id: user.assigns.first.id, 
+                                                                        id: user.assigns.first.user_id),
+                                                                        class: "badge badge-success" %>
+                  
+                <% elsif user.assigns.first.status =="member" %>
+                  <%= link_to "メンバー", team_assign_belong_team_user_path(team_id: user.assigns.first.team.id, 
+                                                                        assign_id: user.assigns.first.id, 
+                                                                        id: user.assigns.first.user_id),
+                                                                        class: "badge badge-info" %>
+                <% end %>
                 </div>
               </div>
             </div>
