@@ -38,7 +38,28 @@
 
 # 使用方法
 
-アプリケーション完成後記述
+チームリーダー（管理者）
+
+1. 新規でチームを作成します。
+2. 作成したチームにひもづく課題を作成します。
+3. メンバーに参加していただき課題を実施していただきます。
+4. メンバーが課題提出をした場合確認し、レビューを行います。
+5. 課題完了後のフィードバック内容を確認し、レベルに合わせた課題を新しく作成します。
+
+メンター
+
+1. 所属しているチームにて新しく課題を作成します。
+2. メンバーに参加していただき課題を実施していただきます。
+3. メンバーが課題提出をした場合確認し、レビューを行います。
+4. 課題完了後のフィードバック内容を確認し、レベルに合わせた課題を新しく作成します。
+
+メンバー
+
+1. 任意のチームに参加します。
+2. 参加したチームの任意の課題に取り組みます。
+3. 課題が完了した場合、提出します。
+4. 提出後その課題に対してフィードバックを行います。
+5. 管理者または、メンターがレビューを行うため、修正箇所がある場合再度提出します。
 
 # バージョン情報
 
@@ -52,8 +73,6 @@
 
 - Ruby
 - Ruby on Rails
-- React.js
-  - Redux.js
 - Docker
 - Docker Compose
 - Nginx
@@ -63,6 +82,8 @@
   - S3
   - VPC
   - Route53
+  - RDS
+  - ERB
 
 # [構成図](https://docs.google.com/spreadsheets/d/1gwdg1GKj0wkPb06tlWZLU2vbZhuRLNEkIUAo5bPcqzs/edit#gid=0)
 
@@ -152,10 +173,11 @@ https://drive.google.com/file/d/14jobJ0jIBX10wl9AzeKD5eLBJjNwAoom/view?usp=shari
 
 # 就業 Term から 2 つ以上の技術
 
-- React.js (UI 作成用の JavaScript ライブラリ)
-  https://ja.reactjs.org/
+- AWS マネージドサービス
 
-- Redux (state を管理するための JavaScript ライブラリ)
-  https://redux.js.org/
+  - VPC
+  - Route53
+  - RDS
+  - ERB
 
 - Docker (コンテナ仮想化ソフトウェア)
