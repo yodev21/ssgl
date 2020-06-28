@@ -16,6 +16,10 @@ jobs:
           POSTGRES_PASSWORD: "postgresql-pass"
           POSTGRES_DB: ssgl_test
     working_directory: ~/repo
+    AllCops:
+      TargetRubyVersion: 2.6.5
+      Exclude:
+        - "vendor/**/*"
     steps:
       - checkout
       - restore_cache:
@@ -28,6 +32,7 @@ jobs:
       - run: bundle install #--path vendor/bundle
       - run: bundle update rubocop rubocop-rails
       - run: bundle update --bundler
+      - run: ruby -v
       - run: yarn install
       - save_cache:
           paths:
