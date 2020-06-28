@@ -8,3 +8,31 @@ body {
 .logo {
   text-align: center;
 }
+
+.logo-icon {
+  position: relative;
+  left: -1rem;
+
+  width: 5rem;
+}
+
+.logo-name {
+  position: relative;
+  left: -1rem;
+  top: 1rem;
+}
+
+@media screen and (min-width: 992px) {
+  .mobile-icon {
+    display: none;
+    width: 5rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .mobile-icon {
+    position: relative;
+    left: -1rem;
+    width: 5rem;
+  }
+}

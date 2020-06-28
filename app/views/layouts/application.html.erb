@@ -7,7 +7,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 
+    <%= favicon_link_tag 'favicon.png'%>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   </head>
@@ -16,7 +17,8 @@
 <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white">
       <div class="logo">
-        <span class="simple-text logo-normal" >Dashboard</span>
+        <%= image_tag "logo.png", class: "logo-icon" %>
+        <span class="simple-text logo-normal logo-name" >Dashboard</span>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -88,7 +90,8 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;">SSGL</a>
+            <a class="navbar-brand"></a>
+            <%= image_tag "logo.png", class: "mobile-icon" %>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
