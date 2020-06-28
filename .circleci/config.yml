@@ -24,6 +24,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       # - run: bundle install --jobs=4 --retry=3 --path vendor/
+
       - run: gem install bundler
       - run: bundle install #--path vendor/bundle
       - run: bundle update rubocop rubocop-rails
