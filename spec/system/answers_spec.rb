@@ -19,7 +19,6 @@ RSpec.describe 'Answers', type: :system do
 
     example '回答ができること' do
       visit team_assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
-      click_link '取り組む'
       click_link '回答'
       fill_in 'answer_content', with: 'テスト コンテント'
       click_button '回答'
@@ -28,7 +27,6 @@ RSpec.describe 'Answers', type: :system do
 
     example '回答が編集できること' do
       visit team_assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
-      click_link '取り組む'
       click_link '回答'
       fill_in 'answer_content', with: 'テスト コンテント'
       click_button '回答'
