@@ -87,7 +87,7 @@
 
 # [構成図](https://docs.google.com/spreadsheets/d/1gwdg1GKj0wkPb06tlWZLU2vbZhuRLNEkIUAo5bPcqzs/edit#gid=0)
 
-![infrastructure_diagram](https://user-images.githubusercontent.com/60313195/82924115-da169a00-9fb6-11ea-9ed0-ebd1b48de89a.png)
+![infrastructure_diagram](https://user-images.githubusercontent.com/60313195/85969602-1c425980-ba03-11ea-83e2-61dfe19c3205.png)
 
 # 機能一覧
 
