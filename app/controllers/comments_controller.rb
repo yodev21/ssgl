@@ -71,11 +71,17 @@ class CommentsController < ApplicationController
   end
 
   def change_status(comment)
+    # comment_user = ChallengeStart.find(comment.challenge_start_id)
     challenge_start_id = ChallengeStart.find(comment.challenge_start_id)
-    if current_user.id == comment.answer.user_id
-      challenge_start_id.update(status: 'awaiting_review')
-    else
+    comment_user = Assign.find_by(user_id: comment.user_id,
+                                         team_id: comment.team_id)
+
+    binding.pry
+    # if current_user.id == comment.answer.user_id
+    if comment_user.status == "admin" || comment_user.status == "memtor"
       challenge_start_id.update(status: 'remand')
+    else
+      challenge_start_id.update(status: 'awaiting_review')
     end
   end
 end
