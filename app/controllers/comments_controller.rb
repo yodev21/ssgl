@@ -76,7 +76,6 @@ class CommentsController < ApplicationController
     comment_user = Assign.find_by(user_id: comment.user_id,
                                          team_id: comment.team_id)
 
-    binding.pry
     # if current_user.id == comment.answer.user_id
     if comment_user.status == "admin" || comment_user.status == "memtor"
       challenge_start_id.update(status: 'remand')

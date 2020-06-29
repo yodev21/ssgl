@@ -37,7 +37,7 @@ class FeedBacksController < ApplicationController
   end
 
   def index
-    @feed_backs = FeedBack.where(team_id: params[:team_id])
+    @feed_backs = FeedBack.group(:task_id, :team_id).select(:task_id, :team_id)
   end
 
   def show
@@ -52,4 +52,5 @@ class FeedBacksController < ApplicationController
   def feed_back_params
     params.require(:feed_back).permit(:feeling_number, :reason)
   end
+
 end

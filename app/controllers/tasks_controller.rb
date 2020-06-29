@@ -48,7 +48,8 @@ class TasksController < ApplicationController
 
     @user_status = Assign.find_by(user_id: current_user.id)
 
-    @challenge_task = ChallengeStart.find_by(user_id: params[:user_id],
+    @challenge_task = ChallengeStart.find_by(user_id: current_user.id,
+      # user_id: params[:user_id],
                                              team_id: params[:team_id],
                                              assign_id: params[:assign_id],
                                              task_id: @task.id)
