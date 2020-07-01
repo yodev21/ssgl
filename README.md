@@ -36,6 +36,10 @@
 課題をアップデートしていくことで、メンターの管理コストを下げつつかつ、メンバーは自分に適した課題解くことで、  
 無理なく楽しくプログラミング学習を行うことができます。
 
+# 開発背景
+
+https://github.com/yodev21/ssgl/files/4855555/default.pdf
+
 # 使用方法
 
 チームリーダー（管理者）
@@ -146,45 +150,3 @@ https://drive.google.com/file/d/1GFX3bJS14JejGA8Xl1LPCGNLd505Y3kE/view?usp=shari
 # [ワイヤーフレーム](https://drive.google.com/file/d/14jobJ0jIBX10wl9AzeKD5eLBJjNwAoom/view?usp=sharing)
 
 https://drive.google.com/file/d/14jobJ0jIBX10wl9AzeKD5eLBJjNwAoom/view?usp=sharing
-
-# 使用 Gem
-
-- rails
-- pg
-- puma
-- sass-rails
-- device
-- ransack
-- fog-aws
-- bootstrap
-- carrierwave
-- dotenv-rails
-- jquery-rails
-- mini_magick
-- unicorn
-
-- capistrano
-- capistrano-bundler
-- capistrano-rails
-- capistrano-rbenv
-- capistrano3-unicorn
-- ed25519
-- factory_bot_rails
-- pry-rails
-- rspec-rails
-- rubocop
-- rubocop-rails
-- webdrivers
-
-- rspec-retry
-
-# 就業 Term から 2 つ以上の技術
-
-- AWS マネージドサービス
-
-  - VPC
-  - Route53
-  - RDS
-  - ERB
-
-- Docker (コンテナ仮想化ソフトウェア)
