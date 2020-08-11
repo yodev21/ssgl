@@ -20,7 +20,8 @@ p 'Create Guest User'
   image: open("#{Rails.root}/app/assets/images/users/1.png"),
   password: 'testtest',
   profile: "プログラミングの学習を始めて１ヶ月目です！\n
-            早く一人前のエンジニアになれるように頑張ります！"
+            早く一人前のエンジニアになれるように頑張ります！",
+  created_at: "2020/06/30 00:00:00"
 )
 p 'Guest User Success'
 
@@ -32,7 +33,8 @@ p 'Create Guest Team'
   remarks: "#{langs[0]} をメインに学習しています！ \n
             初心者大歓迎です。!! \n
             楽しくプログラミングをしましょう！！",
-  user_id: @guest_user.id
+  user_id: @guest_user.id,
+  created_at: "2020-06-30 00:00:00"
 )
 p 'Guest Team Success'
 
@@ -41,7 +43,8 @@ p 'Create Guest Assign'
 @guest_assign = Assign.create!(
   status: :admin,
   user_id: @guest_user.id,
-  team_id: @guest_team.id
+  team_id: @guest_team.id,
+  created_at: "2020-06-30 00:00:00"
 )
 p 'Guest Assign Success'
 
@@ -54,7 +57,8 @@ p 'Create Guest Task'
   image: open("#{Rails.root}/app/assets/images/tasks/1.png"),
   user_id: @guest_user.id,
   team_id: @guest_team.id,
-  assign_id: @guest_assign.id
+  assign_id: @guest_assign.id,
+  created_at: "2020-06-30 00:00:00"
 )
 p 'Guest Task Success'
 
@@ -65,7 +69,8 @@ p 'Create test ChallengeStart'
   user_id: @guest_user.id,
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
-  task_id: @guest_task.id
+  task_id: @guest_task.id,
+  created_at: "2020-06-30 00:00:00"
 )
 p 'Guest Challenge Success'
 
@@ -78,7 +83,8 @@ p 'Guest Challenge Success'
     name: "テスト ユーザー#{n}",
     profile: "プログラミングの学習を始めて１ヶ月目です！\n
               早く一人前のエンジニアになれるように頑張ります！",
-    image: open("#{Rails.root}/app/assets/images/users/#{n}.png")
+    image: open("#{Rails.root}/app/assets/images/users/#{n}.png"),
+  created_at: "2020-07-30 00:00:00"
   )
   p "test User#{n} Success"
 

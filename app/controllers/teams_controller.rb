@@ -4,6 +4,7 @@ class TeamsController < ApplicationController
   before_action :set_params, only: %i[show edit update destroy]
   before_action :admin_check
   before_action :authenticate_user!
+  before_action :check_guest_team, only: %i[update destroy]
   def new
     @team = Team.new
   end
@@ -21,8 +22,13 @@ class TeamsController < ApplicationController
     end
   end
 
-  def index
-    @teams = Team.all.order(created_at: :desc).page(params[:page])
+  def index 
+    # ゲストユーザーの場合、ゲストチームのみ絞り込む
+    if current_user.email == 'guest@example.com'
+      @teams = Team.where("created_at < '2020/07/01 00:00:00'").order(created_at: :desc).page(params[:page])
+    else
+      @teams = Team.all.order(created_at: :desc).page(params[:page])
+    end
   end
 
   def show
@@ -70,5 +76,11 @@ class TeamsController < ApplicationController
 
   def params_team_search
     params.permit(:search_name)
+  end
+
+  def check_guest_team
+    if @team.created_at < '2020/07/01 00:00:00'
+      redirect_to teams_path, notice: "ゲストチームのため更新・削除はできません！"
+    end
   end
 end
