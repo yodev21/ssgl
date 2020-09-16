@@ -47,6 +47,7 @@
                                                                             data: { confirm: "本当に諦めますか？"}, 
                                                                             class: "team_info btn btn-outline-danger profile-btn" %>
                 <% elsif challenge_task.status == "awaiting_review" %>
+                  <p><%= challenge_task.task.content.truncate(24) %></p>
                   <%= link_to "修正する", edit_team_assign_task_challenge_start_answer_path(assign_id: challenge_task.assign.id, 
                                                                                           team_id: challenge_task.assign.team_id, 
                                                                                           task_id: challenge_task.task.id, 
@@ -55,6 +56,7 @@
                                                                                           class: "team_info btn btn-outline-success profile-btn" %>
                 <% elsif challenge_task.status == "remand" %>
 
+                  <p><%= challenge_task.task.content.truncate(24) %></p>
                   <%= link_to "差し戻し", team_assign_task_challenge_start_answer_path(assign_id: challenge_task.assign.id, 
                                                                                           team_id: challenge_task.assign.team_id, 
                                                                                           task_id: challenge_task.task.id, 
@@ -62,6 +64,7 @@
                                                                                           id: challenge_task.answers.first.id),
                                                                                           class: "team_info btn btn-outline-warning profile-btn" %>
                 <% else %>
+                  <p><%= challenge_task.task.content.truncate(24) %></p>
                   <p class="badge badge-dark">完了</p>
                 <% end %>
                 <span><strong><%= challenge_task.task.title %></strong></span>

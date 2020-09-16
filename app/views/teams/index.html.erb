@@ -14,6 +14,7 @@
           <%= link_to  team_path(team)  do %>
             <%= image_tag team_icon_url(team),class: "image-size" %>
             <div class="card-body">
+              <p><%= team.remarks.truncate(24) %></p>
               <span><strong><%= team.name %></strong></span>
               <%= link_to time_ago_in_words(team.created_at).upcase + "前", team_path(team), class: "team-time no-text-decoration" %>
             </div>
