@@ -33,9 +33,9 @@
             </li>
 
             <li class="nav-item">
-              <%= link_to teams_path, class: "nav-link" do %>
-                <i class="material-icons">supervised_user_circle</i>
-                <p>チーム</p>
+              <%= link_to challenge_starts_path, class: "nav-link" do %>
+                <i class="material-icons">school</i>
+                <p>タスク</p>
               <% end %>
             </li>
 
@@ -45,11 +45,19 @@
                 <p>マイチーム</p>
               <% end %>
             </li>
+            
+            <li class="nav-item">
+              <%= link_to teams_path, class: "nav-link" do %>
+                <i class="material-icons">supervised_user_circle</i>
+                <p>チームを探す</p>
+              <% end %>
+            </li>
 
             <li class="nav-item">
-              <%= link_to challenge_starts_path, class: "nav-link" do %>
-                <i class="material-icons">school</i>
-                <p>タスク</p>
+              <%= link_to "#", class: "nav-link", data: {confirm: "準備中"} do %>
+                <i class="material-icons">transfer_within_a_station</i>
+                <p>リーダーになって教える</p>
+                <p>　　　(準備中)</p>
               <% end %>
             </li>
 

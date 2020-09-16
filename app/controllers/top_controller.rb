@@ -11,6 +11,6 @@ class TopController < ApplicationController
   private
 
   def login_check
-    redirect_to teams_path, notice: '今日も1日頑張りましょう！' if user_signed_in?
+    redirect_to challenge_starts_path, notice: '今日も1日頑張りましょう！' if user_signed_in?
   end
 end

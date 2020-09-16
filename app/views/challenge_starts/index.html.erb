@@ -23,51 +23,52 @@
       <% @challenge_tasks.each do |challenge_task|%>
 
         <div class="col-sm-12 col-lg-6 col-xl-4">
+          
           <div class="image-box">
-          <%= link_to (image_tag challenge_task.task.image.url(:medium), class: "image-size"), team_assign_task_path(user_id: challenge_task.user_id,
-                                                                                                                     assign_id: challenge_task.assign.id, 
-                                                                                                                     team_id: challenge_task.assign.team_id, 
-                                                                                                                     id: challenge_task.task.id)%>
-          <div class="card-body">
-            <div class="row parts">
-              <% if challenge_task.status == "underway" %>
-                <%= link_to "回答する", new_team_assign_task_challenge_start_answer_path(assign_id: challenge_task.assign.id, 
-                                                                                        team_id: challenge_task.assign.team_id, 
-                                                                                        task_id: challenge_task.task.id, 
-                                                                                        challenge_start_id: challenge_task.id), 
-                                                                                        class: "team_info btn btn-outline-primary profile-btn" %>
-                <%= link_to "諦める", team_assign_task_challenge_start_path(team_id: challenge_task.team_id, 
-                                                                          assign_id: challenge_task.assign_id, 
-                                                                          task_id: challenge_task.task_id,
-                                                                          id: challenge_task.id), 
-                                                                          method: :delete, 
-                                                                          data: { confirm: "本当に諦めますか？"}, 
-                                                                          class: "team_info btn btn-outline-danger profile-btn" %>
-              <% elsif challenge_task.status == "awaiting_review" %>
-                <%= link_to "修正する", edit_team_assign_task_challenge_start_answer_path(assign_id: challenge_task.assign.id, 
-                                                                                        team_id: challenge_task.assign.team_id, 
-                                                                                        task_id: challenge_task.task.id, 
-                                                                                        challenge_start_id: challenge_task.id,
-                                                                                        id: challenge_task.answers.first.id),
-                                                                                        class: "team_info btn btn-outline-success profile-btn" %>
-              <% elsif challenge_task.status == "remand" %>
+            <%= link_to (image_tag challenge_task.task.image.url(:medium), class: "image-size"), team_assign_task_path(user_id: challenge_task.user_id,
+                                                                                                                      assign_id: challenge_task.assign.id, 
+                                                                                                                      team_id: challenge_task.assign.team_id, 
+                                                                                                                      id: challenge_task.task.id) %>
+            <div class="card-body">
+              <div class="row parts">
+                <% if challenge_task.status == "underway" %>
+                
+                  <p><%= challenge_task.task.content.truncate(24) %></p>
+                  <%= link_to "回答する", new_team_assign_task_challenge_start_answer_path(assign_id: challenge_task.assign.id, 
+                                                                                          team_id: challenge_task.assign.team_id, 
+                                                                                          task_id: challenge_task.task.id, 
+                                                                                          challenge_start_id: challenge_task.id), 
+                                                                                          class: "team_info btn btn-outline-primary profile-btn" %>
+                  <%= link_to "諦める", team_assign_task_challenge_start_path(team_id: challenge_task.team_id, 
+                                                                            assign_id: challenge_task.assign_id, 
+                                                                            task_id: challenge_task.task_id,
+                                                                            id: challenge_task.id), 
+                                                                            method: :delete, 
+                                                                            data: { confirm: "本当に諦めますか？"}, 
+                                                                            class: "team_info btn btn-outline-danger profile-btn" %>
+                <% elsif challenge_task.status == "awaiting_review" %>
+                  <%= link_to "修正する", edit_team_assign_task_challenge_start_answer_path(assign_id: challenge_task.assign.id, 
+                                                                                          team_id: challenge_task.assign.team_id, 
+                                                                                          task_id: challenge_task.task.id, 
+                                                                                          challenge_start_id: challenge_task.id,
+                                                                                          id: challenge_task.answers.first.id),
+                                                                                          class: "team_info btn btn-outline-success profile-btn" %>
+                <% elsif challenge_task.status == "remand" %>
 
-                <%= link_to "差し戻し", team_assign_task_challenge_start_answer_path(assign_id: challenge_task.assign.id, 
-                                                                                        team_id: challenge_task.assign.team_id, 
-                                                                                        task_id: challenge_task.task.id, 
-                                                                                        challenge_start_id: challenge_task.id,
-                                                                                        id: challenge_task.answers.first.id),
-                                                                                        class: "team_info btn btn-outline-warning profile-btn" %>
-              <% else %>
-                <p class="badge badge-dark">完了</p>
-              <% end %>
-            </div>
-            <div>
-              <span><strong><%= challenge_task.task.title %></strong></span>
-              <%= link_to time_ago_in_words(challenge_task.updated_at).upcase + "前", team_assign_task_path(assign_id: challenge_task.assign.id, 
-                                                                                                            team_id: challenge_task.assign.team_id, 
-                                                                                                            id: challenge_task.task.id), 
-                                                                                                            class: "team-time no-text-decoration" %>
+                  <%= link_to "差し戻し", team_assign_task_challenge_start_answer_path(assign_id: challenge_task.assign.id, 
+                                                                                          team_id: challenge_task.assign.team_id, 
+                                                                                          task_id: challenge_task.task.id, 
+                                                                                          challenge_start_id: challenge_task.id,
+                                                                                          id: challenge_task.answers.first.id),
+                                                                                          class: "team_info btn btn-outline-warning profile-btn" %>
+                <% else %>
+                  <p class="badge badge-dark">完了</p>
+                <% end %>
+                <span><strong><%= challenge_task.task.title %></strong></span>
+                <%= link_to time_ago_in_words(challenge_task.updated_at).upcase + "前", team_assign_task_path(assign_id: challenge_task.assign.id, 
+                                                                                                              team_id: challenge_task.assign.team_id, 
+                                                                                                              id: challenge_task.task.id), 
+                                                                                                              class: "team-time no-text-decoration" %>
               </div>
             </div>
           </div>

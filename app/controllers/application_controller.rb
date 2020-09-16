@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     if params[:controller].match(/\A(administrators)/)
       Regexp.last_match[1]
     else
-      'application'
+      'member'
     end
   end
 end
