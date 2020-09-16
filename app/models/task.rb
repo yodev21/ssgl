@@ -7,6 +7,7 @@ class Task < ApplicationRecord
   has_many :challenge_starts, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :feed_backs, dependent: :destroy
+  has_many :courses, dependent: :destroy
   mount_uploader :image, ImageUploader
 
   validates :title, presence: true, length: { maximum: 50 }
