@@ -20,12 +20,16 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[index show destroy]
   resources :challenge_starts, only: [:index]
+  
+  # リファクタリング(Sessionを取得して検索するようにする)
+  resources :belong_teams, only: %i[index show destroy]
+  # -----------------------------------------------
 
   resources :teams do
     resources :feed_backs, only: %i[index show]
-    collection do
-      resources :belong_teams, only: %i[index show destroy]
-    end
+    # collection do
+      # resources :belong_teams, only: %i[index show destroy]
+    # end
 
     resources :assigns, only: %i[create destroy update] do
       resources :tasks do
