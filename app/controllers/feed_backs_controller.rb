@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FeedBacksController < ApplicationController
   before_action :authenticate_user!
   def new
@@ -21,7 +23,7 @@ class FeedBacksController < ApplicationController
                                                                task_id: @feed_back.task_id,
                                                                challenge_start_id: @feed_back.challenge_start_id,
                                                                id: @feed_back.answer_id),
-                                                               notice: "フィードバックを送信しました。"
+                  notice: 'フィードバックを送信しました。'
     else
       redirect_to team_assign_task_challenge_start_answer_path(user_id: @feed_back.user_id,
                                                                team_id: @feed_back.team_id,
@@ -29,13 +31,13 @@ class FeedBacksController < ApplicationController
                                                                task_id: @feed_back.task_id,
                                                                challenge_start_id: @feed_back.challenge_start_id,
                                                                id: @feed_back.answer_id),
-                                                               alert: "送信に失敗しました。"
-    
+                  alert: '送信に失敗しました。'
+
     end
   end
 
   def index
-    @feed_backs = FeedBack.where(team_id: params[:team_id])
+    @feed_backs = FeedBack.group(:task_id, :team_id).select(:task_id, :team_id)
   end
 
   def show
@@ -46,7 +48,9 @@ class FeedBacksController < ApplicationController
   end
 
   private
+
   def feed_back_params
     params.require(:feed_back).permit(:feeling_number, :reason)
   end
+
 end

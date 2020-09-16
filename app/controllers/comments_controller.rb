@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :authenticate_user!
 
@@ -14,9 +16,9 @@ class CommentsController < ApplicationController
         send_user(@comment)
         change_status(@comment)
         @comments = Comment.where(answer_id: @comment.answer_id)
-        format.js { render :index}
+        format.js { render :index }
       else
-        redirect_to team_path , notice: '投稿できませんでした。'
+        redirect_to team_path, notice: '投稿できませんでした。'
       end
     end
   end
@@ -33,11 +35,11 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     respond_to do |format|
       if @comment.update(comment_params)
-        flash.now[:notice] = "コメントが編集されました。"
-        format.js { render :index}
+        flash.now[:notice] = 'コメントが編集されました。'
+        format.js { render :index }
       else
-        flash.now[:alert] = "コメントの編集に失敗しました。"
-        format.js { render :edit_error}
+        flash.now[:alert] = 'コメントの編集に失敗しました。'
+        format.js { render :edit_error }
       end
     end
   end
@@ -47,12 +49,13 @@ class CommentsController < ApplicationController
     @comments = Comment.where(answer_id: @comment.answer_id)
     @comment.destroy
     respond_to do |format|
-      flash.now[:alert] = "コメントが削除されました。"
-      format.js { render :index}
+      flash.now[:alert] = 'コメントが削除されました。'
+      format.js { render :index }
     end
   end
 
   private
+
   def comment_params
     params.require(:comment).permit(:content, :image)
   end
@@ -60,9 +63,7 @@ class CommentsController < ApplicationController
   def send_user(comment)
     if current_user.id == comment.answer.user_id
       comment.team.assigns.each do |assign|
-        if assign.status == "admin" || assign.status == "memtor"
-          CommentMailer.comment_mail(assign.user.email).deliver
-        end
+        CommentMailer.comment_mail(assign.user.email).deliver if assign.status == 'admin' || assign.status == 'memtor'
       end
     else
       CommentMailer.comment_mail(comment.answer.user.email).deliver
@@ -70,11 +71,16 @@ class CommentsController < ApplicationController
   end
 
   def change_status(comment)
-     challenge_start_id = ChallengeStart.find(comment.challenge_start_id)
-    if current_user.id == comment.answer.user_id
-      challenge_start_id.update(status: "awaiting_review")
+    # comment_user = ChallengeStart.find(comment.challenge_start_id)
+    challenge_start_id = ChallengeStart.find(comment.challenge_start_id)
+    comment_user = Assign.find_by(user_id: comment.user_id,
+                                         team_id: comment.team_id)
+
+    # if current_user.id == comment.answer.user_id
+    if comment_user.status == "admin" || comment_user.status == "memtor"
+      challenge_start_id.update(status: 'remand')
     else
-      challenge_start_id.update(status: "remand")
+      challenge_start_id.update(status: 'awaiting_review')
     end
   end
 end

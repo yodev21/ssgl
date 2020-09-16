@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Task < ApplicationRecord
   belongs_to :user
   belongs_to :team
@@ -7,20 +9,19 @@ class Task < ApplicationRecord
   has_many :feed_backs, dependent: :destroy
   mount_uploader :image, ImageUploader
 
-  validates :title, presence: true, length: { maximum: 50}
+  validates :title, presence: true, length: { maximum: 50 }
   validates :content, presence: true
   validates :image, presence: true
 
-  private
-  scope :belong_to_team_all, -> (id: id, team_id: team_id, assign_id: assign_id) do
+  scope :belong_to_team_all, lambda { |id: '', team_id: '', assign_id: ''|
     next if id.nil? && team_id.nil? && assign_id.nil?
+
     Task.where(team_id: team_id,
                assign_id: assign_id)
-  end
+  }
 
-  scope :with_title, -> (title) do
+  scope :with_title, lambda { |title|
     next if title.nil?
-    where("title LIKE ?", "%#{title}%")
-  end
-
+    where('tasks.title LIKE ?', "%'#{title}'%")
+  }
 end

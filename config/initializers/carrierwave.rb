@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if Rails.env.production?
   CarrierWave.configure do |config|
     require 'carrierwave/storage/abstract'

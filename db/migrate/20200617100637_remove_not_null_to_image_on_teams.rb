@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveNotNullToImageOnTeams < ActiveRecord::Migration[5.2]
   def up
     change_column :teams, :image, :text, null: true

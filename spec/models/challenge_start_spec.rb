@@ -1,19 +1,21 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ChallengeStart, type: :model do
-  describe "タスクチャレンジ機能" do
+  describe 'タスクチャレンジ機能' do
     before do
-      @user = FactoryBot.create(:user, email: "testChallengeStart@example.com")
+      @user = FactoryBot.create(:user, email: 'testChallengeStart@example.com')
       @team = FactoryBot.create(
-        :team, 
-        name: "test Team",
+        :team,
+        name: 'test Team',
         image: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/images/yay.png')),
         user_id: @user.id
-        )
+      )
       @assign = FactoryBot.create(
         :assign,
         user_id: @user.id,
-        team_id: @team.id,
+        team_id: @team.id
       )
       @task = FactoryBot.create(
         :task,
@@ -22,7 +24,7 @@ RSpec.describe ChallengeStart, type: :model do
         assign_id: @assign.id
       )
     end
-    example "必要なデータがあれば有効な状態であること" do
+    example '必要なデータがあれば有効な状態であること' do
       challenge_start = ChallengeStart.new(
         status: 0,
         user_id: @user.id,
@@ -33,7 +35,7 @@ RSpec.describe ChallengeStart, type: :model do
       expect(challenge_start).to be_valid
     end
 
-    example "ステータスが無効であれば無効な状態であること" do
+    example 'ステータスが無効であれば無効な状態であること' do
       challenge_start = ChallengeStart.new(
         status: nil,
         user_id: @user.id,
@@ -44,7 +46,7 @@ RSpec.describe ChallengeStart, type: :model do
       expect(challenge_start).not_to be_valid
     end
 
-    example "ユーザーIDが無効であれば無効な状態であること" do
+    example 'ユーザーIDが無効であれば無効な状態であること' do
       challenge_start = ChallengeStart.new(
         status: 0,
         user_id: nil,
@@ -55,7 +57,7 @@ RSpec.describe ChallengeStart, type: :model do
       expect(challenge_start).not_to be_valid
     end
 
-    example "チームIDが無効であれば無効な状態であること" do
+    example 'チームIDが無効であれば無効な状態であること' do
       challenge_start = ChallengeStart.new(
         status: 0,
         user_id: @user.id,
@@ -66,7 +68,7 @@ RSpec.describe ChallengeStart, type: :model do
       expect(challenge_start).not_to be_valid
     end
 
-    example "アサインIDが無効であれば無効な状態であること" do
+    example 'アサインIDが無効であれば無効な状態であること' do
       challenge_start = ChallengeStart.new(
         status: 0,
         user_id: @user.id,
@@ -77,7 +79,7 @@ RSpec.describe ChallengeStart, type: :model do
       expect(challenge_start).not_to be_valid
     end
 
-    example "タスクIDが無効であれば無効な状態であること" do
+    example 'タスクIDが無効であれば無効な状態であること' do
       challenge_start = ChallengeStart.new(
         status: 0,
         user_id: @user.id,

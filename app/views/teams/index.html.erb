@@ -4,8 +4,8 @@
       <%= form_with(url: teams_search_path, local: true, method: :get, class: "form-inline") do |f| %>
         <%= f.text_field :search_name, class: "form-control mr-sm-2 search_left", placeholder: "チーム名" %>
         <%= f.submit '検索', class: "btn btn-outline-success  search_left" %>
-        <%= link_to "マイチーム", belong_teams_path, class: "btn btn-outline-info waves-effect  button_right"%>
-        <%= link_to "チーム作成", new_team_path, class: "btn btn-outline-primary  button_right"%>
+        <%= link_to "マイチーム", belong_teams_path, class: "btn btn-outline-info waves-effect  button_right mobile_button_left"%>
+        <%= link_to "チーム作成", new_team_path, class: "btn btn-outline-primary  button_right mobile_button"%>
       <% end %>
     </div>
     <% @teams.each do |team|%>
@@ -14,6 +14,7 @@
           <%= link_to  team_path(team)  do %>
             <%= image_tag team_icon_url(team),class: "image-size" %>
             <div class="card-body">
+              <p><%= team.remarks.truncate(24) %></p>
               <span><strong><%= team.name %></strong></span>
               <%= link_to time_ago_in_words(team.created_at).upcase + "前", team_path(team), class: "team-time no-text-decoration" %>
             </div>

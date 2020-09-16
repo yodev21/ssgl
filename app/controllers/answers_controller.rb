@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class AnswersController < ApplicationController
-  before_action :set_params, only: [:show, :edit, :update, :destroy]
+  before_action :set_params, only: %i[show edit update destroy]
   before_action :authenticate_user!
-  def index
-  end
+  def index; end
 
   def show
     @comment = Comment.new
@@ -12,25 +13,24 @@ class AnswersController < ApplicationController
     @comment.task_id = params[:task_id]
     @comment.challenge_start_id = params[:challenge_start_id]
     @comment.answer_id = params[:id]
-    @comments = Comment.where(team_id: @answer.team_id, 
-                              task_id: @answer.task_id, 
+    @comments = Comment.where(team_id: @answer.team_id,
+                              task_id: @answer.task_id,
                               answer_id: @answer.id)
     @answer_user = Assign.find_by(user_id: current_user.id, team_id: @answer.team_id)
-    
   end
 
   def edit; end
 
   def update
     if @answer.update(answer_params)
-      redirect_to team_assign_task_challenge_start_answer_path( team_id: @answer.team_id,
-                                                                assign_id: @answer.assign_id,
-                                                                task_id: @answer.task_id,
-                                                                challenge_start_id: @answer.challenge_start_id,
-                                                                id: @answer.id),notice: "更新しました！"
-      
+      redirect_to team_assign_task_challenge_start_answer_path(team_id: @answer.team_id,
+                                                               assign_id: @answer.assign_id,
+                                                               task_id: @answer.task_id,
+                                                               challenge_start_id: @answer.challenge_start_id,
+                                                               id: @answer.id), notice: '更新しました！'
+
     else
-      flash.now[:alert] = "更新に失敗しました！"
+      flash.now[:alert] = '更新に失敗しました！'
       render :edit
 
     end
@@ -61,9 +61,9 @@ class AnswersController < ApplicationController
                                                                               task_id: @answer.task_id,
                                                                               challenge_start_id: @answer.challenge_start_id,
                                                                               answer_id: @answer.id),
-                                                                              notice: "回答しました。"
+                  notice: '回答しました。'
     else
-      flash.now[:alert] = "課題投稿に失敗しました！"
+      flash.now[:alert] = '課題投稿に失敗しました！'
       render :new
     end
   end
@@ -74,6 +74,7 @@ class AnswersController < ApplicationController
   end
 
   private
+
   def answer_params
     params.require(:answer).permit(:url, :content, :image)
   end

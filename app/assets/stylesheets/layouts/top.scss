@@ -1,22 +1,124 @@
 @import "layouts/colors";
-.title {
-  text-align: center;
-  position: relative;
-  top: -1rem;
-  font-size: 7rem;
-  padding-top: 10rem;
-  color: $light_blue;
-  text-shadow: -1px -2px 3px #808080;
+@media screen and (max-width: 375px) {
+  .title {
+    position: relative;
+    top: 1rem;
+    left: 4rem;
+    width: 60%;
+  }
+
+  .copy {
+    position: relative;
+    top: -5rem;
+    text-align: center;
+    background: $white;
+    color: $light_gray;
+    font-size: 0.4rem;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    box-shadow: 0 2px 5px #ccc;
+  }
+}
+@media screen and (min-width: 500px) {
+  .title {
+    position: relative;
+    top: 1rem;
+    left: 6rem;
+    width: 60%;
+  }
+
+  .copy {
+    position: relative;
+    top: -5rem;
+    text-align: center;
+    background: $white;
+    color: $light_gray;
+    font-size: 0.73rem;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    box-shadow: 0 2px 5px #ccc;
+  }
 }
 
-.copy {
-  text-align: center;
-  background: $white;
-  color: $light_gray;
-  font-size: 1.5rem;
-  padding: 2rem 0;
-  margin-top: 4rem;
-  position: relative;
-  top: -1rem;
-  box-shadow: 0 2px 5px #ccc;
+@media screen and (min-width: 500px) {
+  .title {
+    position: relative;
+    top: 1rem;
+    left: 6rem;
+    width: 60%;
+  }
+
+  .copy {
+    position: relative;
+    top: -5rem;
+    text-align: center;
+    background: $white;
+    color: $light_gray;
+    font-size: 0.73rem;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    box-shadow: 0 2px 5px #ccc;
+  }
+}
+@media screen and (min-width: 768px) {
+  .title {
+    position: relative;
+    top: -5rem;
+    left: 15rem;
+    width: 60%;
+  }
+
+  .copy {
+    position: relative;
+    top: -15rem;
+    text-align: center;
+    background: $white;
+    color: $light_gray;
+    font-size: 1.25rem;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    box-shadow: 0 2px 5px #ccc;
+  }
+}
+
+@media screen and (min-width: 991px) {
+  .title {
+    position: relative;
+    top: -5rem;
+    left: 10rem;
+    width: 60%;
+  }
+
+  .copy {
+    position: relative;
+    top: -15rem;
+    text-align: center;
+    background: $white;
+    color: $light_gray;
+    font-size: 1rem;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    box-shadow: 0 2px 5px #ccc;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .title {
+    position: relative;
+    top: -12rem;
+    left: 5rem;
+    width: 80%;
+  }
+
+  .copy {
+    text-align: center;
+    background: $white;
+    color: $light_gray;
+    font-size: 1.5rem;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    position: relative;
+    top: -28rem;
+    box-shadow: 0 2px 5px #ccc;
+  }
 }

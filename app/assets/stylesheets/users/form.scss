@@ -6,11 +6,12 @@
   flex: 1;
   flex-basis: auto;
   box-sizing: border-box;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px #ccc;
 }
 
 .form-card {
   border: none;
-  box-shadow: 0 2px 5px #ccc;
 }
 
 .form-wrap {
@@ -38,6 +39,8 @@
 @media screen and (max-width: 768px) {
   main {
     padding: 75px 0;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px #ccc;
   }
   .devise-card {
     background-color: $body_white;

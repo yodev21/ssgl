@@ -17,13 +17,6 @@
                                                      class: "btn btn-outline-info team_info" %>
                                                       
             </div>
-            <div>
-              <span><strong><%= feed_back.task.title %></strong></span>
-              <%= link_to time_ago_in_words(feed_back.updated_at).upcase + "前", team_feed_back_path(team_id: feed_back.team_id, 
-                                                                                                    task_id: feed_back.task_id,
-                                                                                                    id: feed_back.task_id), 
-                                                                                                    class: "team-time no-text-decoration" %>
-              </div>
             </div>
           </div>
         </div>

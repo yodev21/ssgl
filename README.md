@@ -36,9 +36,34 @@
 課題をアップデートしていくことで、メンターの管理コストを下げつつかつ、メンバーは自分に適した課題解くことで、  
 無理なく楽しくプログラミング学習を行うことができます。
 
+# 開発背景
+
+https://github.com/yodev21/ssgl/files/4855555/default.pdf
+
 # 使用方法
 
-アプリケーション完成後記述
+チームリーダー（管理者）
+
+1. 新規でチームを作成します。
+2. 作成したチームにひもづく課題を作成します。
+3. メンバーに参加していただき課題を実施していただきます。
+4. メンバーが課題提出をした場合確認し、レビューを行います。
+5. 課題完了後のフィードバック内容を確認し、レベルに合わせた課題を新しく作成します。
+
+メンター
+
+1. 所属しているチームにて新しく課題を作成します。
+2. メンバーに参加していただき課題を実施していただきます。
+3. メンバーが課題提出をした場合確認し、レビューを行います。
+4. 課題完了後のフィードバック内容を確認し、レベルに合わせた課題を新しく作成します。
+
+メンバー
+
+1. 任意のチームに参加します。
+2. 参加したチームの任意の課題に取り組みます。
+3. 課題が完了した場合、提出します。
+4. 提出後その課題に対してフィードバックを行います。
+5. 管理者または、メンターがレビューを行うため、修正箇所がある場合再度提出します。
 
 # バージョン情報
 
@@ -52,8 +77,6 @@
 
 - Ruby
 - Ruby on Rails
-- React.js
-  - Redux.js
 - Docker
 - Docker Compose
 - Nginx
@@ -63,10 +86,12 @@
   - S3
   - VPC
   - Route53
+  - RDS
+  - ERB
 
 # [構成図](https://docs.google.com/spreadsheets/d/1gwdg1GKj0wkPb06tlWZLU2vbZhuRLNEkIUAo5bPcqzs/edit#gid=0)
 
-![infrastructure_diagram](https://user-images.githubusercontent.com/60313195/82924115-da169a00-9fb6-11ea-9ed0-ebd1b48de89a.png)
+![infrastructure_diagram](https://user-images.githubusercontent.com/60313195/85969602-1c425980-ba03-11ea-83e2-61dfe19c3205.png)
 
 # 機能一覧
 
@@ -74,11 +99,8 @@
 
   - サインイン機能
   - サインアップ機能
-  - ユーザー一覧表示機能
   - ユーザー情報詳細表示機能
   - ユーザー情報更新機能
-  - ユーザー削除機能(退会)
-  - ユーザー検索機能
   - ゲストログイン機能
 
 - チーム機能
@@ -89,6 +111,11 @@
   - チーム情報更新機能
   - チーム削除機能
   - チーム検索機能
+
+- メンター機能
+
+  - メンター昇格機能
+  - メンター降格機能
 
 - 課題機能
 
@@ -105,6 +132,15 @@
 - コメント機能
   - コメント作成機能
   - コメント削除機能
+- 課題添削機能
+
+  - コメントをすることで差し戻し状態にする機能（リーダー or メンター）
+  - コメントをすることでレビュー待ち状態にする機能（メンバー）
+  - 課題完了機能
+
+- フィードバック機能
+  - フィードバック一覧表示機能
+  - フィードバック情報詳細表示機能
 
 # [カタログ設計](https://docs.google.com/spreadsheets/d/1oHgA2ZhySNAlNgKrrgEYxRSaP3c4eL6gM-v7B7IWB30/edit#gid=0)
 
@@ -125,37 +161,3 @@ https://drive.google.com/file/d/1GFX3bJS14JejGA8Xl1LPCGNLd505Y3kE/view?usp=shari
 # [ワイヤーフレーム](https://drive.google.com/file/d/14jobJ0jIBX10wl9AzeKD5eLBJjNwAoom/view?usp=sharing)
 
 https://drive.google.com/file/d/14jobJ0jIBX10wl9AzeKD5eLBJjNwAoom/view?usp=sharing
-
-# 使用予定 Gem
-
-- rails
-- pg
-- puma
-- uglifier
-- sass-rails
-- turbolinks
-- jbuilder
-- device
-- ransack
-- fog-aws
-
-- web-console
-- listen
-- spring
-- spring-watcher-listen
-
-- webdrivers
-- rspec-rails
-- capybara
-- factory_bot_rails
-- database_cleaner
-
-# 就業 Term から 2 つ以上の技術
-
-- React.js (UI 作成用の JavaScript ライブラリ)
-  https://ja.reactjs.org/
-
-- Redux (state を管理するための JavaScript ライブラリ)
-  https://redux.js.org/
-
-- Docker (コンテナ仮想化ソフトウェア)

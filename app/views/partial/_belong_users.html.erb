@@ -13,6 +13,8 @@
                                                                       assign_id: assign.id, 
                                                                       id: assign.user_id),
                                                                       class: "btn btn-outline-info" %>
+
+                                                                    
               </div>
               <div>
                 <span><strong><%= assign.user.name %></strong></span>
@@ -20,6 +22,24 @@
                                                                                                                           assign_id: assign.id, 
                                                                                                                           id: assign.user_id), 
                                                                                                                           class: "team-time no-text-decoration" %>
+                <% if assign.status == "admin" %>
+                  <%= link_to "管理者", team_assign_belong_team_user_path(team_id: assign.team.id, 
+                                                                        assign_id: assign.id, 
+                                                                        id: assign.user_id),
+                                                                        class: "badge badge-primary" %>
+
+                <% elsif assign.status == "memtor" %>
+                  <%= link_to "メンター", team_assign_belong_team_user_path(team_id: assign.team.id, 
+                                                                        assign_id: assign.id, 
+                                                                        id: assign.user_id),
+                                                                        class: "badge badge-success" %>
+                  
+                <% elsif assign.status =="member" %>
+                  <%= link_to "メンバー", team_assign_belong_team_user_path(team_id: assign.team.id, 
+                                                                        assign_id: assign.id, 
+                                                                        id: assign.user_id),
+                                                                        class: "badge badge-info" %>
+                <% end %>
                 </div>
               </div>
             </div>
