@@ -9,7 +9,7 @@ class AssignsController < ApplicationController
                          team_id: team.id,
                          user_id: current_user.id)
     if @assign.save
-      redirect_to assign_tasks_path(assign_id: @assign.id), notice: 'チームに加入しました。'
+      redirect_to team_path(team.id), notice: 'チームに加入しました。'
     else
       redirect_to team_path(team.id), alert: 'チームの加入に失敗しました。'
     end
@@ -17,7 +17,6 @@ class AssignsController < ApplicationController
 
   def update
     @assign = Assign.find_by(id: params[:id])
-    # binding.pry
     if @assign.update(status: params[:status])
       redirect_to belong_team_user_path(team_id: @assign.team_id,
                                         user_id: @assign.user.id),

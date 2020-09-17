@@ -4,8 +4,8 @@
       <div class="form-group text-center">
         <h3>フィードバック</h3>
       </div>
-      <%= form_with model: @feed_back, url: answer_feed_backs_path(answer_id: @answer.id), local: true do |f| %>
-                  
+      <%= form_with model: @feed_back, local: true do |f| %>
+        <%= f.hidden_field :answer_id, value: @answer.id %>
         <div class="row">
           <div class="col-12">
             <span class="right"><strong>1:難しかった&nbsp;&nbsp;</strong></span>

@@ -58,11 +58,11 @@ class AnswersController < ApplicationController
 
     if @answer.save
       challenge_start.update(status: :awaiting_review)
-      redirect_to new_answer_feed_backs_path(team_id: @answer.team_id,
-                                              assign_id: @answer.assign_id,
-                                              task_id: @answer.task_id,
-                                              challenge_start_id: @answer.challenge_start_id,
-                                              answer_id: @answer.id),
+      redirect_to new_feed_back_path(team_id: @answer.team_id,
+                                      assign_id: @answer.assign_id,
+                                      task_id: @answer.task_id,
+                                      challenge_start_id: @answer.challenge_start_id,
+                                      answer_id: @answer.id),
                   notice: '回答しました。'
     else
       flash.now[:alert] = '課題投稿に失敗しました！'

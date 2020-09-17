@@ -4,9 +4,6 @@ class TasksController < ApplicationController
   before_action :set_params, only: %i[edit update destroy]
   before_action :authenticate_user!
   def new
-
-    # @assign = Assign.find_by(id: params[:id])
-    # @task = @assign.tasks.build
     @task = Task.new
   end
 
@@ -28,13 +25,8 @@ class TasksController < ApplicationController
 
   def index
     @team = Team.find_by(id: params[:id])
-    # binding.pry
-    # @assign = Assign.find_by(team_id: params[:team_id],
-    #                          user_id: current_user.id)
     @assign = Assign.find_by(team_id: @team.id,
                              user_id: current_user.id)
-    # @tasks = Task.belong_to_team_all(team_id: params[:team_id],
-    #                                  assign_id: params[:assign_id])
     @tasks = Task.belong_to_team_all(team_id: @team.id,
                                      assign_id: @assign.id)
                  .with_title(params[:title])

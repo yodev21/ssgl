@@ -17,8 +17,9 @@ RSpec.describe 'Answers', type: :system do
       click_button 'サインイン'
     end
 
-    example '回答ができること' do
+    example '回答ができること', retry: 3 do
       visit task_path(user_id: @user.id, team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
+      
       click_link '回答'
       fill_in 'answer_content', with: 'テスト コンテント'
       click_button '回答'

@@ -8,7 +8,7 @@ class FeedBacksController < ApplicationController
   end
 
   def create
-    answer = Answer.find(params[:answer_id])
+    answer = Answer.find(params[:feed_back][:answer_id])
     @feed_back = FeedBack.new(feed_back_params)
     @feed_back.user_id = current_user.id
     @feed_back.team_id = answer.team.id

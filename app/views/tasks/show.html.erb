@@ -34,28 +34,27 @@
                                                         method: :post,
                                                         class: "btn btn-outline-primary  show_button_right" %>
           <% elsif  @challenge_task.status == "awaiting_review" || @challenge_task.status == "remand" && @answer.present? %>
-            <%= link_to "回答修正", edit_challenge_start_answer_path(team_id: @challenge_task.team_id,
-                                                                    assign_id: @challenge_task.assign_id, 
-                                                                    task_id: @challenge_task.task_id, 
-                                                                    challenge_start_id: @challenge_task.id, 
-                                                                    id: @answer.id), 
-                                                                    class: "btn btn-outline-success  show_button_right" %>
+            <%= link_to "回答修正", edit_answer_path(team_id: @challenge_task.team_id,
+                                                    assign_id: @challenge_task.assign_id, 
+                                                    task_id: @challenge_task.task_id, 
+                                                    challenge_start_id: @challenge_task.id, 
+                                                    id: @answer.id), 
+                                                    class: "btn btn-outline-success  show_button_right" %>
 
-            <%= link_to "コメント", challenge_start_answer_path(team_id: @challenge_task.team_id,
-                                                                assign_id: @challenge_task.assign_id, 
-                                                                task_id: @challenge_task.task_id, 
-                                                                challenge_start_id: @challenge_task.id, 
-                                                                id: @answer.id), 
-                                                                class: "btn btn-outline-info  show_button_right" %>
+            <%= link_to "コメント", answer_path(team_id: @challenge_task.team_id,
+                                              assign_id: @challenge_task.assign_id, 
+                                              task_id: @challenge_task.task_id, 
+                                              challenge_start_id: @challenge_task.id, 
+                                              id: @answer.id), 
+                                              class: "btn btn-outline-info  show_button_right" %>
           <% else %>
-            <%= link_to "回答", new_answer_path(challenge_start_id: @challenge_task.id), 
-                                                                class: "btn btn-outline-primary  show_button_right" %>
+            <%= link_to "回答", new_answer_path(challenge_start_id: @challenge_task.id), class: "btn btn-outline-primary  show_button_right" %>
             <%= link_to "諦める", challenge_start_path(team_id: @task.team_id, 
-                                                            assign_id: @task.assign_id, 
-                                                            task_id: @task.id), 
-                                                            method: :delete, 
-                                                            data: { confirm: "本当に諦めますか？"}, 
-                                                            class: "btn btn-outline-danger   show_button_right" %>
+                                                      assign_id: @task.assign_id, 
+                                                      task_id: @task.id), 
+                                                      method: :delete, 
+                                                      data: { confirm: "本当に諦めますか？"}, 
+                                                      class: "btn btn-outline-danger   show_button_right" %>
           <% end %>
         <% end %>
       <% else %>
