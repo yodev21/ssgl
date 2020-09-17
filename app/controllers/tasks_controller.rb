@@ -9,18 +9,18 @@ class TasksController < ApplicationController
   end
 
   def create
-    @assign = Assign.find_by(id: params[:assign_id])
+    @assign = Assign.find_by(id: params[:id])
     @task = @assign.tasks.build(task_params)
     @task.user_id = current_user.id
     @task.team_id = @assign.team_id
     if @task.save
-      redirect_to assign_tasks_path(team_id: @task.team_id,
-                                         assign_id: @task.assign_id),
-                  notice: '課題を作成しました！'
+      redirect_to tasks_path(team_id: @task.team_id,
+                             assign_id: @task.assign_id),
+                             notice: '課題を作成しました！'
     else
-      redirect_to team_assign_tasks_path(team_id: @task.team_id,
-                                         assign_id: @task.assign_id),
-                  alert: '課題の作成に失敗しました！'
+      redirect_to tasks_path(team_id: @task.team_id,
+                             assign_id: @task.assign_id),
+                             alert: '課題の作成に失敗しました！'
     end
   end
 
