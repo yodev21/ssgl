@@ -5,15 +5,15 @@
       <% @teams.each do |team|%>
         <div class="col-sm-12 col-lg-6 col-xl-4">
           <div class="image-box">
-          <%= link_to (image_tag team_icon_url(team),class: "image-size"), team_assign_tasks_path(assign_id: team.assigns.first.id,  
+          <%= link_to (image_tag team_icon_url(team),class: "image-size"), assign_tasks_path(assign_id: team.assigns.first.id,  
                                                                                                   team_id: team.assigns.first.team_id)%>
           <div class="card-body">
             <div class="row parts">
-              <%= link_to "タスク", team_assign_tasks_path(assign_id: team.assigns.first.id,  
+              <%= link_to "タスク", assign_tasks_path(assign_id: team.assigns.first.id,  
                                                           team_id: team.assigns.first.team_id), 
                                                           class: "btn btn-outline-info",
                                                           id: "task_link" %>
-              <%= link_to "メンバー", team_assign_belong_team_users_path(assign_id: team.assigns.first.id, 
+              <%= link_to "メンバー", assign_belong_team_users_path(assign_id: team.assigns.first.id, 
                                                                         team_id: team.assigns.first.team_id), 
                                                                         class: "btn btn-outline-warning btn_right" %>
             </div>

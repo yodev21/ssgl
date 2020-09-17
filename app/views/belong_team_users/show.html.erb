@@ -21,14 +21,14 @@
       </div>
         <% if @admin_user.present? && @admin_user.status == "admin" ||  @admin_user.status == "memtor"%>
           <% if @assign_user.first.status == "memtor" %>
-            <%= link_to "メンバーにする", team_assign_path(@assign_user.first.user, 
+            <%= link_to "メンバーにする", assign_path(@assign_user.first.user, 
                                                         status: "member",
                                                         team_id: @assign_user.first.team_id), 
                                                         method: :PATCH, 
                                                         data: {confirm: "メンバーにしてもよろしいですか？"}, 
                                                         class: "btn btn-success" %>
           <% elsif @assign_user.first.status == "member" %>
-            <%= link_to "メンターにする", team_assign_path(@assign_user.first.user, 
+            <%= link_to "メンターにする", assign_path(@assign_user.first.user, 
                                                         status: "memtor",
                                                         team_id: @assign_user.first.team_id), 
                                                         method: :PATCH, 
@@ -38,7 +38,7 @@
         <% end %>
 
         <% if @admin_user.status == "admin" %>
-          <%= link_to "チーム退会", team_assign_path(id: @assign_user.first.user_id,
+          <%= link_to "チーム退会", assign_path(id: @assign_user.first.user_id,
                                                    team_id: @assign_user.first.team_id), 
                                                    method: :delete, 
                                                    data: {confirm: "ユーザーを削除してもよろしいですか？"}, 

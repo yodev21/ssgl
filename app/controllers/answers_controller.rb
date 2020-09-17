@@ -23,7 +23,7 @@ class AnswersController < ApplicationController
 
   def update
     if @answer.update(answer_params)
-      redirect_to team_assign_task_challenge_start_answer_path(team_id: @answer.team_id,
+      redirect_to assign_task_challenge_start_answer_path(team_id: @answer.team_id,
                                                                assign_id: @answer.assign_id,
                                                                task_id: @answer.task_id,
                                                                challenge_start_id: @answer.challenge_start_id,
@@ -56,7 +56,7 @@ class AnswersController < ApplicationController
     if @answer.save
       challenge_start = ChallengeStart.find(params[:challenge_start_id])
       challenge_start.update(status: :awaiting_review)
-      redirect_to new_team_assign_task_challenge_start_answer_feed_backs_path(team_id: @answer.team_id,
+      redirect_to new_assign_task_challenge_start_answer_feed_backs_path(team_id: @answer.team_id,
                                                                               assign_id: @answer.assign_id,
                                                                               task_id: @answer.task_id,
                                                                               challenge_start_id: @answer.challenge_start_id,

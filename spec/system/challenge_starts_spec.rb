@@ -17,13 +17,13 @@ RSpec.describe 'Challenge_starts', type: :system do
     end
 
     example 'タスクに取り組むことができること' do
-      visit team_assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
+      visit assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
       click_link '取り組む'
       wait.until { expect(page).to have_content 'こちらの課題に取り組みました' }
     end
 
     example 'タスクを取り消すことができること' do
-      visit team_assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
+      visit assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
       click_link '取り組む'
       click_link '諦める'
       page.driver.browser.switch_to.alert.accept

@@ -17,7 +17,7 @@ class FeedBacksController < ApplicationController
     @feed_back.answer_id = params[:answer_id]
 
     if @feed_back.save(feed_back_params)
-      redirect_to team_assign_task_challenge_start_answer_path(user_id: @feed_back.user_id,
+      redirect_to assign_task_challenge_start_answer_path(user_id: @feed_back.user_id,
                                                                team_id: @feed_back.team_id,
                                                                assign_id: @feed_back.assign_id,
                                                                task_id: @feed_back.task_id,
@@ -25,7 +25,7 @@ class FeedBacksController < ApplicationController
                                                                id: @feed_back.answer_id),
                   notice: 'フィードバックを送信しました。'
     else
-      redirect_to team_assign_task_challenge_start_answer_path(user_id: @feed_back.user_id,
+      redirect_to assign_task_challenge_start_answer_path(user_id: @feed_back.user_id,
                                                                team_id: @feed_back.team_id,
                                                                assign_id: @feed_back.assign_id,
                                                                task_id: @feed_back.task_id,

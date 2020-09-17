@@ -9,7 +9,7 @@ class ChallengeStartsController < ApplicationController
 
   def create
     @challenge = ChallengeStart.create_challenge_start(task: params[:task_id], user: current_user)
-    redirect_to team_assign_task_path(user_id: current_user.id,
+    redirect_to assign_task_path(user_id: current_user.id,
                                       team_id: params[:team_id],
                                       assign_id: params[:assign_id],
                                       id: params[:task_id]),
@@ -20,7 +20,7 @@ class ChallengeStartsController < ApplicationController
     # challenge = ChallengeStart.find(params[:id])
     challenge = ChallengeStart.find(params[:id])
     challenge.update(status: :complete)
-    redirect_to team_assign_task_path(user_id: current_user.id,
+    redirect_to assign_task_path(user_id: current_user.id,
                                       team_id: params[:team_id],
                                       assign_id: params[:assign_id],
                                       id: params[:task_id]),
@@ -30,7 +30,7 @@ class ChallengeStartsController < ApplicationController
   def destroy
     @challenge = ChallengeStart.find_challenge_start(task: params[:task_id])
     @challenge.destroy
-    redirect_to team_assign_task_path(team_id: params[:team_id],
+    redirect_to assign_task_path(team_id: params[:team_id],
                                       assign_id: params[:assign_id],
                                       id: params[:task_id]),
                 notice: 'こちらの課題を取り消しました。'

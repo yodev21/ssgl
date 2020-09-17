@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
     @team = current_user.teams.build(team_params)
     if @team.save
       @assign = @team.join_team(status: :admin, user: @team.user_id)
-      redirect_to new_team_assign_task_path(assign_id: @assign.id,
+      redirect_to new_assign_task_path(assign_id: @assign.id,
                                             team_id: @assign.team_id),
                   notice: 'チームを作成しました。 次に課題を作成してください。'
     else

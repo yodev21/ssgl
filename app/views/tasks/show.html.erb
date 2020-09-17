@@ -10,7 +10,7 @@
     <div class="col-sm-2 col-md-12">
 
       <% if @challenge_users  && @user_status.status == "admin" %>
-        <%= form_with(url: team_assign_task_path, local: true, method: :get, class: "form-inline col-sm-4 col-lg-6 col-xl-12",assign_id: 1) do |f| %>
+        <%= form_with(url: assign_task_path, local: true, method: :get, class: "form-inline col-sm-4 col-lg-6 col-xl-12") do |f| %>
           <%= f.text_field :name, class: "form-control mr-sm-2 show_search_left", placeholder: "名前", id: "search_name" %>
           <select class="form-control show_search_left" id="number" name="status">
             <option selected="selected" value="">課題状況</option>
@@ -22,41 +22,41 @@
           <%= f.submit '検索', class: "btn btn-outline-success  show_search_left" %>
 
           <% if @task.user_id == current_user.id %>
-            <%= link_to "課題編集", edit_team_assign_task_path(@task),
+            <%= link_to "課題編集", edit_assign_task_path(@task),
                                     class: "btn btn-outline-success  show_button_right" %>
-            <%= link_to "課題削除", team_assign_task_path(@task),
+            <%= link_to "課題削除", assign_task_path(@task),
                                     method: :delete,
                                     data: { confirm: "課題を削除してもよろしいですか？"},
                                     class: "btn btn-outline-danger  show_button_right" %>
           <% end %>
           <% if @challenge_task.nil? %>
-            <%= link_to "取り組む", team_assign_task_challenge_starts_path(user_id: current_user.id,
+            <%= link_to "取り組む", assign_task_challenge_starts_path(user_id: current_user.id,
                                                                                 team_id: @task.team_id,
                                                                                 assign_id: @task.assign_id,
                                                                                 task_id: @task.id), 
                                                                                 method: :post,
                                                                                 class: "btn btn-outline-primary  show_button_right" %>
           <% elsif  @challenge_task.status == "awaiting_review" || @challenge_task.status == "remand" && @answer.present? %>
-            <%= link_to "回答修正", edit_team_assign_task_challenge_start_answer_path(team_id: @challenge_task.team_id,
+            <%= link_to "回答修正", edit_assign_task_challenge_start_answer_path(team_id: @challenge_task.team_id,
                                                                                           assign_id: @challenge_task.assign_id, 
                                                                                           task_id: @challenge_task.task_id, 
                                                                                           challenge_start_id: @challenge_task.id, 
                                                                                           id: @answer.id), 
                                                                                           class: "btn btn-outline-success  show_button_right" %>
 
-            <%= link_to "コメント", team_assign_task_challenge_start_answer_path(team_id: @challenge_task.team_id,
+            <%= link_to "コメント", assign_task_challenge_start_answer_path(team_id: @challenge_task.team_id,
                                                                                 assign_id: @challenge_task.assign_id, 
                                                                                 task_id: @challenge_task.task_id, 
                                                                                 challenge_start_id: @challenge_task.id, 
                                                                                 id: @answer.id), 
                                                                                 class: "btn btn-outline-info  show_button_right" %>
           <% else %>
-            <%= link_to "回答", new_team_assign_task_challenge_start_answer_path(team_id: @challenge_task.team_id,
+            <%= link_to "回答", new_assign_task_challenge_start_answer_path(team_id: @challenge_task.team_id,
                                                                                   assign_id: @challenge_task.assign_id,
                                                                                   task_id: @challenge_task.task_id,
                                                                                   challenge_start_id: @challenge_task.id), 
                                                                                   class: "btn btn-outline-primary  show_button_right" %>
-            <%= link_to "諦める", team_assign_task_challenge_start_path(team_id: @task.team_id, 
+            <%= link_to "諦める", assign_task_challenge_start_path(team_id: @task.team_id, 
                                                                             assign_id: @task.assign_id, 
                                                                             task_id: @task.id), 
                                                                             method: :delete, 
@@ -73,14 +73,14 @@
                                                                                 method: :post,
                                                                                 class: "btn btn-outline-primary  show_button_right" %>
           <% elsif  @challenge_task.status == "awaiting_review" || @challenge_task.status == "remand" && @answer.present? %>
-            <%= link_to "回答修正", edit_team_assign_task_challenge_start_answer_path(team_id: @challenge_task.team_id,
+            <%= link_to "回答修正", edit_assign_task_challenge_start_answer_path(team_id: @challenge_task.team_id,
                                                                                           assign_id: @challenge_task.assign_id, 
                                                                                           task_id: @challenge_task.task_id, 
                                                                                           challenge_start_id: @challenge_task.id, 
                                                                                           id: @answer.id), 
                                                                                           class: "btn btn-outline-success  show_button_right" %>
 
-            <%= link_to "コメント", team_assign_task_challenge_start_answer_path(team_id: @challenge_task.team_id,
+            <%= link_to "コメント", assign_task_challenge_start_answer_path(team_id: @challenge_task.team_id,
                                                                                 assign_id: @challenge_task.assign_id, 
                                                                                 task_id: @challenge_task.task_id, 
                                                                                 challenge_start_id: @challenge_task.id, 
@@ -122,7 +122,7 @@
                     <%= link_to time_ago_in_words(challenge_user.updated_at).upcase + "前", user_path(challenge_user.user_id), class: "team-time no-text-decoration" %><br/>
                     <% if @answer %>
                       <% if challenge_user.status == "awaiting_review" %>
-                        <%= link_to "課題確認", team_assign_task_challenge_start_answer_path(user_id: challenge_user.user_id,
+                        <%= link_to "課題確認", assign_task_challenge_start_answer_path(user_id: challenge_user.user_id,
                                                                                             team_id: challenge_user.assign.team_id, 
                                                                                             assign_id: challenge_user.assign.id, 
                                                                                             task_id: challenge_user.task_id,
@@ -130,7 +130,7 @@
                                                                                             id: challenge_user.answers.first.id),
                                                                                             class: "btn btn-warning" %>
                       <% elsif challenge_user.status == "remand"%>
-                        <%= link_to "修正中", team_assign_task_challenge_start_answer_path(user_id: challenge_user.user_id,
+                        <%= link_to "修正中", assign_task_challenge_start_answer_path(user_id: challenge_user.user_id,
                                                                                             team_id: challenge_user.assign.team_id, 
                                                                                             assign_id: challenge_user.assign.id, 
                                                                                             task_id: challenge_user.task_id,

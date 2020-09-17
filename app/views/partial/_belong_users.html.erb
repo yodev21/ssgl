@@ -9,7 +9,7 @@
               <%= image_tag avatar_url(assign.user), class: "round-img" %>
             <div class="card-body">
               <div class="row parts">
-                <%= link_to "詳細", team_assign_belong_team_user_path(team_id: assign.team.id, 
+                <%= link_to "詳細", assign_belong_team_user_path(team_id: assign.team.id, 
                                                                       assign_id: assign.id, 
                                                                       id: assign.user_id),
                                                                       class: "btn btn-outline-info" %>
@@ -18,24 +18,24 @@
               </div>
               <div>
                 <span><strong><%= assign.user.name %></strong></span>
-                <%= link_to time_ago_in_words(assign.updated_at).upcase + "前", team_assign_belong_team_user_path(team_id: assign.team.id, 
+                <%= link_to time_ago_in_words(assign.updated_at).upcase + "前", assign_belong_team_user_path(team_id: assign.team.id, 
                                                                                                                           assign_id: assign.id, 
                                                                                                                           id: assign.user_id), 
                                                                                                                           class: "team-time no-text-decoration" %>
                 <% if assign.status == "admin" %>
-                  <%= link_to "管理者", team_assign_belong_team_user_path(team_id: assign.team.id, 
+                  <%= link_to "管理者", assign_belong_team_user_path(team_id: assign.team.id, 
                                                                         assign_id: assign.id, 
                                                                         id: assign.user_id),
                                                                         class: "badge badge-primary" %>
 
                 <% elsif assign.status == "memtor" %>
-                  <%= link_to "メンター", team_assign_belong_team_user_path(team_id: assign.team.id, 
+                  <%= link_to "メンター", assign_belong_team_user_path(team_id: assign.team.id, 
                                                                         assign_id: assign.id, 
                                                                         id: assign.user_id),
                                                                         class: "badge badge-success" %>
                   
                 <% elsif assign.status =="member" %>
-                  <%= link_to "メンバー", team_assign_belong_team_user_path(team_id: assign.team.id, 
+                  <%= link_to "メンバー", assign_belong_team_user_path(team_id: assign.team.id, 
                                                                         assign_id: assign.id, 
                                                                         id: assign.user_id),
                                                                         class: "badge badge-info" %>
