@@ -122,7 +122,7 @@
                     <%= link_to time_ago_in_words(challenge_user.updated_at).upcase + "前", user_path(challenge_user.user_id), class: "team-time no-text-decoration" %><br/>
                     <% if @answer %>
                       <% if challenge_user.status == "awaiting_review" %>
-                        <%= link_to "課題確認", assign_task_challenge_start_answer_path(user_id: challenge_user.user_id,
+                        <%= link_to "課題確認", task_challenge_start_answer_path(user_id: challenge_user.user_id,
                                                                                             team_id: challenge_user.assign.team_id, 
                                                                                             assign_id: challenge_user.assign.id, 
                                                                                             task_id: challenge_user.task_id,
@@ -130,7 +130,7 @@
                                                                                             id: challenge_user.answers.first.id),
                                                                                             class: "btn btn-warning" %>
                       <% elsif challenge_user.status == "remand"%>
-                        <%= link_to "修正中", assign_task_challenge_start_answer_path(user_id: challenge_user.user_id,
+                        <%= link_to "修正中", task_challenge_start_answer_path(user_id: challenge_user.user_id,
                                                                                             team_id: challenge_user.assign.team_id, 
                                                                                             assign_id: challenge_user.assign.id, 
                                                                                             task_id: challenge_user.task_id,

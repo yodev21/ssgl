@@ -12,7 +12,7 @@
               <div>
                 <div class="form-group">
                   <textarea readonly class="form-control comment_form" rows="10"><%= safe_join(comment.content.split("\n")) %></textarea>
-                  <span><%= link_to "コメント削除", assign_task_challenge_start_answer_comments_path(team_id: comment.team_id, 
+                  <span><%= link_to "コメント削除", task_challenge_start_answer_comments_path(team_id: comment.team_id, 
                                                                                                         assign_id: comment.assign_id, 
                                                                                                         task_id: comment.task_id, 
                                                                                                         challenge_start_id: comment.challenge_start_id, 

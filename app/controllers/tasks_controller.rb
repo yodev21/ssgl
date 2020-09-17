@@ -4,31 +4,39 @@ class TasksController < ApplicationController
   before_action :set_params, only: %i[edit update destroy]
   before_action :authenticate_user!
   def new
-    @assign = Assign.find_by(id: params[:assign_id])
-    @task = @assign.tasks.build
+
+    # @assign = Assign.find_by(id: params[:id])
+    # @task = @assign.tasks.build
+    @task = Task.new
   end
 
   def create
-    @assign = Assign.find_by(id: params[:id])
+    @assign = Assign.find_by(id: params[:assign_id])
     @task = @assign.tasks.build(task_params)
     @task.user_id = current_user.id
     @task.team_id = @assign.team_id
     if @task.save
-      redirect_to tasks_path(team_id: @task.team_id,
+      redirect_to tasks_path(id: @task.team_id,
                              assign_id: @task.assign_id),
                              notice: '課題を作成しました！'
     else
-      redirect_to tasks_path(team_id: @task.team_id,
+      redirect_to tasks_path(id: @task.team_id,
                              assign_id: @task.assign_id),
                              alert: '課題の作成に失敗しました！'
     end
   end
 
   def index
-    @assign = Assign.find_by(team_id: params[:team_id],
+    @team = Team.find_by(id: params[:id])
+    # binding.pry
+    # @assign = Assign.find_by(team_id: params[:team_id],
+    #                          user_id: current_user.id)
+    @assign = Assign.find_by(team_id: @team.id,
                              user_id: current_user.id)
-    @tasks = Task.belong_to_team_all(team_id: params[:team_id],
-                                     assign_id: params[:assign_id])
+    # @tasks = Task.belong_to_team_all(team_id: params[:team_id],
+    #                                  assign_id: params[:assign_id])
+    @tasks = Task.belong_to_team_all(team_id: @team.id,
+                                     assign_id: @assign.id)
                  .with_title(params[:title])
   end
   
@@ -67,7 +75,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to tasks_path(@task), notice: '課題を削除しました！'
+    redirect_to challenge_starts_path, notice: '課題を削除しました！'
   end
 
   private

@@ -21,13 +21,13 @@
       </div>
         <% if @admin_user.present? && @admin_user.status == "admin" ||  @admin_user.status == "memtor"%>
           <% if @assign_user.status == "memtor" %>
-            <%= link_to "メンバーにする", assign_path(@assign_user.id, 
+            <%= link_to "メンバーにする", assign_path(user_id: @assign_user.id, 
                                                     status: "member"),
                                                     method: :PATCH, 
                                                     data: {confirm: "メンバーにしてもよろしいですか？"}, 
                                                     class: "btn btn-success" %>
           <% elsif @assign_user.status == "member" %>
-            <%= link_to "メンターにする", assign_path(@assign_user.id, 
+            <%= link_to "メンターにする", assign_path(user_id: @assign_user.id, 
                                                     status: "memtor"),
                                                     method: :PATCH, 
                                                     data: {confirm: "メンターにしてもよろしいですか？"}, 

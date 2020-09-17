@@ -17,9 +17,10 @@ class AssignsController < ApplicationController
 
   def update
     @assign = Assign.find_by(id: params[:id])
+    # binding.pry
     if @assign.update(status: params[:status])
       redirect_to belong_team_user_path(team_id: @assign.team_id,
-                                        assign_id: @assign.id),
+                                        user_id: @assign.user.id),
                   notice: '状態を更新しました。'
     else
       redirect_to belong_team_user_path(team_id: @assign.team_id,

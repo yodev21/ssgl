@@ -19,7 +19,7 @@ RSpec.describe 'Answers', type: :system do
     end
 
     example 'コメントができること' do
-      visit assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
+      visit task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
       click_link '回答'
       fill_in 'answer_content', with: 'テスト コンテント'
       click_button '回答'
@@ -32,7 +32,7 @@ RSpec.describe 'Answers', type: :system do
     end
 
     example 'コメントの削除ができること' do
-      visit assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
+      visit task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
       click_link '回答'
       fill_in 'answer_content', with: 'テスト コンテント'
       click_button '回答'

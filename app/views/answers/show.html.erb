@@ -16,7 +16,7 @@
         </div>
         <div class="col-md-12">
           <% if @answer.user_id == current_user.id %>
-            <%= link_to "回答編集", edit_assign_task_challenge_start_answer_path(team_id: @answer.team_id, 
+            <%= link_to "回答編集", edit_task_challenge_start_answer_path(team_id: @answer.team_id, 
                                                                                     assign_id: @answer.assign_id, 
                                                                                     task_id: @answer.task_id, 
                                                                                     challenge_start_id: @answer.challenge_start_id, 
@@ -24,7 +24,7 @@
                                                                                     class: "btn btn-outline-success right_answer_button" %>
           <% end %>
           <% if @answer_user.status == "admin" || @answer_user.status == "memtor" %>
-            <%= link_to "完了", assign_task_challenge_start_path(team_id: @answer.team_id, 
+            <%= link_to "完了", task_challenge_start_path(team_id: @answer.team_id, 
                                                                       assign_id: @answer.assign_id, 
                                                                       task_id: @answer.task_id, 
                                                                       id: @answer.challenge_start_id),

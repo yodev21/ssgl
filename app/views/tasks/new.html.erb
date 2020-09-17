@@ -4,7 +4,7 @@
       <div class="form-group text-center">
         <h3>課題作成</h3>
       </div>
-      <%= form_with model: @task, url: tasks_path(id: @assign), 
+      <%= form_with model: @task, url: tasks_path(assign_id: params[:assign_id]), 
                                                   local: true do |f| %>
         
         <div class="form-group">
