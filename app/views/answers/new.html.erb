@@ -4,8 +4,8 @@
       <div class="form-group text-center">
         <h3>課題回答</h3>
       </div>
-      <%= form_with model: @answer, url: challenge_start_answers_path, local: true do |f| %>
-        
+      <%= form_with model: @answer, local: true do |f| %>
+      <%= f.hidden_field :challenge_start_id, value: params[:challenge_start_id]%>
         <div class="form-group">
           <%= f.url_field :url, autofocus: true, placeholder: "GitHub デプロイ先等のURL（任意）", class: "form-control" %>
         </div>

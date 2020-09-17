@@ -18,20 +18,20 @@ class FeedBacksController < ApplicationController
     @feed_back.answer_id = answer.id
 
     if @feed_back.save(feed_back_params)
-      redirect_to challenge_start_answer_path(user_id: @feed_back.user_id,
-                                              team_id: @feed_back.team_id,
-                                              assign_id: @feed_back.assign_id,
-                                              task_id: @feed_back.task_id,
-                                              challenge_start_id: @feed_back.challenge_start_id,
-                                              id: @feed_back.answer_id),
+      redirect_to answer_path(user_id: @feed_back.user_id,
+                              team_id: @feed_back.team_id,
+                              assign_id: @feed_back.assign_id,
+                              task_id: @feed_back.task_id,
+                              challenge_start_id: @feed_back.challenge_start_id,
+                              id: @feed_back.answer_id),
                   notice: 'フィードバックを送信しました。'
     else
-      redirect_to challenge_start_answer_path(user_id: @feed_back.user_id,
-                                              team_id: @feed_back.team_id,
-                                              assign_id: @feed_back.assign_id,
-                                              task_id: @feed_back.task_id,
-                                              challenge_start_id: @feed_back.challenge_start_id,
-                                              id: @feed_back.answer_id),
+      redirect_to answer_path(user_id: @feed_back.user_id,
+                              team_id: @feed_back.team_id,
+                              assign_id: @feed_back.assign_id,
+                              task_id: @feed_back.task_id,
+                              challenge_start_id: @feed_back.challenge_start_id,
+                              id: @feed_back.answer_id),
                   alert: '送信に失敗しました。'
 
     end

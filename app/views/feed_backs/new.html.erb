@@ -4,7 +4,7 @@
       <div class="form-group text-center">
         <h3>フィードバック</h3>
       </div>
-      <%= form_with model: @feed_back, url: challenge_start_answer_feed_backs_path(answer_id: @answer.id), local: true do |f| %>
+      <%= form_with model: @feed_back, url: answer_feed_backs_path(answer_id: @answer.id), local: true do |f| %>
                   
         <div class="row">
           <div class="col-12">

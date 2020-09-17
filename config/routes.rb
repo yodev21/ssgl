@@ -21,28 +21,22 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show destroy]
   resources :challenge_starts, only: [:index]
   
-  # リファクタリング(Sessionを取得して検索するようにする)
-  resources :belong_teams, only: %i[index show destroy]
-  # -----------------------------------------------
-
   resources :teams do
     resources :feed_backs, only: %i[index show]
   end
 
+  resources :belong_teams, only: %i[index show destroy]
   resources :assigns, only: %i[create destroy update] 
-  resources :tasks do
-    # resources :challenge_starts, only: %i[create update destroy] do
-    #   resources :answers do
-    #     resource :comments, only: %i[create edit update destroy]
-    #     resource :feed_backs, only: %i[new create]
-    #   end
+  resources :tasks
+  resources :challenge_starts, only: %i[create update destroy] do
+    # resources :answers do
+    #   resource :comments, only: %i[create edit update destroy]
+    #   resource :feed_backs, only: %i[new create]
     # end
   end
-  resources :challenge_starts, only: %i[create update destroy] do
-    resources :answers do
-      resource :comments, only: %i[create edit update destroy]
-      resource :feed_backs, only: %i[new create]
-    end
+  resources :answers do
+    resource :comments, only: %i[create edit update destroy]
+    resource :feed_backs, only: %i[new create]
   end
   resources :belong_team_users, only: %i[index show]
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
