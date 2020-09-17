@@ -6,10 +6,10 @@
     <div class="col-md-8">
       <div class="row">
         <h1><%= @team.name %></h1>
-        <%= link_to "チームを退会する", team_assign_path(team_id: @team.id, id: current_user.id), 
-                                                      method: :delete, 
-                                                      data: { confirm: "チームを退会してもよろしいですか？" }, 
-                                                      class: "btn btn-outline-dark profile-btn" %>
+        <%= link_to "チームを退会する", assign_path(team_id: @team.id, id: current_user.id), 
+                                                  method: :delete, 
+                                                  data: { confirm: "チームを退会してもよろしいですか？" }, 
+                                                  class: "btn btn-outline-dark profile-btn" %>
       </div>
       <div class="row">
         <%= @team.remarks %>

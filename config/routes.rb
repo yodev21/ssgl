@@ -20,20 +20,15 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[index show destroy]
   resources :challenge_starts, only: [:index]
-
   resources :teams
-
   resources :feed_backs, only: %i[new create index show]
   resources :belong_teams, only: %i[index show destroy]
   resources :assigns, only: %i[create destroy update] 
   resources :tasks
   resources :challenge_starts, only: %i[create update destroy] 
-  resources :answers do
-    # resource :comments, only: %i[create edit update destroy]
-    # resource :feed_backs, only: %i[new create]
-  end
-
+  resources :answers
   resources :comments, only: %i[create edit update destroy]
   resources :belong_team_users, only: %i[index show]
+
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

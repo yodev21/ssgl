@@ -33,8 +33,6 @@ class ChallengeStartsController < ApplicationController
     redirect_to task_path(team_id: params[:team_id],
                           assign_id: params[:assign_id],
                           id: params[:task_id]),
-
-    # redirect_to task_path(id: params[:team_id]),
                 notice: 'こちらの課題を取り消しました。'
   end
 end
