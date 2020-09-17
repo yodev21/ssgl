@@ -27,23 +27,27 @@ Rails.application.routes.draw do
 
   resources :teams do
     resources :feed_backs, only: %i[index show]
-    # collection do
-      # resources :belong_teams, only: %i[index show destroy]
-    # end
   end
-  # 課題状況検索処理
-  get '/tasks/search', to: 'tasks#search'
 
   resources :assigns, only: %i[create destroy update] do
-    resources :tasks do
-      resources :challenge_starts, only: %i[create update destroy] do
-        resources :answers do
-          resource :comments, only: %i[create edit update destroy]
-          resource :feed_backs, only: %i[new create]
-        end
+    # resources :tasks do
+    #   resources :challenge_starts, only: %i[create update destroy] do
+    #     resources :answers do
+    #       resource :comments, only: %i[create edit update destroy]
+    #       resource :feed_backs, only: %i[new create]
+    #     end
+    #   end
+    # end
+    # resources :belong_team_users, only: %i[index show]
+  end
+  resources :tasks do
+    resources :challenge_starts, only: %i[create update destroy] do
+      resources :answers do
+        resource :comments, only: %i[create edit update destroy]
+        resource :feed_backs, only: %i[new create]
       end
     end
-    resources :belong_team_users, only: %i[index show]
   end
+  resources :belong_team_users, only: %i[index show]
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
