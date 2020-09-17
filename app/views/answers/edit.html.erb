@@ -4,13 +4,9 @@
       <div class="form-group text-center">
         <h3>課題回答</h3>
       </div>
-      <%= form_with model: @answer, url: task_challenge_start_answer_path(team_id: @answer.team_id, 
-                                                                          assign_id: @answer.assign_id, 
-                                                                          task_id: @answer.task_id, 
-                                                                          challenge_start_id: @answer.challenge_start_id, 
-                                                                          id: @answer.id), 
-                                                                          method: :PATCH, 
-                                                                          local: true do |f| %>
+      <%= form_with model: @answer, url: challenge_start_answer_path(@answer), 
+                                                                      method: :PATCH, 
+                                                                      local: true do |f| %>
         
         <div class="form-group">
           <%= f.url_field :url, autofocus: true, placeholder: "GitHub デプロイ先等のURL（任意）", class: "form-control" %>

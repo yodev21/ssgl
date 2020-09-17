@@ -31,7 +31,7 @@ RSpec.describe 'Answers', type: :system do
       fill_in 'answer_content', with: 'テスト コンテント'
       click_button '回答'
       visit task_path(user_id: @user.id, team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
-      visit edit_task_challenge_start_answer_path(team_id: @team.id, assign_id: @assign.id, task_id: @task.id, challenge_start_id: @challenge_start.id, id: @challenge_start.answers.first)
+      visit edit_challenge_start_answer_path(team_id: @team.id, assign_id: @assign.id, task_id: @task.id, challenge_start_id: @challenge_start.id, id: @challenge_start.answers.first)
       fill_in 'answer_content', with: 'テスト コンテント Update'
       click_button '回答'
       wait.until { expect(page).to have_content '更新しました' }

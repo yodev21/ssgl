@@ -23,11 +23,11 @@ class AnswersController < ApplicationController
 
   def update
     if @answer.update(answer_params)
-      redirect_to task_challenge_start_answer_path(team_id: @answer.team_id,
-                                                               assign_id: @answer.assign_id,
-                                                               task_id: @answer.task_id,
-                                                               challenge_start_id: @answer.challenge_start_id,
-                                                               id: @answer.id), notice: '更新しました！'
+      redirect_to challenge_start_answer_path(team_id: @answer.team_id,
+                                              assign_id: @answer.assign_id,
+                                              task_id: @answer.task_id,
+                                              challenge_start_id: @answer.challenge_start_id,
+                                              id: @answer.id), notice: '更新しました！'
 
     else
       flash.now[:alert] = '更新に失敗しました！'
@@ -40,10 +40,6 @@ class AnswersController < ApplicationController
     challenge_start = ChallengeStart.find(params[:challenge_start_id])
     @answer = Answer.new
     @answer.user_id = current_user.id
-    # @answer.team_id = params[:team_id]
-    # @answer.assign_id = params[:assign_id]
-    # @answer.task_id = params[:task_id]
-    # @answer.challenge_start_id = params[:challenge_start_id]
     @answer.team_id = challenge_start.team.id
     @answer.assign_id = challenge_start.assign.id
     @answer.task_id = challenge_start.task.id
@@ -54,10 +50,6 @@ class AnswersController < ApplicationController
     challenge_start = ChallengeStart.find(params[:challenge_start_id])
     @answer = Answer.new(answer_params)
     @answer.user_id = current_user.id
-    # @answer.team_id = params[:team_id]
-    # @answer.assign_id = params[:assign_id]
-    # @answer.task_id = params[:task_id]
-    # @answer.challenge_start_id = params[:challenge_start_id]
 
     @answer.team_id = challenge_start.team.id
     @answer.assign_id = challenge_start.assign.id
@@ -67,11 +59,11 @@ class AnswersController < ApplicationController
     if @answer.save
       challenge_start = ChallengeStart.find(params[:challenge_start_id])
       challenge_start.update(status: :awaiting_review)
-      redirect_to new_task_challenge_start_answer_feed_backs_path(team_id: @answer.team_id,
-                                                                              assign_id: @answer.assign_id,
-                                                                              task_id: @answer.task_id,
-                                                                              challenge_start_id: @answer.challenge_start_id,
-                                                                              answer_id: @answer.id),
+      redirect_to new_challenge_start_answer_feed_backs_path(team_id: @answer.team_id,
+                                                              assign_id: @answer.assign_id,
+                                                              task_id: @answer.task_id,
+                                                              challenge_start_id: @answer.challenge_start_id,
+                                                              answer_id: @answer.id),
                   notice: '回答しました。'
     else
       flash.now[:alert] = '課題投稿に失敗しました！'

@@ -29,23 +29,19 @@ Rails.application.routes.draw do
     resources :feed_backs, only: %i[index show]
   end
 
-  resources :assigns, only: %i[create destroy update] do
-    # resources :tasks do
-    #   resources :challenge_starts, only: %i[create update destroy] do
-    #     resources :answers do
-    #       resource :comments, only: %i[create edit update destroy]
-    #       resource :feed_backs, only: %i[new create]
-    #     end
+  resources :assigns, only: %i[create destroy update] 
+  resources :tasks do
+    # resources :challenge_starts, only: %i[create update destroy] do
+    #   resources :answers do
+    #     resource :comments, only: %i[create edit update destroy]
+    #     resource :feed_backs, only: %i[new create]
     #   end
     # end
-    # resources :belong_team_users, only: %i[index show]
   end
-  resources :tasks do
-    resources :challenge_starts, only: %i[create update destroy] do
-      resources :answers do
-        resource :comments, only: %i[create edit update destroy]
-        resource :feed_backs, only: %i[new create]
-      end
+  resources :challenge_starts, only: %i[create update destroy] do
+    resources :answers do
+      resource :comments, only: %i[create edit update destroy]
+      resource :feed_backs, only: %i[new create]
     end
   end
   resources :belong_team_users, only: %i[index show]

@@ -1,9 +1,9 @@
-<%= form_with(model: comment, url: task_challenge_start_answer_comments_path(team_id: @comment.team_id, 
-                                                                                         assign_id: @comment.assign_id, 
-                                                                                         task_id: @comment.task_id, 
-                                                                                         challenge_starts: @comment.challenge_start_id, 
-                                                                                         answer_id: @comment.answer_id), 
-                                                                                         method: :post) do |f| %>
+<%= form_with(model: comment, url: challenge_start_answer_comments_path(team_id: @comment.team_id, 
+                                                                        assign_id: @comment.assign_id, 
+                                                                        task_id: @comment.task_id, 
+                                                                        challenge_starts: @comment.challenge_start_id, 
+                                                                        answer_id: @comment.answer_id), 
+                                                                        method: :post) do |f| %>
 
 <div class="form-group">
   <%= f.text_area :content,  placeholder: "コメント", class: "form-control textarea",rows: "15" %>
