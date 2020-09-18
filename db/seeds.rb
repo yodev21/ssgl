@@ -3,6 +3,18 @@
 p '-------------------------- Create Strart ----------------------------'
 langs = ['Ruby', 'Python', 'Go', 'C++', 'VB.NET', 'C#', 'React', 'Vue', 'JavaScript', 'HTML/CSS', 'jQuery']
 
+team_title = ['Rubyを中心に学習します！【テストデータ】',
+              'Pythonを利用したデータ整形やスクレイピングをサポートします！【テストデータ】', 
+              '【初心者歓迎！】Goを使ったWebサービス開発！【テストデータ】', 
+              'C++でゲームを作ってみませんか？【テストデータ】',
+              'VB.Netを使用した業務システムの開発サポート【テストデータ】', 
+              'C#でゲームを作ってみませんか？【テストデータ】',
+              'Reactを使ってモダンなWebアプリを作ろう!【テストデータ】', 
+              'Vueを使ってモダンなWebアプリを作ろう!【テストデータ】', 
+              'JavaScriptを学んでフロントエンド開発の学習をしませんか？【テストデータ】', 
+              'HTML/CSSを使っておしゃれなサイトを作ろう！【テストデータ】', 
+              'jQueryを学んでリッチなサイトを作ろう！【テストデータ】']
+
 p 'Create Administrators'
 User.create(
   email: 'admin@example.com',
@@ -28,9 +40,9 @@ p 'Guest User Success'
 # ゲストチーム作成
 p 'Create Guest Team'
 @guest_team = Team.create!(
-  name: 'ゲスト チーム',
+  name: 'Ruby on Railsを中心に学習します！【テストデータ/ゲスト】',
   image: open("#{Rails.root}/app/assets/images/teams/1.png"),
-  remarks: "#{langs[0]} をメインに学習しています！ \n
+  remarks: "#{langs[0]} をメインにサポートしています！ \n
             初心者大歓迎です。!! \n
             楽しくプログラミングをしましょう！！",
   user_id: @guest_user.id,
@@ -91,7 +103,7 @@ p 'Guest Challenge Success'
   # チーム作成
   p "Create test Team#{n}"
   @team = Team.create!(
-    name: "テスト チーム#{n}",
+    name: team_title[n],
     image: open("#{Rails.root}/app/assets/images/teams/#{n}.png"),
     remarks: "#{langs[n]} をメインに学習しています！ \n
               初心者大歓迎です。!! \n

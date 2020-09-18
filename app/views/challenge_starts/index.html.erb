@@ -21,13 +21,9 @@
     <% end %>
     <% unless @challenge_tasks.blank? %>
       <% @challenge_tasks.each do |challenge_task|%>
-
         <div class="col-sm-12 col-lg-6 col-xl-4">
           <div class="image-box">
-          <%= link_to (image_tag challenge_task.task.image.url(:medium), class: "image-size"), task_path(user_id: challenge_task.user_id,
-                                                                                                          assign_id: challenge_task.assign.id, 
-                                                                                                          team_id: challenge_task.assign.team_id, 
-                                                                                                          id: challenge_task.task.id)%>
+          <%= link_to (image_tag challenge_task.task.image.url(:medium), class: "image-size"), task_path(id: challenge_task.task.id)%>
           <div class="card-body">
             <div class="row parts">
               <% if challenge_task.status == "underway" %>
@@ -40,11 +36,7 @@
                                                           data: { confirm: "本当に諦めますか？"}, 
                                                           class: "team_info btn btn-outline-danger profile-btn" %>
               <% elsif challenge_task.status == "awaiting_review" %>
-                <%= link_to "修正する", edit_answer_path(assign_id: challenge_task.assign.id, 
-                                                        team_id: challenge_task.assign.team_id, 
-                                                        task_id: challenge_task.task.id, 
-                                                        challenge_start_id: challenge_task.id,
-                                                        id: challenge_task.answers.first.id),
+                <%= link_to "修正する", edit_answer_path(id: challenge_task.answers.first.id),
                                                         class: "team_info btn btn-outline-success profile-btn" %>
               <% elsif challenge_task.status == "remand" %>
 

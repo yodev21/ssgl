@@ -14,7 +14,7 @@
   </head>
 
   <body>
-<div class="wrapper ">
+  <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white">
       <div class="logo">
         <%= image_tag "logo.png", class: "logo-icon" %>
@@ -22,8 +22,6 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-
-
           <% if user_signed_in?%>
             <li class="nav-item">
               <%= link_to user_path(current_user), class: "nav-link" do %>
