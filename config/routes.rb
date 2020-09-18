@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :courses
   root to: 'top#top'
   get 'top/privacy_policy', to: "top#privacy_policy"
   get 'top/terms_of_service', to: "top#terms_of_service"
@@ -25,6 +24,7 @@ Rails.application.routes.draw do
   resources :belong_teams, only: %i[index show destroy]
   resources :assigns, only: %i[create destroy update] 
   resources :tasks
+  resources :courses
   resources :challenge_starts, only: %i[create update destroy] 
   resources :answers
   resources :comments, only: %i[create edit update destroy]
