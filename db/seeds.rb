@@ -14,7 +14,7 @@ team_title = ['Rubyを中心に学習します！【テストデータ】',
               'JavaScriptを学んでフロントエンド開発の学習をしませんか？【テストデータ】', 
               'HTML/CSSを使っておしゃれなサイトを作ろう！【テストデータ】', 
               'jQueryを学んでリッチなサイトを作ろう！【テストデータ】']
-
+tasks = []
 p 'Create Administrators'
 User.create(
   email: 'admin@example.com',
@@ -60,31 +60,102 @@ p 'Create Guest Assign'
 )
 p 'Guest Assign Success'
 
-# ゲストタスク作成
-p 'Create Guest Task'
-@guest_task = Task.create!(
-  title: 'Railsチュートリアル',
+# ゲストコース作成
+p 'Create Guest Course'
+@guest_course = Course.create!(
+  title: 'Ruby on Rails Webアプリケーション学習【テスト】',
   content: "Railsチュートリアルをサイトを参考に学習してください。\n
             課題が完了しましたらこちらにお知らせください。",
+  image: open("#{Rails.root}/app/assets/images/courses/1.png"),
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  created_at: "2020-06-30 00:00:00"
+)
+p 'Guest Course Success'
+# ゲストタスク作成
+p 'Create Guest Task'
+@guest_task_1 = Task.create!(
+  title: 'Progate',
+  content: "Progateに登録してWeb開発パス(Ruby on Rails)のコースをチャレンジしてください。\n
+            https://prog-8.com/paths/rails \n
+            完了しましたらこちらにお知らせください。",
+  image: open("#{Rails.root}/app/assets/images/tasks/progate.png"),
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  course_id: @guest_course.id,
+  created_at: "2020-06-30 00:00:00"
+)
+@guest_task_2 = Task.create!(
+  title: 'Git',
+  content: "Udemyに登録してGit: もう怖くないGit! チーム開発で必要なGitを完全マスターにチャレンジしてください\n
+            https://www.udemy.com/course/unscared_git/ \n
+            完了しましたらこちらにお知らせください。",
+  image: open("#{Rails.root}/app/assets/images/tasks/git.png"),
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  course_id: @guest_course.id,
+  created_at: "2020-06-30 00:00:00"
+)
+@guest_task_3 = Task.create!(
+  title: 'Ruby',
+  content: "プロを目指す人Ruby入門にチャレンジしてください\n
+            完了しましたらこちらにお知らせください。",
+  image: open("#{Rails.root}/app/assets/images/tasks/ruby.png"),
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  course_id: @guest_course.id,
+  created_at: "2020-06-30 00:00:00"
+)
+@guest_task_4 = Task.create!(
+  title: 'Ruby on Rails',
+  content: "Ruby on Rails 5 速習実践ガイドにチャレンジしてください。\n
+            完了しましたらこちらにお知らせください。",
+  image: open("#{Rails.root}/app/assets/images/tasks/rails.png"),
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  course_id: @guest_course.id,
+  created_at: "2020-06-30 00:00:00"
+)
+@guest_task_5 = Task.create!(
+  title: 'Ruby on Rails 開発',
+  content: "インスタグラムのクローンアプリ開発にチャレンジしてください。\n
+            完了しましたらこちらにお知らせください。",
+  image: open("#{Rails.root}/app/assets/images/tasks/insta.png"),
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  course_id: @guest_course.id,
+  created_at: "2020-06-30 00:00:00"
+)
+@guest_task_6 = Task.create!(
+  title: 'SQL',
+  content: "スッキリわかるSQL入門 ドリル215門付き! スッキリわかるシリーズにチャレンジしてください。\n
+            完了しましたらこちらにお知らせください。",
   image: open("#{Rails.root}/app/assets/images/tasks/1.png"),
   user_id: @guest_user.id,
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
+  course_id: @guest_course.id,
+  created_at: "2020-06-30 00:00:00"
+)
+@guest_task_7 = Task.create!(
+  title: 'AWS',
+  content: "AWS: ゼロから実践するAmazon Web Services。手を動かしながらインフラの基礎を習得にチャレンジしてください。\n
+            完了しましたらこちらにお知らせください。",
+  image: open("#{Rails.root}/app/assets/images/tasks/aws.png"),
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  course_id: @guest_course.id,
   created_at: "2020-06-30 00:00:00"
 )
 p 'Guest Task Success'
 
-# ゲストチャレンジタスク作成
-p 'Create test ChallengeStart'
-@guest_challengeStart = ChallengeStart.create!(
-  status: :underway,
-  user_id: @guest_user.id,
-  team_id: @guest_team.id,
-  assign_id: @guest_assign.id,
-  task_id: @guest_task.id,
-  created_at: "2020-06-30 00:00:00"
-)
-p 'Guest Challenge Success'
 
 10.times do |n|
   # ユーザー作成
@@ -124,13 +195,16 @@ p 'Guest Challenge Success'
 
   # チャレンジタスク作成
   p "Create test ChallengeStart#{n}"
+  
   @ChallengeStart = ChallengeStart.create!(
     status: :underway,
     user_id: @user.id,
     team_id: @guest_team.id,
     assign_id: @guest_assign.id,
-    task_id: @guest_task.id
+    course_id: @guest_course.id,
+    task_id: @guest_task_1.id
   )
+
   p "test Team#{n} Success"
 end
 

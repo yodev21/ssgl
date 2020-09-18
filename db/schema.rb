@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_18_074301) do
+ActiveRecord::Schema.define(version: 2020_09_18_095821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,8 +26,10 @@ ActiveRecord::Schema.define(version: 2020_09_18_074301) do
     t.bigint "challenge_start_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "course_id", default: 0, null: false
     t.index ["assign_id"], name: "index_answers_on_assign_id"
     t.index ["challenge_start_id"], name: "index_answers_on_challenge_start_id"
+    t.index ["course_id"], name: "index_answers_on_course_id"
     t.index ["task_id"], name: "index_answers_on_task_id"
     t.index ["team_id"], name: "index_answers_on_team_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
@@ -51,7 +53,9 @@ ActiveRecord::Schema.define(version: 2020_09_18_074301) do
     t.bigint "task_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "course_id", default: 0, null: false
     t.index ["assign_id"], name: "index_challenge_starts_on_assign_id"
+    t.index ["course_id"], name: "index_challenge_starts_on_course_id"
     t.index ["task_id"], name: "index_challenge_starts_on_task_id"
     t.index ["team_id"], name: "index_challenge_starts_on_team_id"
     t.index ["user_id"], name: "index_challenge_starts_on_user_id"
@@ -101,9 +105,11 @@ ActiveRecord::Schema.define(version: 2020_09_18_074301) do
     t.bigint "answer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "course_id", default: 0, null: false
     t.index ["answer_id"], name: "index_feed_backs_on_answer_id"
     t.index ["assign_id"], name: "index_feed_backs_on_assign_id"
     t.index ["challenge_start_id"], name: "index_feed_backs_on_challenge_start_id"
+    t.index ["course_id"], name: "index_feed_backs_on_course_id"
     t.index ["task_id"], name: "index_feed_backs_on_task_id"
     t.index ["team_id"], name: "index_feed_backs_on_team_id"
     t.index ["user_id"], name: "index_feed_backs_on_user_id"
@@ -118,7 +124,10 @@ ActiveRecord::Schema.define(version: 2020_09_18_074301) do
     t.bigint "assign_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "priority_no", default: 0, null: false
+    t.bigint "course_id", default: 0, null: false
     t.index ["assign_id"], name: "index_tasks_on_assign_id"
+    t.index ["course_id"], name: "index_tasks_on_course_id"
     t.index ["team_id"], name: "index_tasks_on_team_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
@@ -151,12 +160,14 @@ ActiveRecord::Schema.define(version: 2020_09_18_074301) do
 
   add_foreign_key "answers", "assigns"
   add_foreign_key "answers", "challenge_starts"
+  add_foreign_key "answers", "courses"
   add_foreign_key "answers", "tasks"
   add_foreign_key "answers", "teams"
   add_foreign_key "answers", "users"
   add_foreign_key "assigns", "teams"
   add_foreign_key "assigns", "users"
   add_foreign_key "challenge_starts", "assigns"
+  add_foreign_key "challenge_starts", "courses"
   add_foreign_key "challenge_starts", "tasks"
   add_foreign_key "challenge_starts", "teams"
   add_foreign_key "challenge_starts", "users"
@@ -172,10 +183,12 @@ ActiveRecord::Schema.define(version: 2020_09_18_074301) do
   add_foreign_key "feed_backs", "answers"
   add_foreign_key "feed_backs", "assigns"
   add_foreign_key "feed_backs", "challenge_starts"
+  add_foreign_key "feed_backs", "courses"
   add_foreign_key "feed_backs", "tasks"
   add_foreign_key "feed_backs", "teams"
   add_foreign_key "feed_backs", "users"
   add_foreign_key "tasks", "assigns"
+  add_foreign_key "tasks", "courses"
   add_foreign_key "tasks", "teams"
   add_foreign_key "tasks", "users"
   add_foreign_key "teams", "users"
