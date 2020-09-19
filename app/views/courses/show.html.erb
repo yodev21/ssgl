@@ -1,11 +1,9 @@
 <div class="main_index">
-
-  <%= image_tag avatar_url(@course), class: "round-img show_img" %>
-
-  <h3 class="show_title"><%= @course.title %></h3>
-
-  <p class="content"><%= @course.content %></p>
-
+  <div>
+    <p><%= image_tag avatar_url(@course), class: "round-img show_img" %></p>
+    <span><div><%= markdown(@course.title) %></div></span>
+    <textarea><%= markdown(@course.content) %></textarea>
+  </div>
     
   <% @tasks.each do |task| %>
     <div class="row">
@@ -19,7 +17,7 @@
                 <%= link_to (image_tag task.image.url(:medium), class: "round-img float-md-left"), task_path(task)%>
                   <p><strong>タスク名:<%= task.title %></strong></p>
                   <p>内容:<%= task.content %></p>
-                  <%= link_to time_ago_in_words(task.updated_at).upcase + "前", task_path(task), class: "team-time no-text-decoration" %><br/>
+                  <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(task.updated_at).upcase}前" %></p>
                 </div>
               </div>
             </div>

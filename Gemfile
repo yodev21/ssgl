@@ -27,6 +27,9 @@ gem 'unicorn'
 
 gem 'fog-aws'
 gem 'mini_racer', platforms: :ruby
+
+gem 'redcarpet'
+
 group :development, :test do
   gem 'bcrypt_pbkdf'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
