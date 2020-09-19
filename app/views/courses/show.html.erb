@@ -4,6 +4,8 @@
     <span><div class="course-title"><%= markdown(@course.title) %></div></span>
     <p><%= markdown(@course.content) %></p>
   </div>
+  <br>
+  <h2>課題一覧</h2>
   <div class="course-tasks">
     <% @tasks.each do |task| %>
       <div class="row">
@@ -11,7 +13,8 @@
           <div class="image-box-course">
               <%= image_tag task.image.url(:medium), class: "round-img float-md-left" %>
               <p><strong>タスク名:<%= task.title %></strong></p>
-              <p>内容:<%= task.content %></p>
+              <br>
+              <p>内容:<%= markdown(task.content) %></p>
               <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(task.updated_at).upcase}前" %></p>
 
           </div>

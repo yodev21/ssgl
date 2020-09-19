@@ -8,7 +8,7 @@ class ChallengeStartsController < ApplicationController
     # @challenge_tasks = ChallengeStart.get_ansers(user: current_user).includes(:task).with_challenge_start_title(params[:name]).with_challenge_start_status(params[:status])
     
     challenge_course = ChallengeCourse.find(params[:id])
-    @challenge_tasks = ChallengeStart.where(user_id: current_user, course_id: challenge_course.course.id)
+    @challenge_tasks = Task.where(user_id: current_user, challenge_course_id: challenge_course.course.id)
   end
 
   def create

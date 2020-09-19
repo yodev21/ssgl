@@ -20,6 +20,8 @@ class User < ApplicationRecord
   validates :image, presence: true
   validate :check_guest_user
 
+  enum status: { member: 0, mentor: 1,}
+
   def update_without_current_password(params, *options)
     params.delete(:current_password)
     if params[:password].blank? && params[:password_confirmation].blank?

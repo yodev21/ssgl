@@ -8,7 +8,7 @@
           <%= link_to (image_tag team_icon_url(team),class: "image-size"), tasks_path(id: team)%>
           <div class="card-body">
             <div class="row parts">
-              <%= link_to "タスク", tasks_path(id: team), class: "btn btn-outline-info",id: "task_link" %>
+              <%= link_to "コース", courses_path(id: team.id), class: "btn btn-outline-info",id: "task_link" %>
               <%= link_to "メンバー", belong_team_users_path(team_id: team.id), class: "btn btn-outline-warning btn_right" %>
             </div>
 

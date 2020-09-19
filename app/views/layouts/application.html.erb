@@ -23,65 +23,11 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <% if user_signed_in?%>
-            <li class="nav-item">
-              <%= link_to user_path(current_user), class: "nav-link" do %>
-                <i class="material-icons">account_box</i>
-                <p>プロフィール</p>
-              <% end %>
-            </li>
-
-            <li class="nav-item">
-              <%= link_to challenge_courses_path, class: "nav-link" do %>
-                <i class="material-icons">school</i>
-                <p>マイコース</p>
-              <% end %>
-            </li>
-
-            <li class="nav-item">
-              <%= link_to courses_path, class: "nav-link" do %>
-                <i class="material-icons">search</i>
-                <p>コースを探す</p>
-                <p>　　　(準備中)</p>
-              <% end %>
-            </li>
-
-            <li class="nav-item">
-              <%= link_to belong_teams_path, class: "nav-link" do %>
-                <i class="material-icons">group</i>
-                <p>マイチーム</p>
-              <% end %>
-            </li>
-
-            <li class="nav-item">
-              <%= link_to teams_path, class: "nav-link" do %>
-                <i class="material-icons">search</i>
-                <p>チームを探す</p>
-              <% end %>
-            </li>
-
-            <li class="nav-item">
-              <%= link_to teams_path, class: "nav-link" do %>
-                <i class="material-icons">record_voice_over</i>
-                <p>アウトプット</p>
-                <p>　　　(準備中)</p>
-              <% end %>
-            </li>
-
-            <li class="nav-item">
-              <%= link_to teams_path, class: "nav-link" do %>
-                <i class="material-icons">question_answer</i>
-                <p>Q<small>&</small>A</p>
-                <p>　　　(準備中)</p>
-              <% end %>
-            </li>
-
-            <li class="nav-item">
-              <%= link_to teams_path, class: "nav-link" do %>
-                <i class="material-icons">transfer_within_a_station</i>
-                <p>リーダーになって教える</p>
-                <p>　　　(準備中)</p>
-              <% end %>
-            </li>
+            <% if current_user.status == "mentor"%>
+              <%= render 'partial/member' %>
+            <% else %>
+              <%= render 'partial/mentor' %>
+            <% end%>
 
             <li class="nav-item">
               <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
