@@ -72,6 +72,16 @@ p 'Create Guest Course'
   assign_id: @guest_assign.id,
   created_at: "2020-06-30 00:00:00"
 )
+# ゲストコース参加
+p 'Create Guest ChallengeCourse'
+@guest_challenge_course = ChallengeCourse.create!(
+  status: 1,
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  course_id: @guest_course.id,
+  created_at: "2020-06-30 00:00:00"
+)
 p 'Guest Course Success'
 # ゲストタスク作成
 p 'Create Guest Task'
@@ -85,6 +95,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course.id,
+  challenge_course_id: @guest_challenge_course.id,
   created_at: "2020-06-30 00:00:00"
 )
 @guest_task_2 = Task.create!(
@@ -97,6 +108,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course.id,
+  challenge_course_id: @guest_challenge_course.id,
   created_at: "2020-06-30 00:00:00"
 )
 @guest_task_3 = Task.create!(
@@ -108,6 +120,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course.id,
+  challenge_course_id: @guest_challenge_course.id,
   created_at: "2020-06-30 00:00:00"
 )
 @guest_task_4 = Task.create!(
@@ -119,6 +132,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course.id,
+  challenge_course_id: @guest_challenge_course.id,
   created_at: "2020-06-30 00:00:00"
 )
 @guest_task_5 = Task.create!(
@@ -130,6 +144,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course.id,
+  challenge_course_id: @guest_challenge_course.id,
   created_at: "2020-06-30 00:00:00"
 )
 @guest_task_6 = Task.create!(
@@ -141,6 +156,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course.id,
+  challenge_course_id: @guest_challenge_course.id,
   created_at: "2020-06-30 00:00:00"
 )
 @guest_task_7 = Task.create!(
@@ -152,6 +168,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course.id,
+  challenge_course_id: @guest_challenge_course.id,
   created_at: "2020-06-30 00:00:00"
 )
 p 'Guest Task Success'
@@ -192,6 +209,14 @@ p 'Guest Task Success'
   )
   p "test Assign#{n} Success"
 
+  # チャレンジコース作成
+  @ChallengeCourse = ChallengeCourse.create!(
+    status: 1,
+    user_id: @user.id,
+    team_id: @guest_team.id,
+    assign_id: @guest_assign.id,
+    course_id: @guest_course.id,
+  )
 
   # チャレンジタスク作成
   p "Create test ChallengeStart#{n}"
@@ -202,6 +227,7 @@ p 'Guest Task Success'
     team_id: @guest_team.id,
     assign_id: @guest_assign.id,
     course_id: @guest_course.id,
+    challenge_course_id: @guest_challenge_course.id,
     task_id: @guest_task_1.id
   )
 
