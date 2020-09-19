@@ -1,7 +1,7 @@
-.card{
-  .card-body{
+.card {
+  .card-body {
     .col-form-label,
-    .label-on-right{
+    .label-on-right {
       padding: 17px 5px 0 0;
       text-align: right;
 
@@ -9,14 +9,12 @@
         padding-top: 13px;
       }
     }
-    .label-on-right{
+    .label-on-right {
       text-align: left;
     }
   }
-  .label-on-right{
-
-
-    code{
+  .label-on-right {
+    code {
       padding: 2px 4px;
       font-size: 90%;
       color: #c7254e;
@@ -28,7 +26,7 @@
 
 .card-wizard {
   .input-group .form-group {
-    width: 80%
+    width: 80%;
   }
 }
 
@@ -36,7 +34,7 @@ form {
   .form-group {
     margin: 8px 0 0;
 
-    label[for="inputState"]{
+    label[for="inputState"] {
       position: absolute;
       top: -12px;
     }
@@ -51,7 +49,6 @@ form {
       color: $danger;
     }
   }
-
 
   .card {
     .card-footer {
@@ -75,10 +72,10 @@ form {
 }
 
 @media all and (max-width: 991px) {
-  .card{
-    .card-body{
+  .card {
+    .card-body {
       .col-form-label,
-      .label-on-right{
+      .label-on-right {
         text-align: left;
         padding-left: 15px;
         padding-top: 8px;
@@ -86,7 +83,6 @@ form {
     }
   }
 }
-
 
 .bmd-form-group.is-focused {
   .bmd-label-floating {
