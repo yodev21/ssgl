@@ -38,6 +38,14 @@
             </li>
 
             <li class="nav-item">
+              <%= link_to "#", class: "nav-link" do %>
+                <i class="material-icons">search</i>
+                <p>コースを探す</p>
+                <p>　　　(準備中)</p>
+              <% end %>
+            </li>
+
+            <li class="nav-item">
               <%= link_to belong_teams_path, class: "nav-link" do %>
                 <i class="material-icons">group</i>
                 <p>マイチーム</p>
@@ -46,8 +54,24 @@
 
             <li class="nav-item">
               <%= link_to teams_path, class: "nav-link" do %>
-                <i class="material-icons">supervised_user_circle</i>
+                <i class="material-icons">search</i>
                 <p>チームを探す</p>
+              <% end %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to teams_path, class: "nav-link" do %>
+                <i class="material-icons">record_voice_over</i>
+                <p>アウトプット</p>
+                <p>　　　(準備中)</p>
+              <% end %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to teams_path, class: "nav-link" do %>
+                <i class="material-icons">question_answer</i>
+                <p>Q<small>&</small>A</p>
+                <p>　　　(準備中)</p>
               <% end %>
             </li>
 
