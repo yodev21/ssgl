@@ -4,14 +4,17 @@ class TasksController < ApplicationController
   before_action :set_params, only: %i[edit update destroy]
   before_action :authenticate_user!
   def new
+    @challenge_course = ChallengeCourse.find(params[:challenge_course_id])
     @task = Task.new
   end
 
   def create
-    @assign = Assign.find_by(id: params[:assign_id])
-    @task = @assign.tasks.build(task_params)
+    @challenge_course = ChallengeCourse.find(params[:challenge_course_id])
+    @task = @challenge_course.tasks.build(task_params)
     @task.user_id = current_user.id
-    @task.team_id = @assign.team_id
+    @task.team_id = @challenge_course.team_id
+    @task.assign_id = @challenge_course.assign_id
+    @task.course_id = @challenge_course.course_id
     if @task.save
       redirect_to tasks_path(id: @task.team_id,
                              assign_id: @task.assign_id),

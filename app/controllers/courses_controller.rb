@@ -12,9 +12,14 @@ class CoursesController < ApplicationController
     @course.user_id = current_user.id
     @course.team_id = @assign.team_id
     if @course.save
-      redirect_to tasks_path(id: @course.team_id,
-                             assign_id: @course.assign_id),
-                             notice: 'コースを作成しました！'
+      @challenge_course = ChallengeCourse.create!(
+        status: 0,
+        user_id: current_user.id,
+        team_id: @course.team.id,
+        assign_id: @course.assign_id,
+        course_id: @course.id
+      )
+      redirect_to new_task_path(challenge_course_id: @challenge_course), notice: 'コースを作成しました！ 次にタスクを作成しましょう！'
     else
       redirect_to tasks_path(id: @course.team_id,
                              assign_id: @course.assign_id),

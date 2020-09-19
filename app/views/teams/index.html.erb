@@ -4,8 +4,6 @@
       <%= form_with(url: teams_search_path, local: true, method: :get, class: "form-inline") do |f| %>
         <%= f.text_field :search_name, class: "form-control mr-sm-2 search_left", placeholder: "チーム名" %>
         <%= f.submit '検索', class: "btn btn-outline-success  search_left" %>
-        <%= link_to "マイチーム", belong_teams_path, class: "btn btn-outline-info waves-effect  button_right mobile_button_left"%>
-        <%= link_to "チーム作成", new_team_path, class: "btn btn-outline-primary  button_right mobile_button"%>
       <% end %>
     </div>
     <% @teams.each do |team|%>

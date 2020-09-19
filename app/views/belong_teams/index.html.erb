@@ -1,5 +1,8 @@
 <div class="main_index">
   <h2>マイチーム</h2>
+  <% if current_user.status == "mentor"%>
+    <%= link_to "チーム作成", new_team_path, class: "btn btn-outline-primary  button_right mobile_button"%>
+  <% end %>
   <div class="row">
     <% unless @teams.blank? %>
       <% @teams.each do |team|%>

@@ -6,6 +6,7 @@ class ChallengeStart < ApplicationRecord
   belongs_to :assign
   belongs_to :task
   belongs_to :course
+  belongs_to :challenge_course
   has_many :answers, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :feed_backs, dependent: :destroy

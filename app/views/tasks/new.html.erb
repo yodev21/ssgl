@@ -4,8 +4,9 @@
       <div class="form-group text-center">
         <h3>課題作成</h3>
       </div>
-      <%= form_with model: @task, url: tasks_path(assign_id: params[:assign_id]), local: true do |f| %>
-        
+
+      <%= form_with model: @task, url: tasks_path(challenge_course_id: @challenge_course.id), local: true do |f| %>
+
         <div class="form-group">
           <%= f.text_field :title, autofocus: true, placeholder: "課題名", class: "form-control", required: true %>
         </div>

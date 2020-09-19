@@ -42,7 +42,6 @@ RSpec.describe 'Answers', type: :system do
       fill_in 'comment_content', with: 'テスト コメント'
       click_button 'コメント'
       click_link 'コメント削除'
-      # binding.pry
       sleep(1)
       page.driver.browser.switch_to.alert.accept
       # wait.until { expect(page).not_to have_content 'テスト コメント' }

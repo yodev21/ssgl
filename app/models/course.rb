@@ -2,6 +2,7 @@ class Course < ApplicationRecord
   belongs_to :user
   belongs_to :team
   belongs_to :assign
+  has_many :challenge_courses, dependent: :destroy
   has_many :tasks, dependent: :destroy
   has_many :challenge_starts, dependent: :destroy
   has_many :answers, dependent: :destroy

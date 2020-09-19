@@ -5,6 +5,7 @@ class Task < ApplicationRecord
   belongs_to :team
   belongs_to :assign
   belongs_to :course
+  belongs_to :challenge_course
   has_many :challenge_starts, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :feed_backs, dependent: :destroy

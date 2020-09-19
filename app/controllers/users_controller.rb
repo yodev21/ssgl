@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     user = User.find(current_user.id)
     user.status = user.status == "member" ? "mentor" : "member"
     user.save
-    binding.pry
+    
     redirect_to belong_teams_path
   end
 

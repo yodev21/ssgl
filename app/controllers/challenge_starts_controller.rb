@@ -4,7 +4,6 @@ class ChallengeStartsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    binding.pry
     # @challenge_tasks = ChallengeStart.get_ansers(user: current_user).includes(:task).with_challenge_start_title(params[:name]).with_challenge_start_status(params[:status])
     
     challenge_course = ChallengeCourse.find(params[:id])
