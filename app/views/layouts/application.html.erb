@@ -17,13 +17,15 @@
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white">
       <div class="logo">
-        <%= image_tag "logo.png", class: "logo-icon" %>
-        <span class="simple-text logo-normal logo-name" >Dashboard</span>
+        <%= link_to(root_path) do %>
+          <%= image_tag "logo.png", class: "logo-icon" %>
+          <span class="simple-text logo-normal logo-name" >Dashboard</span>
+        <% end %>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <% if user_signed_in?%>
-            <% if current_user.status == "mentor"%>
+            <% if current_user.status == "member"%>
               <%= render 'partial/member' %>
             <% else %>
               <%= render 'partial/mentor' %>

@@ -22,9 +22,8 @@
 </li>
 
 <li class="nav-item">
-  <%= link_to teams_path, class: "nav-link" do %>
+  <%= link_to user_change_status_path(user_id: current_user), method: :post , class: "nav-link" do %>
     <i class="material-icons">transfer_within_a_station</i>
     <p>メンバーに戻る</p>
-    <p>　　　(準備中)</p>
   <% end %>
 </li>

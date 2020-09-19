@@ -36,7 +36,9 @@ class User < ApplicationRecord
 
   def check_guest_user
     if self.id.present? && created_at < '2020/07/01 00:00:00'
-       errors.add(:name, "はゲストユーザーのため更新できません！")
+      if self.email != "guest@example.com"
+        errors.add(:name, "はゲストユーザーのため更新できません！")
+      end
     end
   end
 end

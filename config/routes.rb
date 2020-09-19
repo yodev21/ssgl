@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   devise_for :users,
              controllers: { registrations: 'registrations' }
 
-  resources :users, only: %i[index show destroy]
+  resources :users, only: %i[index show destroy] do
+    post '/change_status', to: 'users#change_status'
+  end
   resources :teams
   resources :assigns, only: %i[create destroy update] 
 
