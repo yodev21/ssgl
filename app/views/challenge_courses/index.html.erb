@@ -1,2 +1,35 @@
-<h1>ChallengeCourses#index</h1>
-<p>Find me in app/views/challenge_courses/index.html.erb</p>
+<div class="main_index">
+
+  <h3>マイコース一覧</h3>
+  <div class="row">
+    <% unless @challenge_courses.blank? %>
+      <% @challenge_courses.each do |challenge_course|%>
+        <div class="col-sm-12 col-lg-6 col-xl-4">
+          <div class="image-box">
+          <%= link_to (image_tag challenge_course.course.image.url(:medium), class: "image-size"), challenge_starts_path(id: challenge_course.id)%>
+          <div class="card-body">
+            <div class="row parts">
+              <% if challenge_course.status == "underway" %>
+                <%= link_to "コースに移動", new_answer_path(challenge_start_id: challenge_course.id), class: "team_info btn btn-outline-primary profile-btn" %>
+
+              <% else %>
+                <p class="badge badge-dark">完了</p>
+              <% end %>
+            </div>
+            <div>
+              <span><strong><%= challenge_course.course.title %></strong></span>
+              <%= link_to time_ago_in_words(challenge_course.updated_at).upcase + "前", task_path(assign_id: challenge_course.assign.id, 
+                                                                                                team_id: challenge_course.assign.team_id, 
+                                                                                                id: challenge_course.course.id), 
+                                                                                                class: "team-time no-text-decoration" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h3><br>まだ何も課題に取り組んでいません！<br>
+      マイチームから課題に挑戦しましょう！</h3>
+    <% end %>
+  </div>
+</div>

@@ -4,7 +4,11 @@ class ChallengeStartsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @challenge_tasks = ChallengeStart.get_ansers(user: current_user).includes(:task).with_challenge_start_title(params[:name]).with_challenge_start_status(params[:status])
+    binding.pry
+    # @challenge_tasks = ChallengeStart.get_ansers(user: current_user).includes(:task).with_challenge_start_title(params[:name]).with_challenge_start_status(params[:status])
+    
+    challenge_course = ChallengeCourse.find(params[:id])
+    @challenge_tasks = ChallengeStart.where(user_id: current_user, course_id: challenge_course.course.id)
   end
 
   def create

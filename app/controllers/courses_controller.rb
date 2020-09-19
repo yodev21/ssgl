@@ -23,16 +23,12 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @team = Team.find_by(id: params[:id])
-    @assign = Assign.find_by(team_id: @team.id,
-                             user_id: current_user.id)
-    @courses = Course.belong_to_team_all(team_id: @team.id,
-                                       assign_id: @assign.id)
-                 .with_title(params[:title])
+    @courses = Course.order(updated_at: :desc)
   end
 
   def show
     @course = Course.find_by(id: params[:id])
+    @tasks = Task.where(course_id: @course.id)
 
   end
 
