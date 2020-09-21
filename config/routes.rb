@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   resources :comments, only: %i[create edit update destroy]
 
   namespace :mentor do
+    resources :teams
     resources :courses
   end
 
