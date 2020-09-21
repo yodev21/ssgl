@@ -19,7 +19,7 @@ class Mentor::CoursesController < ApplicationController
         assign_id: @course.assign_id,
         course_id: @course.id
       )
-      redirect_to new_task_path(challenge_course_id: @challenge_course), notice: 'コースを作成しました！ 次にタスクを作成しましょう！'
+      redirect_to new_mentor_task_path(challenge_course_id: @challenge_course), notice: 'コースを作成しました！ 次にタスクを作成しましょう！'
     else
       redirect_to tasks_path(id: @course.team_id,
                              assign_id: @course.assign_id),
@@ -35,22 +35,21 @@ class Mentor::CoursesController < ApplicationController
     @course = Course.find_by(id: params[:id])
     @challenge_course = ChallengeCourse.find_by(user_id: current_user.id, course_id: @course)
     @tasks = Task.where(course_id: @course.id)
-
   end
 
   def edit;end
 
   def update
     if @course.update(course_params)
-      redirect_to course_path(@course), notice: 'コースを更新しました！'
+      redirect_to mentor_course_path(@course), notice: 'コースを更新しました！'
     else
-      redirect_to courses_path(@course), notice: 'コースの更新に失敗しました！'
+      redirect_to mentor_courses_path(@course), notice: 'コースの更新に失敗しました！'
     end
   end
 
   def destroy
     @course.destroy
-    redirect_to courses_path, notice: '課題を削除しました！'
+    redirect_to mentor_courses_path, notice: '課題を削除しました！'
   end
 
   private

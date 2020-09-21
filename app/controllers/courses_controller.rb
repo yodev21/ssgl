@@ -2,31 +2,6 @@ class CoursesController < ApplicationController
   before_action :set_params, only: %i[edit update destroy]
   before_action :authenticate_user!
   
-  # def new
-  #   @course = Course.new
-  # end
-
-  # def create
-  #   @assign = Assign.find_by(id: params[:assign_id])
-  #   @course = @assign.courses.build(course_params)
-  #   @course.user_id = current_user.id
-  #   @course.team_id = @assign.team_id
-  #   if @course.save
-  #     @challenge_course = ChallengeCourse.create!(
-  #       status: 0,
-  #       user_id: current_user.id,
-  #       team_id: @course.team.id,
-  #       assign_id: @course.assign_id,
-  #       course_id: @course.id
-  #     )
-  #     redirect_to new_task_path(challenge_course_id: @challenge_course), notice: 'コースを作成しました！ 次にタスクを作成しましょう！'
-  #   else
-  #     redirect_to tasks_path(id: @course.team_id,
-  #                            assign_id: @course.assign_id),
-  #                            alert: '課題の作成に失敗しました！'
-  #   end 
-  # end
-
   def index
     @courses = Course.order(updated_at: :desc)
   end
