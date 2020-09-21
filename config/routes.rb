@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   namespace :mentor do
     resources :teams
     resources :courses
+    resources :tasks
   end
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
