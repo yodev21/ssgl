@@ -10,7 +10,7 @@
           <div class="card-body">
             <div class="row parts">
               <% if challenge_course.status == "underway" %>
-                <%= link_to "コースに移動", challenge_starts_path(id: challenge_course), class: "team_info btn btn-outline-primary profile-btn" %>
+                <%= link_to "コースに移動", challenge_course_path(challenge_course), class: "team_info btn btn-outline-primary profile-btn" %>
 
               <% else %>
                 <p class="badge badge-dark">完了</p>

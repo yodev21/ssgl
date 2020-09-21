@@ -63,8 +63,8 @@ p 'Guest Assign Success'
 # ゲストコース作成
 p 'Create Guest Course'
 @guest_course = Course.create!(
-  title: 'Ruby on Rails Webアプリケーション学習【テスト】',
-  content: "Railsチュートリアルをサイトを参考に学習してください。\n
+  title: '初心者向け! Webアプリケーション学習【テスト】',
+  content: "課題の書籍・学習サービスを購入して学習してください。。\n
             課題が完了しましたらこちらにお知らせください。",
   image: open("#{Rails.root}/app/assets/images/courses/1.png"),
   user_id: @guest_user.id,
@@ -72,6 +72,18 @@ p 'Create Guest Course'
   assign_id: @guest_assign.id,
   created_at: "2020-06-30 00:00:00"
 )
+p 'Create Guest Course2'
+@guest_course_2 = Course.create!(
+  title: '中級者向け! Ruby on Rails 学習【テスト】',
+  content: "課題の書籍・学習サービスを購入して学習してください。\n
+            課題が完了しましたらこちらにお知らせください。",
+  image: open("#{Rails.root}/app/assets/images/courses/1.png"),
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  created_at: "2020-06-30 00:00:00"
+)
+p '-------------------------- 初学者向けコース ---------------------'
 # ゲストコース参加
 p 'Create Guest ChallengeCourse'
 @guest_challenge_course = ChallengeCourse.create!(
@@ -172,7 +184,93 @@ p 'Create Guest Task'
   created_at: "2020-06-30 00:00:00"
 )
 p 'Guest Task Success'
-
+p '-------------------------- 初学者向けコース作成完了 ---------------------'
+p '-------------------------- 中級者向けコース ---------------------'
+#ゲストコース参加
+p 'Create Guest ChallengeCourse'
+@guest_challenge_course_2 = ChallengeCourse.create!(
+  status: 1,
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  course_id: @guest_course_2.id,
+  created_at: "2020-06-30 00:00:00"
+)
+p 'Guest Course Success'
+# ゲストタスク作成
+p 'Create Guest Task'
+@guest_task2_1 = Task.create!(
+  title: 'パーフェクトRuby on Rails',
+  content: "パーフェクトRuby on Railsにチャレンジしてください。\n完了しましたらこちらにお知らせください。",
+  image: open("#{Rails.root}/app/assets/images/tasks/perfect_rails.png"),
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  course_id: @guest_course_2.id,
+  challenge_course_id: @guest_challenge_course_2.id,
+  created_at: "2020-06-30 00:00:00"
+)
+p 'Create Guest Task'
+@guest_task2_2 = Task.create!(
+  title: 'Ruby on Rails6 実践ガイド',
+  content: "Ruby on Rails実践ガイドにチャレンジしてください。\n完了しましたらこちらにお知らせください。",
+  image: open("#{Rails.root}/app/assets/images/tasks/practice_rails_1.png"),
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  course_id: @guest_course_2.id,
+  challenge_course_id: @guest_challenge_course_2.id,
+  created_at: "2020-06-30 00:00:00"
+)
+p 'Create Guest Task'
+@guest_task2_3 = Task.create!(
+  title: 'Ruby on Rails6 実践ガイド[機能拡張編]',
+  content: "Ruby on Rails実践ガイド[機能拡張編]にチャレンジしてください。\n完了しましたらこちらにお知らせください。",
+  image: open("#{Rails.root}/app/assets/images/tasks/practice_rails_2.png"),
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  course_id: @guest_course_2.id,
+  challenge_course_id: @guest_challenge_course_2.id,
+  created_at: "2020-06-30 00:00:00"
+)
+p 'Create Guest Task'
+@guest_task2_4 = Task.create!(
+  title: 'オブジェクト指向設計実践ガイド',
+  content: "オブジェクト指向設計実践ガイドにチャレンジしてください。\n完了しましたらこちらにお知らせください。",
+  image: open("#{Rails.root}/app/assets/images/tasks/object_ruby.png"),
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  course_id: @guest_course_2.id,
+  challenge_course_id: @guest_challenge_course_2.id,
+  created_at: "2020-06-30 00:00:00"
+)
+p 'Create Guest Task'
+@guest_task2_5 = Task.create!(
+  title: '達人に学ぶSQL徹底指南書',
+  content: "達人に学ぶSQL徹底指南書にチャレンジしてください。\n完了しましたらこちらにお知らせください。",
+  image: open("#{Rails.root}/app/assets/images/tasks/codezine_sql.png"),
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  course_id: @guest_course_2.id,
+  challenge_course_id: @guest_challenge_course_2.id,
+  created_at: "2020-06-30 00:00:00"
+)
+p 'Create Guest Task'
+@guest_task2_6 = Task.create!(
+  title: '「Auth0」で作る!認証付きシングルページアプリケーション',
+  content: "「Auth0」で作る!認証付きシングルページアプリケーションにチャレンジしてください。\n完了しましたらこちらにお知らせください。",
+  image: open("#{Rails.root}/app/assets/images/tasks/auth0_rails_nuxt.png"),
+  user_id: @guest_user.id,
+  team_id: @guest_team.id,
+  assign_id: @guest_assign.id,
+  course_id: @guest_course_2.id,
+  challenge_course_id: @guest_challenge_course_2.id,
+  created_at: "2020-06-30 00:00:00"
+)
+p '-------------------------- 中級者向けコース作成完了 ---------------------'
 
 10.times do |n|
   # ユーザー作成

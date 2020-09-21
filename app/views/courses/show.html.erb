@@ -3,6 +3,9 @@
     <span><%= image_tag avatar_url(@course), class: "course-round-img" %></span>
     <span><div class="course-title"><%= markdown(@course.title) %></div></span>
     <p><%= markdown(@course.content) %></p>
+    <% if @challenge_course.nil? %>
+      <%= link_to "このコースに取り組む",  challenge_courses_path(course_id: @course.id), method: :post, class: "btn btn-primary"%>
+    <% end %>
   </div>
   <br>
   <h2>課題一覧</h2>

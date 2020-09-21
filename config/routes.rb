@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :belong_team_users, only: %i[index show]
   
   resources :courses
-  resources :challenge_courses, only: %i[index]
+  resources :challenge_courses, only: %i[index create show]
   resources :tasks
   resources :challenge_starts, only: %i[index show create update destroy] 
   resources :answers
