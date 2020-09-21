@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  
+
   root to: 'top#top'
   get 'top/privacy_policy', to: "top#privacy_policy"
   get 'top/terms_of_service', to: "top#terms_of_service"
@@ -34,6 +34,10 @@ Rails.application.routes.draw do
   resources :answers
   resources :feed_backs, only: %i[new create index show]
   resources :comments, only: %i[create edit update destroy]
+
+  namespace :mentor do
+    resources :courses
+  end
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
