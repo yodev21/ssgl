@@ -28,7 +28,7 @@ class Mentor::CoursesController < ApplicationController
   end
 
   def index
-    @courses = Course.order(updated_at: :desc)
+    @courses = ChallengeCourse.where(user_id: current_user).order(updated_at: :desc)
   end
 
   def show

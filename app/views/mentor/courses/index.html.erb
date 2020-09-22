@@ -1,2 +1,27 @@
-<h1>Mentor::Courses#index</h1>
-<p>Find me in app/views/mentor/courses/index.html.erb</p>
+<div class="main_index">
+
+  <h3>マイコース一覧</h3>
+  <div class="row">
+    <% unless @courses.blank? %>
+      <% @courses.each do |course|%>
+        <div class="col-sm-12 col-lg-6 col-xl-4">
+          <div class="image-box">
+            <%= link_to (image_tag course.course.image.url(:medium), class: "image-size"), mentor_course_path(id: course.id)%>
+          <div class="card-body">
+            <div class="row parts">  
+              <%= link_to "コースに移動", mentor_course_path(course), class: "team_info btn btn-outline-primary profile-btn" %>
+            </div>
+            <div>
+              <span><strong><%= course.title %></strong></span>
+              <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(course.updated_at).upcase}前" %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h3><br>まだ何も課題に取り組んでいません！<br>
+      マイチームから課題に挑戦しましょう！</h3>
+    <% end %>
+  </div>
+</div>

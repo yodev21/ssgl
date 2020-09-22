@@ -2,8 +2,7 @@ class ChallengeCoursesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @challenge_courses = ChallengeCourse.where(user_id: current_user)
-    # .get_ansers(user: current_user).includes(:task).with_challenge_start_title(params[:name]).with_challenge_start_status(params[:status])
+    @courses = ChallengeCourse.where(user_id: current_user)
   end
 
   def show
