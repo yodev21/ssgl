@@ -33,17 +33,6 @@ class FeedBacksController < ApplicationController
     end
   end
 
-  def index
-    @feed_backs = FeedBack.group(:task_id, :team_id).select(:task_id, :team_id)
-  end
-
-  def show
-    @task = Task.find_by(id: params[:task_id])
-    @feed_back_average = FeedBack.group(:task_id).average(:feeling_number)
-    @feed_back_count = FeedBack.group(:task_id).count
-    @feed_backs = FeedBack.where(task_id: params[:task_id])
-  end
-
   private
 
   def feed_back_params

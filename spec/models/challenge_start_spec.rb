@@ -17,11 +17,26 @@ RSpec.describe ChallengeStart, type: :model do
         user_id: @user.id,
         team_id: @team.id
       )
+      @course = FactoryBot.create(
+        :course,
+        user_id: @user.id,
+        team_id: @team.id,
+        assign_id: @assign.id
+      )
+      @challenge_course = FactoryBot.create(
+        :challenge_course,
+        user_id: @user.id,
+        team_id: @team.id,
+        assign_id: @assign.id,
+        course_id: @course.id
+      )
       @task = FactoryBot.create(
         :task,
         user_id: @user.id,
         team_id: @team.id,
-        assign_id: @assign.id
+        assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @course.id
       )
     end
     example '必要なデータがあれば有効な状態であること' do
@@ -30,6 +45,8 @@ RSpec.describe ChallengeStart, type: :model do
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @course.id,
         task_id: @task.id
       )
       expect(challenge_start).to be_valid
@@ -41,6 +58,8 @@ RSpec.describe ChallengeStart, type: :model do
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @course.id,
         task_id: @task.id
       )
       expect(challenge_start).not_to be_valid
@@ -52,6 +71,8 @@ RSpec.describe ChallengeStart, type: :model do
         user_id: nil,
         team_id: @team.id,
         assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @course.id,
         task_id: @task.id
       )
       expect(challenge_start).not_to be_valid
@@ -63,6 +84,8 @@ RSpec.describe ChallengeStart, type: :model do
         user_id: @user.id,
         team_id: nil,
         assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @course.id,
         task_id: @task.id
       )
       expect(challenge_start).not_to be_valid
@@ -74,6 +97,8 @@ RSpec.describe ChallengeStart, type: :model do
         user_id: @user.id,
         team_id: @team.id,
         assign_id: nil,
+        course_id: @course.id,
+        challenge_course_id: @course.id,
         task_id: @task.id
       )
       expect(challenge_start).not_to be_valid
@@ -85,6 +110,8 @@ RSpec.describe ChallengeStart, type: :model do
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @course.id,
         task_id: nil
       )
       expect(challenge_start).not_to be_valid

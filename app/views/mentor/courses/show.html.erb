@@ -5,6 +5,7 @@
     <br>
     <%= link_to "コース修正", edit_mentor_course_path(@course), class: "btn btn-success"%>
     <%= link_to "コース削除", mentor_course_path(@course), data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
+    <%= link_to "フィードバックの確認", mentor_feed_backs_path(course_id: @course.id),class: "btn btn-primary  show_button_right" %>
     <p><%= markdown(@course.content) %></p>
   </div>
   <br>

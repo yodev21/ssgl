@@ -6,13 +6,6 @@ class AnswersController < ApplicationController
   def index; end
 
   def show
-    # @comment = Comment.new
-    # @comment.user_id = current_user.id
-    # @comment.team_id = @answer.team_id
-    # @comment.assign_id = @answer.assign_id
-    # @comment.task_id = @answer.task_id
-    # @comment.challenge_start_id = params[:challenge_start_id]
-    # @comment.answer_id = params[:id]
     @comments = Comment.where(answer_id: @answer.id)
     @answer_user = Assign.find_by(user_id: current_user.id, team_id: @answer.team_id)
   end

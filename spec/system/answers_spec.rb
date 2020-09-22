@@ -9,8 +9,10 @@ RSpec.describe 'Answers', type: :system do
       @user = FactoryBot.create(:user, email: 'testAnswerSystem@example.com')
       @team = FactoryBot.create(:team, name: 'My Team', user_id: @user.id)
       @assign = FactoryBot.create(:assign, user_id: @user.id, team_id: @team.id)
-      @task = FactoryBot.create(:task, user_id: @user.id, team_id: @team.id, assign_id: @assign.id)
-      @challenge_start = FactoryBot.create(:challenge_start, user_id: @user.id, team_id: @team.id, assign_id: @assign.id, task_id: @task.id)
+      @couorse = FactoryBot.create(:course, user_id: @user.id, team_id: @team.id, assign_id: @assign.id)
+      @challenge_course = FactoryBot.create(:challenge_course, user_id: @user.id, team_id: @team.id, assign_id: @assign.id, course_id: @course.id)
+      @task = FactoryBot.create(:task, user_id: @user.id, team_id: @team.id, assign_id: @assign.id, course_id: @course.id, challenge_course_id: @challenge_course.id)
+      @challenge_start = FactoryBot.create(:challenge_start, user_id: @user.id, team_id: @team.id, assign_id: @assign.id, course_id: @course.id, challenge_course_id: @challenge_course.id, task_id: @task.id)
       visit new_user_session_path
       fill_in 'user_email', with: 'testAnswerSystem@example.com'
       fill_in 'user_password', with: 'testtest'
@@ -18,7 +20,7 @@ RSpec.describe 'Answers', type: :system do
     end
 
     example '回答ができること', retry: 3 do
-      visit task_path(user_id: @user.id, team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
+      visit task_path(id: @assign.tasks.first)
       
       click_link '回答'
       fill_in 'answer_content', with: 'テスト コンテント'

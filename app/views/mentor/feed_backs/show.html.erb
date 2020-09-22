@@ -1,2 +1,37 @@
-<h1>Mentor::FeedBacks#show</h1>
-<p>Find me in app/views/mentor/feed_backs/show.html.erb</p>
+<div class="main_index">
+
+  <%= image_tag avatar_url(@task), class: "round-img show_img" %>
+  <div class="content">
+    <h3 class="show_title"><%= @task.title %></h3>
+    <span><strong>平均値:<%= @feed_back_average.values[0].to_i %></strong></span><br>
+    <span><strong>フィードバック数:<%= @feed_back_count.values[0].to_i %></strong></span>
+    <p><%= @task.content %></p>
+  </div>
+
+  <div class="row">
+    <% if @feed_backs.present? %>
+      <% @feed_backs.each do |feed_back| %>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="image-box-feed-back">
+              <span><%= image_tag avatar_url(feed_back.user), class: "round-img float-md-left"  %></span>
+              <div class="comment_info">
+              <span><%= feed_back.user.name %></span><br>
+              <span>評価:<%= feed_back.feeling_number %></span><br>
+              <span><%= feed_back.created_at.strftime('%Y/%m/%d %H:%M') %></span>
+              <div class="card-body card-hight">
+                <div>
+                  <div class="form-group">
+                    <textarea class="feed_back_form" rows="10"><%= safe_join(feed_back.reason.split("\n")) %></textarea>
+                    
+                  </div>                                                                                                     
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

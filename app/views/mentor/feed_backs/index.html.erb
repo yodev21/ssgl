@@ -1,2 +1,32 @@
-<h1>Mentor::FeedBacks#index</h1>
-<p>Find me in app/views/mentor/feed_backs/index.html.erb</p>
+<div class="main_index">
+  <h2>フィードバック一覧</h2>
+
+  <div class="row">
+    <% unless @feed_backs.blank? %>
+      <% @feed_backs.each do |feed_back|%>
+        <div class="col-sm-12 col-lg-6 col-xl-4">
+          <div class="image-box">
+          <%= link_to (image_tag feed_back.task.image.url(:medium), class: "image-size"), mentor_feed_back_path(task_id: feed_back.task_id,
+                                                                                                                id: feed_back.task_id) %>
+          
+              <%= link_to feed_back.course.title, mentor_feed_back_path(task_id: feed_back.task_id,
+                                                        id: feed_back.task_id), 
+                                                        class: "" %>
+          <div class="card-body">
+            <div class="row parts">
+              <%= link_to "詳細", mentor_feed_back_path(task_id: feed_back.task_id,
+                                                        id: feed_back.task_id), 
+                                                        class: "btn btn-outline-info team_info" %>
+                                                      
+            </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+        <div class="col-sm-12 col-lg-6 col-xl-4">
+          <h4>現在フィードバックはありません。</h4>
+        </div>
+    <% end %>
+  </div>
+</div>
