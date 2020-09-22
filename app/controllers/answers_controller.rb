@@ -6,16 +6,14 @@ class AnswersController < ApplicationController
   def index; end
 
   def show
-    @comment = Comment.new
-    @comment.user_id = current_user.id
-    @comment.team_id = params[:team_id]
-    @comment.assign_id = params[:assign_id]
-    @comment.task_id = params[:task_id]
-    @comment.challenge_start_id = params[:challenge_start_id]
-    @comment.answer_id = params[:id]
-    @comments = Comment.where(team_id: @answer.team_id,
-                              task_id: @answer.task_id,
-                              answer_id: @answer.id)
+    # @comment = Comment.new
+    # @comment.user_id = current_user.id
+    # @comment.team_id = @answer.team_id
+    # @comment.assign_id = @answer.assign_id
+    # @comment.task_id = @answer.task_id
+    # @comment.challenge_start_id = params[:challenge_start_id]
+    # @comment.answer_id = params[:id]
+    @comments = Comment.where(answer_id: @answer.id)
     @answer_user = Assign.find_by(user_id: current_user.id, team_id: @answer.team_id)
   end
 
@@ -47,23 +45,20 @@ class AnswersController < ApplicationController
   end
 
   def create
-    challenge_start = ChallengeStart.find(params[:answer][:challenge_start_id])
+    challenge_start = ChallengeStart.find(params[:challenge_start_id])
+    challenge_course = ChallengeCourse.find_by(user_id: current_user)
     @answer = Answer.new(answer_params)
     @answer.user_id = current_user.id
-
     @answer.team_id = challenge_start.team.id
     @answer.assign_id = challenge_start.assign.id
+    @answer.course_id = challenge_start.course.id
+    @answer.challenge_course_id = challenge_start.id
     @answer.task_id = challenge_start.task.id
     @answer.challenge_start_id = challenge_start.id
 
     if @answer.save
       challenge_start.update(status: :awaiting_review)
-      redirect_to new_feed_back_path(team_id: @answer.team_id,
-                                      assign_id: @answer.assign_id,
-                                      task_id: @answer.task_id,
-                                      challenge_start_id: @answer.challenge_start_id,
-                                      answer_id: @answer.id),
-                  notice: '回答しました。'
+      redirect_to new_feed_back_path(answer_id: @answer.id), notice: '回答しました。'
     else
       flash.now[:alert] = '課題投稿に失敗しました！'
       render :new

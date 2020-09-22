@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TopController < ApplicationController
-  # before_action :login_check, only: [:top]
+  before_action :login_check, only: [:top]
 
   def top; end
 
