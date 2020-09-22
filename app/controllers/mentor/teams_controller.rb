@@ -31,7 +31,7 @@ class Mentor::TeamsController < ApplicationController
   end
 
   def show
-    @assign = Assign.find_by(user_id: current_user, team_id: @team.id)
+    @courses = Course.where(user_id: current_user.id, team_id: params[:id])
     @assigns = Assign.where(team_id: params[:id]).includes(:user)
   end
 

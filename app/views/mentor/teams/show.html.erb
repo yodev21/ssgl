@@ -18,7 +18,26 @@
     </div>
   </div>
 </div>
+<div class="course-index">
+  <h2>コース一覧</h2>
+  <div class="course-tasks">
+    <% @courses.each do |course| %>
+      <div class="row">
+        <%= link_to(mentor_course_path(course) ,class: "course-link") do %>
+          <div class="image-box-course">
+              <%= image_tag course.image.url(:medium), class: "round-img float-md-left" %>
+              <p><strong>タスク名:<%= course.title %></strong></p>
+              <br>
+              <p>内容:<%= markdown(course.content) %></p>
+              <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(course.updated_at).upcase}前" %></p>
 
+          </div>
+        <% end %>
+      </div>
+      <br>
+    <% end %>
+  </div>
+</div>
 <% unless @assigns.nil? %>
   <%= render 'partial/belong_users', assigns: @assigns%>
 <% end %>
