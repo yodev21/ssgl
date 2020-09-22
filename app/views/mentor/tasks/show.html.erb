@@ -10,6 +10,7 @@
                             method: :delete,
                             data: { confirm: "課題を削除してもよろしいですか？"},
                             class: "btn btn-outline-danger  show_button_right" %>
+    <%= link_to "フィードバック", mentor_feed_back_path(@task),class: "btn btn-primary  show_button_right" %> %>
     <p class="content"><%= @task.content %></p>
   </div>
   <div class="row">
@@ -27,51 +28,39 @@
           <%= f.submit '検索', class: "btn btn-outline-success  show_search_left" %>
         <% end %>
     </div>
-    <% if @challenge_users  && @user_status.status == "admin" %>
-      <% @challenge_users.each do |challenge_user| %>
-        <div class="col-sm-12 col-lg-6 col-xl-4">
-          <div class="image-box">
-            <div class="card-body">
-              <div class="row parts">
-                <%= link_to (image_tag challenge_user.user.image.url(:medium), class: "image-size"), user_path(challenge_user.user_id)%>
+    <% @challenge_users.each do |challenge_user| %>
+      <div class="col-sm-12 col-lg-6 col-xl-4">
+        <div class="image-box">
+          <div class="card-body">
+            <div class="row parts">
+              <%= link_to (image_tag challenge_user.user.image.url(:medium), class: "image-size"), user_path(challenge_user.user_id)%>
 
-                <div class="card-body">
-                  <div>
-                    <span><strong><%= challenge_user.user.name %></strong></span>
-                    <%= link_to time_ago_in_words(challenge_user.updated_at).upcase + "前", user_path(challenge_user.user_id), class: "team-time no-text-decoration" %><br/>
-                    <% if @answer %>
-                      <% if challenge_user.status == "awaiting_review" %>
-                        <%= link_to "課題確認", answer_path(user_id: challenge_user.user_id,
-                                                          team_id: challenge_user.assign.team_id, 
-                                                          assign_id: challenge_user.assign.id, 
-                                                          task_id: challenge_user.task_id,
-                                                          challenge_start_id: challenge_user.id,
-                                                          id: challenge_user.answers.first.id),
-                                                          class: "btn btn-warning" %>
-                      <% elsif challenge_user.status == "remand"%>
-                        <%= link_to "修正中", answer_path(user_id: challenge_user.user_id,
-                                                        team_id: challenge_user.assign.team_id, 
-                                                        assign_id: challenge_user.assign.id, 
-                                                        task_id: challenge_user.task_id,
-                                                        challenge_start_id: challenge_user.id,
-                                                        id: challenge_user.answers.first.id),
-                                                        class: "btn btn-success" %>
-                      <% elsif challenge_user.status == "complete" %>
-                        <span class="badge badge-dark">課題完了</span>
-                      <% else %>
-                        <span class="badge badge-info">着手中</span>
-                      <% end %>
-
+              <div class="card-body">
+                <div>
+                  <span><strong><%= challenge_user.user.name %></strong></span>
+                  <%= link_to time_ago_in_words(challenge_user.updated_at).upcase + "前", user_path(challenge_user.user_id), class: "team-time no-text-decoration" %><br/>
+                  <% if @answer %>
+                    <% if challenge_user.status == "awaiting_review" %>
+                      <%= link_to "課題確認", answer_path(id: challenge_user.answers.first.id),
+                                                        class: "btn btn-warning" %>
+                    <% elsif challenge_user.status == "remand"%>
+                      <%= link_to "修正中", answer_path(id: challenge_user.answers.first.id),
+                                                      class: "btn btn-success" %>
+                    <% elsif challenge_user.status == "complete" %>
+                      <span class="badge badge-dark">課題完了</span>
                     <% else %>
-                        <span class="badge badge-info">着手中</span>
+                      <span class="badge badge-info">着手中</span>
                     <% end %>
-                  </div>
+
+                  <% else %>
+                      <span class="badge badge-info">着手中</span>
+                  <% end %>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      <% end %>
+      </div>
     <% end %>
   </div>
 </div>

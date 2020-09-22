@@ -32,13 +32,14 @@ Rails.application.routes.draw do
   resources :tasks, only: %i[index show]
   resources :challenge_starts, only: %i[index show create update destroy] 
   resources :answers
-  resources :feed_backs, only: %i[new create index show]
+  resources :feed_backs, only: %i[new create]
   resources :comments, only: %i[create edit update destroy]
 
   namespace :mentor do
     resources :teams
     resources :courses
     resources :tasks
+    resources :feed_backs, only: %i[show index]
   end
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
