@@ -4,7 +4,7 @@
       <div class="form-group text-center">
         <h3>コース作成</h3>
       </div>
-      <%= form_with model: @course, url: mentor_courses_path(assign_id: params[:assign_id]), local: true do |f| %>
+      <%= form_with model: @course, url: mentor_courses_path(team_id: params[:team_id]), local: true do |f| %>
         
         <div class="form-group">
           <%= f.text_field :title, autofocus: true, placeholder: "課題名", class: "form-control", required: true %>

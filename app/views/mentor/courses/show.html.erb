@@ -2,16 +2,18 @@
   <div class="course-card">
     <span><%= image_tag avatar_url(@course), class: "course-round-img" %></span>
     <span><div class="course-title"><%= markdown(@course.title) %></div></span>
+    <br>
+    <%= link_to "コース修正", edit_mentor_course_path(@course), class: "btn btn-success"%>
+    <%= link_to "コース削除", mentor_course_path(@course), data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
     <p><%= markdown(@course.content) %></p>
-    <%= link_to "修正", edit_mentor_course_path(@course), class: "btn btn-success"%>
-    <%= link_to "削除", mentor_course_path(@course), data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
   </div>
   <br>
   <h2>課題一覧</h2>
+  <%= link_to "コース作成", new_mentor_task_path(course_id: params[:id]), class: "btn btn-outline-primary mobile_button"%>
   <div class="course-tasks">
     <% @tasks.each do |task| %>
       <div class="row">
-        <%= link_to(task_path(task) ,class: "course-link") do %>
+        <%= link_to(mentor_task_path(task) ,class: "course-link") do %>
           <div class="image-box-course">
               <%= image_tag task.image.url(:medium), class: "round-img float-md-left" %>
               <p><strong>タスク名:<%= task.title %></strong></p>

@@ -12,7 +12,6 @@ class Mentor::TeamsController < ApplicationController
     if @team.save
       @assign = @team.join_team(status: :admin, user: @team.user_id)
       redirect_to new_mentor_course_path(
-        assign_id: @assign.id,
         team_id: @assign.team_id),
         notice: 'チームを作成しました。 次に課題を作成してください。'
     else

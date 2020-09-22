@@ -21,14 +21,6 @@
           </select>
           <%= f.submit '検索', class: "btn btn-outline-success  show_search_left" %>
 
-          <% if @task.user_id == current_user.id %>
-            <%= link_to "課題編集", edit_task_path(@task),
-                                   class: "btn btn-outline-success  show_button_right" %>
-            <%= link_to "課題削除", task_path(@task),
-                                    method: :delete,
-                                    data: { confirm: "課題を削除してもよろしいですか？"},
-                                    class: "btn btn-outline-danger  show_button_right" %>
-          <% end %>
           <% if @challenge_task.nil? %>
             <%= link_to "取り組む", challenge_starts_path(task_id: @task.id), 
                                                         method: :post,
@@ -49,12 +41,6 @@
                                               class: "btn btn-outline-info  show_button_right" %>
           <% else %>
             <%= link_to "回答", new_answer_path(challenge_start_id: @challenge_task.id), class: "btn btn-outline-primary  show_button_right" %>
-            <%= link_to "諦める", challenge_start_path(team_id: @task.team_id, 
-                                                      assign_id: @task.assign_id, 
-                                                      task_id: @task.id), 
-                                                      method: :delete, 
-                                                      data: { confirm: "本当に諦めますか？"}, 
-                                                      class: "btn btn-outline-danger   show_button_right" %>
           <% end %>
         <% end %>
       <% else %>
@@ -92,12 +78,6 @@
                                                 task_id: @challenge_task.task_id,
                                                 challenge_start_id: @challenge_task.id), 
                                                 class: "btn btn-outline-primary  show_button_right" %>
-          <%= link_to "諦める", challenge_start_path(team_id: @task.team_id, 
-                                                    assign_id: @task.assign_id, 
-                                                    task_id: @task.id), 
-                                                    method: :delete, 
-                                                    data: { confirm: "本当に諦めますか？"}, 
-                                                    class: "btn btn-outline-danger   show_button_right" %>
           <% end %>
       <% end %>
     </div>

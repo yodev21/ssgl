@@ -2,18 +2,17 @@ class Mentor::TasksController < ApplicationController
   before_action :set_params, only: %i[edit update destroy]
   before_action :authenticate_user!
   def new
-    @challenge_course = ChallengeCourse.find(params[:challenge_course_id])
     @task = Task.new
   end
 
   
   def create
-    @challenge_course = ChallengeCourse.find(params[:challenge_course_id])
-    @task = @challenge_course.tasks.build(task_params)
+    @course = ChallengeCourse.find_by(user_id: current_user.id, course_id: params[:course_id])
+    @task = @course.tasks.build(task_params)
     @task.user_id = current_user.id
-    @task.team_id = @challenge_course.team_id
-    @task.assign_id = @challenge_course.assign_id
-    @task.course_id = @challenge_course.course_id
+    @task.team_id = @course.team_id
+    @task.assign_id = @course.assign_id
+    @task.course_id = @course.course_id
     if @task.save
       redirect_to mentor_courses_path(id: @task.team_id,
                              assign_id: @task.assign_id),
@@ -61,9 +60,9 @@ class Mentor::TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to task_path(@task), notice: '課題を更新しました！'
+      redirect_to mentor_task_path(@task), notice: '課題を更新しました！'
     else
-      redirect_to tasks_path(@task), notice: '課題の更新に失敗しました！'
+      redirect_to mentor_task_path(@task), notice: '課題の更新に失敗しました！'
     end
   end
 

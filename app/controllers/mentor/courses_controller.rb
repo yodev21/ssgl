@@ -7,7 +7,7 @@ class Mentor::CoursesController < ApplicationController
   end
 
   def create
-    @assign = Assign.find_by(id: params[:assign_id])
+    @assign = Assign.find_by(team_id: params[:team_id])
     @course = @assign.courses.build(course_params)
     @course.user_id = current_user.id
     @course.team_id = @assign.team_id
@@ -19,7 +19,7 @@ class Mentor::CoursesController < ApplicationController
         assign_id: @course.assign_id,
         course_id: @course.id
       )
-      redirect_to new_mentor_task_path(challenge_course_id: @challenge_course), notice: 'コースを作成しました！ 次にタスクを作成しましょう！'
+      redirect_to new_mentor_task_path(course_id: @course.id), notice: 'コースを作成しました！ 次にタスクを作成しましょう！'
     else
       redirect_to tasks_path(id: @course.team_id,
                              assign_id: @course.assign_id),
@@ -28,7 +28,7 @@ class Mentor::CoursesController < ApplicationController
   end
 
   def index
-    @courses = ChallengeCourse.where(user_id: current_user).order(updated_at: :desc)
+    @courses = Course.where(user_id: current_user).order(updated_at: :desc)
   end
 
   def show
