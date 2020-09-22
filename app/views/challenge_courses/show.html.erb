@@ -9,7 +9,7 @@
   <div class="course-tasks">
     <% @tasks.each do |task| %>
       <div class="row">
-        <%= link_to(challenge_start_path(task) ,class: "course-link") do %>
+        <%= link_to(task_path(task) ,class: "course-link") do %>
           <div class="image-box-course">
               <%= image_tag task.image.url(:medium), class: "round-img float-md-left" %>
               <p><strong>タスク名:<%= task.title %></strong></p>

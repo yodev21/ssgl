@@ -30,23 +30,15 @@ class ChallengeStartsController < ApplicationController
   end
 
   def create
-    @challenge = ChallengeStart.create_challenge_start(task: params[:task_id], user: current_user)
-    redirect_to task_path(user_id: current_user.id,
-                          team_id: @challenge.team.id,
-                          assign_id: @challenge.assign.id,
-                          id: params[:task_id]),
-                notice: 'こちらの課題に取り組みました。'
+    @challenge = ChallengeStart.create_challenge_start(task_id: params[:task_id], user_id: current_user.id)
+    # binding.pry
+    redirect_to task_path(id: params[:task_id]), notice: 'こちらの課題に取り組みました。'
   end
 
   def update
     challenge = ChallengeStart.find(params[:id])
     challenge.update(status: :complete)
-    redirect_to task_path(user_id: current_user.id,
-                          team_id: challenge.team.id,
-                          assign_id: challenge,
-                          challenge_start_id: challenge.id,
-                          id: challenge.task.id),
-                notice: '課題完了しました。'
+    redirect_to task_path(id: challenge.task.id), notice: '課題完了しました。'
   end
 
   def destroy

@@ -15,18 +15,17 @@ class ChallengeStart < ApplicationRecord
 
   validates :status, presence: true
 
-  scope :create_challenge_start, lambda { |task: '', user: current_user|
-    next if task.nil?
+  scope :create_challenge_start, lambda { |task_id: '', user_id: current_user.id|
+    next if task_id.nil?
 
-    task = Task.find(task)
-    user = user
-    team = Team.find(task.team_id)
-    assign = Assign.find(task.assign_id)
-    create(status: :underway,
+    task = Task.find(task_id)
+    create(status: "underway",
            deadline: '',
-           user_id: user.id,
-           team_id: team.id,
-           assign_id: assign.id,
+           user_id: user_id,
+           team_id: task.course.team.id,
+           assign_id: task.assign.id,
+           course_id: task.course.id,
+           challenge_course_id: task.challenge_course.id,
            task_id: task.id)
   }
 
