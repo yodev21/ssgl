@@ -2,7 +2,7 @@
 
   <h3>マイコース一覧</h3>
   <div class="row">
-    <% unless @courses.blank? %>
+    <% if @courses.present? %>
       <% @courses.each do |course|%>
         <div class="col-sm-12 col-lg-6 col-xl-4">
           <div class="image-box">

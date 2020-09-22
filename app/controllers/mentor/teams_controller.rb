@@ -39,7 +39,7 @@ class Mentor::TeamsController < ApplicationController
 
   def update
     if @team.update(team_params)
-      redirect_to teams_path, notice: 'チーム情報を更新しました。'
+      redirect_to mentor_teams_path, notice: 'チーム情報を更新しました。'
     else
       flash.now[:alert] = 'チーム情報の更新に失敗しました。'
       render :edit
@@ -79,7 +79,7 @@ class Mentor::TeamsController < ApplicationController
 
   def check_guest_team
     if @team.created_at < '2020/07/01 00:00:00'
-      redirect_to teams_path, notice: "ゲストチームのため更新・削除はできません！"
+      redirect_to mentor_teams_path, notice: "ゲストチームのため更新・削除はできません！"
     end
   end
 end

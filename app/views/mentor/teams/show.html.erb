@@ -1,2 +1,24 @@
-<h1>Mentor::Teams#show</h1>
-<p>Find me in app/views/mentor/teams/show.html.erb</p>
+<div class="main">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <%= image_tag team_icon_url(@team), class: "round-img" %>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="row col-12">
+          <h1><%= @team.name %></h1>
+        </div>
+        <%= link_to "チーム情報編集", edit_mentor_team_path(@team), class: "btn btn-outline-success  profile-btn" %>
+        <%= link_to "チーム削除", mentor_team_path(@team), class: "btn btn-outline-danger  profile-btn", method: :delete, 
+                                                                                               data: { confirm: "チームを削除してもよろしいですか？"} %>
+      </div>
+      <div class="row">
+        <%= @team.remarks %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% unless @assigns.nil? %>
+  <%= render 'partial/belong_users', assigns: @assigns%>
+<% end %>

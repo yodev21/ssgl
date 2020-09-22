@@ -6,13 +6,13 @@
       <% @teams.each do |team|%>
         <div class="col-sm-12 col-lg-6 col-xl-4">
           <div class="image-box">
-          <%= link_to (image_tag team_icon_url(team),class: "image-size"), mentor_tasks_path(id: team)%>
+          <%= link_to (image_tag team_icon_url(team),class: "image-size"), mentor_team_path(team)%>
           <div class="card-body">
             <div class="row parts">
-              <%= link_to "コース", mentor_courses_path(id: team.id), class: "btn btn-outline-info",id: "task_link" %>
+              <%= link_to "コース", mentor_courses_path(team_id: team.id), class: "btn btn-outline-info",id: "task_link" %>
             </div>
             <div>
-              <span><strong><%= link_to team.name, team_path(team.id) %></strong></span>
+              <span><strong><%= link_to team.name, mentor_team_path(team.id) %></strong></span>
               <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(team.updated_at).upcase}前" %></p>
               </div>
             </div>
