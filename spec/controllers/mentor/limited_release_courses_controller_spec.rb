@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe LimitedReleaseCoursesController, type: :controller do
+RSpec.describe Mentor::LimitedReleaseCoursesController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do
