@@ -70,6 +70,7 @@ p 'Create Guest Course'
   user_id: @guest_user.id,
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
+  status: :release,
   created_at: "2020-06-30 00:00:00"
 )
 p 'Create Guest Course2'
@@ -81,6 +82,7 @@ p 'Create Guest Course2'
   user_id: @guest_user.id,
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
+  status: :release,
   created_at: "2020-06-30 00:00:00"
 )
 p '-------------------------- 初学者向けコース -----------------------------'

@@ -1,2 +1,26 @@
-<h1>Mentor::LimitedReleaseCourses#show</h1>
-<p>Find me in app/views/mentor/limited_release_courses/show.html.erb</p>
+<div class="main_index">
+  <% @courses.each do |course| %>
+    <% if course.id.present? %>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="image-box-course">
+            <span><%= image_tag avatar_url(course.user), class: "round-img float-md-left"  %></span>
+            <div class="course_info">
+            <span class=""><%= course.user.name %></span><br>
+            <span class=""><%= course.created_at.strftime('%Y/%m/%d %H:%M') %></span>
+            <div class="card-body card-hight">
+              <div>
+                <div class="form-group">
+                  <textarea readonly class="form-control course_form" rows="10"><%= safe_join(course.content.split("\n")) %></textarea>
+                  <span><%= link_to "詳細", mentor_limited_release_course(course),  class: "float-md-right btn btn-outline-primary" %>   
+                </div>                                                                                                     
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

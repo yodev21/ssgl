@@ -20,6 +20,7 @@ class Mentor::CoursesController < ApplicationController
         course_id: @course.id
       )
       redirect_to new_mentor_task_path(course_id: @course.id), notice: 'コースを作成しました！ 次にタスクを作成しましょう！'
+      
     else
       redirect_to tasks_path(id: @course.team_id,
                              assign_id: @course.assign_id),
@@ -55,9 +56,7 @@ class Mentor::CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:title,
-                                    :content,
-                                    :image)
+    params.require(:course).permit(:title, :content, :image, :status)
   end
 
   def set_params
