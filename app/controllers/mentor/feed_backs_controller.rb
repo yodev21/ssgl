@@ -1,6 +1,5 @@
 class Mentor::FeedBacksController < ApplicationController
   def index
-    # FeedBack.group(:task_id, :team_id).select(:task_id, :team_id)
     @feed_backs = FeedBack.where(course_id: params[:course_id]).group(:task_id, :team_id, :course_id).select(:task_id, :team_id, :course_id)
     
   end

@@ -10,7 +10,7 @@
                             method: :delete,
                             data: { confirm: "課題を削除してもよろしいですか？"},
                             class: "btn btn-outline-danger  show_button_right" %>
-    <%= link_to "フィードバックの確認", mentor_feed_back_path(task_id: @task),class: "btn btn-primary  show_button_right" %> %>
+    <%= link_to "フィードバックの確認", mentor_feed_back_path(task_id: @task),class: "btn btn-primary  show_button_right" %>
     <p class="content"><%= @task.content %></p>
   </div>
   <div class="row">

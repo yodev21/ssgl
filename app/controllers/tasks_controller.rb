@@ -14,12 +14,7 @@ class TasksController < ApplicationController
   
   def show
     @task = Task.find_by(id: params[:id])
-    @answer = Answer.find_by(
-      user_id: @task.user.id,
-      team_id: @task.team.id,
-      assign_id: @task.assign.id,
-      task_id: @task.id
-    )
+    @answer = Answer.find_by(task_id: @task.id)
     @user_status = Assign.find_by(user_id: current_user.id)
 
     @challenge_task = ChallengeStart.find_by(user_id: current_user.id,

@@ -9,8 +9,8 @@
     <p><%= markdown(@course.content) %></p>
   </div>
   <br>
-  <h2>課題一覧</h2>
-  <%= link_to "コース作成", new_mentor_task_path(course_id: params[:id]), class: "btn btn-outline-primary mobile_button"%>
+  <h2>タスク一覧</h2>
+  <%= link_to "タスク作成", new_mentor_task_path(course_id: params[:id]), class: "btn btn-outline-primary mobile_button"%>
   <div class="course-tasks">
     <% @tasks.each do |task| %>
       <div class="row">

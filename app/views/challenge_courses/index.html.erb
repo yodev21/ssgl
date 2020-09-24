@@ -9,7 +9,7 @@
           <% if current_user.status == 'mentor' %>
             <%= link_to (image_tag challenge_course.course.image.url(:medium), class: "image-size"), mentor_course_path(id: challenge_course.id)%>
           <% else %>
-            <%= link_to (image_tag challenge_course.course.image.url(:medium), class: "image-size"), challenge_starts_path(id: challenge_course.id)%>
+            <%= link_to (image_tag challenge_course.course.image.url(:medium), class: "image-size"), challenge_course_path(challenge_course)%>
           <% end %>
           
           <div class="card-body">

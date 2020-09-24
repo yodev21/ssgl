@@ -14,11 +14,7 @@ class AnswersController < ApplicationController
 
   def update
     if @answer.update(answer_params)
-      redirect_to answer_path(team_id: @answer.team_id,
-                              assign_id: @answer.assign_id,
-                              task_id: @answer.task_id,
-                              challenge_start_id: @answer.challenge_start_id,
-                              id: @answer.id), notice: '更新しました！'
+      redirect_to answer_path(id: @answer.id), notice: '更新しました！'
 
     else
       flash.now[:alert] = '更新に失敗しました！'
@@ -39,13 +35,13 @@ class AnswersController < ApplicationController
 
   def create
     challenge_start = ChallengeStart.find(params[:challenge_start_id])
-    challenge_course = ChallengeCourse.find_by(user_id: current_user)
+    challenge_course = ChallengeCourse.find_by(course_id: challenge_start.course_id, user_id: current_user.id)
     @answer = Answer.new(answer_params)
     @answer.user_id = current_user.id
     @answer.team_id = challenge_start.team.id
     @answer.assign_id = challenge_start.assign.id
     @answer.course_id = challenge_start.course.id
-    @answer.challenge_course_id = challenge_start.id
+    @answer.challenge_course_id = challenge_course.id
     @answer.task_id = challenge_start.task.id
     @answer.challenge_start_id = challenge_start.id
 

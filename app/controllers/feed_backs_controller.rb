@@ -14,7 +14,7 @@ class FeedBacksController < ApplicationController
     @feed_back.team_id = answer.team.id
     @feed_back.assign_id = answer.assign.id
     @feed_back.course_id = answer.course.id
-    @feed_back.challenge_course_id = answer.id
+    @feed_back.challenge_course_id = answer.challenge_course.id
     @feed_back.task_id = answer.task.id
     @feed_back.challenge_start_id = answer.challenge_start.id
     @feed_back.answer_id = answer.id

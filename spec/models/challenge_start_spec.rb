@@ -36,7 +36,7 @@ RSpec.describe ChallengeStart, type: :model do
         team_id: @team.id,
         assign_id: @assign.id,
         course_id: @course.id,
-        challenge_course_id: @course.id
+        challenge_course_id: @challenge_course.id
       )
     end
     example '必要なデータがあれば有効な状態であること' do
@@ -46,7 +46,7 @@ RSpec.describe ChallengeStart, type: :model do
         team_id: @team.id,
         assign_id: @assign.id,
         course_id: @course.id,
-        challenge_course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id
       )
       expect(challenge_start).to be_valid
@@ -59,7 +59,7 @@ RSpec.describe ChallengeStart, type: :model do
         team_id: @team.id,
         assign_id: @assign.id,
         course_id: @course.id,
-        challenge_course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id
       )
       expect(challenge_start).not_to be_valid
@@ -72,7 +72,7 @@ RSpec.describe ChallengeStart, type: :model do
         team_id: @team.id,
         assign_id: @assign.id,
         course_id: @course.id,
-        challenge_course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id
       )
       expect(challenge_start).not_to be_valid
@@ -85,7 +85,7 @@ RSpec.describe ChallengeStart, type: :model do
         team_id: nil,
         assign_id: @assign.id,
         course_id: @course.id,
-        challenge_course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id
       )
       expect(challenge_start).not_to be_valid
@@ -98,7 +98,7 @@ RSpec.describe ChallengeStart, type: :model do
         team_id: @team.id,
         assign_id: nil,
         course_id: @course.id,
-        challenge_course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id
       )
       expect(challenge_start).not_to be_valid
@@ -111,7 +111,7 @@ RSpec.describe ChallengeStart, type: :model do
         team_id: @team.id,
         assign_id: @assign.id,
         course_id: @course.id,
-        challenge_course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: nil
       )
       expect(challenge_start).not_to be_valid

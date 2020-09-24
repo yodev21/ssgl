@@ -36,7 +36,7 @@ RSpec.describe Comment, type: :model do
         team_id: @team.id,
         assign_id: @assign.id,
         course_id: @course.id,
-        challenge_course_id: @course.id
+        challenge_course_id: @challenge_course.id
       )
       @challenge_start = FactoryBot.create(
         :challenge_start,
@@ -44,7 +44,7 @@ RSpec.describe Comment, type: :model do
         team_id: @team.id,
         assign_id: @assign.id,
         course_id: @course.id,
-        challenge_course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id
       )
       @answer = FactoryBot.create(
@@ -53,7 +53,7 @@ RSpec.describe Comment, type: :model do
         team_id: @team.id,
         assign_id: @assign.id,
         course_id: @course.id,
-        challenge_course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id,
         challenge_start_id: @challenge_start.id
       )
@@ -66,7 +66,7 @@ RSpec.describe Comment, type: :model do
         team_id: @team.id,
         assign_id: @assign.id,
         course_id: @course.id,
-        challenge_course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id,
         challenge_start_id: @challenge_start.id,
         answer_id: @answer.id
@@ -81,7 +81,7 @@ RSpec.describe Comment, type: :model do
         team_id: @team.id,
         assign_id: @assign.id,
         course_id: @course.id,
-        challenge_course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id,
         challenge_start_id: @challenge_start.id,
         answer_id: @answer.id
@@ -96,7 +96,7 @@ RSpec.describe Comment, type: :model do
         team_id: @team.id,
         assign_id: @assign.id,
         course_id: @course.id,
-        challenge_course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id,
         challenge_start_id: @challenge_start.id,
         answer_id: @answer.id
@@ -111,7 +111,7 @@ RSpec.describe Comment, type: :model do
         team_id: nil,
         assign_id: @assign.id,
         course_id: @course.id,
-        challenge_course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id,
         challenge_start_id: @challenge_start.id,
         answer_id: @answer.id
@@ -126,7 +126,7 @@ RSpec.describe Comment, type: :model do
         team_id: @team.id,
         assign_id: nil,
         course_id: @course.id,
-        challenge_course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id,
         challenge_start_id: @challenge_start.id,
         answer_id: @answer.id
@@ -141,7 +141,7 @@ RSpec.describe Comment, type: :model do
         team_id: @team.id,
         assign_id: @assign.id,
         course_id: @course.id,
-        challenge_course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: nil,
         challenge_start_id: @challenge_start.id,
         answer_id: @answer.id
@@ -156,7 +156,7 @@ RSpec.describe Comment, type: :model do
         team_id: @team.id,
         assign_id: @assign.id,
         course_id: @course.id,
-        challenge_course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id,
         challenge_start_id: nil,
         answer_id: @answer.id
@@ -171,7 +171,7 @@ RSpec.describe Comment, type: :model do
         team_id: @team.id,
         assign_id: @assign.id,
         course_id: @course.id,
-        challenge_course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id,
         challenge_start_id: @challenge_start.id,
         answer_id: nil

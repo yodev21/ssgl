@@ -4,8 +4,6 @@ class ChallengeStartsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # @challenge_tasks = ChallengeStart.get_ansers(user: current_user).includes(:task).with_challenge_start_title(params[:name]).with_challenge_start_status(params[:status])
-    
     @challenge_course = ChallengeCourse.find(params[:id])
     @challenge_tasks = Task.where(course_id: @challenge_course.course.id)
   end
@@ -19,8 +17,7 @@ class ChallengeStartsController < ApplicationController
     @challenge_task = ChallengeStart.find_by(user_id: current_user.id,
                                              task_id: @task.id)
 
-    @challenge_users = ChallengeStart.where(team_id: @task.team.id,
-                                            task_id: @task.id)
+    @challenge_users = ChallengeStart.where(task_id: @task.id)
                                      .with_challenge_start_name(params[:name])
                                      .with_challenge_start_status(params[:status])
 
@@ -31,7 +28,6 @@ class ChallengeStartsController < ApplicationController
 
   def create
     @challenge = ChallengeStart.create_challenge_start(task_id: params[:task_id], user_id: current_user.id)
-    # binding.pry
     redirect_to task_path(id: params[:task_id]), notice: 'こちらの課題に取り組みました。'
   end
 

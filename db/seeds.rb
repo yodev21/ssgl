@@ -83,7 +83,7 @@ p 'Create Guest Course2'
   assign_id: @guest_assign.id,
   created_at: "2020-06-30 00:00:00"
 )
-p '-------------------------- 初学者向けコース ---------------------'
+p '-------------------------- 初学者向けコース -----------------------------'
 # ゲストコース参加
 p 'Create Guest ChallengeCourse'
 @guest_challenge_course = ChallengeCourse.create!(
@@ -163,7 +163,7 @@ p 'Create Guest Task'
   title: 'SQL',
   content: "スッキリわかるSQL入門 ドリル215門付き! スッキリわかるシリーズにチャレンジしてください。\n
             完了しましたらこちらにお知らせください。",
-  image: open("#{Rails.root}/app/assets/images/tasks/1.png"),
+  image: open("#{Rails.root}/app/assets/images/tasks/sukkiri_sql.png"),
   user_id: @guest_user.id,
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
@@ -185,7 +185,7 @@ p 'Create Guest Task'
 )
 p 'Guest Task Success'
 p '-------------------------- 初学者向けコース作成完了 ---------------------'
-p '-------------------------- 中級者向けコース ---------------------'
+p '-------------------------- 中級者向けコース ----------------------------'
 #ゲストコース参加
 p 'Create Guest ChallengeCourse'
 @guest_challenge_course_2 = ChallengeCourse.create!(
