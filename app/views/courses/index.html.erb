@@ -1,0 +1,47 @@
+<div class="main_index">
+  <h2>コース一覧</h2>
+  <div class="row">
+    <div class="col-sm-6 col-md-12">
+      <% unless @tasks.blank? %>
+        <%= form_with(url: courses_path, local: true, method: :get, class: "form-inline") do |f| %>
+          <%= f.text_field :title, class: "form-control mr-sm-2 search_left", placeholder: "コース名" %>
+          <%= f.submit '検索', class: "btn btn-outline-success  search_left" %>
+
+          <% if @assign.status == "admin" || @assign.status == "memtor" %>
+            <%= link_to "コース作成", new_task_path(assign_id: @assign.id), 
+                                                  class: "btn btn-outline-info button_right",
+                                                  id: "task_create"%>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <% unless @courses.blank? %>
+      <% @courses.each do |course|%>
+        <div class="col-sm-12 col-lg-6 col-xl-4">
+          <div class="image-box">
+          <%= link_to (image_tag course.image.url(:medium), class: "image-size"), course_path(course)%>
+          <div class="card-body">
+            <div class="row parts">
+              <%= link_to "詳細", course_path(course), class: "btn btn-outline-info team_info" %>
+                                                      
+            </div>
+            <div>
+              <span><strong><%= course.title %></strong></span>
+              <%= link_to time_ago_in_words(course.updated_at).upcase + "前", course_path(course), class: "team-time no-text-decoration" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+        <div class="col-sm-12 col-lg-6 col-xl-4">
+          <h4>現在コースが作成されておりません。</h4>
+          <h4>もう少々お待ちください。</h4>
+        </div>
+    <% end %>
+  </div>
+</div>

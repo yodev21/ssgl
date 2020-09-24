@@ -9,7 +9,9 @@ RSpec.describe 'Challenge_starts', type: :system do
       @user = FactoryBot.create(:user, email: 'testChallenge_startsSystem@example.com')
       @team = FactoryBot.create(:team, name: 'My Team', user_id: @user.id)
       @assign = FactoryBot.create(:assign, user_id: @user.id, team_id: @team.id)
-      @task = FactoryBot.create(:task, user_id: @user.id, team_id: @team.id, assign_id: @assign.id)
+      @course = FactoryBot.create(:course, user_id: @user.id, team_id: @team.id, assign_id: @assign.id)
+      @challenge_course = FactoryBot.create(:challenge_course, user_id: @user.id, team_id: @team.id, assign_id: @assign.id, course_id: @course.id)
+      @task = FactoryBot.create(:task, user_id: @user.id, team_id: @team.id, assign_id: @assign.id, assign_id: @assign.id, course_id: @course.id, challenge_course_id: @challenge_course.id)
       visit new_user_session_path
       fill_in 'user_email', with: 'testChallenge_startsSystem@example.com'
       fill_in 'user_password', with: 'testtest'
@@ -17,17 +19,9 @@ RSpec.describe 'Challenge_starts', type: :system do
     end
 
     example 'タスクに取り組むことができること' do
-      visit team_assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
+      visit task_path(@task)
       click_link '取り組む'
       wait.until { expect(page).to have_content 'こちらの課題に取り組みました' }
-    end
-
-    example 'タスクを取り消すことができること' do
-      visit team_assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
-      click_link '取り組む'
-      click_link '諦める'
-      page.driver.browser.switch_to.alert.accept
-      wait.until { expect(page).to have_content 'こちらの課題を取り消しました' }
     end
   end
 end

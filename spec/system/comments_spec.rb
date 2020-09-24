@@ -9,9 +9,11 @@ RSpec.describe 'Answers', type: :system do
       @user = FactoryBot.create(:user, email: 'testAnswerSystem@example.com')
       @team = FactoryBot.create(:team, name: 'My Team', user_id: @user.id)
       @assign = FactoryBot.create(:assign, user_id: @user.id, team_id: @team.id)
-      @task = FactoryBot.create(:task, user_id: @user.id, team_id: @team.id, assign_id: @assign.id)
-      @challenge_start = FactoryBot.create(:challenge_start, user_id: @user.id, team_id: @team.id, assign_id: @assign.id, task_id: @task.id)
-      @answer = FactoryBot.create(:answer, user_id: @user.id, team_id: @team.id, assign_id: @assign.id, task_id: @task.id, challenge_start_id: @challenge_start.id)
+      @course = FactoryBot.create(:course, user_id: @user.id, team_id: @team.id, assign_id: @assign.id)
+      @challenge_course = FactoryBot.create(:challenge_course, user_id: @user.id, team_id: @team.id, assign_id: @assign.id, course_id: @course.id)
+      @task = FactoryBot.create(:task, user_id: @user.id, team_id: @team.id, assign_id: @assign.id, assign_id: @assign.id, course_id: @course.id, challenge_course_id: @challenge_course.id)
+      @challenge_start = FactoryBot.create(:challenge_start, user_id: @user.id, team_id: @team.id, assign_id: @assign.id, course_id: @course.id, challenge_course_id: @challenge_course.id, task_id: @task.id)
+      @answer = FactoryBot.create(:answer, user_id: @user.id, team_id: @team.id, assign_id: @assign.id, course_id: @course.id, challenge_course_id: @challenge_course.id, task_id: @task.id, challenge_start_id: @challenge_start.id)
       visit new_user_session_path
       fill_in 'user_email', with: 'testAnswerSystem@example.com'
       fill_in 'user_password', with: 'testtest'
@@ -19,7 +21,7 @@ RSpec.describe 'Answers', type: :system do
     end
 
     example 'コメントができること' do
-      visit team_assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
+      visit task_path(@task)
       click_link '回答'
       fill_in 'answer_content', with: 'テスト コンテント'
       click_button '回答'
@@ -31,8 +33,8 @@ RSpec.describe 'Answers', type: :system do
       wait.until { expect(page).to have_content 'テスト コメント' }
     end
 
-    example 'コメントの削除ができること' do
-      visit team_assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
+    example 'コメントの削除ができること', retry: 3 do
+      visit task_path(@task)
       click_link '回答'
       fill_in 'answer_content', with: 'テスト コンテント'
       click_button '回答'
@@ -42,6 +44,7 @@ RSpec.describe 'Answers', type: :system do
       fill_in 'comment_content', with: 'テスト コメント'
       click_button 'コメント'
       click_link 'コメント削除'
+      sleep(1)
       page.driver.browser.switch_to.alert.accept
       wait.until { expect(page).not_to have_content 'テスト コメント' }
     end

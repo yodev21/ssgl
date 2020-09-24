@@ -8,43 +8,29 @@ class FeedBacksController < ApplicationController
   end
 
   def create
+    answer = Answer.find(params[:feed_back][:answer_id])
     @feed_back = FeedBack.new(feed_back_params)
     @feed_back.user_id = current_user.id
-    @feed_back.team_id = params[:team_id]
-    @feed_back.assign_id = params[:assign_id]
-    @feed_back.task_id = params[:task_id]
-    @feed_back.challenge_start_id = params[:challenge_start_id]
-    @feed_back.answer_id = params[:answer_id]
+    @feed_back.team_id = answer.team.id
+    @feed_back.assign_id = answer.assign.id
+    @feed_back.course_id = answer.course.id
+    @feed_back.challenge_course_id = answer.challenge_course.id
+    @feed_back.task_id = answer.task.id
+    @feed_back.challenge_start_id = answer.challenge_start.id
+    @feed_back.answer_id = answer.id
 
     if @feed_back.save(feed_back_params)
-      redirect_to team_assign_task_challenge_start_answer_path(user_id: @feed_back.user_id,
-                                                               team_id: @feed_back.team_id,
-                                                               assign_id: @feed_back.assign_id,
-                                                               task_id: @feed_back.task_id,
-                                                               challenge_start_id: @feed_back.challenge_start_id,
-                                                               id: @feed_back.answer_id),
-                  notice: 'フィードバックを送信しました。'
+      redirect_to answer_path(id: @feed_back.answer_id),notice: 'フィードバックを送信しました。'
     else
-      redirect_to team_assign_task_challenge_start_answer_path(user_id: @feed_back.user_id,
-                                                               team_id: @feed_back.team_id,
-                                                               assign_id: @feed_back.assign_id,
-                                                               task_id: @feed_back.task_id,
-                                                               challenge_start_id: @feed_back.challenge_start_id,
-                                                               id: @feed_back.answer_id),
+      redirect_to answer_path(user_id: @feed_back.user_id,
+                              team_id: @feed_back.team_id,
+                              assign_id: @feed_back.assign_id,
+                              task_id: @feed_back.task_id,
+                              challenge_start_id: @feed_back.challenge_start_id,
+                              id: @feed_back.answer_id),
                   alert: '送信に失敗しました。'
 
     end
-  end
-
-  def index
-    @feed_backs = FeedBack.group(:task_id, :team_id).select(:task_id, :team_id)
-  end
-
-  def show
-    @task = Task.find_by(id: params[:task_id])
-    @feed_back_average = FeedBack.group(:task_id).average(:feeling_number)
-    @feed_back_count = FeedBack.group(:task_id).count
-    @feed_backs = FeedBack.where(task_id: params[:task_id])
   end
 
   private

@@ -1,19 +1,25 @@
-<div class="main">
-  <div class="row">
-    <div class="col-md-4 text-center">
-      <%= image_tag avatar_url(@team), class: "round-img" %>
-    </div>
-    <div class="col-md-8">
+<div class="course-index">
+  <div class="course-card">
+    <span><%= image_tag avatar_url(@team), class: "course-round-img" %></span>
+    <span><div class="course-title"><%= markdown(@team.name) %></div></span>
+  </div>
+  <br>
+  <h2>課題一覧</h2>
+  <div class="course-tasks">
+    <% @tasks.each do |task| %>
       <div class="row">
-        <h1><%= @team.name %></h1>
-        <%= link_to "チームを退会する", team_assign_path(team_id: @team.id, id: current_user.id), 
-                                                      method: :delete, 
-                                                      data: { confirm: "チームを退会してもよろしいですか？" }, 
-                                                      class: "btn btn-outline-dark profile-btn" %>
+        <%= link_to(task_path(task) ,class: "course-link") do %>
+          <div class="image-box-course">
+              <%= image_tag task.image.url(:medium), class: "round-img float-md-left" %>
+              <p><strong>課題名:<%= task.title %></strong></p>
+              <br>
+              <p>内容:<%= markdown(task.content) %></p>
+              <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(task.updated_at).upcase}前" %></p>
+
+          </div>
+        <% end %>
       </div>
-      <div class="row">
-        <%= @team.remarks %>
-      </div>
-    </div>
+      <br>
+    <% end %>
   </div>
 </div>

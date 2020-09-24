@@ -3,17 +3,15 @@
   <div class="row">
     <div class="col-sm-6 col-md-12">
       <% unless @tasks.blank? %>
-        <%= form_with(url: team_assign_tasks_path, local: true, method: :get, class: "form-inline",assign_id: 1) do |f| %>
+        <%= form_with(url: tasks_path, local: true, method: :get, class: "form-inline") do |f| %>
           <%= f.text_field :title, class: "form-control mr-sm-2 search_left", placeholder: "タスク名" %>
           <%= f.submit '検索', class: "btn btn-outline-success  search_left" %>
 
           <% if @assign.status == "admin" || @assign.status == "memtor" %>
-            <%= link_to "タスク作成", new_team_assign_task_path(assign_id: @assign.id, 
-                                                              team_id: @assign.team.id), 
-                                                              class: "btn btn-outline-info button_right",
-                                                              id: "task_create"%>
-            <%= link_to "フィードバック", team_feed_backs_path(team_id: @assign.team_id),
-                                                            class: "btn btn-outline-primary button_right"%>
+            <%= link_to "タスク作成", new_task_path(assign_id: @assign.id), 
+                                                  class: "btn btn-outline-info button_right",
+                                                  id: "task_create"%>
+            <%= link_to "フィードバック", feed_backs_path(team_id: @assign.team_id), class: "btn btn-outline-primary button_right"%>
           <% end %>
         <% end %>
       <% end %>
@@ -26,24 +24,15 @@
       <% @tasks.each do |task|%>
         <div class="col-sm-12 col-lg-6 col-xl-4">
           <div class="image-box">
-          <%= link_to (image_tag task.image.url(:medium), class: "image-size"), team_assign_task_path(user_id: current_user,
-                                                                                                      team_id: task.assign.team_id, 
-                                                                                                      assign_id: task.assign.id, 
-                                                                                                      id: task.id)%>
+          <%= link_to (image_tag task.image.url(:medium), class: "image-size"), task_path(task)%>
           <div class="card-body">
             <div class="row parts">
-              <%= link_to "詳細", team_assign_task_path(team_id: task.assign.team_id, 
-                                                        assign_id: task.assign.id, 
-                                                        id: task.id), 
-                                                        class: "btn btn-outline-info team_info" %>
+              <%= link_to "詳細", task_path(task), class: "btn btn-outline-info team_info" %>
                                                       
             </div>
             <div>
               <span><strong><%= task.title %></strong></span>
-              <%= link_to time_ago_in_words(task.updated_at).upcase + "前", team_assign_task_path(assign_id: task.assign.id, 
-                                                                                                  team_id: task.assign.team_id, 
-                                                                                                  id: task.id), 
-                                                                                                  class: "team-time no-text-decoration" %>
+              <%= link_to time_ago_in_words(task.updated_at).upcase + "前", task_path(task), class: "team-time no-text-decoration" %>
               </div>
             </div>
           </div>

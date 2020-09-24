@@ -1,30 +1,22 @@
 <div class="main_index">
   <h2>マイチーム</h2>
+  <% if current_user.status == "mentor"%>
+    <%= link_to "チーム作成", new_mentor_team_path, class: "btn btn-outline-primary  button_right mobile_button"%>
+  <% end %>
   <div class="row">
     <% unless @teams.blank? %>
       <% @teams.each do |team|%>
         <div class="col-sm-12 col-lg-6 col-xl-4">
           <div class="image-box">
-          <%= link_to (image_tag team_icon_url(team),class: "image-size"), team_assign_tasks_path(assign_id: team.assigns.first.id,  
-                                                                                                  team_id: team.assigns.first.team_id)%>
+          <%= link_to (image_tag team_icon_url(team),class: "image-size"), tasks_path(id: team)%>
           <div class="card-body">
             <div class="row parts">
-              <%= link_to "タスク", team_assign_tasks_path(assign_id: team.assigns.first.id,  
-                                                          team_id: team.assigns.first.team_id), 
-                                                          class: "btn btn-outline-info",
-                                                          id: "task_link" %>
-              <%= link_to "メンバー", team_assign_belong_team_users_path(assign_id: team.assigns.first.id, 
-                                                                        team_id: team.assigns.first.team_id), 
-                                                                        class: "btn btn-outline-warning btn_right" %>
-            </div>
-
-            <div class="row parts">
-
+              <%= link_to "コース", courses_path(id: team.id), class: "btn btn-outline-info",id: "task_link" %>
+              <%= link_to "メンバー", belong_team_users_path(team_id: team.id), class: "btn btn-outline-warning btn_right" %>
             </div>
             <div>
               <span><strong><%= link_to team.name, team_path(team.id) %></strong></span>
-              <%= link_to time_ago_in_words(team.updated_at).upcase + "前", team_path(team.id), 
-                                                                                      class: "team-time no-text-decoration" %>
+              <%= link_to time_ago_in_words(team.updated_at).upcase + "前", team_path(team.id), class: "team-time no-text-decoration" %>
               </div>
             </div>
           </div>

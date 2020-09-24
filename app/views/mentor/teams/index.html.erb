@@ -1,0 +1,27 @@
+<div class="main_index">
+  <h2>マイチーム</h2>
+  <%= link_to "チーム作成", new_mentor_team_path, class: "btn btn-outline-primary mobile_button"%>
+  <div class="row">
+    <% if @teams.present? %>
+      <% @teams.each do |team|%>
+        <div class="col-sm-12 col-lg-6 col-xl-4">
+          <div class="image-box">
+          <%= link_to (image_tag team_icon_url(team),class: "image-size"), mentor_team_path(team)%>
+          <div class="card-body">
+            <div class="row parts">
+              <%= link_to "コース", mentor_courses_path(team_id: team.id), class: "btn btn-outline-info",id: "task_link" %>
+            </div>
+            <div>
+              <span><strong><%= link_to team.name, mentor_team_path(team.id) %></strong></span>
+              <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(team.updated_at).upcase}前" %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h3>チームを作成しておりません！<br>新しくチームを作成しましょう！</h3>
+      <h3>
+    <% end %>
+  </div>
+</div>

@@ -8,6 +8,7 @@ class BelongTeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @tasks = Task.where(team_id: @team.id)
   end
 
   def search

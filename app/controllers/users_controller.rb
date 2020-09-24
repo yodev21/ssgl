@@ -9,6 +9,14 @@ class UsersController < ApplicationController
 
   def show; end
 
+  def change_status
+    user = User.find(current_user.id)
+    user.status = user.status == "member" ? "mentor" : "member"
+    user.save
+    
+    redirect_to mentor_teams_path
+  end
+
   def destroy
     @user.destroy
     redirect_to new_user_registration_path, notice: '退会しました'

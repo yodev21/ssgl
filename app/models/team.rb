@@ -3,6 +3,8 @@
 class Team < ApplicationRecord
   belongs_to :user
   has_many :assigns, dependent: :destroy
+  has_many :courses, dependent: :destroy
+  has_many :challenge_courses, dependent: :destroy
   has_many :tasks, dependent: :destroy
   has_many :challenge_starts, dependent: :destroy
   has_many :answers, dependent: :destroy

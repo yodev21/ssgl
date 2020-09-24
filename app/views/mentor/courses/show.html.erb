@@ -1,0 +1,31 @@
+<div class="course-index">
+  <div class="course-card">
+    <span><%= image_tag avatar_url(@course), class: "course-round-img" %></span>
+    <span><div class="course-title"><%= markdown(@course.title) %></div></span>
+    <br>
+    <%= link_to "コース修正", edit_mentor_course_path(@course), class: "btn btn-success"%>
+    <%= link_to "コース削除", mentor_course_path(@course), data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
+    <%= link_to "フィードバックの確認", mentor_feed_backs_path(course_id: @course.id),class: "btn btn-primary  show_button_right" %>
+    <p><%= markdown(@course.content) %></p>
+  </div>
+  <br>
+  <h2>タスク一覧</h2>
+  <%= link_to "タスク作成", new_mentor_task_path(course_id: params[:id]), class: "btn btn-outline-primary mobile_button"%>
+  <div class="course-tasks">
+    <% @tasks.each do |task| %>
+      <div class="row">
+        <%= link_to(mentor_task_path(task) ,class: "course-link") do %>
+          <div class="image-box-course">
+              <%= image_tag task.image.url(:medium), class: "round-img float-md-left" %>
+              <p><strong>タスク名:<%= task.title %></strong></p>
+              <br>
+              <p>内容:<%= markdown(task.content) %></p>
+              <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(task.updated_at).upcase}前" %></p>
+
+          </div>
+        <% end %>
+      </div>
+      <br>
+    <% end %>
+  </div>
+</div>

@@ -9,34 +9,29 @@
               <%= image_tag avatar_url(user), class: "round-img" %>
             <div class="card-body">
               <div class="row parts">
-                <%= link_to "詳細", team_assign_belong_team_user_path(team_id: user.assigns.first.team.id, 
-                                                                      assign_id: user.assigns.first, 
-                                                                      id: user.id),
-                                                                      class: "btn btn-outline-info" %>
+                <%= link_to "詳細", belong_team_user_path(team_id: params[:team_id], 
+                                                          id: user.id),
+                                                          class: "btn btn-outline-info" %>
               </div>
               <div>
                 <span><strong><%= user.name %></strong></span>
-                <%= link_to time_ago_in_words(user.assigns.first.updated_at).upcase + "前", team_assign_belong_team_user_path(team_id: user.assigns.first.team.id, 
-                                                                                                                              assign_id: user.assigns.first, 
-                                                                                                                              id: user.id), 
-                                                                                                                              class: "team-time no-text-decoration" %>
+                <%= link_to time_ago_in_words(user.assigns.first.updated_at).upcase + "前", belong_team_user_path(team_id: params[:team_id], 
+                                                                                                                  id: user.id), 
+                                                                                                                  class: "team-time no-text-decoration" %>
                 <% if user.assigns.first.status == "admin" %>
-                  <%= link_to "管理者", team_assign_belong_team_user_path(team_id: user.assigns.first.team.id, 
-                                                                        assign_id: user.assigns.first.id, 
-                                                                        id: user.assigns.first.user_id),
-                                                                        class: "badge badge-primary" %>
+                  <%= link_to "管理者", belong_team_user_path(team_id: params[:team_id], 
+                                                              id: user.id),
+                                                              class: "badge badge-primary" %>
 
                 <% elsif user.assigns.first.status == "memtor" %>
-                  <%= link_to "メンター", team_assign_belong_team_user_path(team_id: user.assigns.first.team.id, 
-                                                                        assign_id: user.assigns.first.id, 
-                                                                        id: user.assigns.first.user_id),
-                                                                        class: "badge badge-success" %>
+                  <%= link_to "メンター", belong_team_user_path(team_id: params[:team_id], 
+                                                              id: user.id),
+                                                              class: "badge badge-success" %>
                   
                 <% elsif user.assigns.first.status =="member" %>
-                  <%= link_to "メンバー", team_assign_belong_team_user_path(team_id: user.assigns.first.team.id, 
-                                                                        assign_id: user.assigns.first.id, 
-                                                                        id: user.assigns.first.user_id),
-                                                                        class: "badge badge-info" %>
+                  <%= link_to "メンバー", belong_team_user_path(team_id: params[:team_id], 
+                                                              id: user.id),
+                                                              class: "badge badge-info" %>
                 <% end %>
                 </div>
               </div>

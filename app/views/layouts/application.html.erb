@@ -14,44 +14,22 @@
   </head>
 
   <body>
-<div class="wrapper ">
+  <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white">
       <div class="logo">
-        <%= image_tag "logo.png", class: "logo-icon" %>
-        <span class="simple-text logo-normal logo-name" >Dashboard</span>
+        <%= link_to(root_path) do %>
+          <%= image_tag "logo.png", class: "logo-icon" %>
+          <span class="simple-text logo-normal logo-name" >Dashboard</span>
+        <% end %>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-
-
           <% if user_signed_in?%>
-            <li class="nav-item">
-              <%= link_to user_path(current_user), class: "nav-link" do %>
-                <i class="material-icons">account_box</i>
-                <p>プロフィール</p>
-              <% end %>
-            </li>
-
-            <li class="nav-item">
-              <%= link_to teams_path, class: "nav-link" do %>
-                <i class="material-icons">supervised_user_circle</i>
-                <p>チーム</p>
-              <% end %>
-            </li>
-
-            <li class="nav-item">
-              <%= link_to belong_teams_path, class: "nav-link" do %>
-                <i class="material-icons">group</i>
-                <p>マイチーム</p>
-              <% end %>
-            </li>
-
-            <li class="nav-item">
-              <%= link_to challenge_starts_path, class: "nav-link" do %>
-                <i class="material-icons">school</i>
-                <p>タスク</p>
-              <% end %>
-            </li>
+            <% if current_user.status == "member"%>
+              <%= render 'partial/member' %>
+            <% else %>
+              <%= render 'partial/mentor' %>
+            <% end%>
 
             <li class="nav-item">
               <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>

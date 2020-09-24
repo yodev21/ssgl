@@ -4,16 +4,13 @@
       <div class="form-group text-center">
         <h3>課題編集</h3>
       </div>
-      <%= form_with model: @task, url: team_assign_task_path(team_id: @task.team_id, 
-                                                            　assign_id: @task.assign_id, 
-                                                            　id: @task.id), 
-                                                            　local: true do |f| %>
+      <%= form_with model: @course, url: mentor_course_path(@course), local: true do |f| %>
         
         <div class="form-group">
-          <%= f.text_field :title, autofocus: true, placeholder: "課題名", class: "form-control", required: true %>
+          <%= f.text_field :title, autofocus: true, placeholder: "コース名", class: "form-control", required: true %>
         </div>
           
-        <%= image_tag @task.image.url, id: :img_prev, class: "round-img" if @task.image? %>
+        <%= image_tag @course.image.url, id: :img_prev, class: "round-img" if @course.image? %>
         <div class="form-group">
           <%= f.label :image, "photo_size_select_actual", class: "material-icons" %>
           <%= f.file_field :image, placeholder: "課題アイコン", class: "fom-control icon_image" %>

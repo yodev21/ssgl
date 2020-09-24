@@ -16,21 +16,13 @@
         </div>
         <div class="col-md-12">
           <% if @answer.user_id == current_user.id %>
-            <%= link_to "回答編集", edit_team_assign_task_challenge_start_answer_path(team_id: @answer.team_id, 
-                                                                                    assign_id: @answer.assign_id, 
-                                                                                    task_id: @answer.task_id, 
-                                                                                    challenge_start_id: @answer.challenge_start_id, 
-                                                                                    id: @answer.id), 
-                                                                                    class: "btn btn-outline-success right_answer_button" %>
+            <%= link_to "回答編集", edit_answer_path(id: @answer.id), class: "btn btn-outline-success right_answer_button" %>
           <% end %>
           <% if @answer_user.status == "admin" || @answer_user.status == "memtor" %>
-            <%= link_to "完了", team_assign_task_challenge_start_path(team_id: @answer.team_id, 
-                                                                      assign_id: @answer.assign_id, 
-                                                                      task_id: @answer.task_id, 
-                                                                      id: @answer.challenge_start_id),
-                                                                      class: "btn btn-outline-primary conmplete_button", 
-                                                                      method: :patch, 
-                                                                      data: { confirm: "課題を完了してもよろしいですか？"} %>
+            <%= link_to "完了", challenge_start_path(id: @answer.challenge_start_id),
+                                                    class: "btn btn-outline-primary conmplete_button", 
+                                                    method: :patch, 
+                                                    data: { confirm: "課題を完了してもよろしいですか？"} %>
           <% end %>
           <%= render partial: 'comments/form', locals: { comment: @comment } %>
           <div id="comments_area">

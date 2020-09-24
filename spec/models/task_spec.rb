@@ -17,6 +17,19 @@ RSpec.describe Task, type: :model do
         user_id: @user.id,
         team_id: @team.id
       )
+      @course = FactoryBot.create(
+        :course,
+        user_id: @user.id,
+        team_id: @team.id,
+        assign_id: @assign.id
+      )
+      @challenge_course = FactoryBot.create(
+        :challenge_course,
+        user_id: @user.id,
+        team_id: @team.id,
+        assign_id: @assign.id,
+        course_id: @course.id
+      )
     end
 
     example '必要なデータがあれば有効な状態であること' do
@@ -26,7 +39,9 @@ RSpec.describe Task, type: :model do
         image: open("#{Rails.root}/app/assets/images/teams/1.png"),
         user_id: @user.id,
         team_id: @team.id,
-        assign_id: @assign.id
+        assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @challenge_course.id
       )
       expect(task).to be_valid
     end
@@ -38,19 +53,9 @@ RSpec.describe Task, type: :model do
         image: open("#{Rails.root}/app/assets/images/teams/1.png"),
         user_id: @user.id,
         team_id: @team.id,
-        assign_id: @assign.id
-      )
-      expect(task).not_to be_valid
-    end
-
-    example 'コンテントのみ空白であれば有効な状態であること' do
-      task = Task.new(
-        title: 'test Title',
-        content: '',
-        image: open("#{Rails.root}/app/assets/images/teams/1.png"),
-        user_id: @user.id,
-        team_id: @team.id,
-        assign_id: @assign.id
+        assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @challenge_course.id
       )
       expect(task).not_to be_valid
     end
@@ -62,7 +67,9 @@ RSpec.describe Task, type: :model do
         image: open("#{Rails.root}/app/assets/images/teams/1.png"),
         user_id: 1,
         team_id: @team.id,
-        assign_id: @assign.id
+        assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @challenge_course.id
       )
       expect(task).not_to be_valid
     end
@@ -74,7 +81,9 @@ RSpec.describe Task, type: :model do
         image: open("#{Rails.root}/app/assets/images/teams/1.png"),
         user_id: @user.id,
         team_id: 1,
-        assign_id: @assign.id
+        assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @challenge_course.id
       )
       expect(task).not_to be_valid
     end
@@ -86,7 +95,9 @@ RSpec.describe Task, type: :model do
         image: open("#{Rails.root}/app/assets/images/teams/1.png"),
         user_id: @user.id,
         team_id: @team.id,
-        assign_id: 1
+        assign_id: 1,
+        course_id: @course.id,
+        challenge_course_id: @challenge_course.id
       )
       expect(task).not_to be_valid
     end

@@ -17,17 +17,34 @@ RSpec.describe Answer, type: :model do
         user_id: @user.id,
         team_id: @team.id
       )
+      @course = FactoryBot.create(
+        :course,
+        user_id: @user.id,
+        team_id: @team.id,
+        assign_id: @assign.id
+      )
+      @challenge_course = FactoryBot.create(
+        :challenge_course,
+        user_id: @user.id,
+        team_id: @team.id,
+        assign_id: @assign.id,
+        course_id: @course.id
+      )
       @task = FactoryBot.create(
         :task,
         user_id: @user.id,
         team_id: @team.id,
-        assign_id: @assign.id
+        assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @challenge_course.id
       )
       @challenge_start = FactoryBot.create(
         :challenge_start,
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id
       )
     end
@@ -39,6 +56,8 @@ RSpec.describe Answer, type: :model do
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id,
         challenge_start_id: @challenge_start.id
       )
@@ -52,6 +71,8 @@ RSpec.describe Answer, type: :model do
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id,
         challenge_start_id: @challenge_start.id
       )
@@ -65,6 +86,8 @@ RSpec.describe Answer, type: :model do
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id,
         challenge_start_id: @challenge_start.id
       )
@@ -78,6 +101,8 @@ RSpec.describe Answer, type: :model do
         user_id: nil,
         team_id: @team.id,
         assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id,
         challenge_start_id: @challenge_start.id
       )
@@ -91,6 +116,8 @@ RSpec.describe Answer, type: :model do
         user_id: @user.id,
         team_id: nil,
         assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id,
         challenge_start_id: @challenge_start.id
       )
@@ -104,6 +131,8 @@ RSpec.describe Answer, type: :model do
         user_id: @user.id,
         team_id: @team.id,
         assign_id: nil,
+        course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id,
         challenge_start_id: @challenge_start.id
       )
@@ -117,6 +146,8 @@ RSpec.describe Answer, type: :model do
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: nil,
         challenge_start_id: @challenge_start.id
       )
@@ -130,6 +161,8 @@ RSpec.describe Answer, type: :model do
         user_id: @user.id,
         team_id: @team.id,
         assign_id: @assign.id,
+        course_id: @course.id,
+        challenge_course_id: @challenge_course.id,
         task_id: @task.id,
         challenge_start_id: nil
       )

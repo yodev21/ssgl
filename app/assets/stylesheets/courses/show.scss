@@ -1,0 +1,45 @@
+.course-index {
+  max-width: 100%;
+  margin: auto;
+  padding-top: 100px;
+  box-sizing: border-box;
+  & .course-card {
+    width: 105%;
+    flex: 1 1 auto;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px #ccc;
+
+    position: relative;
+    left: -2rem;
+  }
+  & .course-round-img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+  }
+
+  & .course-title {
+    display: inline-block;
+  }
+
+  & .course-content {
+    display: block;
+    width: 100%;
+    border: none;
+  }
+  & .course-link {
+    color: black !important;
+    width: 100%;
+  }
+
+  & .image-box-course {
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 3px;
+    background-color: white;
+    box-shadow: 0 2px 5px #ccc;
+  }
+}

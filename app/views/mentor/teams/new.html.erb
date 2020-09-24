@@ -4,7 +4,7 @@
       <div class="form-group text-center">
         <h3>チーム作成</h3>
       </div>
-      <%= form_with model: @team, class: "upload-images p-0 border-0", local: true do |f| %>
+      <%= form_with model: @team, url: mentor_teams_path, class: "upload-images p-0 border-0", local: true do |f| %>
         
         <div class="form-group">
           <%= f.text_field :name, autofocus: true, placeholder: "チーム名", class: "form-control", required: true %>

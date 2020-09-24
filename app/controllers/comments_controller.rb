@@ -5,11 +5,14 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.team_id = params[:team_id]
-    @comment.assign_id = params[:assign_id]
-    @comment.task_id = params[:task_id]
-    @comment.challenge_start_id = params[:challenge_start_id]
-    @comment.answer_id = params[:answer_id]
+    @answer = Answer.find(params[:answer_id])
+    @comment.team_id = @answer.team_id
+    @comment.assign_id = @answer.assign_id
+    @comment.course_id = @answer.course_id
+    @comment.challenge_course_id = @answer.challenge_course_id
+    @comment.task_id = @answer.task_id
+    @comment.challenge_start_id = @answer.challenge_start_id
+    @comment.answer_id = @answer.id
     @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
@@ -57,7 +60,8 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :image)
+    params.permit(:content, :image)
+    # require(:comment)
   end
 
   def send_user(comment)
@@ -71,12 +75,10 @@ class CommentsController < ApplicationController
   end
 
   def change_status(comment)
-    # comment_user = ChallengeStart.find(comment.challenge_start_id)
     challenge_start_id = ChallengeStart.find(comment.challenge_start_id)
     comment_user = Assign.find_by(user_id: comment.user_id,
                                          team_id: comment.team_id)
 
-    # if current_user.id == comment.answer.user_id
     if comment_user.status == "admin" || comment_user.status == "memtor"
       challenge_start_id.update(status: 'remand')
     else
