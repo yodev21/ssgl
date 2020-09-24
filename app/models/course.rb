@@ -14,6 +14,8 @@ class Course < ApplicationRecord
   validates :content, presence: true
   validates :image, presence: true
 
+  enum status: { private: 0, limited_release: 1, release: 2 }
+
   scope :belong_to_team_all, lambda { |id: '', team_id: '', assign_id: ''|
     next if id.nil? && team_id.nil? && assign_id.nil?
 
