@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     user.status = user.status == "member" ? "mentor" : "member"
     user.save
     
-    redirect_to belong_teams_path
+    redirect_to mentor_teams_path
   end
 
   def destroy
