@@ -21,12 +21,7 @@ class Mentor::TeamsController < ApplicationController
   end
 
   def index 
-    # ゲストユーザーの場合、ゲストチームのみ絞り込む
-    if current_user.email == 'guest@example.com'
-      @teams = Team.where("created_at < '2020/07/01 00:00:00'").order(created_at: :desc).page(params[:page])
-    else
-      @teams = Team.all.order(created_at: :desc).page(params[:page])
-    end
+    @teams = Team.where(user_id: current_user.id).page(params[:page])
   end
 
   def show
