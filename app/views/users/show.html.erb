@@ -1,34 +1,17 @@
-<div class="main">
-  <div class="row">
-    <div class="col-md-4 text-center">
-      <%= image_tag avatar_url(@user), class: "round-img" %>
+<div class="user-index">
+  <h3 class="user-title">プロフィール</h3>
+  <div class="user-card">
+    <%= image_tag avatar_url(@user), class: "round-img" %>
+    <span class="user-name"><%= @user.name %></span>
+    <% if @user = current_user %>
+      <%= @user.email %>  
+    <% end %>
+    <br>
+    <% if @user == current_user && current_user.email != "guest@example.com"%>
       
-    </div>
-    <div class="col-md-8">
-      <div class="row">
-        <h1><%= @user.name %></h1>
-        <% if @user == current_user && current_user.email != "guest@example.com"%>
-          <%= link_to "プロフィール編集", edit_user_registration_path, 
-                                       class: "btn btn-outline-success common-btn profile-btn" %>
-          
-        <% end %>
-
-        <% if current_user.admin? %>
-          <%= link_to "削除", administrator_path(@user.id), 
-                                              method: :delete, 
-                                              data: {confirm: "本当に削除してもよろしいですか"}, 
-                                              class: "btn btn-danger  profile-btn" %>
-        <% end %>
-
-      </div>
-      <% if @user = current_user %>
-        <div class="row">
-          <%= @user.email %>  
-        </div>
-      <% end %>
-        <div class="row">
-          <%= @user.profile %>
-        </div>
-    </div>
+      <%= link_to "プロフィール編集", edit_user_registration_path, 
+                                    class: "btn btn-outline-success common-btn profile-btn" %>
+    <% end %>
+    <p><%= markdown(@user.profile) %></p>
   </div>
 </div>

@@ -1,26 +1,16 @@
-<div class="main_index">
-  <% @courses.each do |course| %>
-    <% if course.id.present? %>
+<div class="limited-release-course-index">
+  <div class="limited-release-course-courses">
+    <h2 class="limited-release-course-title">タスク</h2>
+    <% @courses.each do |course| %>
       <div class="row">
-        <div class="col-md-12">
-          <div class="image-box-course">
-            <span><%= image_tag avatar_url(course.user), class: "round-img float-md-left"  %></span>
-            <div class="course_info">
-            <span class=""><%= course.user.name %></span><br>
-            <span class=""><%= course.created_at.strftime('%Y/%m/%d %H:%M') %></span>
-            <div class="card-body card-hight">
-              <div>
-                <div class="form-group">
-                  <textarea readonly class="form-control course_form" rows="10"><%= safe_join(course.content.split("\n")) %></textarea>
-                  <span><%= link_to "詳細", mentor_limited_release_course(course),  class: "float-md-right btn btn-outline-primary" %>   
-                </div>                                                                                                     
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= link_to(mentor_course_path(course) , class: "limited-release-course-link") do %>
+        <%= image_tag course.image.url(:medium), class: "limited-release-course-round-img" %>
+        <span class="course-title"><%= course.title %></span>
+        <p><%= markdown(course.content) %></p>
+        <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(course.updated_at).upcase}前" %></p> 
+        <% end %>
       </div>
+      <br>
     <% end %>
-  <% end %>
+  </div>
 </div>

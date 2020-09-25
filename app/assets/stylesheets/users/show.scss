@@ -1,17 +1,94 @@
-.profile-wrap {
-  // position: relative;
-  // top: 100px;
-}
+.user-index {
+  max-width: 100%;
+  margin: auto;
+  padding-top: 1rem;
+  box-sizing: border-box;
+  & .user-title {
+    width: 15%;
+    padding: 0.5rem;
+    border-radius: 3px;
+    color: white;
 
-.round-img {
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-}
+    background: linear-gradient(60deg, #ffa726, #fb8c00);
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+      0 7px 10px -5px rgba(255, 152, 0, 0.4);
+    position: relative;
+    top: 1rem;
+    left: 1rem;
+  }
+  & .user-card {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px #ccc;
+    & .user-name {
+      display: inline-block;
+      font-size: 2rem;
+      padding-left: 1rem;
+    }
+  }
+  & .challenge-course-tasks {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 3px;
+    & .course-title {
+      display: inline-block;
+      font-size: 2rem;
+      padding-left: 1rem;
+    }
+    & .challenge-course-title {
+      padding: 0.5rem;
+      border-radius: 3px;
+      color: white;
+      background: linear-gradient(60deg, #26c6da, #00acc1);
+      box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+        0 7px 10px -5px rgba(0, 172, 193, 0.4);
+      position: relative;
+      top: 1rem;
+      left: 1rem;
+    }
+    & .challenge-course-round-img {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+    }
+  }
+  & .challenge-course-round-img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+  }
 
-.profile-btn {
-  position: relative;
-  left: 1rem;
-  font-weight: bold;
-  height: 2.6rem;
+  & .challenge-course-title {
+    display: inline-block;
+  }
+
+  & .challenge-course-content {
+    display: block;
+    width: 100%;
+    border: none;
+  }
+  & .challenge-course-link {
+    color: black !important;
+    padding: 1rem;
+    width: 100%;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px #ccc;
+    transition: all 0.3s;
+    &:hover {
+      box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  & .image-box-challenge-course {
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 3px;
+    background-color: white;
+    box-shadow: 0 2px 5px #ccc;
+  }
 }
