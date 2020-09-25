@@ -1,42 +1,23 @@
-<div class="main_index">
-
-  <h3>マイコース一覧</h3>
-  <div class="row">
-    <% unless @courses.blank? %>
+<div class="challenge-courses-index">
+  <h2 class="challenge-courses-title">コース</h2>
+  <% unless @courses.blank? %>
+    <div class="challenge-courses-card">
       <% @courses.each do |challenge_course|%>
-        <div class="col-sm-12 col-lg-6 col-xl-4">
-          <div class="image-box">
-          <% if current_user.status == 'mentor' %>
-            <%= link_to (image_tag challenge_course.course.image.url(:medium), class: "image-size"), mentor_course_path(id: challenge_course.id)%>
-          <% else %>
-            <%= link_to (image_tag challenge_course.course.image.url(:medium), class: "image-size"), challenge_course_path(challenge_course)%>
+        <div class="row">
+          <%= link_to(challenge_course_path(challenge_course) , class: "challenge-courses-link") do %>
+            <%= image_tag challenge_course.course.image.url(:medium), class: "challenge-course-round-img" %>
+            <span class="course-title"><%= challenge_course.course.title %></span>
+            <% if challenge_course.course.status == "limited_release" %>
+              <span class="badge badge-dark">限定コース</span>
+            <% end %>
+            <p ><%= challenge_course.course.content.truncate(50) %></p>
+            <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(challenge_course.updated_at).upcase}前" %></p>
           <% end %>
-          
-          <div class="card-body">
-            <div class="row parts">
-              <% if challenge_course.status == "underway" %>
-                <% if current_user.status == 'mentor' %>
-                  <%= link_to "コースに移動", mentor_course_path(challenge_course), class: "team_info btn btn-outline-primary profile-btn" %>
-                <% else %>
-                  <%= link_to "コースに移動", challenge_course_path(challenge_course), class: "team_info btn btn-outline-primary profile-btn" %>
-                <% end %>
-                
-
-              <% else %>
-                <span class="badge badge-dark">完了</span>
-              <% end %>
-            </div>
-            <div>
-              <span><strong><%= challenge_course.course.title %></strong></span>
-              <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(challenge_course.updated_at).upcase}前" %></p>
-              </div>
-            </div>
-          </div>
         </div>
       <% end %>
-    <% else %>
-      <h3><br>まだ何も課題に取り組んでいません！<br>
-      マイチームから課題に挑戦しましょう！</h3>
-    <% end %>
-  </div>
+    </div>
+  <% else %>
+    <h3><br>まだ何も課題に取り組んでいません！<br>
+    マイチームから課題に挑戦しましょう！</h3>
+  <% end %>
 </div>
