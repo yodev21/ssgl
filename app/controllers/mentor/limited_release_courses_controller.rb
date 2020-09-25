@@ -4,6 +4,9 @@ class Mentor::LimitedReleaseCoursesController < ApplicationController
   end
 
   def show
+    @course = Course.find(params[:id])
+    @users = User.includes(:assigns)
+    
   end
 
   def create
