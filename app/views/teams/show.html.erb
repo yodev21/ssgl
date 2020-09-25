@@ -4,6 +4,7 @@
     <span><%= image_tag avatar_url(@team), class: "team-round-img" %></span>
     <span class="team-name"><%=@team.name %></span>
     <p><%= markdown(@team.remarks) %></p>
+    
     <% if @assign.nil? %>
       <%= link_to "このチームに参加する！", assigns_path(team_id: @team), method: :post, 
                                                                   class: "btn btn-outline-primary profile-btn" %>
