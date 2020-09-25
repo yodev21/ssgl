@@ -5,12 +5,7 @@ class TeamsController < ApplicationController
   before_action :authenticate_user!
 
   def index 
-    # ゲストユーザーの場合、ゲストチームのみ絞り込む
-    if current_user.email == 'guest@example.com'
-      @teams = Team.where("created_at < '2020/07/01 00:00:00'").order(created_at: :desc).page(params[:page])
-    else
-      @teams = Team.all.order(created_at: :desc).page(params[:page])
-    end
+    @teams = Team.order(created_at: :desc).page(params[:page])
   end
 
   def show
