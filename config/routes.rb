@@ -2,6 +2,9 @@
 
 Rails.application.routes.draw do
 
+  namespace :mentor do
+    get 'users/show'
+  end
   root to: 'top#top'
   get 'top/privacy_policy', to: "top#privacy_policy"
   get 'top/terms_of_service', to: "top#terms_of_service"
