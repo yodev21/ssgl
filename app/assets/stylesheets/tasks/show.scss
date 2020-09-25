@@ -1,105 +1,55 @@
-@media screen and (max-width: 767px) {
-  .show_img {
-    position: relative;
-    left: 12rem;
-  }
+.task-index {
+  max-width: 100%;
+  margin: auto;
+  padding-top: 1rem;
+  box-sizing: border-box;
+  & .task-title {
+    width: 15%;
+    padding: 0.5rem;
+    border-radius: 3px;
+    color: white;
 
-  .content {
-    background-color: white;
-    width: 30rem;
-    height: 20rem;
-    box-shadow: 0 2px 5px #ccc;
-  }
-  .show_search_left {
-    margin-top: 0.5rem;
-  }
-  .show_button_right {
-    margin-top: 0.5rem;
-    padding: 1rem 3rem;
-    white-space: nowrap;
-    text-align: center;
-    height: 3rem;
-  }
-}
-
-@media screen and (min-width: 767px) and (max-width: 992px) {
-  .show_img {
+    background: linear-gradient(60deg, #ffa726, #fb8c00);
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+      0 7px 10px -5px rgba(255, 152, 0, 0.4);
     position: relative;
-    left: 18rem;
-  }
-
-  .show_title {
-    position: relative;
+    top: 1rem;
     left: 1rem;
   }
-  .content {
+  & .task-card {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
     background-color: white;
-    width: 40rem;
-    height: 20rem;
+    border-radius: 3px;
     box-shadow: 0 2px 5px #ccc;
-    position: relative;
-    left: 1rem;
+    & .task-title {
+      display: inline-block;
+      font-size: 2rem;
+      padding-left: 1rem;
+    }
   }
-  .show_search_left {
-    margin-top: 1rem;
-  }
-  .show_button_right {
-    margin-top: 1rem;
-    margin-right: 1rem;
-  }
-}
-
-@media screen and (min-width: 992px) and (max-width: 1200px) {
-  .show_img {
-    position: relative;
-    left: 25rem;
+  & .task-round-img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
   }
 
-  .show_title {
-    position: relative;
-    left: 4rem;
+  & .task-content {
+    display: block;
+    width: 100%;
+    border: none;
   }
-
-  .content {
-    position: relative;
-    left: 4rem;
+  & .task-link {
+    color: black !important;
+    padding: 1rem;
+    width: 100%;
     background-color: white;
-    width: 50rem;
-    height: 20rem;
+    border-radius: 3px;
     box-shadow: 0 2px 5px #ccc;
-  }
-
-  .show_search_left {
-    position: relative;
-    left: 4rem;
-  }
-  .show_button_right {
-    margin-top: 1rem;
-    margin-right: 1rem;
-    position: relative;
-    left: 4rem;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .show_img {
-    position: relative;
-    left: 30rem;
-  }
-
-  .content {
-    background-color: white;
-    width: 66rem;
-    height: 20rem;
-    box-shadow: 0 2px 5px #ccc;
-  }
-
-  .show_search_left {
-    position: relative;
-    left: -1rem;
-  }
-  .show_button_right {
-    margin-right: 1rem;
-    position: relative;
-    left: 21rem;
+    transition: all 0.3s;
+    &:hover {
+      box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    }
   }
 }
