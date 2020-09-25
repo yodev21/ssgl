@@ -43,6 +43,7 @@ class Mentor::TasksController < ApplicationController
 
     @challenge_users = ChallengeStart.where(team_id: @task.team.id,
                                             task_id: @task.id)
+                                     .includes(:user)
                                      .with_challenge_start_name(params[:name])
                                      .with_challenge_start_status(params[:status])
 
