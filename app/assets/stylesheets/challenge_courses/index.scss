@@ -5,6 +5,7 @@
   box-sizing: border-box;
   & .challenge-courses-title {
     width: 10%;
+    text-align: center;
     padding: 0.5rem;
     border-radius: 3px;
     color: white;
@@ -21,32 +22,18 @@
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 3px;
-    & .course-title {
+    & .courses-title {
       display: inline-block;
       font-size: 2rem;
       padding-left: 1rem;
     }
-    & .challenge-course-round-img {
-      border-radius: 50%;
-      width: 120px;
-      height: 120px;
-    }
   }
-  & .challenge-course-round-img {
+  & .challenge-courses-round-img {
     border-radius: 50%;
     width: 120px;
     height: 120px;
   }
 
-  & .challenge-course-title {
-    display: inline-block;
-  }
-
-  & .challenge-course-content {
-    display: block;
-    width: 100%;
-    border: none;
-  }
   & .challenge-courses-link {
     color: black !important;
     padding: 1rem;
@@ -59,13 +46,5 @@
     &:hover {
       box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
     }
-  }
-
-  & .image-box-challenge-course {
-    width: 100%;
-    padding: 2.5rem;
-    border-radius: 3px;
-    background-color: white;
-    box-shadow: 0 2px 5px #ccc;
   }
 }
