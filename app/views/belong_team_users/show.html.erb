@@ -1,12 +1,9 @@
-<div class="main">
-  <div class="row">
-    <div class="col-md-4 text-center">
-      <%= image_tag avatar_url(@assign_user.user), class: "round-img" %>
-    </div>
-    <div class="col-md-8">
-      <div class="row">
-        <h1><%= @assign_user.user.name %></h1>
-      </div>
+<div class="user-index">
+  <h3 class="user-title">プロフィール</h3>
+  <div class="user-card">
+
+    <%= image_tag avatar_url(@assign_user.user), class: "round-img" %>
+    <span class="user-name"><%= @assign_user.user.name %></span>
       <div class="row">
         <% if @assign_user.status == "admin" %>
           <h3>管理者</h3>
@@ -19,28 +16,6 @@
       <div class="row">
         <p class="profile"><%= @assign_user.user.profile %></p>
       </div>
-        <% if @admin_user.present? && @admin_user.status == "admin" ||  @admin_user.status == "memtor"%>
-          <% if @assign_user.status == "memtor" %>
-            <%= link_to "メンバーにする", assign_path(user_id: @assign_user.id, 
-                                                    status: "member"),
-                                                    method: :PATCH, 
-                                                    data: {confirm: "メンバーにしてもよろしいですか？"}, 
-                                                    class: "btn btn-success" %>
-          <% elsif @assign_user.status == "member" %>
-            <%= link_to "メンターにする", assign_path(user_id: @assign_user.id, 
-                                                    status: "memtor"),
-                                                    method: :PATCH, 
-                                                    data: {confirm: "メンターにしてもよろしいですか？"}, 
-                                                    class: "btn btn-primary" %>
-          <% end %>
-        <% end %>
-
-        <% if @admin_user.status == "admin" %>
-          <%= link_to "チーム退会", assign_path(id: @assign_user.id), 
-                                              method: :delete, 
-                                              data: {confirm: "ユーザーを削除してもよろしいですか？"}, 
-                                              class: "btn btn-danger waves-effect" %>
-        <% end %>
     </div>
   </div>
 </div>

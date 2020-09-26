@@ -13,20 +13,20 @@
       <% end %>
       
       <% if @user.status == "memtor" %>
-        <%= link_to "メンバーにする", assign_path(user_id: @user.id, 
+        <%= link_to "メンバーにする", mentor_assign_path(user_id: @user.id, 
                                                 status: "member"),
                                                 method: :PATCH, 
                                                 data: {confirm: "メンバーにしてもよろしいですか？"}, 
                                                 class: "btn btn-success" %>
       <% elsif @user.status == "member" %>
-        <%= link_to "メンターにする", assign_path(user_id: @user.id, 
+        <%= link_to "メンターにする", mentor_assign_path(user_id: @user.id, 
                                                 status: "memtor"),
                                                 method: :PATCH, 
                                                 data: {confirm: "メンターにしてもよろしいですか？"}, 
                                                 class: "btn btn-primary" %>
       <% end %>
 
-      <%= link_to "チーム退会", assign_path(id: @user.id), 
+      <%= link_to "チーム退会", mentor_assign_path(id: @user.id), 
                                           method: :delete, 
                                           data: {confirm: "ユーザーを削除してもよろしいですか？"}, 
                                           class: "btn btn-danger waves-effect" %>
