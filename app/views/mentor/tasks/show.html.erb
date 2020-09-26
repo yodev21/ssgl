@@ -32,27 +32,23 @@
 <div class="users-index">
   <h2 class="users-title">ユーザー</h2>
   <div class="users-card">
-  <% @challenge_users.each do |challenge_user| %>
+  <% @challenge_tasks.each do |challenge_task| %>
     <div class="row">
-      <%= link_to(mentor_user_path(challenge_user) ,class: "users-link") do %>
-        <%= image_tag challenge_user.user.image.url(:medium), class: "users-round-img" %>
-        <span><%= challenge_user.user.name %></strong></span>
-        <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(challenge_user.updated_at).upcase}前" %></p>
-        <% if @answer %>
-          <% if challenge_user.status == "awaiting_review" %>
-            <%= link_to "課題確認", answer_path(id: challenge_user.answers.first.id),
-                                              class: "btn btn-warning" %>
-          <% elsif challenge_user.status == "remand"%>
-            <%= link_to "修正中", answer_path(id: challenge_user.answers.first.id),
-                                            class: "btn btn-success" %>
-          <% elsif challenge_user.status == "complete" %>
-            <span class="badge badge-dark">課題完了</span>
-          <% else %>
-            <span class="badge badge-info">着手中</span>
-          <% end %>
+      <%= link_to(mentor_user_path(id: challenge_task.user.id) ,class: "users-link") do %>
+        <%= image_tag challenge_task.user.image.url(:medium), class: "users-round-img" %>
+        <span><%= challenge_task.user.name %></strong></span>
+        <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(challenge_task.user.updated_at).upcase}前" %></p>
 
+        <% if challenge_task.status == "awaiting_review" %>
+          <span class="badge badge-warning">レビュー待ち</span>
+        <% elsif challenge_task.status == "remand"%>
+          <span class="badge badge-success">修正中</span>
+        <% elsif challenge_task.status == "underway" %>
+          <span class="badge badge-primary">着手中</span>
+        <% elsif challenge_task.status == "complete" %>
+          <span class="badge badge-dark">課題完了</span>
         <% else %>
-            <span class="badge badge-info">着手中</span>
+          <span class="badge badge-info">未着手</span>
         <% end %>
       <% end %>
     </div>

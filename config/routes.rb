@@ -2,9 +2,6 @@
 
 Rails.application.routes.draw do
 
-  namespace :mentor do
-    get 'users/show'
-  end
   root to: 'top#top'
   get 'top/privacy_policy', to: "top#privacy_policy"
   get 'top/terms_of_service', to: "top#terms_of_service"
@@ -39,6 +36,7 @@ Rails.application.routes.draw do
   resources :comments, only: %i[create edit update destroy]
 
   namespace :mentor do
+    resources :users
     resources :teams
     resources :courses
     resources :limited_release_courses, only: %i[index show create destroy]
