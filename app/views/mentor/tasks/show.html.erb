@@ -51,6 +51,9 @@
           <span class="badge badge-info">未着手</span>
         <% end %>
       <% end %>
+      <% if challenge_task.answers.present? %>
+        <%= link_to "課題確認", "#", class: "btn btn-primary"%>
+      <% end %>
     </div>
   <% end %>
 </div>
