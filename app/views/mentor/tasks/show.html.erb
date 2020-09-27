@@ -34,7 +34,7 @@
   <div class="users-card">
   <% @challenge_tasks.each do |challenge_task| %>
     <div class="row">
-      <%= link_to(mentor_user_path(id: challenge_task.user.id) ,class: "users-link") do %>
+      <div class="users-link" %>
         <%= image_tag challenge_task.user.image.url(:medium), class: "users-round-img" %>
         <span><%= challenge_task.user.name %></strong></span>
         <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(challenge_task.user.updated_at).upcase}前" %></p>
@@ -50,10 +50,11 @@
         <% else %>
           <span class="badge badge-info">未着手</span>
         <% end %>
-      <% end %>
-      <% if challenge_task.answers.present? %>
-        <%= link_to "課題確認", "#", class: "btn btn-primary"%>
-      <% end %>
+        <br>
+        <% if challenge_task.answers.present? %>
+          <%= link_to "課題確認", answer_path(challenge_task.answers.first), class: "btn btn-primary"%>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
