@@ -10,16 +10,22 @@
 @import "devise/errors";
 
 @import "users/form";
+@import "users/index";
 @import "users/show";
 @import "users/edit";
 
-@import "teams/team";
+@import "teams/index";
+@import "teams/show";
 
 @import "tasks/show";
 
 @import "belong_teams/index";
+@import "belong_teams/show";
 
 @import "courses/show";
+@import "challenge_courses/index";
+@import "challenge_courses/show";
+@import "limited_release_courses/index";
 
 @import "comment/index";
 

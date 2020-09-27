@@ -1,23 +1,20 @@
-<div class="course-index">
-  <div class="course-card">
-    <span><%= image_tag avatar_url(@challenge_course.course), class: "course-round-img" %></span>
-    <span><div class="course-title"><%= markdown(@challenge_course.course.title) %></div></span>
+<div class="challenge-course-index">
+  <h2 class="challenge-course-title">コース</h2>
+  <div class="challenge-course-card">
+    <span><%= image_tag avatar_url(@challenge_course.course), class: "challenge-course-round-img" %></span>
+    <span class="course-title"><%=@challenge_course.course.title %></span>
     <p><%= markdown(@challenge_course.course.content) %></p>
   </div>
   <br>
-  <h2>タスク</h2>
-  <div class="course-tasks">
+  <div class="challenge-course-tasks">
+    <h2 class="challenge-course-title">タスク</h2>
     <% @tasks.each do |task| %>
       <div class="row">
-        <%= link_to(task_path(task) ,class: "course-link") do %>
-          <div class="image-box-course">
-              <%= image_tag task.image.url(:medium), class: "round-img float-md-left" %>
-              <p><strong>タスク名:<%= task.title %></strong></p>
-              <br>
-              <p>内容:<%= markdown(task.content) %></p>
-              <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(task.updated_at).upcase}前" %></p>
-
-          </div>
+        <%= link_to(task_path(task) , class: "challenge-course-link") do %>
+        <%= image_tag task.image.url(:medium), class: "challenge-course-round-img" %>
+        <span class="course-title"><%= task.title %></span>
+        <p><%= markdown(task.content) %></p>
+        <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(task.updated_at).upcase}前" %></p> 
         <% end %>
       </div>
       <br>

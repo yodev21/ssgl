@@ -11,15 +11,17 @@ class Mentor::CoursesController < ApplicationController
     @course = @assign.courses.build(course_params)
     @course.user_id = current_user.id
     @course.team_id = @assign.team_id
+
     if @course.save
       @challenge_course = ChallengeCourse.create!(
-        status: 0,
+        status: :underway,
         user_id: current_user.id,
         team_id: @course.team.id,
         assign_id: @course.assign_id,
         course_id: @course.id
       )
       redirect_to new_mentor_task_path(course_id: @course.id), notice: 'コースを作成しました！ 次にタスクを作成しましょう！'
+      
     else
       redirect_to tasks_path(id: @course.team_id,
                              assign_id: @course.assign_id),
@@ -55,9 +57,7 @@ class Mentor::CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:title,
-                                    :content,
-                                    :image)
+    params.require(:course).permit(:title, :content, :image, :status)
   end
 
   def set_params

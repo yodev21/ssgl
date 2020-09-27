@@ -1,37 +1,21 @@
-<div class="main_index">
-  <div class="row">
-    <div class="col-sm-6 col-md-12">
-      <h2>メンバー</h2>
+<div class="users-index">
+  <h2 class="users-title">メンバー</h2>
+  <div class="users-card">
+    <% assigns.each do |assign|%>
       <div class="row">
-        <% assigns.each do |assign|%>
-          <div class="col-sm-12 col-lg-6 col-xl-4">
-            <div class="image-box">
-              <%= image_tag avatar_url(assign.user), class: "round-img" %>
-            <div class="card-body">
-              <div class="row parts">
-                <%= link_to "詳細", belong_team_user_path(assign_id: assign.id), class: "btn btn-outline-info" %>
-
-                                                                    
-              </div>
-              <div>
-                <span><strong><%= assign.user.name %></strong></span>
-                <%= link_to time_ago_in_words(assign.updated_at).upcase + "前", belong_team_user_path(assign_id: assign.id),
-                                                                                                      class: "team-time no-text-decoration" %>
-                <% if assign.status == "admin" %>
-                  <%= link_to "管理者", belong_team_user_path(assign_id: assign.id), class: "badge badge-primary" %>
-
-                <% elsif assign.status == "memtor" %>
-                  <%= link_to "メンター", belong_team_user_path(assign_id: assign.id),class: "badge badge-success" %>
-                  
-                <% elsif assign.status =="member" %>
-                  <%= link_to "メンバー", belong_team_user_path(assign_id: assign.id),class: "badge badge-info" %>
-                <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
+        <%= link_to(user_path(id: assign.user.id) ,class: "users-link") do %>
+        <%= image_tag assign.user.image.url(:medium), class: "users-round-img" %>
+          <span><strong><%= assign.user.name %></strong></span>
+          <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(assign.user.updated_at).upcase}前" %></p>
+          <% if assign.status == "admin" %>
+            <span class="badge badge-warning">管理者</span>
+          <% elsif assign.status == "mentor" %>
+            <span class="badge badge-success">メンター</span>
+          <% elsif assign.status =="member" %>
+            <span class="badge badge-info">メンバー</span>
+          <% end %>
         <% end %>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

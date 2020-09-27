@@ -1,95 +1,21 @@
-<div class="main_index">
+<div class="task-index">
+  <h2 class="task-title">タスク</h2>
+  <div class="task-card">
+    <span><%= image_tag avatar_url(@task), class: "task-round-img" %></span>
+    <span class="course-title"><%=@task.title %></span>
+    <p><%= markdown(@task.content) %></p>
+    <% if @challenge_task.nil? %>
+      <%= link_to "取り組む", challenge_starts_path(task_id: @task.id), 
+                                                  method: :post,
+                                                  class: "btn btn-outline-primary  show_button_right" %>
+    <% elsif  @challenge_task.status == "awaiting_review" || @challenge_task.status == "remand" && @answer.present? %>
+      <%= link_to "回答修正", edit_answer_path(id: @answer.id), 
+                                              class: "btn btn-outline-success  show_button_right" %>
 
-  <%= image_tag avatar_url(@task), class: "round-img show_img" %>
-
-  <h3 class="show_title"><%= @task.title %></h3>
-
-  <p class="content"><%= @task.content %></p>
-
-  <div class="row">
-    <div class="col-sm-2 col-md-12">
-
-      <% if @challenge_users  && @user_status.status == "admin" %>
-        <%= form_with(url: task_path, local: true, method: :get, class: "form-inline col-sm-4 col-lg-6 col-xl-12") do |f| %>
-          <%= f.text_field :name, class: "form-control mr-sm-2 show_search_left", placeholder: "名前", id: "search_name" %>
-          <select class="form-control show_search_left" id="number" name="status">
-            <option selected="selected" value="">課題状況</option>
-            <option value="complete">完了</option>
-            <option value="underway">着手中</option>
-            <option value="awaiting_review">レビュー待ち</option>
-            <option value="remand">修正中</option>
-          </select>
-          <%= f.submit '検索', class: "btn btn-outline-success  show_search_left" %>
-
-          <% if @challenge_task.nil? %>
-            <%= link_to "取り組む", challenge_starts_path(task_id: @task.id), 
-                                                        method: :post,
-                                                        class: "btn btn-outline-primary  show_button_right" %>
-          <% elsif  @challenge_task.status == "awaiting_review" || @challenge_task.status == "remand" && @answer.present? %>
-            <%= link_to "回答修正", edit_answer_path(id: @answer.id), 
-                                                    class: "btn btn-outline-success  show_button_right" %>
-
-            <%= link_to "コメント", answer_path(id: @answer.id), 
-                                              class: "btn btn-outline-info  show_button_right" %>
-          <% else %>
-            <%= link_to "回答", new_answer_path(challenge_start_id: @challenge_task.id), class: "btn btn-outline-primary  show_button_right" %>
-          <% end %>
-        <% end %>
-      <% else %>
-          <% if @challenge_task.nil? %>
-            <%= link_to "取り組む", challenge_starts_path(task_id: @task.id), 
-                                                        method: :post,
-                                                        class: "btn btn-outline-primary  show_button_right" %>
-          <% elsif  @challenge_task.status == "awaiting_review" || @challenge_task.status == "remand" && @answer.present? %>
-            <%= link_to "回答修正", edit_answer_path(id: @answer.id), 
-                                                    class: "btn btn-outline-success  show_button_right" %>
-
-            <%= link_to "コメント", answer_path(id: @answer.id), 
-                                              class: "btn btn-outline-info  show_button_right" %>
-          <% elsif @challenge_task.status == "complete" %>
-            <%= link_to "コメント", answer_path(id: @answer.id), 
-                                              class: "btn btn-outline-info  show_button_right" %>
-          <% else %>
-            <%= link_to "回答", new_answer_path(challenge_start_id: @challenge_task.id), 
-                                                class: "btn btn-outline-primary  show_button_right" %>
-          <% end %>
-      <% end %>
-    </div>
-    <% if @challenge_users  && @user_status.status == "admin" %>
-      <% @challenge_users.each do |challenge_user| %>
-        <div class="col-sm-12 col-lg-6 col-xl-4">
-          <div class="image-box">
-            <div class="card-body">
-              <div class="row parts">
-                <%= link_to (image_tag challenge_user.user.image.url(:medium), class: "image-size"), user_path(challenge_user.user_id)%>
-
-                <div class="card-body">
-                  <div>
-                    <span><strong><%= challenge_user.user.name %></strong></span>
-                    <%= link_to time_ago_in_words(challenge_user.updated_at).upcase + "前", user_path(challenge_user.user_id), class: "team-time no-text-decoration" %><br/>
-                    <% if @answer %>
-                      <% if challenge_user.status == "awaiting_review" %>
-                        <%= link_to "課題確認", answer_path(id: challenge_user.answers.first.id),
-                                                          class: "btn btn-warning" %>
-                      <% elsif challenge_user.status == "remand"%>
-                        <%= link_to "修正中", answer_path(id: challenge_user.answers.first.id),
-                                                        class: "btn btn-success" %>
-                      <% elsif challenge_user.status == "complete" %>
-                        <span class="badge badge-dark">課題完了</span>
-                      <% else %>
-                        <span class="badge badge-info">着手中</span>
-                      <% end %>
-
-                    <% else %>
-                        <span class="badge badge-info">着手中</span>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <%= link_to "コメント", answer_path(id: @answer.id), 
+                                        class: "btn btn-outline-info  show_button_right" %>
+    <% else %>
+      <%= link_to "回答", new_answer_path(challenge_start_id: @challenge_task.id), class: "btn btn-outline-primary  show_button_right" %>
     <% end %>
   </div>
 </div>

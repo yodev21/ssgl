@@ -11,10 +11,15 @@ class UsersController < ApplicationController
 
   def change_status
     user = User.find(current_user.id)
-    user.status = user.status == "member" ? "mentor" : "member"
-    user.save
-    
-    redirect_to mentor_teams_path
+    if user.status == "member"
+      user.status = "mentor"
+      user.save
+      redirect_to mentor_teams_path
+    else
+      user.status = "member"
+      user.save
+      redirect_to teams_path
+    end 
   end
 
   def destroy

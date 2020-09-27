@@ -1,22 +1,16 @@
-<div class="main_index">
-  <h2>マイチーム</h2>
-  <%= link_to "チーム作成", new_mentor_team_path, class: "btn btn-outline-primary mobile_button"%>
-  <div class="row">
+<div class="teams-index">
+  <h2 class="teams-title">チーム</h2><br>
+  <div class="teams-card">
+    <%= link_to "チーム作成", new_mentor_team_path, class: "btn btn-outline-primary mobile_button"%>
     <% if @teams.present? %>
       <% @teams.each do |team|%>
-        <div class="col-sm-12 col-lg-6 col-xl-4">
-          <div class="image-box">
-          <%= link_to (image_tag team_icon_url(team),class: "image-size"), mentor_team_path(team)%>
-          <div class="card-body">
-            <div class="row parts">
-              <%= link_to "コース", mentor_courses_path(team_id: team.id), class: "btn btn-outline-info",id: "task_link" %>
-            </div>
-            <div>
-              <span><strong><%= link_to team.name, mentor_team_path(team.id) %></strong></span>
-              <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(team.updated_at).upcase}前" %></p>
-              </div>
-            </div>
-          </div>
+        <div class="row">
+          <%= link_to(mentor_team_path(team) , class: "teams-link") do %>
+            <%= image_tag team.image.url(:medium), class: "teams-round-img" %>
+            <span class="courses-title"><%= team.name %></span>
+            <p><%= team.remarks.truncate(50) %></p>
+            <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(team.updated_at).upcase}前" %></p>
+          <% end %>
         </div>
       <% end %>
     <% else %>

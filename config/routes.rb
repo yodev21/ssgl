@@ -2,6 +2,10 @@
 
 Rails.application.routes.draw do
 
+  namespace :mentor do
+    get 'answers/index'
+    get 'answers/show'
+  end
   root to: 'top#top'
   get 'top/privacy_policy', to: "top#privacy_policy"
   get 'top/terms_of_service', to: "top#terms_of_service"
@@ -22,7 +26,7 @@ Rails.application.routes.draw do
     post '/change_status', to: 'users#change_status'
   end
   resources :teams, only: %i[index show]
-  resources :assigns, only: %i[create destroy update] 
+  resources :assigns, only: %i[create] 
 
   resources :belong_teams, only: %i[index show destroy]
   resources :belong_team_users, only: %i[index show]
@@ -36,8 +40,11 @@ Rails.application.routes.draw do
   resources :comments, only: %i[create edit update destroy]
 
   namespace :mentor do
+    resources :users
     resources :teams
+    resources :assigns, only: %i[update destroy]
     resources :courses
+    resources :limited_release_courses, only: %i[index show create destroy]
     resources :tasks
     resources :feed_backs, only: %i[show index]
   end

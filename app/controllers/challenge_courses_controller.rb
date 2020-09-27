@@ -2,12 +2,12 @@ class ChallengeCoursesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @courses = ChallengeCourse.where(user_id: current_user)
+    @courses = ChallengeCourse.where(user_id: current_user).includes(:course)
   end
 
   def show
     @challenge_course = ChallengeCourse.find(params[:id])
-    @tasks = Task.where(challenge_course_id: @challenge_course.course.id)
+    @tasks = Task.where(course_id: Course.find(@challenge_course.course.id)) 
   end
 
   def create

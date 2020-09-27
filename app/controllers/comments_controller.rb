@@ -67,7 +67,7 @@ class CommentsController < ApplicationController
   def send_user(comment)
     if current_user.id == comment.answer.user_id
       comment.team.assigns.each do |assign|
-        CommentMailer.comment_mail(assign.user.email).deliver if assign.status == 'admin' || assign.status == 'memtor'
+        CommentMailer.comment_mail(assign.user.email).deliver if assign.status == 'admin' || assign.status == 'mentor'
       end
     else
       CommentMailer.comment_mail(comment.answer.user.email).deliver
@@ -79,7 +79,7 @@ class CommentsController < ApplicationController
     comment_user = Assign.find_by(user_id: comment.user_id,
                                          team_id: comment.team_id)
 
-    if comment_user.status == "admin" || comment_user.status == "memtor"
+    if comment_user.status == "admin" || comment_user.status == "mentor"
       challenge_start_id.update(status: 'remand')
     else
       challenge_start_id.update(status: 'awaiting_review')

@@ -1,0 +1,34 @@
+<div class="user-index">
+  <h3 class="user-title">プロフィール</h3>
+    <div class="user-card">
+      <%= image_tag avatar_url(@user.user), class: "round-img" %>
+      <span class="user-name"><%= @user.user.name %></span>
+
+      <% if @user.status == "admin" %>
+        <h3>管理者</h3>
+      <% elsif @user.status == "mentor" %>
+        <h3>メンター</h3>
+      <% elsif @user.status == "member"%>
+        <h3>メンバー</h3>
+      <% end %>
+      
+      <% if @user.status == "mentor" %>
+        <%= link_to "メンバーにする", mentor_assign_path(user_id: @user.id, 
+                                                status: "member"),
+                                                method: :PATCH, 
+                                                data: {confirm: "メンバーにしてもよろしいですか？"}, 
+                                                class: "btn btn-success" %>
+      <% elsif @user.status == "member" %>
+        <%= link_to "メンターにする", mentor_assign_path(user_id: @user.id, 
+                                                status: "mentor"),
+                                                method: :PATCH, 
+                                                data: {confirm: "メンターにしてもよろしいですか？"}, 
+                                                class: "btn btn-primary" %>
+      <% end %>
+
+      <%= link_to "チーム退会", mentor_assign_path(id: @user.id), 
+                                          method: :delete, 
+                                          data: {confirm: "ユーザーを削除してもよろしいですか？"}, 
+                                          class: "btn btn-danger waves-effect" %>
+    </div>
+</div>

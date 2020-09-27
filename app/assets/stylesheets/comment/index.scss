@@ -1,7 +1,36 @@
-.comment_form {
-  height: 10rem;
-}
+.comments-index {
+  max-width: 100%;
+  margin: auto;
+  padding-top: 1rem;
+  box-sizing: border-box;
+  & .comments-title {
+    width: 15%;
+    padding: 0.5rem;
+    border-radius: 3px;
+    color: white;
 
-.card-hight {
-  height: 21rem;
+    background: linear-gradient(60deg, #ef5350, #e53935);
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+      0 7px 10px -5px rgba(244, 67, 54, 0.4);
+    position: relative;
+    top: 1rem;
+    left: 1rem;
+  }
+
+  & .comments-card {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px #ccc;
+  }
+  & .comments-round-img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+  }
+  & .comments-content {
+    display: block;
+  }
 }

@@ -1,30 +1,17 @@
-<div class="main">
-  <div class="row">
-    <div class="col-md-4 text-center">
-      <%= image_tag team_icon_url(@team), class: "round-img" %>
-    </div>
-    <div class="col-md-8">
-      <div class="row">
-        <div class="row col-12">
-          <h1><%= @team.name %></h1>
-        </div>
-
-        <% if @assign.nil? %>
-          <%= link_to "このチームに参加する！", assigns_path(team_id: @team), method: :post, 
-                                                                      class: "btn btn-outline-primary profile-btn" %>
-        <% else %>
-          <% if @team.user_id != current_user.id %>
-          <%= link_to "退会する", assign_path(id: @assign.id), 
-                                            method: :delete, 
-                                            data: {confirm: "本当に退会してもよろしいですか？"},
-                                            class: "btn btn-outline-danger profile-btn" %>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="row">
-        <%= @team.remarks %>
-      </div>
-    </div>
+<div class="team-index">
+  <h2 class="team-title">チーム</h2>
+  <div class="team-card">
+    <span><%= image_tag avatar_url(@team), class: "team-round-img" %></span>
+    <span class="team-name"><%=@team.name %></span>
+    <p><%= markdown(@team.remarks) %></p>
+    
+    <% if @assign.nil? %>
+      <%= link_to "このチームに参加する！", assigns_path(team_id: @team), method: :post, 
+                                                                  class: "btn btn-outline-primary profile-btn" %>
+    <% else %>
+      <%= link_to "コースに移動", belong_team_path(@team), 
+                                        class: "btn btn-outline-primary profile-btn" %>
+    <% end %>
   </div>
 </div>
 

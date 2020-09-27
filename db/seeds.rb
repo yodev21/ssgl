@@ -35,6 +35,15 @@ p 'Create Guest User'
             早く一人前のエンジニアになれるように頑張ります！",
   created_at: "2020/06/30 00:00:00"
 )
+@admin_user = User.create(
+  email: 'yodev21@example.com',
+  name: '管理者 ユーザー',
+  image: open("#{Rails.root}/app/assets/images/users/1.png"),
+  password: 'testtest',
+  profile: "プログラミングの学習を始めて１ヶ月目です！\n
+            早く一人前のエンジニアになれるように頑張ります！",
+  created_at: "2020/06/30 00:00:00"
+)
 p 'Guest User Success'
 
 # ゲストチーム作成
@@ -70,6 +79,7 @@ p 'Create Guest Course'
   user_id: @guest_user.id,
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
+  status: :release,
   created_at: "2020-06-30 00:00:00"
 )
 p 'Create Guest Course2'
@@ -81,6 +91,7 @@ p 'Create Guest Course2'
   user_id: @guest_user.id,
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
+  status: :release,
   created_at: "2020-06-30 00:00:00"
 )
 p '-------------------------- 初学者向けコース -----------------------------'

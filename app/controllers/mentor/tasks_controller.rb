@@ -14,13 +14,10 @@ class Mentor::TasksController < ApplicationController
     @task.assign_id = @course.assign_id
     @task.course_id = @course.course_id
     if @task.save
-      redirect_to mentor_courses_path(id: @task.team_id,
-                             assign_id: @task.assign_id),
-                             notice: '課題を作成しました！'
+      ChallengeStart.create_challenge_start(task_id: @task.id, user_id: current_user.id)
+      redirect_to mentor_team_path(id: @task.team_id), notice: '課題を作成しました！'
     else
-      redirect_to mentor_courses_path(id: @task.team_id,
-                             assign_id: @task.assign_id),
-                             alert: '課題の作成に失敗しました！'
+      redirect_to mentor_team_path(id: @task.team_id), alert: '課題の作成に失敗しました！'
     end
   end
 
@@ -35,14 +32,15 @@ class Mentor::TasksController < ApplicationController
   
   def show
     @task = Task.find_by(id: params[:id])
-    @answer = Answer.find_by(task_id: @task.id)
+    # @answer = Answer.find_by(task_id: @task.id)
     @user_status = Assign.find_by(user_id: current_user.id)
 
     @challenge_task = ChallengeStart.find_by(user_id: current_user.id,
                                              task_id: @task.id)
 
-    @challenge_users = ChallengeStart.where(team_id: @task.team.id,
+    @challenge_tasks = ChallengeStart.where(team_id: @task.team.id,
                                             task_id: @task.id)
+                                     .includes(:user)
                                      .with_challenge_start_name(params[:name])
                                      .with_challenge_start_status(params[:status])
 

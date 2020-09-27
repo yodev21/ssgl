@@ -1,114 +1,40 @@
-@media screen and (max-width: 576px) {
-  .right_answer_button {
+.answer-show {
+  max-width: 100%;
+  margin: auto;
+  padding-top: 1rem;
+  box-sizing: border-box;
+  & .answer-title {
+    width: 15%;
+    padding: 0.5rem;
+    border-radius: 3px;
+    color: white;
+
+    background: linear-gradient(60deg, #ef5350, #e53935);
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+      0 7px 10px -5px rgba(244, 67, 54, 0.4);
     position: relative;
-    top: -0.5rem;
-    left: -1.8rem;
+    top: 1rem;
+    left: 1rem;
   }
-  .conmplete_button {
-    margin-right: 1rem;
-    position: relative;
-    top: -0.5rem;
-    left: 2.8rem;
-  }
-  .comment_info {
-    text-align: left;
-  }
-  .image-box-comment {
-    width: 25rem;
-    margin: 10px auto 20px;
+  & .answer-card {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
     border-radius: 3px;
     box-shadow: 0 2px 5px #ccc;
+    & .answer-name {
+      display: inline-block;
+      font-size: 2rem;
+      padding-left: 1rem;
+    }
   }
-}
 
-@media screen and (min-width: 576px) and (max-width: 767px) {
-  .right_answer_button {
-    position: relative;
-    top: -0.5rem;
-    left: -3rem;
-  }
-  .conmplete_button {
-    margin-right: 1rem;
-    position: relative;
-    top: -0.5rem;
-    left: 4rem;
-  }
-  .comment_info {
-    text-align: left;
-  }
-  .image-box-comment {
-    width: 25rem;
-    margin: 10px auto 20px;
+  & .image-box-challenge-course {
+    width: 100%;
+    padding: 2.5rem;
     border-radius: 3px;
-    box-shadow: 0 2px 5px #ccc;
-  }
-}
-
-@media screen and (min-width: 767px) and (max-width: 992px) {
-  .right_answer_button {
-    position: relative;
-    top: -0.5rem;
-    left: -8.5rem;
-  }
-  .conmplete_button {
-    margin-right: 1rem;
-    position: relative;
-    top: -0.5rem;
-    left: 9.5rem;
-  }
-  .comment_info {
-    text-align: left;
-  }
-  .image-box-comment {
-    width: 35rem;
-    margin: 10px auto 20px;
-    border-radius: 3px;
-    box-shadow: 0 2px 5px #ccc;
-  }
-}
-
-@media screen and (min-width: 992px) and (max-width: 1200px) {
-  .right_answer_button {
-    position: relative;
-    top: -0.5rem;
-    left: -16rem;
-  }
-  .conmplete_button {
-    margin-right: 1rem;
-    position: relative;
-    top: -0.5rem;
-    left: 17rem;
-  }
-  .comment_info {
-    text-align: left;
-  }
-  .image-box-comment {
-    width: 50rem;
-    margin: 10px auto 20px;
-    border-radius: 3px;
-    box-shadow: 0 2px 5px #ccc;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .right_answer_button {
-    position: relative;
-    top: -0.5rem;
-    left: -17rem;
-  }
-  .conmplete_button {
-    margin-right: 1rem;
-    position: relative;
-    top: -0.5rem;
-    left: 18rem;
-  }
-  .comment_info {
-    text-align: left;
-  }
-  .image-box-comment {
-    width: 50rem;
-    margin: 10px auto 20px;
-    border-radius: 3px;
+    background-color: white;
     box-shadow: 0 2px 5px #ccc;
   }
 }

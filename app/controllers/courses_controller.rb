@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @courses = Course.order(updated_at: :desc)
+    @courses = Course.where(status: "release").order(updated_at: :desc)
   end
 
   def show

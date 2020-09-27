@@ -1,0 +1,80 @@
+.limited-release-course-index {
+  max-width: 100%;
+  margin: auto;
+  padding-top: 1rem;
+  box-sizing: border-box;
+  & .limited-release-course-title {
+    padding: 0.5rem;
+    border-radius: 3px;
+    color: white;
+
+    background: linear-gradient(60deg, #66bb6a, #43a047);
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+      0 7px 10px -5px rgba(76, 175, 80, 0.4);
+    position: relative;
+    top: 1rem;
+    left: 1rem;
+  }
+  & .limited-release-courses {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 3px;
+    & .course-title {
+      display: inline-block;
+      font-size: 2rem;
+      padding-left: 1rem;
+    }
+    & .limited-release-course-title {
+      padding: 0.5rem;
+      border-radius: 3px;
+      color: white;
+      background: linear-gradient(60deg, #66bb6a, #43a047);
+      box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+        0 7px 10px -5px rgba(76, 175, 80, 0.4);
+      position: relative;
+      top: 1rem;
+      left: 1rem;
+    }
+    & .limited-release-course-round-img {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+    }
+  }
+  & .limited-release-course-round-img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+  }
+
+  & .limited-release-course-title {
+    display: inline-block;
+  }
+
+  & .limited-release-course-content {
+    display: block;
+    width: 100%;
+    border: none;
+  }
+  & .limited-release-course-link {
+    color: black !important;
+    padding: 1rem;
+    width: 100%;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px #ccc;
+    transition: all 0.3s;
+    &:hover {
+      box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  & .image-box-limited-release-course {
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 3px;
+    background-color: white;
+    box-shadow: 0 2px 5px #ccc;
+  }
+}

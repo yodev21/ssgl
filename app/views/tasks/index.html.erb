@@ -7,7 +7,7 @@
           <%= f.text_field :title, class: "form-control mr-sm-2 search_left", placeholder: "タスク名" %>
           <%= f.submit '検索', class: "btn btn-outline-success  search_left" %>
 
-          <% if @assign.status == "admin" || @assign.status == "memtor" %>
+          <% if @assign.status == "admin" || @assign.status == "mentor" %>
             <%= link_to "タスク作成", new_task_path(assign_id: @assign.id), 
                                                   class: "btn btn-outline-info button_right",
                                                   id: "task_create"%>

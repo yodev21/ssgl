@@ -1,43 +1,36 @@
-<div class="main">
-  <div class="row">
-    <div class="col-md-4 text-center">
-      <%= image_tag team_icon_url(@team), class: "round-img" %>
-    </div>
-    <div class="col-md-8">
-      <div class="row">
-        <div class="row col-12">
-          <h1><%= @team.name %></h1>
-        </div>
-        <%= link_to "チーム情報編集", edit_mentor_team_path(@team), class: "btn btn-outline-success  profile-btn" %>
-        <%= link_to "チーム削除", mentor_team_path(@team), class: "btn btn-outline-danger  profile-btn", method: :delete, 
-                                                                                               data: { confirm: "チームを削除してもよろしいですか？"} %>
-      </div>
-      <div class="row">
-        <%= @team.remarks %>
-      </div>
-    </div>
+<div class="team-index">
+  <h2 class="team-title">チーム</h2>
+  <div class="team-card">
+    <span><%= image_tag avatar_url(@team), class: "team-round-img" %></span>
+    <span class="team-name"><%=@team.name %></span>
+    <p><%= markdown(@team.remarks) %></p>
+    <%= link_to "チーム情報編集", edit_mentor_team_path(@team), class: "btn btn-outline-success  profile-btn" %>
+    <%= link_to "チーム削除", mentor_team_path(@team), class: "btn btn-outline-danger  profile-btn", method: :delete, 
+                                                                                            data: { confirm: "チームを削除してもよろしいですか？"} %>
   </div>
 </div>
-<div class="course-index">
-  <h2>コース一覧</h2>
-  <div class="course-tasks">
+<div class="challenge-courses-index">
+  <h2 class="challenge-courses-title">コース</h2>
+  <div class="challenge-courses-card">
+  <br>
+  <%= link_to "コース作成", new_mentor_course_path(team_id: params[:id]), class: "btn btn-outline-primary mobile_button"%>
     <% @courses.each do |course| %>
       <div class="row">
-        <%= link_to(mentor_course_path(course) ,class: "course-link") do %>
-          <div class="image-box-course">
-              <%= image_tag course.image.url(:medium), class: "round-img float-md-left" %>
-              <p><strong>タスク名:<%= course.title %></strong></p>
-              <br>
-              <p>内容:<%= markdown(course.content) %></p>
-              <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(course.updated_at).upcase}前" %></p>
-
-          </div>
+        <%= link_to(mentor_course_path(course) ,class: "challenge-courses-link") do %>
+          <%= image_tag course.image.url(:medium), class: "challenge-courses-round-img" %>
+          <span><%= course.title %></span>
+          <% if course.status == 'release' %>
+            <span class="badge badge-primary">公開</span>
+          <% elsif course.status == 'limited_release' %>
+            <span class="badge badge-danger">限定公開</span>
+          <% else %>
+            <span class="badge badge-dark">非公開</span>
+          <% end %>
+          <p><%= course.content.truncate(50) %></p>
+          <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(course.updated_at).upcase}前" %></p>
         <% end %>
       </div>
       <br>
     <% end %>
   </div>
 </div>
-<% unless @assigns.nil? %>
-  <%= render 'partial/belong_users', assigns: @assigns%>
-<% end %>

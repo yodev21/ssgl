@@ -1,8 +1,8 @@
 <div class="main">
+  <h2 class="challenge-courses-title">コース修正</h2>
   <div class="card form-card">
     <div class="form-wrap">
       <div class="form-group text-center">
-        <h3>課題編集</h3>
       </div>
       <%= form_with model: @course, url: mentor_course_path(@course), local: true do |f| %>
         
@@ -36,6 +36,10 @@
           <%= f.text_area :content,  placeholder: "内容", class: "form-control",rows: "10", required: true %>
         </div>
 
+        <div class="form-group">
+          <%=  f.select :status, [['公開', :release], ['限定公開', :limited_release], ['非公開', :secret]], {}, {class: "form-control"} %>
+        </div>
+        <br>
         <div class="actions">
           <%= f.submit "登録", class: "btn btn-primary w-100" %>
         </div>
