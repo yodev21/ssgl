@@ -21,12 +21,11 @@ class Mentor::TeamsController < ApplicationController
   end
 
   def index 
-    @teams = Team.where(user_id: current_user.id).page(params[:page])
+    @teams = Team.where(id: Assign.where(user_id: current_user.id).where.not(status: 'member').select(:team_id)).page
   end
 
   def show
-    @courses = Course.where(user_id: current_user.id, team_id: params[:id])
-    @assigns = Assign.where(team_id: params[:id]).includes(:user)
+    @courses = Course.where(team_id: Assign.where(user_id: current_user.id).select(:team_id)).where(team_id: params[:id])
   end
 
   def edit; end

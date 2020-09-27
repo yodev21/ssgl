@@ -7,7 +7,7 @@ class ChallengeCoursesController < ApplicationController
 
   def show
     @challenge_course = ChallengeCourse.find(params[:id])
-    @tasks = Task.where(challenge_course_id: @challenge_course.course.id)
+    @tasks = Task.where(course_id: Course.find(@challenge_course.course.id)) 
   end
 
   def create

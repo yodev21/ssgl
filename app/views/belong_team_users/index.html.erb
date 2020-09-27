@@ -23,7 +23,7 @@
                                                               id: user.id),
                                                               class: "badge badge-primary" %>
 
-                <% elsif user.assigns.first.status == "memtor" %>
+                <% elsif user.assigns.first.status == "mentor" %>
                   <%= link_to "メンター", belong_team_user_path(team_id: params[:team_id], 
                                                               id: user.id),
                                                               class: "badge badge-success" %>

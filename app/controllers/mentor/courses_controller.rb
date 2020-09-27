@@ -11,9 +11,10 @@ class Mentor::CoursesController < ApplicationController
     @course = @assign.courses.build(course_params)
     @course.user_id = current_user.id
     @course.team_id = @assign.team_id
+
     if @course.save
       @challenge_course = ChallengeCourse.create!(
-        status: 0,
+        status: :underway,
         user_id: current_user.id,
         team_id: @course.team.id,
         assign_id: @course.assign_id,

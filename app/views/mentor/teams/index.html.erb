@@ -1,8 +1,8 @@
 <div class="teams-index">
   <h2 class="teams-title">チーム</h2><br>
   <div class="teams-card">
+    <%= link_to "チーム作成", new_mentor_team_path, class: "btn btn-outline-primary mobile_button"%>
     <% if @teams.present? %>
-      <%= link_to "チーム作成", new_mentor_team_path, class: "btn btn-outline-primary mobile_button"%>
       <% @teams.each do |team|%>
         <div class="row">
           <%= link_to(mentor_team_path(team) , class: "teams-link") do %>

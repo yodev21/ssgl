@@ -14,13 +14,10 @@ class Mentor::TasksController < ApplicationController
     @task.assign_id = @course.assign_id
     @task.course_id = @course.course_id
     if @task.save
-      redirect_to mentor_courses_path(id: @task.team_id,
-                             assign_id: @task.assign_id),
-                             notice: '課題を作成しました！'
+      ChallengeStart.create_challenge_start(task_id: @task.id, user_id: current_user.id)
+      redirect_to mentor_team_path(id: @task.team_id), notice: '課題を作成しました！'
     else
-      redirect_to mentor_courses_path(id: @task.team_id,
-                             assign_id: @task.assign_id),
-                             alert: '課題の作成に失敗しました！'
+      redirect_to mentor_team_path(id: @task.team_id), alert: '課題の作成に失敗しました！'
     end
   end
 

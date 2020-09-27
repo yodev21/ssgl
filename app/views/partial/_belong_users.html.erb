@@ -9,7 +9,7 @@
           <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(assign.user.updated_at).upcase}前" %></p>
           <% if assign.status == "admin" %>
             <span class="badge badge-warning">管理者</span>
-          <% elsif assign.status == "memtor" %>
+          <% elsif assign.status == "mentor" %>
             <span class="badge badge-success">メンター</span>
           <% elsif assign.status =="member" %>
             <span class="badge badge-info">メンバー</span>
