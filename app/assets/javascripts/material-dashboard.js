@@ -62,9 +62,9 @@ $(document).ready(function () {
   $sidebar = $(".sidebar");
   window_width = $(window).width();
 
-  $("body").bootstrapMaterialDesign({
-    autofill: false,
-  });
+  // $("body").bootstrapMaterialDesign({
+  //   autofill: false,
+  // });
 
   md.initSidebarsCheck();
 
@@ -114,10 +114,10 @@ $(document).ready(function () {
   }
 
   //  Activate the tooltips
-  $('[rel="tooltip"]').tooltip();
+  // $('[rel="tooltip"]').tooltip();
 
   // Activate Popovers
-  $('[data-toggle="popover"]').popover();
+  // $('[data-toggle="popover"]').popover();
 
   //Activate tags
   // we style the badges with our colors
@@ -130,10 +130,10 @@ $(document).ready(function () {
   $(".bootstrap-tagsinput").addClass("" + tagClass + "-badge");
 
   //    Activate bootstrap-select
-  $(".select").dropdown({
-    dropdownClass: "dropdown-menu",
-    optionClass: "",
-  });
+  // $(".select").dropdown({
+  //   dropdownClass: "dropdown-menu",
+  //   optionClass: "",
+  // });
 
   $(".form-control")
     .on("focus", function () {
