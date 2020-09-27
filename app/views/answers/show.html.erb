@@ -7,7 +7,7 @@
     <p><%= markdown(@answer.content) %></p>
 
     <% if @answer.user_id == current_user.id %>
-      <%= link_to "回答編集", edit_answer_path(id: @answer.id), class: "btn btn-outline-success right_answer_button" %>
+      <%= link_to "回答修正", edit_answer_path(id: @answer.id), class: "btn btn-outline-success right_answer_button" %>
     <% end %>
     <% if @answer_user.status == "admin" || @answer_user.status == "mentor" %>
       <%= link_to "完了", challenge_start_path(id: @answer.challenge_start_id),

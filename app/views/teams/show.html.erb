@@ -10,6 +10,8 @@
                                                                   class: "btn btn-outline-primary profile-btn" %>
     <% else %>
       <% if @team.user_id != current_user.id %>
+      <%= link_to "コースに移動", belong_team_path(@team), 
+                                        class: "btn btn-outline-primary profile-btn" %>
       <%= link_to "退会する", assigns_path(id: @assign.id), 
                                         method: :delete, 
                                         data: {confirm: "本当に退会してもよろしいですか？"},
