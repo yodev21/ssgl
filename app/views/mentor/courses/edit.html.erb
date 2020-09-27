@@ -39,7 +39,7 @@
         <div class="form-group">
           <%=  f.select :status, [['公開', :release], ['限定公開', :limited_release], ['非公開', :secret]], {}, {class: "form-control"} %>
         </div>
-        
+        <br>
         <div class="actions">
           <%= f.submit "登録", class: "btn btn-primary w-100" %>
         </div>

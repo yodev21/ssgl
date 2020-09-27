@@ -1,14 +1,26 @@
 <div class="limited-release-course-index">
   <div class="limited-release-course-courses">
-    <h2 class="limited-release-course-title">タスク</h2>
-    <% @courses.each do |course| %>
+    <h2 class="limited-release-course-title">ユーザー</h2>
+    <% @users.each do |user| %>
       <div class="row">
-        <%= link_to(mentor_course_path(course) , class: "limited-release-course-link") do %>
-        <%= image_tag course.image.url(:medium), class: "limited-release-course-round-img" %>
-        <span class="course-title"><%= course.title %></span>
-        <p><%= markdown(course.content) %></p>
-        <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(course.updated_at).upcase}前" %></p> 
+        <div class="limited-release-course-link" %>
+        <%= image_tag user.image.url(:medium), class: "limited-release-course-round-img" %>
+        <span class="course-title"><%= user.name %></span>
+        <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(user.updated_at).upcase}前" %></p> 
+        <% if user.limited_release_enabled %>
+          <%= link_to "卒業", mentor_limited_release_course_path(user_id: user.id,
+                                                                course_id: @course.id),
+                                                                method: :delete,
+                                                                data: { confirm: "公開限定コースから外してもよろしいですか？"},
+                                                                class: "btn btn-danger" %>
+        <% else %>
+          <%= link_to "コースに追加", mentor_limited_release_courses_path(user_id: user.id,
+                                                                        course_id: @course.id), 
+                                                                        data: { confirm: "公開限定コースに追加してもよろしいですか？"},
+                                                                        method: :post,
+                                                                        class: "btn btn-primary" %>
         <% end %>
+        </div>
       </div>
       <br>
     <% end %>

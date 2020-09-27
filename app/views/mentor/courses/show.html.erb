@@ -5,8 +5,14 @@
     <span><div class="course-title"><%= markdown(@course.title) %></div></span>
     <p><%= markdown(@course.content) %></p>
     <%= link_to "コース修正", edit_mentor_course_path(@course), class: "btn btn-success"%>
+    
+    <% if @course.status == "limited_release" %>
+      <%= link_to "メンバーの追加", mentor_limited_release_course_path(@course), class: "btn btn-warning"%>
+    <% end %>
+    
+    <%= link_to "フィードバックの確認", mentor_feed_backs_path(course_id: @course.id),class: "btn btn-primary  " %>
     <%= link_to "コース削除", mentor_course_path(@course), data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
-    <%= link_to "フィードバックの確認", mentor_feed_backs_path(course_id: @course.id),class: "btn btn-primary  show_button_right" %>
+    
   </div>
   <%= link_to "タスク作成", new_mentor_task_path(course_id: params[:id]), class: "btn btn-outline-primary mobile_button"%>
   <h2 class="task-title">タスク</h2>
