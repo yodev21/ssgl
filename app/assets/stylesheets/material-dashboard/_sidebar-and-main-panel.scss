@@ -131,7 +131,7 @@
       & .dropdown-menu a:focus,
       &.active > [data-toggle="collapse"] {
         background-color: rgba(200, 200, 200, 0.2);
-        color: $black-color;
+        // color: $black-color;
         box-shadow: none;
       }
 
@@ -271,7 +271,8 @@
       padding: $padding-small-vertical $padding-zero;
       display: inline-block;
       font-size: 18px;
-      color: $black-color;
+      //   color: $black-color;
+      color: $white;
       white-space: nowrap;
       font-weight: $font-weight-default;
       line-height: 30px;
