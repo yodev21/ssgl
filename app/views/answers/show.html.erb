@@ -13,7 +13,7 @@
       <%= link_to "完了", challenge_start_path(id: @answer.challenge_start_id),
                                               class: "btn btn-outline-primary conmplete_button", 
                                               method: :patch, 
-                                              data: { confirm: "課題を完了してもよろしいですか？"} %>
+                                              data: { confirm: "タスクを完了してもよろしいですか？"} %>
     <% end %>
     <%= render partial: 'comments/form', locals: { comment: @comment } %>
   </div>

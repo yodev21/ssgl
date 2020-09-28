@@ -26,7 +26,7 @@ RSpec.describe 'Tasks', type: :system do
       attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png", make_visible: true
       fill_in 'task_content', with: 'test Content'
       click_button '登録'
-      wait.until { expect(page).to have_content '課題を作成しました！' }
+      wait.until { expect(page).to have_content 'タスクを作成しました！' }
     end
 
     example 'タスクが編集できること' do

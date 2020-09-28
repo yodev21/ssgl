@@ -2,13 +2,13 @@
   <div class="card form-card">
     <div class="form-wrap">
       <div class="form-group text-center">
-        <h3>課題作成</h3>
+        <h3>タスク作成</h3>
       </div>
 
       <%= form_with model: @task, url: mentor_tasks_path(course_id: params[:course_id]), local: true do |f| %>
 
         <div class="form-group">
-          <%= f.text_field :title, autofocus: true, placeholder: "課題名", class: "form-control", required: true %>
+          <%= f.text_field :title, autofocus: true, placeholder: "タスク名", class: "form-control", required: true %>
         </div>
 
         <% unless @task.image? %>
@@ -16,7 +16,7 @@
         <% end %>
         <div class="form-group">
             <%= f.label :image, "photo_size_select_actual", class: "material-icons" %>
-          <%= f.file_field :image, placeholder: "課題アイコン", class: "fom-control icon_image", required: true %>
+          <%= f.file_field :image, placeholder: "タスクアイコン", class: "fom-control icon_image", required: true %>
             <script type="text/javascript">
               $(function() {
                 function readURL(input) {

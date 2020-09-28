@@ -13,7 +13,7 @@ class Mentor::TeamsController < ApplicationController
       @assign = @team.join_team(status: :admin, user: @team.user_id)
       redirect_to new_mentor_course_path(
         team_id: @assign.team_id),
-        notice: 'チームを作成しました。 次に課題を作成してください。'
+        notice: 'チームを作成しました。 次にタスクを作成してください。'
     else
       flash.now[:danger] = 'チームの作成に失敗しました。'
       render :new

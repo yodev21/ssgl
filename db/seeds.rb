@@ -73,8 +73,8 @@ p 'Guest Assign Success'
 p 'Create Guest Course'
 @guest_course = Course.create!(
   title: '初心者向け! Webアプリケーション学習【テスト】',
-  content: "課題の書籍・学習サービスを購入して学習してください。。\n
-            課題が完了しましたらこちらにお知らせください。",
+  content: "タスクの書籍・学習サービスを購入して学習してください。。\n
+            タスクが完了しましたらこちらにお知らせください。",
   image: open("#{Rails.root}/app/assets/images/courses/1.png"),
   user_id: @guest_user.id,
   team_id: @guest_team.id,
@@ -85,8 +85,8 @@ p 'Create Guest Course'
 p 'Create Guest Course2'
 @guest_course_2 = Course.create!(
   title: '中級者向け! Ruby on Rails 学習【テスト】',
-  content: "課題の書籍・学習サービスを購入して学習してください。\n
-            課題が完了しましたらこちらにお知らせください。",
+  content: "タスクの書籍・学習サービスを購入して学習してください。\n
+            タスクが完了しましたらこちらにお知らせください。",
   image: open("#{Rails.root}/app/assets/images/courses/1.png"),
   user_id: @guest_user.id,
   team_id: @guest_team.id,

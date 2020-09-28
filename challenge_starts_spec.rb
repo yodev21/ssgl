@@ -23,7 +23,7 @@ RSpec.describe 'Tasks', type: :system do
       click_button '登録'
       visit team_assign_task_path(team_id: @team.id, assign_id: @assign.id, id: @assign.tasks.first)
       click_link '取り組む'
-      wait.until { expect(page).to have_content 'こちらの課題に取り組みました' }
+      wait.until { expect(page).to have_content 'こちらのタスクに取り組みました' }
     end
 
     example 'タスクを諦めることができること', retry: 3 do
@@ -36,7 +36,7 @@ RSpec.describe 'Tasks', type: :system do
       click_link '取り組む'
       click_link '諦める'
       page.driver.browser.switch_to.alert.accept
-      wait.until { expect(page).to have_content 'こちらの課題を取り消しました' }
+      wait.until { expect(page).to have_content 'こちらのタスクを取り消しました' }
     end
   end
 end

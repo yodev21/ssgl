@@ -28,13 +28,13 @@ class ChallengeStartsController < ApplicationController
 
   def create
     @challenge = ChallengeStart.create_challenge_start(task_id: params[:task_id], user_id: current_user.id)
-    redirect_to task_path(id: params[:task_id]), notice: 'こちらの課題に取り組みました。'
+    redirect_to task_path(id: params[:task_id]), notice: 'こちらのタスクに取り組みました。'
   end
 
   def update
     challenge = ChallengeStart.find(params[:id])
     challenge.update(status: :complete)
-    redirect_to mentor_task_path(id: challenge.task.id), notice: '課題完了しました。'
+    redirect_to mentor_task_path(id: challenge.task.id), notice: 'タスク完了しました。'
   end
 
   def destroy
@@ -43,6 +43,6 @@ class ChallengeStartsController < ApplicationController
     redirect_to task_path(team_id: params[:team_id],
                           assign_id: params[:assign_id],
                           id: params[:task_id]),
-                notice: 'こちらの課題を取り消しました。'
+                notice: 'こちらのタスクを取り消しました。'
   end
 end

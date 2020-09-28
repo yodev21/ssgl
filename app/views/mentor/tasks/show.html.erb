@@ -9,7 +9,7 @@
                             class: "btn btn-outline-success  show_button_right" %>
     <%= link_to "タスク削除", mentor_task_path(@task),
                             method: :delete,
-                            data: { confirm: "課題を削除してもよろしいですか？"},
+                            data: { confirm: "タスクを削除してもよろしいですか？"},
                             class: "btn btn-outline-danger  show_button_right" %>
     <%= link_to "フィードバックの確認", mentor_feed_back_path(task_id: @task),class: "btn btn-primary  show_button_right" %>
   </div>
@@ -18,7 +18,7 @@
         <%= form_with(url: mentor_task_path, local: true, method: :get, class: "form-inline col-sm-4 col-lg-6 col-xl-12") do |f| %>
           <%= f.text_field :name, class: "form-control mr-sm-2 show_search_left", placeholder: "名前", id: "search_name" %>
           <select class="form-control show_search_left" id="number" name="status">
-            <option selected="selected" value="">課題状況</option>
+            <option selected="selected" value="">タスク状況</option>
             <option value="complete">完了</option>
             <option value="underway">着手中</option>
             <option value="awaiting_review">レビュー待ち</option>
@@ -46,13 +46,13 @@
         <% elsif challenge_task.status == "underway" %>
           <span class="badge badge-primary">着手中</span>
         <% elsif challenge_task.status == "complete" %>
-          <span class="badge badge-dark">課題完了</span>
+          <span class="badge badge-dark">タスク完了</span>
         <% else %>
           <span class="badge badge-info">未着手</span>
         <% end %>
         <br>
         <% if challenge_task.answers.present? %>
-          <%= link_to "課題確認", answer_path(challenge_task.answers.first), class: "btn btn-primary"%>
+          <%= link_to "タスク確認", answer_path(challenge_task.answers.first), class: "btn btn-primary"%>
         <% end %>
       </div>
     </div>
