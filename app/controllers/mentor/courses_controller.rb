@@ -25,7 +25,7 @@ class Mentor::CoursesController < ApplicationController
     else
       redirect_to tasks_path(id: @course.team_id,
                              assign_id: @course.assign_id),
-                             alert: '課題の作成に失敗しました！'
+                             alert: 'タスクの作成に失敗しました！'
     end 
   end
 
@@ -51,7 +51,7 @@ class Mentor::CoursesController < ApplicationController
 
   def destroy
     @course.destroy
-    redirect_to mentor_courses_path, notice: '課題を削除しました！'
+    redirect_to mentor_courses_path, notice: 'タスクを削除しました！'
   end
 
   private

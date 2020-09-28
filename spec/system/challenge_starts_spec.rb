@@ -21,7 +21,7 @@ RSpec.describe 'Challenge_starts', type: :system do
     example 'タスクに取り組むことができること' do
       visit task_path(@task)
       click_link '取り組む'
-      wait.until { expect(page).to have_content 'こちらの課題に取り組みました' }
+      wait.until { expect(page).to have_content 'こちらのタスクに取り組みました' }
     end
   end
 end

@@ -13,17 +13,16 @@
 </li>
 
 <li class="nav-item">
-  <%= link_to mentor_limited_release_courses_path, class: "nav-link" do %>
+  <%= link_to mentor_answers_path, class: "nav-link" do %>
     <i class="material-icons">question_answer</i>
-    <p>回答を確認</p>
-    <p>　　　(準備中)</p>
+    <p>レビュー待ち</p>
   <% end %>
 </li>
 
 <li class="nav-item">
   <%= link_to "#", class: "nav-link", data: {confirm: "準備中です。"} do %>
     <i class="material-icons">question_answer</i>
-    <p>Q<small>&</small>Aを確認</p>
+    <p>Q<small>&</small>A(未回答)</p>
     <p>　　　(準備中)</p>
   <% end %>
 </li>

@@ -21,10 +21,9 @@ RSpec.describe 'Answers', type: :system do
     end
 
     example 'フィードバックが送信できること' do
-      visit task_path(@task)
-      click_link '回答'
+      visit new_answer_path(challenge_start_id: @challenge_start.id)
       fill_in 'answer_content', with: 'テスト コンテント'
-      click_button '回答'
+      click_on '回答'
       choose '1'
       fill_in 'feed_back_reason', with: 'テスト フィードバック'
       click_button '送信'

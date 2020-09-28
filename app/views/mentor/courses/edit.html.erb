@@ -13,7 +13,7 @@
         <%= image_tag @course.image.url, id: :img_prev, class: "round-img" if @course.image? %>
         <div class="form-group">
           <%= f.label :image, "photo_size_select_actual", class: "material-icons" %>
-          <%= f.file_field :image, placeholder: "課題アイコン", class: "fom-control icon_image" %>
+          <%= f.file_field :image, placeholder: "タスクアイコン", class: "fom-control icon_image" %>
             <script type="text/javascript">
               $(function() {
                 function readURL(input) {

@@ -5,16 +5,7 @@
     <span class="course-title"><%=@answer.task.title %></span>
     <p class="course-title">URL<%=markdown(@answer.url) %></p>
     <p><%= markdown(@answer.content) %></p>
-
-    <% if @answer.user_id == current_user.id %>
-      <%= link_to "回答修正", edit_answer_path(id: @answer.id), class: "btn btn-outline-success right_answer_button" %>
-    <% end %>
-    <% if @answer_user.status == "admin" || @answer_user.status == "mentor" %>
-      <%= link_to "完了", challenge_start_path(id: @answer.challenge_start_id),
-                                              class: "btn btn-outline-primary conmplete_button", 
-                                              method: :patch, 
-                                              data: { confirm: "課題を完了してもよろしいですか？"} %>
-    <% end %>
+    <%= link_to "回答修正", edit_answer_path(id: @answer.id), class: "btn btn-outline-success right_answer_button" %>
     <%= render partial: 'comments/form', locals: { comment: @comment } %>
   </div>
 </div>

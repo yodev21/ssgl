@@ -49,7 +49,7 @@ class AnswersController < ApplicationController
       challenge_start.update(status: :awaiting_review)
       redirect_to new_feed_back_path(answer_id: @answer.id), notice: '回答しました。'
     else
-      flash.now[:alert] = '課題投稿に失敗しました！'
+      flash.now[:alert] = 'タスク投稿に失敗しました！'
       render :new
     end
   end

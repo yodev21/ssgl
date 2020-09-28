@@ -1,6 +1,11 @@
 class Mentor::AnswersController < ApplicationController
   def index
-    @answers = Answer.where(team_id: 
-      Assign.where(user_id: current_user.id).select(:team_id)) 
+    @users = User.mentor_users_answer(current_user.id)
   end
+
+  def show
+    @answer = Answer.includes([:user, :task]).find(params[:id])
+    @comments = Comment.where(answer_id: params[:id])
+  end
+
 end

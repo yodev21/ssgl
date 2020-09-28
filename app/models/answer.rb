@@ -12,4 +12,9 @@ class Answer < ApplicationRecord
   has_many :feed_backs, dependent: :destroy
 
   validates :content, presence: true
+  
+  # メンター用
+  scope :answer_user, lambda { |answer_id|
+    find_by(id: answer_id)
+  }
 end
