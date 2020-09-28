@@ -2,15 +2,6 @@
 
 class TasksController < ApplicationController
   before_action :authenticate_user!
-
-  def index
-    # @team = Team.find_by(id: params[:id])
-    # @assign = Assign.find_by(team_id: @team.id,
-    #                          user_id: current_user.id)
-    # @tasks = Task.belong_to_team_all(team_id: @team.id,
-    #                                  assign_id: @assign.id)
-    #              .with_title(params[:title])
-  end
   
   def show
     @task = Task.find_by(id: params[:id])
