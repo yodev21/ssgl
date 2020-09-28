@@ -21,9 +21,10 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show destroy] do
     post '/change_status', to: 'users#change_status'
   end
+  
   resources :teams, only: %i[index show]
   resources :assigns, only: %i[create] 
-  resources :belong_teams, only: %i[index show destroy]
+  resources :belong_teams, only: %i[index show]
   resources :belong_team_users, only: %i[index show]
   resources :courses, only: %i[index show]
   resources :challenge_courses, only: %i[index create show]

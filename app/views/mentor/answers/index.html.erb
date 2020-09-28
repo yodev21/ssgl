@@ -1,2 +1,14 @@
-<h1>Mentor::Answers#index</h1>
-<p>Find me in app/views/mentor/answers/index.html.erb</p>
+<div class="answers-index">
+  <h2 class="answers-title">回答</h2><br>
+  <div class="answers-card">
+    <% @users.each do |user|%>
+      <div class="row">
+        <%= link_to(mentor_answer_path(user.answer_id) , class: "answers-link") do %>
+          <%= image_tag user.image.url(:medium), class: "answers-round-img" %>
+          <span class="courses-title"><%= user.name %></span>
+          <p class="answer-time no-text-decoration"><%= "#{time_ago_in_words(answer.updated_at).upcase}前" %></p>
+        <% end %>
+      </div>
+  <% end %>
+  </div>
+</div>
