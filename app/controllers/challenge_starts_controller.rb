@@ -31,12 +31,6 @@ class ChallengeStartsController < ApplicationController
     redirect_to task_path(id: params[:task_id]), notice: 'こちらのタスクに取り組みました。'
   end
 
-  def update
-    challenge = ChallengeStart.find(params[:id])
-    challenge.update(status: :complete)
-    redirect_to mentor_task_path(id: challenge.task.id), notice: 'タスク完了しました。'
-  end
-
   def destroy
     @challenge = ChallengeStart.find_challenge_start(task: params[:task_id])
     @challenge.destroy

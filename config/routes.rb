@@ -3,10 +3,6 @@
 Rails.application.routes.draw do
 
   namespace :mentor do
-    get 'answer/index'
-    get 'answer/show'
-  end
-  namespace :mentor do
     get 'answers/index'
     get 'answers/show'
   end
@@ -38,7 +34,7 @@ Rails.application.routes.draw do
   resources :courses, only: %i[index show]
   resources :challenge_courses, only: %i[index create show]
   resources :tasks, only: %i[index show]
-  resources :challenge_starts, only: %i[index show create update destroy] 
+  resources :challenge_starts, only: %i[index show create destroy] 
   resources :answers
   resources :feed_backs, only: %i[new create]
   resources :comments, only: %i[create edit update destroy]
@@ -50,6 +46,8 @@ Rails.application.routes.draw do
     resources :courses
     resources :limited_release_courses, only: %i[index show create destroy]
     resources :tasks
+    resources :challenge_tasks, only: %i[create]
+    resources :answers, only: %i[index show]
     resources :feed_backs, only: %i[show index]
   end
 
