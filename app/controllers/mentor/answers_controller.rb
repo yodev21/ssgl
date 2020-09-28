@@ -4,8 +4,8 @@ class Mentor::AnswersController < ApplicationController
   end
 
   def show
-    @comments = Comment.where(answer_id: @answer.id)
-    @answer_user = Assign.find_by(user_id: current_user.id, team_id: @answer.team_id)
+    @answer = Answer.includes([:user, :task]).find(params[:id])
+    @comments = Comment.where(answer_id: params[:id])
   end
 
 end

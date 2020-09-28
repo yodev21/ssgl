@@ -3,7 +3,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  include Mentor::User
+
   has_many :teams, dependent: :destroy
   has_many :assigns, dependent: :destroy
   has_many :courses, dependent: :destroy
@@ -46,33 +46,36 @@ class User < ApplicationRecord
 
 
   # メンター用
+
   scope :mentor_users_answer, lambda { |current_user_id|
-  sql = 
-  "
-  SELECT 
-    users.id,
-    users.name,
-    users.image,
-    answers.id AS answer_id,
-    answers.updated_at
-  FROM answers
+    sql = 
+    "
+    SELECT 
+      users.id,
+      users.name,
+      users.image,
+      answers.team_id,
+      challenge_starts.status AS task_status,
+      teams.name AS team_name,
+      courses.title AS course_title,
+      tasks.title AS task_title,
+      answers.id AS answer_id,
+      answers.updated_at
+    FROM answers
     INNER JOIN challenge_starts
       ON answers.challenge_start_id = challenge_starts.id
     INNER JOIN tasks
       ON challenge_starts.task_id = tasks.id
-    INNER JOIN challenge_courses
-      ON tasks.challenge_course_id = challenge_courses.id
     INNER JOIN courses
-      ON challenge_courses.course_id = courses.id
-    INNER JOIN assigns
-      ON courses.assign_id = assigns.id
+      ON answers.course_id = courses.id
     INNER JOIN teams
-      ON assigns.team_id = teams.id
+      ON answers.team_id = teams.id
     INNER JOIN users
-      ON teams.user_id = users.id
-  WHERE
-    teams.user_id = :current_user_id
-  "
-  find_by_sql([sql, {current_user_id: current_user_id}])
-}  
+      ON answers.user_id = users.id
+    WHERE teams.user_id = :current_user_id
+    AND challenge_starts.status = 2
+    ORDER BY answers.updated_at DESC
+    "
+    find_by_sql([sql, {current_user_id: current_user_id}])
+  }  
 end

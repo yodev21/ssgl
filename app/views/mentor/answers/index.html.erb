@@ -6,6 +6,9 @@
         <%= link_to(mentor_answer_path(user.answer_id) , class: "answers-link") do %>
           <%= image_tag user.image.url(:medium), class: "answers-round-img" %>
           <span class="courses-title"><%= user.name %></span>
+          <p>所属チーム:<%= user.team_name %></p>
+          <p>コース名:<%= user.course_title %></p>
+          <p>タスク名:<%= user.task_title %></p>
           <p class="answer-time no-text-decoration"><%= "#{time_ago_in_words(user.updated_at).upcase}前" %></p>
         <% end %>
       </div>

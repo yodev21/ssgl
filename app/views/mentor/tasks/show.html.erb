@@ -52,7 +52,7 @@
         <% end %>
         <br>
         <% if challenge_task.answers.present? %>
-          <%= link_to "タスク確認", answer_path(challenge_task.answers.first), class: "btn btn-primary"%>
+          <%= link_to "確認", mentor_answer_path(challenge_task.answers.first), class: "btn btn-primary"%>
         <% end %>
       </div>
     </div>
