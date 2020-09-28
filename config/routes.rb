@@ -3,6 +3,10 @@
 Rails.application.routes.draw do
 
   namespace :mentor do
+    get 'answer/index'
+    get 'answer/show'
+  end
+  namespace :mentor do
     get 'answers/index'
     get 'answers/show'
   end

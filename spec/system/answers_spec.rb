@@ -28,6 +28,7 @@ RSpec.describe 'Answers', type: :system do
 
     example '回答が編集できること' do
       visit task_path(@task)
+      
       click_link '回答'
       fill_in 'answer_content', with: 'テスト コンテント'
       click_on '回答'
