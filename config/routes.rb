@@ -2,10 +2,6 @@
 
 Rails.application.routes.draw do
 
-  namespace :mentor do
-    get 'answers/index'
-    get 'answers/show'
-  end
   root to: 'top#top'
   get 'top/privacy_policy', to: "top#privacy_policy"
   get 'top/terms_of_service', to: "top#terms_of_service"
@@ -27,10 +23,8 @@ Rails.application.routes.draw do
   end
   resources :teams, only: %i[index show]
   resources :assigns, only: %i[create] 
-
   resources :belong_teams, only: %i[index show destroy]
   resources :belong_team_users, only: %i[index show]
-  
   resources :courses, only: %i[index show]
   resources :challenge_courses, only: %i[index create show]
   resources :tasks, only: %i[index show]
