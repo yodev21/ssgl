@@ -1,4 +1,4 @@
-class ChallengeTasksController < ApplicationController
+class Mentor::ChallengeTasksController < ApplicationController
   def create
     challenge = ChallengeStart.find(params[:id])
     challenge.update(status: :complete)

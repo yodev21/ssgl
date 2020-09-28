@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     resources :courses
     resources :limited_release_courses, only: %i[index show create destroy]
     resources :tasks
-    resources :challenge_tasks, only: %i[create]
+    resources :challenge_tasks, only: %i[index create]
     resources :answers, only: %i[index show]
     resources :feed_backs, only: %i[show index]
   end
