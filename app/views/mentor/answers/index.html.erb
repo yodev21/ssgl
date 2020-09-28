@@ -6,7 +6,7 @@
         <%= link_to(mentor_answer_path(user.answer_id) , class: "answers-link") do %>
           <%= image_tag user.image.url(:medium), class: "answers-round-img" %>
           <span class="courses-title"><%= user.name %></span>
-          <p class="answer-time no-text-decoration"><%= "#{time_ago_in_words(answer.updated_at).upcase}前" %></p>
+          <p class="answer-time no-text-decoration"><%= "#{time_ago_in_words(user.updated_at).upcase}前" %></p>
         <% end %>
       </div>
   <% end %>

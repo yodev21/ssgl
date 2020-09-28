@@ -1,7 +1,6 @@
 class Mentor::AnswersController < ApplicationController
   def index
-    @users = Mentor::User.mentor_answers_index(current_user.id)
-    binding.pry
+    @users = User.mentor_users_answer(current_user.id)
   end
 
   def show
