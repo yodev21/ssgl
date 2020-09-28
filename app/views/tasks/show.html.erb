@@ -8,14 +8,18 @@
       <%= link_to "取り組む", challenge_starts_path(task_id: @task.id), 
                                                   method: :post,
                                                   class: "btn btn-outline-primary" %>
+    <% elsif @challenge_task.status == "underway"%>
+      <%= link_to "回答", new_answer_path(challenge_start_id: @challenge_task.id), class: "btn btn-outline-primary" %>
     <% elsif  @challenge_task.status == "awaiting_review" || @challenge_task.status == "remand" && @answer.present? %>
       <%= link_to "回答修正", edit_answer_path(id: @answer.id), 
                                               class: "btn btn-outline-success" %>
 
       <%= link_to "コメント", answer_path(id: @answer.id), 
                                         class: "btn btn-outline-info" %>
-    <% else %>
-      <%= link_to "完了", answer_path(id: @answer.id), class: "btn btn-outline-dark" %>
+    <% elsif  @challenge_task.status == "complete" %>
+      <%= link_to "完了", answer_path(id: @answer.id), 
+                                      class: "btn btn-outline-dark" %>
+
     <% end %>
   </div>
 </div>
