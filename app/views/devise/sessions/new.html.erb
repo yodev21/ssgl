@@ -1,44 +1,39 @@
 <div class="main">
-  <div class="card form-card">
-    <div class="form-wrap">
-      <div class="form-group text-center">
-        <p>サインイン</p>
-      </div>
-      <% if @user.errors.any? %>
-        <div id="error_explanation">
-          <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <%= form_with scope: resource, as: resource_name, url: session_path(resource_name), local: true do |f| %>
-        <%= devise_error_messages! %>
-        <div class="form-group">
-          <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "form-control", required: true %>
-        </div>
-
-        <div class="form-group">
-          <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "form-control", required: true %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "サインイン", class: "btn btn-primary w-100" %>
-        </div>
-
-        <br>
-
-        <p class="form-link">
-          アカウントをお持ちでないですか？
-          <%= link_to "サインアップ", new_user_registration_path %>
-        </p>
-
-        <p class="form-link">
-          <%= link_to "ゲストアカウントでログイン", guest_sign_in_path, method: :post %>
-        </p>
-          
-      <% end %>
-    </div>
+  <div class="form-group text-center">
+    <p>サインイン</p>
   </div>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form_with scope: resource, as: resource_name, url: session_path(resource_name), local: true do |f| %>
+    <%= devise_error_messages! %>
+    <div class="form-group">
+      <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "form-control", required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "form-control", required: true %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "サインイン", class: "btn btn-primary w-100" %>
+    </div>
+
+    <br>
+
+    <p class="form-card">
+      アカウントをお持ちでないですか？
+      <%= link_to "サインアップ", new_user_registration_path %>
+    </p>
+
+    <p class="form-card">
+      <%= link_to "ゲストアカウントでログイン", guest_sign_in_path, method: :post %>
+    </p>
+  <% end %>
 </div>

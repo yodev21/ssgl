@@ -28,6 +28,7 @@ class Mentor::TasksController < ApplicationController
     @tasks = Task.belong_to_team_all(team_id: @team.id,
                                      assign_id: @assign.id)
                  .with_title(params[:title])
+                 .order(priority_no: :asc)
   end
   
   def show
@@ -69,7 +70,8 @@ class Mentor::TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:title,
                                  :content,
-                                 :image)
+                                 :image,
+                                 :priority_no)
   end
 
   def set_params

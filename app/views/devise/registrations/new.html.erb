@@ -1,76 +1,72 @@
 <div class="main">
-  <div class="card form-card">
-    <div class="form-wrap">
-      <div class="form-group text-center">
-        <p>サインアップ</p>
-      </div>
-      <% if @user.errors.any? %>
-        <div id="error_explanation">
-          <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), local: true do |f| %>
-
-        <div class="form-group">
-          <%= f.text_field :name, autofocus: true, placeholder: "フルネーム", class: "form-control", required: true %>
-        </div>
-
-        <div class="form-group">
-          <%= f.email_field :email, placeholder: "メールアドレス", class: "form-control", required: true %>
-        </div>
-        <% unless @user.image? %>
-         <%= image_tag "no_image.png", class: "round-img", id: :img_prev %>
-        <% end %>
-        <div class="form-group">
-            <%= f.label :image, "photo_size_select_actual", class: "material-icons" %>
-            <%= f.file_field :image, placeholder:"アイコン", class: "fom-control icon_image", required: true %>
-            <script type="text/javascript">
-              $(function() {
-                function readURL(input) {
-                  if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                      $('#img_prev').attr('src', e.target.result);
-                    }
-                    reader.readAsDataURL(input.files[0]);
-                  }
-                }
-                $(".icon_image").change(function(){
-                  readURL(this);
-                });
-              });
-            </script>
-        </div>
-
-        <div class="form-group">
-          <%= f.text_area :profile, placeholder: "プロフィール", class: "form-control", rows: "10"%>
-        </div>
-
-        <div class="form-group">
-          <%= f.password_field :password, placeholder: "パスワード", class: "form-control", required: true %>
-        </div>
-
-        <div class="form-group">
-          <%= f.password_field :password_confirmation, placeholder: "パスワード確認", class: "form-control", required: true %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "サインアップ", class: "btn btn-primary w-100" %>
-        </div>
-      <% end %>
-      <br>
-
-      <p class="form-card">
-        アカウントをお持ちですか？
-        <%= link_to "サインイン", new_user_session_path %>
-      </p>
-      <p class="form-card">
-          <%= link_to "ゲストアカウントでログイン", guest_sign_in_path, method: :post %>
-      </p>
-    </div>
+  <div class="form-group text-center">
+    <p>サインアップ</p>
   </div>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), local: true do |f| %>
+
+    <div class="form-group">
+      <%= f.text_field :name, autofocus: true, placeholder: "フルネーム", class: "form-control", required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.email_field :email, placeholder: "メールアドレス", class: "form-control", required: true %>
+    </div>
+    <% unless @user.image? %>
+      <%= image_tag "no_image.png", class: "round-img", id: :img_prev %>
+    <% end %>
+    <div class="form-group">
+        <%= f.label :image, "photo_size_select_actual", class: "material-icons" %>
+        <%= f.file_field :image, placeholder:"アイコン", class: "fom-control icon_image", required: true %>
+        <script type="text/javascript">
+          $(function() {
+            function readURL(input) {
+              if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                  $('#img_prev').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+              }
+            }
+            $(".icon_image").change(function(){
+              readURL(this);
+            });
+          });
+        </script>
+    </div>
+
+    <div class="form-group">
+      <%= f.text_area :profile, placeholder: "プロフィール", class: "form-control", rows: "10"%>
+    </div>
+
+    <div class="form-group">
+      <%= f.password_field :password, placeholder: "パスワード", class: "form-control", required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.password_field :password_confirmation, placeholder: "パスワード確認", class: "form-control", required: true %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "サインアップ", class: "btn btn-primary w-100" %>
+    </div>
+  <% end %>
+  <br>
+
+  <p class="form-card">
+    アカウントをお持ちですか？
+    <%= link_to "サインイン", new_user_session_path %>
+  </p>
+  <p class="form-card">
+      <%= link_to "ゲストアカウントでログイン", guest_sign_in_path, method: :post %>
+  </p>
 </div>

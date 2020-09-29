@@ -118,6 +118,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course.id,
+  priority_no: 1,
   challenge_course_id: @guest_challenge_course.id,
   created_at: "2020-06-30 00:00:00"
 )
@@ -131,6 +132,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course.id,
+  priority_no: 2,
   challenge_course_id: @guest_challenge_course.id,
   created_at: "2020-06-30 00:00:00"
 )
@@ -143,6 +145,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course.id,
+  priority_no: 3,
   challenge_course_id: @guest_challenge_course.id,
   created_at: "2020-06-30 00:00:00"
 )
@@ -155,6 +158,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course.id,
+  priority_no: 4,
   challenge_course_id: @guest_challenge_course.id,
   created_at: "2020-06-30 00:00:00"
 )
@@ -167,6 +171,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course.id,
+  priority_no: 5,
   challenge_course_id: @guest_challenge_course.id,
   created_at: "2020-06-30 00:00:00"
 )
@@ -179,6 +184,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course.id,
+  priority_no: 6,
   challenge_course_id: @guest_challenge_course.id,
   created_at: "2020-06-30 00:00:00"
 )
@@ -191,6 +197,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course.id,
+  priority_no: 7,
   challenge_course_id: @guest_challenge_course.id,
   created_at: "2020-06-30 00:00:00"
 )
@@ -218,6 +225,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course_2.id,
+  priority_no: 1,
   challenge_course_id: @guest_challenge_course_2.id,
   created_at: "2020-06-30 00:00:00"
 )
@@ -230,6 +238,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course_2.id,
+  priority_no: 2,
   challenge_course_id: @guest_challenge_course_2.id,
   created_at: "2020-06-30 00:00:00"
 )
@@ -242,6 +251,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course_2.id,
+  priority_no: 3,
   challenge_course_id: @guest_challenge_course_2.id,
   created_at: "2020-06-30 00:00:00"
 )
@@ -254,6 +264,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course_2.id,
+  priority_no: 4,
   challenge_course_id: @guest_challenge_course_2.id,
   created_at: "2020-06-30 00:00:00"
 )
@@ -266,6 +277,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course_2.id,
+  priority_no: 5,
   challenge_course_id: @guest_challenge_course_2.id,
   created_at: "2020-06-30 00:00:00"
 )
@@ -278,6 +290,7 @@ p 'Create Guest Task'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course_2.id,
+  priority_no: 6,
   challenge_course_id: @guest_challenge_course_2.id,
   created_at: "2020-06-30 00:00:00"
 )
