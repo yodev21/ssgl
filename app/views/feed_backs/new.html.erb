@@ -1,46 +1,42 @@
 <div class="main">
-  <div class="card form-card">
-    <div class="form-wrap">
-      <div class="form-group text-center">
-        <h3>フィードバック</h3>
-      </div>
-      <%= form_with model: @feed_back, local: true do |f| %>
-        <%= f.hidden_field :answer_id, value: @answer.id %>
-        <div class="row">
-          <div class="col-12">
-            <span class="right"><strong>1:難しかった&nbsp;&nbsp;</strong></span>
-            <span class="left"><strong>10:簡単だった</strong></span><br>
-            <%= f.radio_button :feeling_number, 1 %>
-            <%= f.label :feeling_number, 1, {value: 1} %>
-            <%= f.radio_button :feeling_number, 2 %>
-            <%= f.label :feeling_number, 2, {value: 2} %>
-            <%= f.radio_button :feeling_number, 3 %>
-            <%= f.label :feeling_number, 3, {value: 3} %>
-            <%= f.radio_button :feeling_number, 4 %>
-            <%= f.label :feeling_number, 4, {value: 4} %>
-            <%= f.radio_button :feeling_number, 5 %>
-            <%= f.label :feeling_number, 5, {value: 5} %>
-            <%= f.radio_button :feeling_number, 6 %>
-            <%= f.label :feeling_number, 6, {value: 6} %>
-            <%= f.radio_button :feeling_number, 7 %>
-            <%= f.label :feeling_number, 7, {value: 7} %>
-            <%= f.radio_button :feeling_number, 8 %>
-            <%= f.label :feeling_number, 8, {value: 8} %>
-            <%= f.radio_button :feeling_number, 9 %>
-            <%= f.label :feeling_number, 9, {value: 9} %>
-            <%= f.radio_button :feeling_number, 10 %>
-            <%= f.label :feeling_number, 10, {value: 10} %>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <%= f.text_area :reason,  placeholder: "理由", class: "form-control",rows: "15" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "送信", class: "btn btn-primary w-100" %>
-        </div>
-      <% end %>
-    </div>
+  <div class="form-group text-center">
+    <h3>フィードバック</h3>
   </div>
+  <%= form_with model: @feed_back, local: true do |f| %>
+    <%= f.hidden_field :answer_id, value: @answer.id %>
+    <div class="row">
+      <div class="col-12">
+        <span class="right"><strong>1:難しかった&nbsp;&nbsp;</strong></span>
+        <span class="left"><strong>10:簡単だった</strong></span><br>
+        <%= f.radio_button :feeling_number, 1 %>
+        <%= f.label :feeling_number, 1, {value: 1} %>
+        <%= f.radio_button :feeling_number, 2 %>
+        <%= f.label :feeling_number, 2, {value: 2} %>
+        <%= f.radio_button :feeling_number, 3 %>
+        <%= f.label :feeling_number, 3, {value: 3} %>
+        <%= f.radio_button :feeling_number, 4 %>
+        <%= f.label :feeling_number, 4, {value: 4} %>
+        <%= f.radio_button :feeling_number, 5 %>
+        <%= f.label :feeling_number, 5, {value: 5} %>
+        <%= f.radio_button :feeling_number, 6 %>
+        <%= f.label :feeling_number, 6, {value: 6} %>
+        <%= f.radio_button :feeling_number, 7 %>
+        <%= f.label :feeling_number, 7, {value: 7} %>
+        <%= f.radio_button :feeling_number, 8 %>
+        <%= f.label :feeling_number, 8, {value: 8} %>
+        <%= f.radio_button :feeling_number, 9 %>
+        <%= f.label :feeling_number, 9, {value: 9} %>
+        <%= f.radio_button :feeling_number, 10 %>
+        <%= f.label :feeling_number, 10, {value: 10} %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.text_area :reason,  placeholder: "理由", class: "form-control",rows: "15" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "送信", class: "btn btn-primary w-100" %>
+    </div>
+  <% end %>
 </div>

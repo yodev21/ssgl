@@ -1,27 +1,23 @@
 <div class="main">
-  <div class="card form-card">
-    <div class="form-wrap">
-      <div class="form-group text-center">
-        <h3>タスク回答</h3>
-      </div>
-      <%= form_with model: @answer, url: answers_path(challenge_start_id: params[:challenge_start_id]), local: true do |f| %>
-      
-        <div class="form-group">
-          <%= f.url_field :url, autofocus: true, placeholder: "GitHub デプロイ先等のURL（任意）", class: "form-control" %>
-        </div>
-        
-        <div class="form-group">
-          <%= f.text_area :content,  placeholder: "内容", class: "form-control",rows: "25" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.file_field :image %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "回答", class: "btn btn-primary w-100" %>
-        </div>
-      <% end %>
-    </div>
+  <div class="form-group text-center">
+    <h3>タスク回答</h3>
   </div>
+  <%= form_with model: @answer, url: answers_path(challenge_start_id: params[:challenge_start_id]), local: true do |f| %>
+  
+    <div class="form-group">
+      <%= f.url_field :url, autofocus: true, placeholder: "GitHub デプロイ先等のURL（任意）", class: "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.text_area :content,  placeholder: "内容", class: "form-control",rows: "25" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.file_field :image %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "回答", class: "btn btn-primary w-100" %>
+    </div>
+  <% end %>
 </div>

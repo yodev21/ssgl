@@ -1,48 +1,50 @@
 <div class="main">
-  <div class="card form-card">
-    <div class="form-wrap">
-      <div class="form-group text-center">
-        <h3>タスク作成</h3>
-      </div>
-
-      <%= form_with model: @task, url: mentor_tasks_path(course_id: params[:course_id]), local: true do |f| %>
-
-        <div class="form-group">
-          <%= f.text_field :title, autofocus: true, placeholder: "タスク名", class: "form-control", required: true %>
-        </div>
-
-        <% unless @task.image? %>
-         <%= image_tag "no_image.png", class: "round-img", id: :img_prev %>
-        <% end %>
-        <div class="form-group">
-            <%= f.label :image, "photo_size_select_actual", class: "material-icons" %>
-          <%= f.file_field :image, placeholder: "タスクアイコン", class: "fom-control icon_image", required: true %>
-            <script type="text/javascript">
-              $(function() {
-                function readURL(input) {
-                  if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                      $('#img_prev').attr('src', e.target.result);
-                    }
-                    reader.readAsDataURL(input.files[0]);
-                  }
-                }
-                $(".icon_image").change(function(){
-                  readURL(this);
-                });
-              });
-            </script>
-        </div>
-
-        <div class="form-group">
-          <%= f.text_area :content,  placeholder: "内容", class: "form-control",rows: "10", required: true %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "登録", class: "btn btn-primary w-100" %>
-        </div>
-      <% end %>
-    </div>
+  <div class="form-group text-center">
+    <h3>タスク作成</h3>
   </div>
+
+  <%= form_with model: @task, url: mentor_tasks_path(course_id: params[:course_id]), local: true do |f| %>
+
+    <div class="form-group">
+      <%= f.text_field :title, autofocus: true, placeholder: "タスク名", class: "form-control", required: true %>
+    </div>
+
+    <% unless @task.image? %>
+      <%= image_tag "no_image.png", class: "round-img", id: :img_prev %>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :image, "photo_size_select_actual", class: "material-icons" %>
+      <%= f.file_field :image, placeholder: "タスクアイコン", class: "fom-control icon_image", required: true %>
+        <script type="text/javascript">
+          $(function() {
+            function readURL(input) {
+              if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                  $('#img_prev').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+              }
+            }
+            $(".icon_image").change(function(){
+              readURL(this);
+            });
+          });
+        </script>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :priority_no, "優先度"%>
+      <%= f.number_field :priority_no, in: 1..100, placeholder: "優先度", class: "form-control", required: true %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.text_area :content,  placeholder: "内容", class: "form-control",rows: "10", required: true %>
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit "登録", class: "btn btn-primary w-100" %>
+    </div>
+  <% end %>
 </div>

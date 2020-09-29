@@ -36,7 +36,7 @@ class Mentor::CoursesController < ApplicationController
   def show
     @course = Course.find_by(id: params[:id])
     @challenge_course = ChallengeCourse.find_by(user_id: current_user.id, course_id: @course)
-    @tasks = Task.where(course_id: @course.id)
+    @tasks = Task.where(course_id: @course.id).order(priority_no: :asc)
   end
 
   def edit;end

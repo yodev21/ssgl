@@ -25,6 +25,7 @@ RSpec.describe 'Tasks', type: :system do
       fill_in 'task_title', with: 'test Title'
       attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png", make_visible: true
       fill_in 'task_content', with: 'test Content'
+      fill_in 'task_priority_no', with: 1
       click_button '登録'
       wait.until { expect(page).to have_content 'タスクを作成しました！' }
     end
@@ -34,6 +35,7 @@ RSpec.describe 'Tasks', type: :system do
       fill_in 'task_title', with: 'test Title Upate'
       attach_file 'task_image', "#{Rails.root}/app/assets/images/tasks/1.png", make_visible: true
       fill_in 'task_content', with: 'test Content Update'
+      fill_in 'task_priority_no', with: 1
       click_button '登録'
       wait.until { expect(page).to have_content 'test Title Upate' }
     end
