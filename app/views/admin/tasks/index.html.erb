@@ -1,2 +1,15 @@
-<h1>Admin::Tasks#index</h1>
-<p>Find me in app/views/admin/tasks/index.html.erb</p>
+<div class="tasks-index">
+  <h2 class="tasks-title">チーム</h2><br>
+  <div class="tasks-card">
+    <% @tasks.each do |task|%>
+      <div class="row">
+        <%= link_to(admin_task_path(task) , class: "tasks-link") do %>
+          <%= image_tag task.image.url(:medium), class: "tasks-round-img" %>
+          <span class="courses-title"><%= task.title %></span>
+          <p><%= task.content.truncate(50) %></p>
+          <p class="task-time no-text-decoration"><%= "#{time_ago_in_words(task.updated_at).upcase}前" %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

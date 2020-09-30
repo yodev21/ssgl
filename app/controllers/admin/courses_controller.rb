@@ -1,4 +1,5 @@
 class Admin::CoursesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_params, only: %i[show destroy]
   def index
     @courses = Course.order(updated_at: :desc)

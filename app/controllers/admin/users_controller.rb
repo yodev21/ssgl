@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_params, only: %i[show edit update destroy]
   def new
     @user = User.new

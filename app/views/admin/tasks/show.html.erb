@@ -1,2 +1,9 @@
-<h1>Admin::Tasks#show</h1>
-<p>Find me in app/views/admin/tasks/show.html.erb</p>
+<div class="task-index">
+  <h2 class="task-title">タスク</h2>
+  <div class="task-card">
+    <span><%= image_tag avatar_url(@task), class: "task-round-img" %></span>
+    <span class="course-title"><%=@task.title %></span>
+    <p><%= markdown(@task.content) %></p>
+    <%= link_to "削除", admin_task_path(@task), class: "btn btn-danger", method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}%>
+  </div>
+</div>

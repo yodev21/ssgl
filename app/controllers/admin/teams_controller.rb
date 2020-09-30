@@ -1,4 +1,5 @@
 class Admin::TeamsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_params, only: %i[show destroy]
   def index 
     @teams = Team.order(updated_at: :desc).page(params[:page])
