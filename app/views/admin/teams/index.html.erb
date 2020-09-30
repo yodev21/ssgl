@@ -1,2 +1,13 @@
-<h1>Admin::Teams#index</h1>
-<p>Find me in app/views/admin/teams/index.html.erb</p>
+<div class="teams-index">
+  <h2 class="teams-title">コース</h2>
+  <div class="team-card">
+    <% @teams.each do |team|%>
+      <div class="row">
+        <%= link_to(admin_team_path(team), class: "teams-link") do %>
+        <span><%= image_tag avatar_url(team), class: "team-round-img" %></span>
+        <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(team.updated_at).upcase}前" %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,7 +1,19 @@
 class Admin::TeamsController < ApplicationController
-  def index
+  before_action :set_params, only: %i[show destroy]
+  def index 
+    @teams = Team.order(updated_at: :desc).page(params[:page])
   end
 
-  def show
+  def show; end
+
+  def destroy
+    @team.destroy
+    redirect_to admin_teams_path, notice: "削除しました！"
+  end
+
+  private
+
+  def set_params
+    @team = Team.find(params[:id])
   end
 end
