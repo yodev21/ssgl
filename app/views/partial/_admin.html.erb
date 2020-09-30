@@ -1,0 +1,36 @@
+<li class="nav-item">
+  <%= link_to user_path(current_user), class: "nav-link" do %>
+    <i class="material-icons">account_box</i>
+    <p>プロフィール</p>
+  <% end %>
+</li>
+
+<li class="nav-item">
+  <%= link_to admin_users_path, class: "nav-link" do %>
+    <i class="material-icons">school</i>
+    <span>ユーザー</span>
+  <% end %>
+</li>
+
+<li class="nav-item">
+  <%= link_to "#", class: "nav-link" do %>
+    <i class="material-icons">group</i>
+    <p>チーム</p>
+    <p>　　　(準備中)</p>
+  <% end %>
+</li>
+
+<li class="nav-item">
+  <%= link_to admin_courses_path, class: "nav-link" do %>
+    <i class="material-icons">search</i>
+    <p>コース</p>
+  <% end %>
+</li>
+
+<li class="nav-item">
+  <%= link_to "#", class: "nav-link", data: {confirm: "準備中です。"} do %>
+    <i class="material-icons">question_answer</i>
+    <p>タスク</p>
+    <p>　　　(準備中)</p>
+  <% end %>
+</li>

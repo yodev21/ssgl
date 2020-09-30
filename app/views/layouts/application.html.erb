@@ -25,7 +25,9 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <% if user_signed_in?%>
-            <% if current_user.status == "member"%>
+            <% if current_user.admin? %>
+              <%= render 'partial/admin' %>
+            <% elsif current_user.status == "member"%>
               <%= render 'partial/member' %>
             <% else %>
               <%= render 'partial/mentor' %>
