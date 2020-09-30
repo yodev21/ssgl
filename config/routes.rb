@@ -2,10 +2,6 @@
 
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-  end
   root to: 'top#top'
   get 'top/privacy_policy', to: "top#privacy_policy"
   get 'top/terms_of_service', to: "top#terms_of_service"
@@ -14,10 +10,6 @@ Rails.application.routes.draw do
   get '/teams/search', to: 'teams#search'
   # ゲストログイン
   post '/guest_sign_in', to: 'guest_users#new_guest'
-
-  resources :administrators do
-    get 'top', to: 'administrators#top'
-  end
 
   devise_for :users,
              controllers: { registrations: 'registrations' }
@@ -37,6 +29,10 @@ Rails.application.routes.draw do
   resources :answers
   resources :feed_backs, only: %i[new create]
   resources :comments, only: %i[create edit update destroy]
+
+  namespace :admin do
+    resources :users
+  end
 
   namespace :mentor do
     resources :users
