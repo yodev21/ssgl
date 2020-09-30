@@ -5,6 +5,7 @@
       <div class="row">
         <%= link_to(admin_user_path(user), class: "users-link") do %>
         <span><%= image_tag avatar_url(user), class: "user-round-img" %></span>
+        <span><%= user.name %></span>
         <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(user.updated_at).upcase}前" %></p>
         <% end %>
       </div>
