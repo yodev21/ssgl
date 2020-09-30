@@ -21,17 +21,6 @@ class Admin::UsersController < ApplicationController
 
   def show; end
 
-  def edit; end
-
-  def update
-    if @user.update(user_params)
-      redirect_to admin_user_path(@user), notice: 'ユーザー情報を更新しました。'
-    else
-      flash.now[:alert] = 'ユーザー情報の更新に失敗しました。'
-      render :edit
-    end
-  end
-
   def destroy
     @user.destroy
     redirect_to admin_users_path, notice: '削除しました。'

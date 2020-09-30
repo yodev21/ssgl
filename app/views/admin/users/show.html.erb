@@ -5,8 +5,6 @@
     <span class="user-name"><%= @user.name %></span>
       <%= @user.email %> 
     <br>
-      <%= link_to "プロフィール編集", admin_user_path(@user), 
-                                    class: "btn btn-outline-success" %>
       <%= link_to "削除", admin_user_path(@user), 
                                     method: :delete,
                                     data: {confirm: "本当に削除してもよろしいですか？"},
