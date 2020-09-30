@@ -1,0 +1,15 @@
+<div class="courses-index">
+  <h2 class="courses-title">コース</h2>
+  <div class="course-card">
+    <% @courses.each do |course|%>
+      <div class="row">
+        <%= link_to(admin_course_path(course), class: "courses-link") do %>
+        <span><%= image_tag avatar_url(course), class: "course-round-img" %></span>
+        <span class="course-title"><%= course.title %></span>
+        <p><%= markdown(course.content) %></p>
+        <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(course.updated_at).upcase}前" %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

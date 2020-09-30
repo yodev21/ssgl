@@ -1,0 +1,34 @@
+<li class="nav-item">
+  <%= link_to user_path(current_user), class: "nav-link" do %>
+    <i class="material-icons">account_box</i>
+    <p>プロフィール</p>
+  <% end %>
+</li>
+
+<li class="nav-item">
+  <%= link_to admin_users_path, class: "nav-link" do %>
+    <i class="material-icons">person</i>
+    <span>ユーザー</span>
+  <% end %>
+</li>
+
+<li class="nav-item">
+  <%= link_to admin_teams_path, class: "nav-link" do %>
+    <i class="material-icons">group</i>
+    <p>チーム</p>
+  <% end %>
+</li>
+
+<li class="nav-item">
+  <%= link_to admin_courses_path, class: "nav-link" do %>
+    <i class="material-icons">school</i>
+    <p>コース</p>
+  <% end %>
+</li>
+
+<li class="nav-item">
+  <%= link_to admin_tasks_path, class: "nav-link" do %>
+    <i class="material-icons">school</i>
+    <p>タスク</p>
+  <% end %>
+</li>

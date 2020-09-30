@@ -1,0 +1,14 @@
+<div class="user-index">
+  <h3 class="user-title">プロフィール</h3>
+  <div class="user-card">
+    <%= image_tag avatar_url(@user), class: "round-img" %>
+    <span class="user-name"><%= @user.name %></span>
+      <%= @user.email %> 
+    <br>
+      <%= link_to "削除", admin_user_path(@user), 
+                                    method: :delete,
+                                    data: {confirm: "本当に削除してもよろしいですか？"},
+                                    class: "btn btn-outline-danger" %>
+    <p><%= markdown(@user.profile) %></p>
+  </div>
+</div>

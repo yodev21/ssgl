@@ -11,10 +11,6 @@ Rails.application.routes.draw do
   # ゲストログイン
   post '/guest_sign_in', to: 'guest_users#new_guest'
 
-  resources :administrators do
-    get 'top', to: 'administrators#top'
-  end
-
   devise_for :users,
              controllers: { registrations: 'registrations' }
 
@@ -33,6 +29,13 @@ Rails.application.routes.draw do
   resources :answers
   resources :feed_backs, only: %i[new create]
   resources :comments, only: %i[create edit update destroy]
+
+  namespace :admin do
+    resources :users, only: %i[index show destroy]
+    resources :teams, only: %i[index show destroy]
+    resources :courses, only: %i[index show destroy]
+    resources :tasks, only: %i[index show destroy]
+  end
 
   namespace :mentor do
     resources :users

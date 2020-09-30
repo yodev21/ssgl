@@ -1,0 +1,9 @@
+<div class="team-index">
+  <h2 class="team-title">チーム</h2>
+  <div class="team-card">
+    <span><%= image_tag avatar_url(@team), class: "team-round-img" %></span>
+    <span class="team-name"><%=@team.name %></span>
+    <p><%= markdown(@team.remarks) %></p>
+    <%= link_to "削除", admin_team_path(@team), class: "btn btn-danger", method: :delete , data: {confirm: "本当に削除してもよろしいですか？"} %>
+  </div>
+</div>
