@@ -5,10 +5,17 @@
     <span class="user-name"><%= @user.name %></span>
       <%= @user.email %> 
     <br>
+      <% if @user.id == current_user.id%>
+      <%= link_to "修正", edit_admin_user_path(@user), 
+                                    class: "btn btn-outline-success" %>
+      <% else %>
+      <%= link_to "修正", edit_admin_user_path(@user), 
+                                    class: "btn btn-outline-success" %>
       <%= link_to "削除", admin_user_path(@user), 
                                     method: :delete,
                                     data: {confirm: "本当に削除してもよろしいですか？"},
                                     class: "btn btn-outline-danger" %>
+      <% end %>
     <p><%= markdown(@user.profile) %></p>
   </div>
 </div>

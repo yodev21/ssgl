@@ -1,5 +1,5 @@
 <li class="nav-item">
-  <%= link_to user_path(current_user), class: "nav-link" do %>
+  <%= link_to admin_user_path(current_user.id), class: "nav-link" do %>
     <i class="material-icons">account_box</i>
     <p>プロフィール</p>
   <% end %>
