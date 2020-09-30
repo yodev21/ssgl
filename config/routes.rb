@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   resources :comments, only: %i[create edit update destroy]
 
   namespace :admin do
-    resources :users, only: %i[index show destroy]
+    resources :users
     resources :teams, only: %i[index show destroy]
     resources :courses, only: %i[index show destroy]
     resources :tasks, only: %i[index show destroy]

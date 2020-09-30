@@ -15,12 +15,24 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+
   def index
     @user_count = User.all.count
     @users = User.all.order(updated_at: :desc)
   end
 
   def show; end
+
+  def edit; end
+
+  def update
+    if @user.update(user_params)
+      redirect_to admin_user_path(@user), notice: 'ユーザーを登録しました。'
+    else
+      flash.now[:alert] = 'ユーザー登録に失敗しました。'
+      render :edit
+    end
+  end
 
   def destroy
     @user.destroy
