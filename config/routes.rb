@@ -2,6 +2,10 @@
 
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'courses/index'
+    get 'courses/show'
+  end
   root to: 'top#top'
   get 'top/privacy_policy', to: "top#privacy_policy"
   get 'top/terms_of_service', to: "top#terms_of_service"
@@ -31,7 +35,7 @@ Rails.application.routes.draw do
   resources :comments, only: %i[create edit update destroy]
 
   namespace :admin do
-    resources :users
+    resources :users, only: %i[index show delete]
   end
 
   namespace :mentor do
