@@ -29,6 +29,8 @@ gem 'fog-aws'
 gem 'mini_racer', platforms: :ruby
 
 gem 'redcarpet'
+gem 'font-awesome-rails'
+gem 'font-awesome-sass'
 
 group :development, :test do
   gem 'bcrypt_pbkdf'
