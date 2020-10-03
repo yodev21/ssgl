@@ -1,9 +1,11 @@
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 @import "layouts/common";
 @import "layouts/colors";
 @import "layouts/top";
-
+@import "layouts/sidebar.scss";
 @import "layouts/flash";
 @import "layouts/common_index";
 
