@@ -6,10 +6,12 @@
     <p class="course-title">URL<%=markdown(@answer.url) %></p>
     <p><%= markdown(@answer.content) %></p>
 
-    <%= link_to "完了", mentor_challenge_tasks_path(id: @answer.challenge_start_id),
-                                                  class: "btn btn-outline-primary conmplete_button", 
+    <%= link_to mentor_challenge_tasks_path(id: @answer.challenge_start_id),
+                                                  class: "btn btn-primary", 
                                                   method: :post, 
-                                                  data: { confirm: "タスクを完了してもよろしいですか？"} %>
+                                                  data: { confirm: "タスクを完了してもよろしいですか？"} do %>
+      <i class="far fa-check-circle">合格</i>
+    <% end %>
     
     <%= render partial: 'comments/form', locals: { comment: @comment } %>
   </div>
