@@ -13,5 +13,5 @@ class Assign < ApplicationRecord
   validates :status, presence: true
   validates :team_id, uniqueness: { scope: :user_id }
 
-  enum status: { admin: 0, mentor: 1, member: 2 }
+  enum status: { admin: 0, mentor: 1, member: 2,  applying: 3, refusal: 4}
 end

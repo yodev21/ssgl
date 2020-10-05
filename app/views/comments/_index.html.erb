@@ -5,7 +5,7 @@
         <% if comment.id.present? %>
           <div class="row">
             <p><%= image_tag avatar_url(comment.user), class: "comments-round-img" %></p>
-            <p><%= comment.user.name %></p>
+            <span class="user-name"><%= comment.user.name %></span>
           </div>
           <div class="row">
             <p class="comment-content"><%= markdown(comment.content) %></p> 

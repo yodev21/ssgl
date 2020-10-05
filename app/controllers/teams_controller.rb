@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
   before_action :authenticate_user!
 
   def index 
-    @teams = Team.order(created_at: :desc).page(params[:page])
+    @teams = Team.order(updated_at: :desc).page(params[:page])
   end
 
   def show

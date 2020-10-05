@@ -7,10 +7,13 @@
     <p><%= markdown(@task.content) %></p>
     <%= link_to "タスク修正", edit_mentor_task_path(@task),
                             class: "btn btn-outline-success  show_button_right" %>
-    <%= link_to "タスク削除", mentor_task_path(@task),
-                            method: :delete,
-                            data: { confirm: "タスクを削除してもよろしいですか？"},
-                            class: "btn btn-outline-danger  show_button_right" %>
+    
+    <% if current_user.email != 'guest@example.com' %>
+      <%= link_to "タスク削除", mentor_task_path(@task),
+                              method: :delete,
+                              data: { confirm: "タスクを削除してもよろしいですか？"},
+                              class: "btn btn-outline-danger  show_button_right" %>
+    <% end %>
     <%= link_to "フィードバックの確認", mentor_feed_back_path(task_id: @task),class: "btn btn-primary  show_button_right" %>
   </div>
   <div class="row">
