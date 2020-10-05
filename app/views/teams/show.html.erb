@@ -1,8 +1,9 @@
 <div class="team-index">
+  <br>
   <h2 class="team-title">チーム</h2>
   <div class="team-card">
     <span><%= image_tag avatar_url(@team), class: "team-round-img" %></span>
-    <span class="team-name"><%=@team.name %></span>
+    <p class="team-name"><%= markdown(@team.name) %></p>
     <p><%= markdown(@team.remarks) %></p>
     
     <% if @assign.nil? %>

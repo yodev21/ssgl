@@ -4,17 +4,15 @@
   padding-top: 1rem;
   box-sizing: border-box;
   & .answer-title {
-    width: 15%;
     padding: 0.5rem;
+    margin: 0.5rem;
     border-radius: 3px;
     color: white;
-
     background: linear-gradient(60deg, #ef5350, #e53935);
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
       0 7px 10px -5px rgba(244, 67, 54, 0.4);
     position: relative;
-    top: 1rem;
-    left: 1rem;
+    top: 1.5rem;
   }
   & .answer-card {
     width: 100%;

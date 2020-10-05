@@ -1,8 +1,10 @@
 <div class="course-show">
+  <br>
+  <br>
   <h2 class="courses-title">コース</h2>
   <div class="course-card">
     <span><%= image_tag avatar_url(@course), class: "course-round-img" %></span>
-    <span><div class="course-title"><%= markdown(@course.title) %></div></span>
+    <span><%= markdown(@course.title) %></span>
     <p><%= markdown(@course.content) %></p>
     <% if @challenge_course.nil? %>
       <%= link_to "このコースに取り組む",  challenge_courses_path(course_id: @course.id), method: :post, class: "btn btn-primary"%>

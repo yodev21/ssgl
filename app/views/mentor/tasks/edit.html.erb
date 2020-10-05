@@ -8,7 +8,7 @@
       <%= f.text_field :title, autofocus: true, placeholder: "タスク名", class: "form-control", required: true %>
     </div>
       
-    <%= image_tag @task.image.url, id: :img_prev, class: "round-img" if @task.image? %>
+    <%= image_tag @task.image.url, id: :img_prev, class: "task-round-img" if @task.image? %>
     <div class="form-group">
       <%= f.label :image, "photo_size_select_actual", class: "material-icons" %>
       <%= f.file_field :image, placeholder: "タスクアイコン", class: "fom-control icon_image" %>
