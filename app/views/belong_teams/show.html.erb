@@ -1,8 +1,9 @@
 <div class="belong-team-index">
+  <br>
   <h2 class="belong-team-title">チーム</h2>
   <div class="belong-team-card">
     <span><%= image_tag avatar_url(@team), class: "belong-team-round-img" %></span>
-    <span class="belong-team-name"><%=@team.name %></span>
+    <p class="belong-team-name"><%= markdown(@team.name) %></p>
     <p><%= markdown(@team.remarks) %></p>
   </div>
   <br>

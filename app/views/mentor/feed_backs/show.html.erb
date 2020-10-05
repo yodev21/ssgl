@@ -1,4 +1,6 @@
 <div class="feed-back-show">
+  <br>
+  <br>
   <h2 class="feed-back-title">フィードバック</h2>
   <div class="feed-back-card">
     <%= image_tag avatar_url(@task), class: "feed-back-round-img" %>
@@ -15,7 +17,7 @@
       <% @feed_backs.each do |feed_back| %>
         <div class="row">
           <div class="users-link">
-            <span><%= image_tag avatar_url(feed_back.user), class: "round-img float-md-left"  %></span>
+            <span><%= image_tag avatar_url(feed_back.user), class: "user-round-img"  %></span>
             <span><%= feed_back.user.name %></span><br>
             <span>評価:<%= feed_back.feeling_number %></span><br>
             <p class="feed_back_form" rows="10"><%= markdown(feed_back.reason) %></p>

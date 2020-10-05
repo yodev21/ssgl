@@ -4,17 +4,15 @@
   padding-top: 1rem;
   box-sizing: border-box;
   & .task-title {
-    width: 15%;
     padding: 0.5rem;
+    margin: 0.5rem;
     border-radius: 3px;
     color: white;
-
     background: linear-gradient(60deg, #ffa726, #fb8c00);
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
       0 7px 10px -5px rgba(255, 152, 0, 0.4);
     position: relative;
-    top: 1rem;
-    left: 1rem;
+    top: 1.5rem;
   }
   & .task-card {
     width: 100%;
@@ -28,11 +26,6 @@
       font-size: 2rem;
       padding-left: 1rem;
     }
-  }
-  & .task-round-img {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
   }
 
   & .task-content {
@@ -52,4 +45,10 @@
       box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
     }
   }
+}
+
+.task-round-img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
 }

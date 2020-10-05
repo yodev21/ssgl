@@ -1,7 +1,7 @@
 <div class="user-index">
-  <h3 class="user-title">プロフィール</h3>
+  <h2 class="user-title">プロフィール</h2>
   <div class="user-card">
-    <%= image_tag avatar_url(@user), class: "round-img" %>
+    <%= image_tag avatar_url(@user), class: "user-round-img" %>
     <span class="user-name"><%= @user.name %></span>
     <% if @user == current_user %>
       <%= @user.email %>  

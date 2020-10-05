@@ -9,7 +9,7 @@
     </div>
 
     <% unless @course.image? %>
-      <%= image_tag "no_image.png", class: "round-img", id: :img_prev %>
+      <%= image_tag "no_image.png", class: "course-round-img", id: :img_prev %>
     <% end %>
     <div class="form-group">
         <%= f.label :image, "photo_size_select_actual", class: "material-icons" %>
