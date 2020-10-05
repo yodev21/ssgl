@@ -20,7 +20,7 @@ class Mentor::TeamsController < ApplicationController
   end
 
   def index 
-    @teams = Team.where(id: Assign.where(user_id: current_user.id).where.not(status: 'member').select(:team_id)).page
+    @teams = Team.where(id: Assign.where(user_id: current_user.id).where.not(status: 'member').select(:team_id)).order(updated_at: :desc).page
   end
 
   def show
@@ -40,7 +40,7 @@ class Mentor::TeamsController < ApplicationController
 
   def destroy
     @team.destroy
-    redirect_to teams_path, notice: 'チームを削除しました。'
+    redirect_to mentor_teams_path, notice: 'チームを削除しました。'
   end
 
   def search
