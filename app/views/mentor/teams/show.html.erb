@@ -5,8 +5,10 @@
     <span class="team-name"><%=@team.name %></span>
     <p><%= markdown(@team.remarks) %></p>
     <%= link_to "チーム情報編集", edit_mentor_team_path(@team), class: "btn btn-outline-success  profile-btn" %>
-    <%= link_to "チーム削除", mentor_team_path(@team), class: "btn btn-outline-danger  profile-btn", method: :delete, 
-                                                                                            data: { confirm: "チームを削除してもよろしいですか？"} %>
+    <% if current_user.email != 'guest@example.com' %>
+      <%= link_to "チーム削除", mentor_team_path(@team), class: "btn btn-outline-danger  profile-btn", method: :delete, 
+                                                                                              data: { confirm: "チームを削除してもよろしいですか？"} %>
+    <% end %>
   </div>
 </div>
 <div class="challenge-courses-index">

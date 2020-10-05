@@ -37,4 +37,9 @@
     background-color: white;
     box-shadow: 0 2px 5px #ccc;
   }
+  & .answer-round-img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+  }
 }

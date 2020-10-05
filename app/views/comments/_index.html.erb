@@ -5,7 +5,7 @@
         <% if comment.id.present? %>
           <div class="row">
             <p><%= image_tag avatar_url(comment.user), class: "comments-round-img" %></p>
-            <p><%= comment.user.name %></p>
+            <span class="user-name"><%= comment.user.name %></span>
           </div>
           <div class="row">
             <p class="comment-content"><%= markdown(comment.content) %></p> 
@@ -13,11 +13,16 @@
           <div class="row">
             <p class="team-time no-text-decoration"><%= "#{comment.created_at.strftime('%Y/%m/%d %H:%M')}" %></p>        
           </div>
-            <p><%= link_to "コメント削除", comment_path(id: comment.id), 
-                                                  method: :delete, 
-                                                  data: {confirm: "削除してもよろしいですか？"}, 
-                                                  remote: true,
-                                                  class: "btn btn-outline-danger" %></p>
+            <% if comment.user.id == current_user.id%>
+              <%= link_to comment_path(id: comment.id), 
+                                        method: :delete, 
+                                        data: {confirm: "削除してもよろしいですか？"},
+                                        remote: true,
+                                        style: "color:red;" do %>
+                <i class="far fa-trash-alt trash"></i> 削除
+              <% end %>
+            <% end %>
+                                          
         <% end %>
       </div>
     <% end %>
