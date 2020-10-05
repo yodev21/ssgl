@@ -2,7 +2,6 @@ class Mentor::TeamsController < ApplicationController
   before_action :set_params, only: %i[show edit update destroy]
   before_action :admin_check
   before_action :authenticate_user!
-  before_action :check_guest_team, only: %i[update destroy]
   def new
     @team = Team.new
   end
@@ -70,9 +69,4 @@ class Mentor::TeamsController < ApplicationController
     params.permit(:search_name)
   end
 
-  def check_guest_team
-    if @team.created_at < '2020/07/01 00:00:00'
-      redirect_to mentor_teams_path, notice: "ゲストチームのため更新・削除はできません！"
-    end
-  end
 end
