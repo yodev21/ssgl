@@ -3,29 +3,6 @@
 p '-------------------------- Create Strart ----------------------------'
 langs = ['Ruby', 'Python', 'Go', 'C++', 'VB.NET', 'C#', 'React', 'Vue', 'JavaScript', 'HTML/CSS', 'jQuery']
 
-team_title = ['Rubyを中心に学習します！【テストデータ】',
-              'Pythonを利用したデータ整形やスクレイピングをサポートします！【テストデータ】', 
-              '【初心者歓迎！】Goを使ったWebサービス開発！【テストデータ】', 
-              'C++でゲームを作ってみませんか？【テストデータ】',
-              'VB.Netを使用した業務システムの開発サポート【テストデータ】', 
-              'C#でゲームを作ってみませんか？【テストデータ】',
-              'Reactを使ってモダンなWebアプリを作ろう!【テストデータ】', 
-              'Vueを使ってモダンなWebアプリを作ろう!【テストデータ】', 
-              'JavaScriptを学んでフロントエンド開発の学習をしませんか？【テストデータ】', 
-              'HTML/CSSを使っておしゃれなサイトを作ろう！【テストデータ】', 
-              'jQueryを学んでリッチなサイトを作ろう！【テストデータ】']
-tasks = []
-p 'Create Administrators'
-User.create(
-  email: 'admin@example.com',
-  name: 'administrator',
-  image: open("#{Rails.root}/app/assets/images/users/1.png"),
-  admin: true,
-  password: 'administrator00',
-  profile: "プログラミングの学習を始めて１ヶ月目です！\n
-            早く一人前のエンジニアになれるように頑張ります！"
-)
-
 # ゲストユーザー作成
 p 'Create Guest User'
 @guest_user = User.create(
@@ -35,18 +12,8 @@ p 'Create Guest User'
   password: 'testtest',
   profile: "プログラミングの学習を始めて１ヶ月目です！\n
             早く一人前のエンジニアになれるように頑張ります！",
-  created_at: "2020/06/30 00:00:00"
-)
-
-# メインユーザー作成
-@admin_user = User.create(
-  email: 'yodev21@example.com',
-  name: '管理者 ユーザー',
-  image: open("#{Rails.root}/app/assets/images/users/1.png"),
-  password: 'testtest',
-  profile: "プログラミングの学習を始めて１ヶ月目です！\n
-            早く一人前のエンジニアになれるように頑張ります！",
-  created_at: "2020/06/30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 p 'Guest User Success'
 
@@ -59,7 +26,8 @@ p 'Create Guest Team'
             初心者大歓迎です。!! \n
             楽しくプログラミングをしましょう！！",
   user_id: @guest_user.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 p 'Guest Team Success'
 
@@ -69,7 +37,8 @@ p 'Create Guest Assign'
   status: :admin,
   user_id: @guest_user.id,
   team_id: @guest_team.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 p 'Guest Assign Success'
 
@@ -84,7 +53,8 @@ p 'Create Guest Course'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   status: :release,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 p 'Create Guest Course2'
 @guest_course_2 = Course.create!(
@@ -96,7 +66,8 @@ p 'Create Guest Course2'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   status: :release,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 p '-------------------------- 初学者向けコース -----------------------------'
 # ゲストコース参加
@@ -107,7 +78,8 @@ p 'Create Guest ChallengeCourse'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 p 'Guest Course Success'
 # ゲストタスク作成
@@ -124,7 +96,8 @@ p 'Create Guest Task'
   course_id: @guest_course.id,
   priority_no: 1,
   challenge_course_id: @guest_challenge_course.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 @guest_task_2 = Task.create!(
   title: 'Git',
@@ -138,7 +111,8 @@ p 'Create Guest Task'
   course_id: @guest_course.id,
   priority_no: 2,
   challenge_course_id: @guest_challenge_course.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 @guest_task_3 = Task.create!(
   title: 'Ruby',
@@ -151,7 +125,8 @@ p 'Create Guest Task'
   course_id: @guest_course.id,
   priority_no: 3,
   challenge_course_id: @guest_challenge_course.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 @guest_task_4 = Task.create!(
   title: 'Ruby on Rails',
@@ -164,7 +139,8 @@ p 'Create Guest Task'
   course_id: @guest_course.id,
   priority_no: 4,
   challenge_course_id: @guest_challenge_course.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 @guest_task_5 = Task.create!(
   title: 'Ruby on Rails 開発',
@@ -177,7 +153,8 @@ p 'Create Guest Task'
   course_id: @guest_course.id,
   priority_no: 5,
   challenge_course_id: @guest_challenge_course.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 @guest_task_6 = Task.create!(
   title: 'SQL',
@@ -190,7 +167,8 @@ p 'Create Guest Task'
   course_id: @guest_course.id,
   priority_no: 6,
   challenge_course_id: @guest_challenge_course.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 @guest_task_7 = Task.create!(
   title: 'AWS',
@@ -203,7 +181,8 @@ p 'Create Guest Task'
   course_id: @guest_course.id,
   priority_no: 7,
   challenge_course_id: @guest_challenge_course.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 p 'Guest Task Success'
 p '-------------------------- 初学者向けコース作成完了 ---------------------'
@@ -216,7 +195,8 @@ p 'Create Guest ChallengeCourse'
   team_id: @guest_team.id,
   assign_id: @guest_assign.id,
   course_id: @guest_course_2.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 p 'Guest Course Success'
 # ゲストタスク作成
@@ -231,7 +211,8 @@ p 'Create Guest Task'
   course_id: @guest_course_2.id,
   priority_no: 1,
   challenge_course_id: @guest_challenge_course_2.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 p 'Create Guest Task'
 @guest_task2_2 = Task.create!(
@@ -244,7 +225,8 @@ p 'Create Guest Task'
   course_id: @guest_course_2.id,
   priority_no: 2,
   challenge_course_id: @guest_challenge_course_2.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 p 'Create Guest Task'
 @guest_task2_3 = Task.create!(
@@ -257,7 +239,8 @@ p 'Create Guest Task'
   course_id: @guest_course_2.id,
   priority_no: 3,
   challenge_course_id: @guest_challenge_course_2.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 p 'Create Guest Task'
 @guest_task2_4 = Task.create!(
@@ -270,7 +253,8 @@ p 'Create Guest Task'
   course_id: @guest_course_2.id,
   priority_no: 4,
   challenge_course_id: @guest_challenge_course_2.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 p 'Create Guest Task'
 @guest_task2_5 = Task.create!(
@@ -283,7 +267,8 @@ p 'Create Guest Task'
   course_id: @guest_course_2.id,
   priority_no: 5,
   challenge_course_id: @guest_challenge_course_2.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 p 'Create Guest Task'
 @guest_task2_6 = Task.create!(
@@ -296,7 +281,8 @@ p 'Create Guest Task'
   course_id: @guest_course_2.id,
   priority_no: 6,
   challenge_course_id: @guest_challenge_course_2.id,
-  created_at: "2020-06-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
 )
 p '-------------------------- 中級者向けコース作成完了 ---------------------'
 
@@ -310,7 +296,8 @@ p '-------------------------- 中級者向けコース作成完了 -------------
     profile: "プログラミングの学習を始めて１ヶ月目です！\n
               早く一人前のエンジニアになれるように頑張ります！",
     image: open("#{Rails.root}/app/assets/images/users/#{n}.png"),
-  created_at: "2020-07-30 00:00:00"
+  created_at: "2020/06/30 00:00:00",
+  updated_at: "2020/06/30 00:00:00"
   )
   p "test User#{n} Success"
 
@@ -319,7 +306,9 @@ p '-------------------------- 中級者向けコース作成完了 -------------
   @assign = Assign.create!(
     status: :member,
     user_id: @user.id,
-    team_id: @guest_team.id
+    team_id: @guest_team.id,
+    created_at: "2020/06/30 00:00:00",
+    updated_at: "2020/06/30 00:00:00"
   )
   p "test Assign#{n} Success"
 
@@ -330,6 +319,8 @@ p '-------------------------- 中級者向けコース作成完了 -------------
     team_id: @guest_team.id,
     assign_id: @guest_assign.id,
     course_id: @guest_course.id,
+    created_at: "2020/06/30 00:00:00",
+    updated_at: "2020/06/30 00:00:00"
   )
 
   # チャレンジタスク作成
@@ -342,7 +333,9 @@ p '-------------------------- 中級者向けコース作成完了 -------------
     assign_id: @guest_assign.id,
     course_id: @guest_course.id,
     challenge_course_id: @guest_challenge_course.id,
-    task_id: @guest_task_1.id
+    task_id: @guest_task_1.id,
+    created_at: "2020/06/30 00:00:00",
+    updated_at: "2020/06/30 00:00:00"
   )
 
   p "test Team#{n} Success"

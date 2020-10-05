@@ -29,6 +29,14 @@
 </li>
 
 <li class="nav-item">
+  <%= link_to "#", class: "nav-link", data: {confirm: "準備中です。"} do %>
+    <i class="material-icons">question_answer</i>
+    <p>申請待ち</p>
+    <p>　　　(準備中)</p>
+  <% end %>
+</li>
+
+<li class="nav-item">
   <%= link_to user_change_status_path(user_id: current_user), method: :post , class: "nav-link" do %>
     <i class="material-icons">transfer_within_a_station</i>
     <p>メンバーに戻る</p>
