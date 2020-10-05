@@ -5,15 +5,14 @@
   box-sizing: border-box;
   & .challenge-course-title {
     padding: 0.5rem;
+    margin: 0.5rem;
     border-radius: 3px;
     color: white;
-
     background: linear-gradient(60deg, #66bb6a, #43a047);
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
       0 7px 10px -5px rgba(76, 175, 80, 0.4);
     position: relative;
-    top: 1rem;
-    left: 1rem;
+    top: 1.5rem;
   }
   & .challenge-course-card {
     width: 100%;
@@ -40,14 +39,14 @@
     }
     & .challenge-course-title {
       padding: 0.5rem;
+      margin: 0.5rem;
       border-radius: 3px;
       color: white;
       background: linear-gradient(60deg, #66bb6a, #43a047);
       box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
         0 7px 10px -5px rgba(76, 175, 80, 0.4);
       position: relative;
-      top: 1rem;
-      left: 1rem;
+      top: 1.5rem;
     }
     & .challenge-course-round-img {
       border-radius: 50%;
