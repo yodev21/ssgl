@@ -8,7 +8,7 @@
           <%= link_to(challenge_course_path(challenge_course) , class: "challenge-courses-link") do %>
             <%= image_tag challenge_course.course.image.url(:medium), class: "challenge-courses-round-img" %>
             <span class="courses-title"><%= challenge_course.course.title %></span>
-            <% if challenge_course.limited_release_enabled %>
+            <% if challenge_course.limited_release_enabled && challenge_course.course.status == 'limited_release'%>
               <span class="badge badge-dark">限定コース</span>
             <% end %>
             <p><%= challenge_course.course.content.truncate(50) %></p>

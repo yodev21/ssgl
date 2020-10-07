@@ -53,8 +53,7 @@ class Mentor::LimitedReleaseCoursesController < ApplicationController
       user_id: params[:user_id],
       course_id: params[:course_id]
     )
-    challenge_course.limited_release_enabled = false
-    challenge_course.save
+    challenge_course.destroy
     redirect_to mentor_limited_release_course_path(challenge_course.course), notice: "限定公開コースから卒業しました！"
   end
 end

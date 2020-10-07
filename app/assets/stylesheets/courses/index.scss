@@ -3,20 +3,6 @@
   margin: auto;
   padding-top: 1rem;
   box-sizing: border-box;
-  & .courses-title {
-    width: 15%;
-    text-align: center;
-    padding: 0.5rem;
-    border-radius: 3px;
-    color: white;
-
-    background: linear-gradient(60deg, #ffa726, #fb8c00);
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
-      0 7px 10px -5px rgba(255, 152, 0, 0.4);
-    position: relative;
-    top: 1rem;
-    left: 1rem;
-  }
   & .courses-card {
     width: 100%;
     padding: 1rem;
@@ -24,19 +10,6 @@
     background-color: white;
     border-radius: 3px;
     box-shadow: 0 2px 5px #ccc;
-  }
-  & .task-title {
-    padding: 0.5rem;
-    border-radius: 3px;
-    color: white;
-    width: 15%;
-    text-align: center;
-    background: linear-gradient(60deg, #26c6da, #00acc1);
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
-      0 7px 10px -5px rgba(0, 172, 193, 0.4);
-    position: relative;
-    top: 2rem;
-    left: 1rem;
   }
   & .courses-round-img {
     border-radius: 50%;
