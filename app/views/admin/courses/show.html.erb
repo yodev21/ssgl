@@ -1,8 +1,8 @@
 <div class="course-show">
-  <h2 class="courses-title">コース</h2>
+  <h2 class="course-title">コース</h2>
   <div class="course-card">
     <span><%= image_tag avatar_url(@course), class: "course-round-img" %></span>
-    <span><div class="course-title"><%= markdown(@course.title) %></div></span>
+    <span><%= markdown(@course.title) %></span>
     <p><%= markdown(@course.content) %></p>
 
     <%= link_to "削除", admin_course_path(@course), class: "btn btn-danger", method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}%>

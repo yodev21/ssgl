@@ -4,7 +4,7 @@
   <h2 class="task-title">タスク</h2>
   <div class="task-card">
     <span><%= image_tag avatar_url(@task), class: "task-round-img" %></span>
-    <span class="course-title"><%= markdown(@task.title) %></span>
+    <span><%= markdown(@task.title) %></span>
     <p><%= markdown(@task.content) %></p>
     <% if @challenge_task.nil? %>
       <%= link_to "取り組む", challenge_starts_path(task_id: @task.id), 

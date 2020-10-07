@@ -1,16 +1,36 @@
 <div class="user-index">
-  <h3 class="user-title">プロフィール</h3>
+  <h2 class="user-title">プロフィール</h2>
     <div class="user-card">
-      <%= image_tag avatar_url(@user.user), class: "round-img" %>
+      <%= image_tag avatar_url(@user.user), class: "user-round-img" %>
       <span class="user-name"><%= @user.user.name %></span>
-
-      <% if @user.status == "admin" %>
-        <h3>管理者</h3>
-      <% elsif @user.status == "mentor" %>
-        <h3>メンター</h3>
-      <% elsif @user.status == "member"%>
-        <h3>メンバー</h3>
-      <% end %>
+      <table>
+        <tr>
+          <th>ステータス</th>
+          <% if @user.status == "admin" %>
+            <td class="badge badge-primary">管理者</td>
+          <% elsif @user.status == "mentor" %>
+            <td class="badge badge-success">メンター</td>
+          <% elsif @user.status == "member"%>
+            <td class="badge badge-info">メンバー</td>
+          <% end %>
+        </tr>
+        <tr>
+          <th>完了済みタスク数</th>
+          <td><%= @complete_task%></td>
+        </tr>
+        <tr>
+          <th>フィードバック平均値</th>
+          <td><%= @complete_task%></td>
+        </tr>
+        <tr>
+          <th>質問数</th>
+          <td>準備中</td>
+        </tr>
+        <tr>
+          <th>チーム参加日</th>
+          <td><%= @team_join_day.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
+        </tr>
+      </table>
       
       <% if @user.status == "mentor" %>
         <%= link_to "メンバーにする", mentor_assign_path(user_id: @user.id, 
@@ -25,10 +45,43 @@
                                                 data: {confirm: "メンターにしてもよろしいですか？"}, 
                                                 class: "btn btn-primary" %>
       <% end %>
-
-      <%= link_to "チーム退会", mentor_assign_path(id: @user.id), 
-                                          method: :delete, 
-                                          data: {confirm: "ユーザーを削除してもよろしいですか？"}, 
-                                          class: "btn btn-danger waves-effect" %>
+      <% if current_user.email != 'guest@example.com' %>
+        <%= link_to "チーム退会", mentor_assign_path(id: @user.id), 
+                                            method: :delete, 
+                                            data: {confirm: "ユーザーを削除してもよろしいですか？"}, 
+                                            class: "btn btn-danger" %>
+      <% end %>
     </div>
+</div>
+
+<div class="tasks-index">
+  <h2 class="tasks-title">タスクの進捗</h2><br>
+  <div class="tasks-card">
+    <% @latest_tasks.each do |task|%>
+      <div class="row">
+        <% if task.answers.present? %>
+          <%= link_to(mentor_answer_path(task.answers.first) , class: "tasks-link") do %>
+            <%= image_tag task.task.image.url(:medium), class: "tasks-round-img" %>
+            <span><%= task.task.title %></span>
+            
+            <% if task.status == "awaiting_review" %>
+              <span class="badge badge-warning">レビュー待ち</span>
+            <% elsif task.status == "remand" %>
+              <span class="badge badge-success">修正中</span>
+            <% end %>
+            <p><%= task.task.content.truncate(50) %></p>
+            <p class="task-time no-text-decoration"><%= "#{time_ago_in_words(task.task.updated_at).upcase}前" %></p>
+          <% end %>
+        <% else %>
+          <div class="tasks-link">
+            <%= image_tag task.task.image.url(:medium), class: "tasks-round-img" %>
+            <span class="><%= task.task.title %></span>
+            <span class="badge badge-primary">着手中</span>
+            <p><%= task.task.content.truncate(50) %></p>
+            <p class="task-time no-text-decoration"><%= "#{time_ago_in_words(task.task.updated_at).upcase}前" %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -8,9 +8,9 @@
     margin: 0.5rem 1rem;
     border-radius: 3px;
     color: white;
-    background: linear-gradient(60deg, #ffa726, #fb8c00);
+    background: linear-gradient(60deg, #26c6da, #00acc1);
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
-      0 7px 10px -5px rgba(255, 152, 0, 0.4);
+      0 7px 10px -5px rgba(0, 172, 193, 0.4);
     position: relative;
     top: 2.5rem;
   }
@@ -19,11 +19,6 @@
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 3px;
-    & .user-name {
-      display: inline-block;
-      font-size: 2rem;
-      padding-left: 1rem;
-    }
   }
   & .users-round-img {
     border-radius: 50%;

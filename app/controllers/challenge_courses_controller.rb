@@ -2,7 +2,7 @@ class ChallengeCoursesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @courses = ChallengeCourse.where(user_id: current_user).includes(:course)
+    @courses = ChallengeCourse.includes(:course).where(user_id: current_user).where.not(courses: {status: :secret})
   end
 
   def show

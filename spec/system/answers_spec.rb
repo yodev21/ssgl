@@ -26,13 +26,13 @@ RSpec.describe 'Answers', type: :system do
       wait.until { expect(page).to have_content '回答しました' }
     end
 
-    example '回答が編集できること' do
+      example '回答が編集できること' do
       visit new_answer_path(challenge_start_id: @challenge_start.id)
       fill_in 'answer_content', with: 'テスト コンテント'
       click_on '回答'
       click_on "マイコース"
       find(".challenge-courses-link").click
-      find(".challenge-course-link").click
+      find(".tasks-link").click
       click_on "回答修正"
       fill_in 'answer_content', with: 'テスト コンテント Update'
       click_button '回答'

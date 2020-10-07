@@ -6,19 +6,20 @@ Rails.application.routes.draw do
   get 'top/privacy_policy', to: "top#privacy_policy"
   get 'top/terms_of_service', to: "top#terms_of_service"
 
-  # 検索処理
-  get '/teams/search', to: 'teams#search'
-  # ゲストログイン
-  post '/guest_sign_in', to: 'guest_users#new_guest'
 
   devise_for :users,
              controllers: { registrations: 'registrations' }
+
+  # ゲストログイン
+  post '/guest_sign_in', to: 'guest_users#new_guest'
 
   resources :users, only: %i[index show destroy] do
     post '/change_status', to: 'users#change_status'
   end
   
   resources :teams, only: %i[index show]
+  # 検索処理
+  get '/teams/search', to: 'teams#search'
   resources :assigns, only: %i[create] 
   resources :belong_teams, only: %i[index show]
   resources :belong_team_users, only: %i[index show]
@@ -38,7 +39,7 @@ Rails.application.routes.draw do
   end
 
   namespace :mentor do
-    resources :users
+    resources :users, only: %i[index show]
     resources :teams
     resources :assigns, only: %i[update destroy]
     resources :courses

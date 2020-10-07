@@ -8,9 +8,9 @@
     margin: 0.5rem;
     border-radius: 3px;
     color: white;
-    background: linear-gradient(60deg, #ffa726, #fb8c00);
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
-      0 7px 10px -5px rgba(255, 152, 0, 0.4);
+      0 7px 10px -5px rgba(156, 39, 176, 0.4);
+    background-color: #9c27b0;
     position: relative;
     top: 1.5rem;
   }
@@ -26,19 +26,6 @@
       font-size: 2rem;
       padding-left: 1rem;
     }
-  }
-  & .user-name {
-    padding: 0.5rem;
-    border-radius: 3px;
-    color: white;
-    width: 15%;
-    text-align: center;
-    background: linear-gradient(60deg, #26c6da, #00acc1);
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
-      0 7px 10px -5px rgba(0, 172, 193, 0.4);
-    position: relative;
-    top: 2rem;
-    left: 1rem;
   }
   & .feed-back-round-img {
     border-radius: 50%;
