@@ -11,7 +11,7 @@
             <% if challenge_course.limited_release_enabled && challenge_course.course.status == 'limited_release'%>
               <span class="badge badge-dark">限定コース</span>
             <% end %>
-            <p><%= challenge_course.course.content.truncate(50) %></p>
+            <p><%= markdown(challenge_course.course.content.truncate(50)) %></p>
             <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(challenge_course.updated_at).upcase}前" %></p>
           <% end %>
         </div>

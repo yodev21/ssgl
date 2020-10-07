@@ -8,31 +8,31 @@
       <div class="col-12">
         <span class="right"><strong>1:難しかった&nbsp;&nbsp;</strong></span>
         <span class="left"><strong>10:簡単だった</strong></span><br>
-        <%= f.radio_button :feeling_number, 1 %>
+        <%= f.radio_button :feeling_number, 1, required: true %>
         <%= f.label :feeling_number, 1, {value: 1} %>
-        <%= f.radio_button :feeling_number, 2 %>
+        <%= f.radio_button :feeling_number, 2, required: true %>
         <%= f.label :feeling_number, 2, {value: 2} %>
-        <%= f.radio_button :feeling_number, 3 %>
+        <%= f.radio_button :feeling_number, 3, required: true %>
         <%= f.label :feeling_number, 3, {value: 3} %>
-        <%= f.radio_button :feeling_number, 4 %>
+        <%= f.radio_button :feeling_number, 4, required: true %>
         <%= f.label :feeling_number, 4, {value: 4} %>
-        <%= f.radio_button :feeling_number, 5 %>
+        <%= f.radio_button :feeling_number, 5, required: true %>
         <%= f.label :feeling_number, 5, {value: 5} %>
-        <%= f.radio_button :feeling_number, 6 %>
+        <%= f.radio_button :feeling_number, 6, required: true %>
         <%= f.label :feeling_number, 6, {value: 6} %>
-        <%= f.radio_button :feeling_number, 7 %>
+        <%= f.radio_button :feeling_number, 7, required: true %>
         <%= f.label :feeling_number, 7, {value: 7} %>
-        <%= f.radio_button :feeling_number, 8 %>
+        <%= f.radio_button :feeling_number, 8, required: true %>
         <%= f.label :feeling_number, 8, {value: 8} %>
-        <%= f.radio_button :feeling_number, 9 %>
+        <%= f.radio_button :feeling_number, 9, required: true %>
         <%= f.label :feeling_number, 9, {value: 9} %>
-        <%= f.radio_button :feeling_number, 10 %>
+        <%= f.radio_button :feeling_number, 10, required: true %>
         <%= f.label :feeling_number, 10, {value: 10} %>
       </div>
     </div>
     
     <div class="form-group">
-      <%= f.text_area :reason,  placeholder: "理由", class: "form-control",rows: "15" %>
+      <%= f.text_area :reason,  placeholder: "理由", class: "form-control",rows: "15", required: true %>
     </div>
 
     <div class="actions">
