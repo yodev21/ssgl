@@ -13,8 +13,18 @@ class TopController < ApplicationController
   def login_check
     if user_signed_in? && current_user.admin?
       redirect_to admin_users_path, notice: '管理者としてログインしました！'
+    elsif user_signed_in? && current_user.email == 'guest@example.com'
+      if current_user.status == 'member'
+        redirect_to teams_path, notice: 'ゲストユーザー(メンバー)としてログインしました！' 
+      else 
+        redirect_to mentor_teams_path, notice: 'ゲストユーザー(メンター)としてログインしました！' 
+      end
     elsif user_signed_in?
-      redirect_to teams_path, notice: '今日も1日頑張りましょう！' 
+      if current_user.status == 'member'
+        redirect_to teams_path, notice: '今日も1日頑張りましょう！' 
+      else 
+        redirect_to mentor_teams_path, notice: 'メンターとしてログインしました！' 
+      end
     end
   end
 end
