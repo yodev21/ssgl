@@ -34,32 +34,36 @@
     </div>
   </div>
 </div>
+
+
 <div class="users-index">
   <h2 class="users-title">ユーザー</h2>
   <div class="users-card">
   <% @challenge_tasks.each do |challenge_task| %>
     <div class="row">
-      <div class="users-link" %>
-        <%= image_tag challenge_task.user.image.url(:medium), class: "users-round-img" %>
-        <span><%= challenge_task.user.name %></strong></span>
-        <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(challenge_task.user.updated_at).upcase}前" %></p>
-
-        <% if challenge_task.status == "awaiting_review" %>
-          <span class="badge badge-warning">レビュー待ち</span>
-        <% elsif challenge_task.status == "remand"%>
-          <span class="badge badge-success">修正中</span>
-        <% elsif challenge_task.status == "underway" %>
+      <% if challenge_task.answers.present? %>
+        <%= link_to(mentor_answer_path(challenge_task.answers.first) , class: "users-link") do %>
+          <%= image_tag challenge_task.user.image.url(:medium), class: "users-round-img" %>
+          <span><%= challenge_task.user.name %></strong></span>
+          <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(challenge_task.user.updated_at).upcase}前" %></p>
+          <% if challenge_task.status == "awaiting_review" %>
+            <span class="badge badge-warning">レビュー待ち</span>
+          <% elsif challenge_task.status == "remand"%>
+            <span class="badge badge-success">修正中</span>
+          <% elsif challenge_task.status == "complete" %>
+            <span class="badge badge-dark">完了</span>
+          <% else %>
+            <span class="badge badge-danger">エラー</span>
+          <% end %>
+        <% end %>
+      <% else %>
+        <div class="users-link" %>
+          <%= image_tag challenge_task.user.image.url(:medium), class: "users-round-img" %>
+          <span><%= challenge_task.user.name %></strong></span>
+          <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(challenge_task.user.updated_at).upcase}前" %></p>
           <span class="badge badge-primary">着手中</span>
-        <% elsif challenge_task.status == "complete" %>
-          <span class="badge badge-dark">タスク完了</span>
-        <% else %>
-          <span class="badge badge-info">未着手</span>
-        <% end %>
-        <br>
-        <% if challenge_task.answers.present? %>
-          <%= link_to "確認", mentor_answer_path(challenge_task.answers.first), class: "btn btn-primary"%>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>

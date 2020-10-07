@@ -34,3 +34,12 @@
     <p>メンバーに戻る</p>
   <% end %>
 </li>
+
+
+<li class="nav-item">
+  <%= link_to user_change_status_path(user_id: current_user), method: :post , class: "nav-link" do %>
+    <i class="material-icons">transfer_within_a_station</i>
+    <span>メンバーに戻る</span>
+    <span class="jss154" style="color: red; font: bold;">5</span>
+  <% end %>
+</li>

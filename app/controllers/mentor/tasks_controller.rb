@@ -33,21 +33,11 @@ class Mentor::TasksController < ApplicationController
   
   def show
     @task = Task.find_by(id: params[:id])
-    # @answer = Answer.find_by(task_id: @task.id)
-    @user_status = Assign.find_by(user_id: current_user.id)
-
-    @challenge_task = ChallengeStart.find_by(user_id: current_user.id,
-                                             task_id: @task.id)
-
-    @challenge_tasks = ChallengeStart.where(team_id: @task.team.id,
-                                            task_id: @task.id)
+    
+    @challenge_tasks = ChallengeStart.where(task_id: @task.id)
                                      .includes(:user)
                                      .with_challenge_start_name(params[:name])
                                      .with_challenge_start_status(params[:status])
-
-    @answers = ChallengeStart.where(user_id: Answer.where(team_id: @task.team.id,
-                                                          assign_id: @task.assign.id,
-                                                          task_id: @task.id).select('user_id'))
   end
 
   def edit; end

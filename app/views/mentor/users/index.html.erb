@@ -1,0 +1,21 @@
+<div class="users-index">
+  <h2 class="users-title">コース</h2>
+  <div class="user-card">
+    <% @assigns.each do |assign|%>
+      <div class="row">
+        <%= link_to(mentor_user_path(id: assign.user, team_id: params[:team_id]), class: "users-link") do %>
+        <span><%= image_tag avatar_url(assign.user), class: "user-round-img" %></span>
+        <span><%= assign.user.name %></span>
+        <% if assign.status == "admin" %>
+          <h3 class="badge badge-primary">管理者</h3><br>
+        <% elsif assign.status == "mentor" %>
+          <h3 class="badge badge-success">メンター</h3><br>
+        <% elsif assign.status == "member"%>
+          <h3 class="badge badge-info">メンバー</h3><br>
+        <% end %>
+        <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(assign.user.updated_at).upcase}前" %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
