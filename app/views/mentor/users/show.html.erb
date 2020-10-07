@@ -1,5 +1,5 @@
 <div class="user-index">
-  <h3 class="user-title">プロフィール</h3>
+  <h2 class="user-title">プロフィール</h2>
     <div class="user-card">
       <%= image_tag avatar_url(@user.user), class: "user-round-img" %>
       <span class="user-name"><%= @user.user.name %></span>
@@ -62,7 +62,7 @@
         <% if task.answers.present? %>
           <%= link_to(mentor_answer_path(task.answers.first) , class: "tasks-link") do %>
             <%= image_tag task.task.image.url(:medium), class: "tasks-round-img" %>
-            <span class="courses-title"><%= task.task.title %></span>
+            <span><%= task.task.title %></span>
             
             <% if task.status == "awaiting_review" %>
               <span class="badge badge-warning">レビュー待ち</span>
@@ -75,7 +75,7 @@
         <% else %>
           <div class="tasks-link">
             <%= image_tag task.task.image.url(:medium), class: "tasks-round-img" %>
-            <span class="courses-title"><%= task.task.title %></span>
+            <span class="><%= task.task.title %></span>
             <span class="badge badge-primary">着手中</span>
             <p><%= task.task.content.truncate(50) %></p>
             <p class="task-time no-text-decoration"><%= "#{time_ago_in_words(task.task.updated_at).upcase}前" %></p>

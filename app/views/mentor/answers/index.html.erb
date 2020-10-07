@@ -1,13 +1,13 @@
 <div class="answers-index">
   <br>
   <br>
-  <h2 class="answers-title">回答</h2><br>
+  <h2 class="answer-title">回答</h2><br>
   <div class="answers-card">
     <% @users.each do |user|%>
       <div class="row">
         <%= link_to(mentor_answer_path(user.answer_id) , class: "answers-link") do %>
           <%= image_tag user.image.url(:medium), class: "answers-round-img" %>
-          <span class="courses-title"><%= user.name %></span>
+          <span><%= user.name %></span>
           <p>所属チーム:<%= user.team_name %></p>
           <p>コース名:<%= user.course_title %></p>
           <p>タスク名:<%= user.task_title %></p>

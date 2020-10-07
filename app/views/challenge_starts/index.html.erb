@@ -1,7 +1,7 @@
 <div class="course-index">
   <div class="course-card">
     <span><%= image_tag avatar_url(@challenge_course.course), class: "course-round-img" %></span>
-    <span><div class="course-title"><%= markdown(@challenge_course.course.title) %></div></span>
+    <span><%= markdown(@challenge_course.course.title) %></span>
     <p><%= markdown(@challenge_course.course.content) %></p>
   </div>
   <br>

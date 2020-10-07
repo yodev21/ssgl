@@ -1,5 +1,6 @@
 <div class="comments-index">
-  <h2 class="comments-title">コメント</h2>
+  <% if comments.present? %>
+    <h2 class="comments-title">コメント</h2>
     <% comments.each do |comment| %>
       <div class="comments-card">
         <% if comment.id.present? %>
@@ -26,4 +27,6 @@
         <% end %>
       </div>
     <% end %>
+  <% else %>
+  <% end %>
 </div>

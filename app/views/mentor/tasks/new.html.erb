@@ -1,6 +1,6 @@
 <div class="main">
   <div class="form-group text-center">
-    <h3>タスク作成</h3>
+    <h2 class="task-form-title">タスク作成</h2>
   </div>
 
   <%= form_with model: @task, url: mentor_tasks_path(course_id: params[:course_id]), local: true do |f| %>

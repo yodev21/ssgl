@@ -8,7 +8,7 @@
           <%= link_to(belong_team_path(team), class: "belong-teams-link") do %>
             <%= image_tag team.image.url(:medium), class: "belong-teams-round-img" %>
             <span><%= markdown(team.name) %></span>
-            <p ><%= team.remarks.truncate(50) %></p>
+            <p ><%= markdown(team.remarks.truncate(50)) %></p>
             <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(team.updated_at).upcase}前" %></p> 
           <% end %>
         </div>

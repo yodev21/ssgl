@@ -7,7 +7,7 @@
       <div class="row">
         <div class="limited-release-course-link" %>
         <%= image_tag user.image.url(:medium), class: "limited-release-course-round-img" %>
-        <span class="course-title"><%= user.name %></span>
+        <span><%= user.name %></span>
         <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(user.updated_at).upcase}前" %></p> 
         <% if user.limited_release_enabled %>
           <%= link_to "削除", mentor_limited_release_course_path(user_id: user.id,
