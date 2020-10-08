@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
     @question.challenge_start_id = challenge_task.id
     
     if @question.save
-      redirect_to task_path(@question.challenge_start.task_id), notice: '質問しました！'
+      redirect_to question_path(@question), notice: '質問しました！'
     else
       render new
     end
