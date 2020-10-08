@@ -1,27 +1,51 @@
-<div class="limited-release-course-index">
+<div class="courses-index">
   <br>
   <br>
-  <div class="limited-release-course-courses">
-    <h2 class="user-title">ユーザー</h2>
-    <% @users.each do |user| %>
+  <div class="course-card">
+    <h2 class="user-title">公開中ユーザー</h2>
+    <% @challenge_courses.each do |challenge_course| %>
       <div class="row">
-        <div class="limited-release-course-link" %>
-        <%= image_tag user.image.url(:medium), class: "limited-release-course-round-img" %>
-        <span><%= user.name %></span>
-        <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(user.updated_at).upcase}前" %></p> 
-        <% if user.limited_release_enabled %>
-          <%= link_to "削除", mentor_limited_release_course_path(user_id: user.id,
-                                                                course_id: @course.id),
+        <div class="courses-link" %>
+        <%= image_tag challenge_course.user.image.url(:medium), class: "course-round-img" %>
+        <span><%= challenge_course.user.name %></span>
+        <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(challenge_course.user.updated_at).upcase}前" %></p> 
+        
+        <% if challenge_course.limited_release_enabled %>
+          <%= link_to "削除", mentor_limited_release_course_path(user_id: challenge_course.user.id,
+                                                                course_id: challenge_course.course.id),
                                                                 method: :delete,
                                                                 data: { confirm: "公開限定コースから削除してもよろしいですか？"},
                                                                 class: "btn btn-danger" %>
         <% else %>
-          <%= link_to "コースに追加", mentor_limited_release_courses_path(user_id: user.id,
-                                                                        course_id: @course.id), 
+          <%= link_to "コースに追加", mentor_limited_release_courses_path(user_id: challenge_course.user.id,
+                                                                        course_id: challenge_course.course.id), 
                                                                         data: { confirm: "公開限定コースに追加してもよろしいですか？"},
                                                                         method: :post,
                                                                         class: "btn btn-primary" %>
         <% end %>
+        </div>
+      </div>
+      <br>
+    <% end %>
+  </div>
+</div>
+
+<div class="courses-index">
+  <br>
+  <br>
+  <div class="course-card">
+    <h2 class="user-title">未公開ユーザー</h2>
+    <% @users.each do |user| %>
+      <div class="row">
+        <div class="courses-link" %>
+        <%= image_tag user.image.url(:medium), class: "course-round-img" %>
+        <span><%= user.name %></span>
+        <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(user.updated_at).upcase}前" %></p> 
+        <%= link_to "コースに追加", mentor_limited_release_courses_path(user_id: user.id,
+                                                                      course_id: @course.id), 
+                                                                      data: { confirm: "公開限定コースに追加してもよろしいですか？"},
+                                                                      method: :post,
+                                                                      class: "btn btn-primary" %>
         </div>
       </div>
       <br>

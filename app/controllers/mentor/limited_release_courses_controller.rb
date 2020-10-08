@@ -4,24 +4,28 @@ class Mentor::LimitedReleaseCoursesController < ApplicationController
   end
 
   def show
+    @challenge_courses = ChallengeCourse.includes(:user).where(course_id: params[:id])
+    
     @course = Course.find(params[:id])
-
     sql = "
       SELECT
        DISTINCT users.id,
        users.name,
        users.image,
-       users.updated_at,
-       challenge_courses.limited_release_enabled
+       users.updated_at
       FROM users
-        LEFT JOIN assigns
-          ON users.id = assigns.user_id
-        LEFT OUTER JOIN challenge_courses
-          ON assigns.user_id = challenge_courses.user_id
+      LEFT JOIN assigns
+        ON users.id = assigns.user_id
       WHERE assigns.team_id = :team_id
+      AND users.id NOT IN (
+        SELECT
+          challenge_courses.user_id
+        FROM challenge_courses
+        WHERE challenge_courses.course_id = :course_id
+      )  
       ORDER BY users.id DESC
     "
-    @users = User.find_by_sql([sql, {team_id: @course.team_id}])
+    @users = User.find_by_sql([sql, {team_id: @course.team_id, course_id: @course.id}])
   end
 
   def create
