@@ -1,8 +1,7 @@
 class QuestionsController < ApplicationController
-  before_action :set_params, only: %i[edit update]
+  before_action :set_params, only: %i[show edit update]
   def index
-    @questions = Question.where(assign_id: Assign.where(user_id: current_user.id).select(:id))
-    binding.pry
+    @questions = Question.where(team_id: Assign.where(user_id: current_user.id).select(:team_id))
   end
 
   def show
@@ -17,6 +16,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.status = :waiting_answer
     @question.user_id = current_user.id
+    @question.team_id = challenge_task.team_id
     @question.assign_id = challenge_task.assign_id
     @question.challenge_course_id = challenge_task.challenge_course_id
     @question.challenge_start_id = challenge_task.id

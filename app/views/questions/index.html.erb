@@ -8,6 +8,15 @@
           <%= link_to(question_path(question) , class: "challenge-courses-link") do %>
             <%= image_tag question.user.image.url(:medium), class: "challenge-courses-round-img" %>
             <span><%= question.title %></span>
+            <% if question.status == "waiting_answer" %>
+              <span class="badge badge-warning">回答待ち</span>
+            <% elsif question.status == "temporary_answer"%>
+              <span class="badge badge-success">一時回答</span>
+            <% elsif question.status == "solved" %>
+              <span class="badge badge-dark">解決済み</span>
+            <% else %>
+              <span class="badge badge-danger">エラー</span>
+            <% end %>
             <p><%= markdown(question.content.truncate(50)) %></p>
             <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(question.updated_at).upcase}前" %></p>
           <% end %>
