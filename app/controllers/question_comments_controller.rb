@@ -68,7 +68,8 @@ class QuestionCommentsController < ApplicationController
   def change_status(comment)
     comment_user = Assign.find_by(user_id: comment.user_id,
                                          team_id: comment.team_id)
-    if @question.user.status == "mentor" && comment_user.status == "admin" || comment_user.status == "mentor"
+                                         
+    if current_user.status == "mentor" && comment_user.status == "admin" || comment_user.status == "mentor"
       @question.update(status: 'temporary_answer')
     else
       @question.update(status: 'waiting_answer')

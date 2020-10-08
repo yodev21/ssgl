@@ -1,7 +1,11 @@
 class Mentor::QuestionsController < ApplicationController
   before_action :set_params, only: %i[show create]
   def index
-    @questions = Question.where(task_id: params[:task_id])
+    if params[:wating].nil?
+      @questions = Question.where(task_id: params[:task_id])
+    else
+      @questions = Question.where(team_id: current_user.teams.select(:team_id)).where(status: :waiting_answer)
+    end
   end
 
   def show

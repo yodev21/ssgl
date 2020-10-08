@@ -20,6 +20,7 @@
                                       data: { confirm: "解決済みにしてもよろしいですか？"} do %>
       <i class="far fa-check-circle">解決</i>
     <% end %>
+    <%= link_to "戻る", :back, class: "btn btn-outline-success" %>
     
     <%= render partial: 'question_comments/form', locals: { comment: @comment } %>
   </div>

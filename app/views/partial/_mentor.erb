@@ -21,10 +21,9 @@
 </li>
 
 <li class="nav-item">
-  <%= link_to "#", class: "nav-link", data: {confirm: "準備中です。"} do %>
+  <%= link_to mentor_questions_path(wating: true), class: "nav-link" do %>
     <i class="material-icons">question_answer</i>
     <p>Q<small>&</small>A(未回答)</p>
-    <p>　　　(準備中)</p>
   <% end %>
 </li>
 
