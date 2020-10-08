@@ -20,26 +20,14 @@
 
     <% if @question.user == current_user %>
       <%= link_to "質問編集", edit_question_path(id: @question), class: "btn btn-warning" %>
-      <%= link_to "解決", edit_question_path(id: @question), class: "btn btn-primary" %>
+      <%= link_to "解決", question_comments_path(question_id: @question.id, solved: :solved), 
+                                                method: :post, class: "btn btn-primary" %>
     <% end %>
     <%= link_to "戻る", :back, class: "btn btn-outline-success" %>
+    <%= render partial: 'question_comments/form', locals: { comment: @comment } %>
   </div>
-  <br>
-  <% if @challenge_course.present? %>
-    <h2 class="task-title">タスク</h2>
-    <div class="course-tasks">
-      <% @tasks.each do |task| %>
-        <div class="row">
-          <%= link_to(task_path(task) ,class: "tasks-link") do %>
-            <%= image_tag task.image.url(:medium), class: "tasks-round-img" %>
-            <span><%= task.title %></strong></span>
-            <br>
-            <p><%= markdown(task.content.truncate(30)) %></p>
-            <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(task.updated_at).upcase}前" %></p>
-          <% end %>
-        </div>
-        <br>
-      <% end %>
-    </div>
-  <% end %>
+</div>
+
+<div id="comments_area">
+  <%= render partial: 'question_comments/index', locals: { comments: @comments } %>
 </div>

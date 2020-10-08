@@ -1,0 +1,11 @@
+<%= form_with(model: comment, url: question_comments_path(question_id: @question.id), 
+                                                method: :post) do |f| %>
+
+<div class="form-group">
+  <%= f.text_area :content,  placeholder: "コメント", class: "form-control textarea ", id: "comment_content",rows: "15" %>
+</div>
+
+<div class="actions">
+  <%= f.submit "コメント", class: "btn btn-primary" %>
+</div>
+<% end %>

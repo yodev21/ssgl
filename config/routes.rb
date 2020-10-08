@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'top/privacy_policy', to: "top#privacy_policy"
   get 'top/terms_of_service', to: "top#terms_of_service"
 
-
   devise_for :users,
              controllers: { registrations: 'registrations' }
 
@@ -27,6 +26,7 @@ Rails.application.routes.draw do
   resources :tasks, only: %i[show]
   resources :challenge_starts, only: %i[index show create destroy] 
   resources :questions, only: %i[index show new create edit update]
+  resources :question_comments, only: %i[create edit update destroy]
   resources :answers
   resources :feed_backs, only: %i[new create]
   resources :comments, only: %i[create edit update destroy]

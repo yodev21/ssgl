@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @comments = QuestionComment.where(user_id: current_user.id, question_id: @question.id)
   end
 
   def new

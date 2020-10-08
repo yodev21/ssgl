@@ -1,0 +1,32 @@
+<div class="comments-index">
+  <% if comments.present? %>
+    <h2 class="comments-title">コメント</h2>
+    <% comments.each do |comment| %>
+      <div class="comments-card">
+        <% if comment.id.present? %>
+          <div class="row">
+            <p><%= image_tag avatar_url(comment.user), class: "comments-round-img" %></p>
+            <span class="user-name"><%= comment.user.name %></span>
+          </div>
+          <div class="row">
+            <p class="comment-content"><%= markdown(comment.content) %></p> 
+          </div>
+          <div class="row">
+            <p class="team-time no-text-decoration"><%= "#{comment.created_at.strftime('%Y/%m/%d %H:%M')}" %></p>        
+          </div>
+            <% if comment.user.id == current_user.id%>
+              <%= link_to comment_path(id: comment.id), 
+                                        method: :delete, 
+                                        data: {confirm: "削除してもよろしいですか？"},
+                                        remote: true,
+                                        style: "color:red;" do %>
+                <i class="far fa-trash-alt trash"></i> 削除
+              <% end %>
+            <% end %>
+                                          
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+  <% end %>
+</div>
