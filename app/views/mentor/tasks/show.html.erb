@@ -16,6 +16,7 @@
                               data: { confirm: "タスクを削除してもよろしいですか？"},
                               class: "btn btn-danger" %>
     <% end %>
+    <%= link_to "質問", mentor_questions_path(task_id: @task),class: "btn btn-warning" %>
     <%= link_to "フィードバックの確認", mentor_feed_back_path(task_id: @task),class: "btn btn-primary" %>
     <%= link_to "戻る", :back, class: "btn btn-outline-success" %>
   </div>

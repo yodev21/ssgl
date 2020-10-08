@@ -16,7 +16,6 @@ class QuestionCommentsController < ApplicationController
       @comment.challenge_start_id = @question.challenge_start_id
       @comment.question_id = @question.id
 
-
       respond_to do |format|
         if @comment.save
           change_status(@comment)

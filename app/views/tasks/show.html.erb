@@ -25,7 +25,7 @@
 
     <% end %>
     <% if @question.present? %>
-      <%= link_to "質問編集", edit_question_path(id: @question), class: "btn btn-warning" %>
+      <%= link_to "質問詳細", question_path(id: @question), class: "btn btn-warning" %>
     <% elsif @challenge_task.present? %>
       <%= link_to "質問", new_question_path(challenge_start_id: @challenge_task.id), class: "btn btn-warning" %>
     <% end %>

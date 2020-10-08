@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  namespace :mentor do
-    get 'questions/index'
-    get 'questions/show'
-  end
+
   root to: 'top#top'
   get 'top/privacy_policy', to: "top#privacy_policy"
   get 'top/terms_of_service', to: "top#terms_of_service"
@@ -50,6 +47,7 @@ Rails.application.routes.draw do
     resources :limited_release_courses, only: %i[index show create destroy]
     resources :tasks
     resources :challenge_tasks, only: %i[index create]
+    resources :questions, only: %i[index show create]
     resources :answers, only: %i[index show]
     resources :feed_backs, only: %i[show index]
   end

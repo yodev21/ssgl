@@ -20,6 +20,7 @@ class QuestionsController < ApplicationController
     @question.team_id = challenge_task.team_id
     @question.assign_id = challenge_task.assign_id
     @question.challenge_course_id = challenge_task.challenge_course_id
+    @question.task_id = challenge_task.task_id
     @question.challenge_start_id = challenge_task.id
     
     if @question.save
