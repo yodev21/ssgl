@@ -20,7 +20,7 @@
             <%= image_tag task.image.url(:medium), class: "tasks-round-img" %>
             <span><%= task.title %></strong></span>
             <br>
-            <p><%= markdown(task.content.truncate(50)) %></p>
+            <p><%= markdown(task.content.truncate(30)) %></p>
             <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(task.updated_at).upcase}前" %></p>
           <% end %>
         </div>
