@@ -9,6 +9,7 @@
     <% if @challenge_course.nil? %>
       <%= link_to "このコースに取り組む",  challenge_courses_path(course_id: @course.id), method: :post, class: "btn btn-primary"%>
     <% end %>
+    <%= link_to "戻る", :back, class: "btn btn-outline-success" %>
   </div>
   <br>
   <% if @challenge_course.present? %>

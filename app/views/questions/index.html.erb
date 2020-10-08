@@ -1,2 +1,20 @@
-<h1>Questions#index</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
+<div class="challenge-courses-index">
+  <br>
+  <h2 class="challenge-courses-title">質問一覧</h2>
+  <% unless @questions.blank? %>
+    <div class="challenge-courses-card">
+      <% @questions.each do |question|%>
+        <div class="row">
+          <%= link_to(question_path(question) , class: "challenge-courses-link") do %>
+            <%= image_tag question.user.image.url(:medium), class: "challenge-courses-round-img" %>
+            <span><%= question.title %></span>
+            <p><%= markdown(question.content.truncate(50)) %></p>
+            <p class="team-time no-text-decoration"><%= "#{time_ago_in_words(question.updated_at).upcase}前" %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <h3>まだ何も質問がありません！</h3>
+  <% end %>
+</div>

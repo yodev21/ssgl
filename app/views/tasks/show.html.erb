@@ -9,25 +9,26 @@
     <% if @challenge_task.nil? %>
       <%= link_to "取り組む", challenge_starts_path(task_id: @task.id), 
                                                   method: :post,
-                                                  class: "btn btn-outline-primary" %>
+                                                  class: "btn btn-primary" %>
     <% elsif @challenge_task.status == "underway"%>
-      <%= link_to "回答", new_answer_path(challenge_start_id: @challenge_task.id), class: "btn btn-outline-primary" %>
+      <%= link_to "回答", new_answer_path(challenge_start_id: @challenge_task.id), class: "btn btn-primary" %>
       
     <% elsif  @challenge_task.status == "awaiting_review" || @challenge_task.status == "remand" && @answer.present? %>
       <%= link_to "回答修正", edit_answer_path(id: @answer.id), 
-                                              class: "btn btn-outline-success" %>
+                                              class: "btn btn-success" %>
 
       <%= link_to "コメント", answer_path(id: @answer.id), 
-                                        class: "btn btn-outline-info" %>
+                                        class: "btn btn-info" %>
     <% elsif  @challenge_task.status == "complete" %>
       <%= link_to "完了", answer_path(id: @answer.id), 
-                                      class: "btn btn-outline-dark" %>
+                                      class: "btn btn-dark" %>
 
     <% end %>
     <% if @question.present? %>
-      <%= link_to "質問編集", edit_question_path(id: @question), class: "btn btn-outline-warning" %>
+      <%= link_to "質問編集", edit_question_path(id: @question), class: "btn btn-warning" %>
     <% elsif @challenge_task.present? %>
-      <%= link_to "質問", new_question_path(challenge_start_id: @challenge_task.id), class: "btn btn-outline-warning" %>
+      <%= link_to "質問", new_question_path(challenge_start_id: @challenge_task.id), class: "btn btn-warning" %>
     <% end %>
+    <%= link_to "戻る", :back, class: "btn btn-outline-success" %>
   </div>
 </div>

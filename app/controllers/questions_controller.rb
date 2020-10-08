@@ -1,6 +1,8 @@
 class QuestionsController < ApplicationController
   before_action :set_params, only: %i[edit update]
   def index
+    @questions = Question.where(assign_id: Assign.where(user_id: current_user.id).select(:id))
+    binding.pry
   end
 
   def show
