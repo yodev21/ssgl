@@ -1,11 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
-  get 'questions/index'
-  get 'questions/show'
-  get 'questions/new'
-  get 'questions/edit'
   root to: 'top#top'
   get 'top/privacy_policy', to: "top#privacy_policy"
   get 'top/terms_of_service', to: "top#terms_of_service"
@@ -31,6 +26,7 @@ Rails.application.routes.draw do
   resources :challenge_courses, only: %i[index create show]
   resources :tasks, only: %i[show]
   resources :challenge_starts, only: %i[index show create destroy] 
+  resources :questions, only: %i[index show new create edit update]
   resources :answers
   resources :feed_backs, only: %i[new create]
   resources :comments, only: %i[create edit update destroy]

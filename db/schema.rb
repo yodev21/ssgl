@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(version: 2020_10_08_064315) do
     t.string "title", null: false
     t.text "content", null: false
     t.text "image"
+    t.integer "status", null: false
     t.bigint "user_id", null: false
     t.bigint "assign_id", null: false
     t.bigint "challenge_course_id", null: false
