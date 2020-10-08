@@ -52,6 +52,7 @@ RSpec.describe Question, type: :model do
       question = Question.new(
         title: 'test Title',
         content: 'test Content',
+        status: :waiting_answer,
         image: open("#{Rails.root}/app/assets/images/teams/1.png"),
         user_id: @user.id,
         assign_id: @assign.id,

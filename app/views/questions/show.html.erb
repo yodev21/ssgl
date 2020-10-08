@@ -1,19 +1,9 @@
 <div class="course-show">
   <br>
   <br>
-  <h2 class="course-title">質問</h2>
+  <h2 class="task-title">質問</h2>
   <div class="course-card">
     <span><%= image_tag avatar_url(@question.user), class: "course-round-img" %></span>
-        
-    <% if @question.status == "waiting_answer" %>
-      <span class="badge badge-warning">回答待ち</span>
-    <% elsif @question.status == "temporary_answer"%>
-      <span class="badge badge-success">一時回答</span>
-    <% elsif @question.status == "solved" %>
-      <span class="badge badge-dark">解決済み</span>
-    <% else %>
-      <span class="badge badge-danger">エラー</span>
-    <% end %>
 
     <span><%= markdown(@question.title) %></span>
     <p><%= markdown(@question.content) %></p>
