@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_24_134712) do
+ActiveRecord::Schema.define(version: 2020_10_08_064315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,6 +141,22 @@ ActiveRecord::Schema.define(version: 2020_09_24_134712) do
     t.index ["user_id"], name: "index_feed_backs_on_user_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "content", null: false
+    t.text "image"
+    t.bigint "user_id", null: false
+    t.bigint "assign_id", null: false
+    t.bigint "challenge_course_id", null: false
+    t.bigint "challenge_start_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assign_id"], name: "index_questions_on_assign_id"
+    t.index ["challenge_course_id"], name: "index_questions_on_challenge_course_id"
+    t.index ["challenge_start_id"], name: "index_questions_on_challenge_start_id"
+    t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
@@ -225,6 +241,10 @@ ActiveRecord::Schema.define(version: 2020_09_24_134712) do
   add_foreign_key "feed_backs", "tasks"
   add_foreign_key "feed_backs", "teams"
   add_foreign_key "feed_backs", "users"
+  add_foreign_key "questions", "assigns"
+  add_foreign_key "questions", "challenge_courses"
+  add_foreign_key "questions", "challenge_starts"
+  add_foreign_key "questions", "users"
   add_foreign_key "tasks", "assigns"
   add_foreign_key "tasks", "challenge_courses"
   add_foreign_key "tasks", "courses"
