@@ -2,6 +2,10 @@
 
 Rails.application.routes.draw do
 
+  get 'questions/index'
+  get 'questions/show'
+  get 'questions/new'
+  get 'questions/edit'
   root to: 'top#top'
   get 'top/privacy_policy', to: "top#privacy_policy"
   get 'top/terms_of_service', to: "top#terms_of_service"
