@@ -1,0 +1,23 @@
+<div class="course-show">
+  <br>
+  <br>
+  <h2 class="task-title">質問</h2>
+  <div class="course-card">
+    <span><%= image_tag avatar_url(@question.user), class: "course-round-img" %></span>
+
+    <span><%= markdown(@question.title) %></span>
+    <p><%= markdown(@question.content) %></p>
+
+    <% if @question.user == current_user %>
+      <%= link_to "質問編集", edit_question_path(id: @question), class: "btn btn-warning" %>
+      <%= link_to "解決", question_comments_path(question_id: @question.id, solved: :solved), 
+                                                method: :post, class: "btn btn-primary" %>
+    <% end %>
+    <%= link_to "戻る", :back, class: "btn btn-outline-success" %>
+    <%= render partial: 'question_comments/form', locals: { comment: @comment } %>
+  </div>
+</div>
+
+<div id="comments_area">
+  <%= render partial: 'question_comments/index', locals: { comments: @comments } %>
+</div>

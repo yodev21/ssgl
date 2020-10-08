@@ -6,6 +6,7 @@
     <span><%= image_tag avatar_url(@challenge_course.course), class: "challenge-course-round-img" %></span>
     <span><%= markdown(@challenge_course.course.title) %></span>
     <p><%= markdown(@challenge_course.course.content) %></p>
+    <%= link_to "戻る", :back, class: "btn btn-outline-success" %>
   </div>
 </div>
 <div class="tasks-index">

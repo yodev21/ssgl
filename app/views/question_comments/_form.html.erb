@@ -1,4 +1,4 @@
-<%= form_with(model: comment, url: comments_path(answer_id: @answer.id), 
+<%= form_with(model: comment, url: question_comments_path(question_id: @question.id), 
                                                 method: :post) do |f| %>
 
 <div class="form-group">

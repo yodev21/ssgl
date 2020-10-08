@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_24_134712) do
+ActiveRecord::Schema.define(version: 2020_10_08_122141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,6 +141,44 @@ ActiveRecord::Schema.define(version: 2020_09_24_134712) do
     t.index ["user_id"], name: "index_feed_backs_on_user_id"
   end
 
+  create_table "question_comments", force: :cascade do |t|
+    t.text "content", null: false
+    t.text "image"
+    t.bigint "user_id", null: false
+    t.bigint "team_id", null: false
+    t.bigint "assign_id", null: false
+    t.bigint "challenge_start_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "question_id", default: 0, null: false
+    t.index ["assign_id"], name: "index_question_comments_on_assign_id"
+    t.index ["challenge_start_id"], name: "index_question_comments_on_challenge_start_id"
+    t.index ["question_id"], name: "index_question_comments_on_question_id"
+    t.index ["team_id"], name: "index_question_comments_on_team_id"
+    t.index ["user_id"], name: "index_question_comments_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "content", null: false
+    t.text "image"
+    t.integer "status", null: false
+    t.bigint "user_id", null: false
+    t.bigint "assign_id", null: false
+    t.bigint "challenge_course_id", null: false
+    t.bigint "challenge_start_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "team_id", default: 0, null: false
+    t.bigint "task_id", default: 0, null: false
+    t.index ["assign_id"], name: "index_questions_on_assign_id"
+    t.index ["challenge_course_id"], name: "index_questions_on_challenge_course_id"
+    t.index ["challenge_start_id"], name: "index_questions_on_challenge_start_id"
+    t.index ["task_id"], name: "index_questions_on_task_id"
+    t.index ["team_id"], name: "index_questions_on_team_id"
+    t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
@@ -225,6 +263,17 @@ ActiveRecord::Schema.define(version: 2020_09_24_134712) do
   add_foreign_key "feed_backs", "tasks"
   add_foreign_key "feed_backs", "teams"
   add_foreign_key "feed_backs", "users"
+  add_foreign_key "question_comments", "assigns"
+  add_foreign_key "question_comments", "challenge_starts"
+  add_foreign_key "question_comments", "questions"
+  add_foreign_key "question_comments", "teams"
+  add_foreign_key "question_comments", "users"
+  add_foreign_key "questions", "assigns"
+  add_foreign_key "questions", "challenge_courses"
+  add_foreign_key "questions", "challenge_starts"
+  add_foreign_key "questions", "tasks"
+  add_foreign_key "questions", "teams"
+  add_foreign_key "questions", "users"
   add_foreign_key "tasks", "assigns"
   add_foreign_key "tasks", "challenge_courses"
   add_foreign_key "tasks", "courses"

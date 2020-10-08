@@ -7,7 +7,7 @@
     <span><%=@answer.task.title %></span>
     <p>URL<%=markdown(@answer.url) %></p>
     <p><%= markdown(@answer.content) %></p>
-    <%= link_to "回答修正", edit_answer_path(id: @answer.id), class: "btn btn-outline-success right_answer_button" %>
+    <%= link_to "回答修正", edit_answer_path(id: @answer.id), class: "btn btn-success right_answer_button" %>
     <%= render partial: 'comments/form', locals: { comment: @comment } %>
   </div>
 </div>

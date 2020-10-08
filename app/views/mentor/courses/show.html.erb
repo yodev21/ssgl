@@ -16,9 +16,9 @@
     <% if current_user.email != 'guest@example.com' %>
       <%= link_to "コース削除", mentor_course_path(@course), data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
     <% end %>
-    
+    <%= link_to "戻る", :back, class: "btn btn-outline-success" %>
   </div>
-  <%= link_to "タスク作成", new_mentor_task_path(course_id: params[:id]), class: "btn btn-outline-primary mobile_button"%>
+  <%= link_to "タスク作成", new_mentor_task_path(course_id: params[:id]), class: "btn btn-primary"%>
   <h2 class="task-title">タスク</h2>
   <div class="course-tasks">
     <% @tasks.each do |task| %>

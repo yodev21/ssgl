@@ -7,6 +7,8 @@ class Assign < ApplicationRecord
   has_many :challenge_courses, dependent: :destroy
   has_many :tasks, dependent: :destroy
   has_many :challenge_starts, dependent: :destroy
+  has_many :questions, dependent: :destroy
+  has_many :question_comments, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :feed_backs, dependent: :destroy
 

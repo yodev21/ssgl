@@ -5,6 +5,7 @@
     <span><%= image_tag avatar_url(@team), class: "belong-team-round-img" %></span>
     <p class="belong-team-name"><%= markdown(@team.name) %></p>
     <p><%= markdown(@team.remarks) %></p>
+    <%= link_to "戻る", :back, class: "btn btn-outline-success" %>
   </div>
   <br>
   <h2 class="belong-course-title">コース</h2>
