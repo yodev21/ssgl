@@ -4,10 +4,10 @@
   <h2 class="feed-back-title">フィードバック</h2>
   <div class="feed-back-card">
     <%= image_tag avatar_url(@task), class: "feed-back-round-img" %>
-    <span><%=@task.title %></span>
-    <span><strong>平均値:<%= @feed_back_average.values[0].to_i %></strong></span><br>
-    <span><strong>フィードバック数:<%= @feed_back_count.values[0].to_i %></strong></span>
-    <p><%= markdonw(@task.content) %></p>
+    <span><%=@task.title %></span><br>
+    <p><strong>平均値:<%= @feed_back_average.values[0].to_i %></strong></p>
+    <p><strong>フィードバック数:<%= @feed_back_count.values[0].to_i %></strong></p>
+    <p><%= markdown(@task.content) %></p>
   </div>
 </div>
 <div class="users-index">
