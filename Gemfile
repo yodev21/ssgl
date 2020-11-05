@@ -23,7 +23,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'ransack'
-gem 'unicorn'
+gem 'unicorn', '5.4.1'
 
 gem 'fog-aws'
 gem 'mini_racer', platforms: :ruby
