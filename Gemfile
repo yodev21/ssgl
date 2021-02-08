@@ -16,7 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'bootstrap', '~> 4.4.1'
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'devise', '~> 4.6.1'
 gem 'dotenv-rails'
 gem 'jquery-rails'
