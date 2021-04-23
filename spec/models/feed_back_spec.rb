@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 RSpec.describe FeedBack, type: :model do
   describe 'フィードバック機能' do
     before do

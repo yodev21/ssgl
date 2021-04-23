@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require 'rails_helper'
 
 RSpec.describe Question, type: :model do
   describe 'クエスチョン追加機能' do

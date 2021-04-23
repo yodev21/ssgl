@@ -1,4 +1,3 @@
-require 'rails_helper'
 
 RSpec.describe ChallengeCoursesController, type: :system do
   wait = Selenium::WebDriver::Wait.new(timeout: 500)

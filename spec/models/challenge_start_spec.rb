@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 RSpec.describe ChallengeStart, type: :model do
   describe 'タスクチャレンジ機能' do
     before do

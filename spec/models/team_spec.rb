@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 RSpec.describe Team, type: :model do
   describe 'チーム機能' do
     before do

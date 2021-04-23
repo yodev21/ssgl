@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 RSpec.describe 'Tasks', type: :system do
   wait = Selenium::WebDriver::Wait.new(timeout: 500)
   describe 'タスク機能' do

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 RSpec.describe User, type: :model do
   describe 'ユーザー機能' do
     example '名前、メール、パスワードがあれば有効な状態であること' do
