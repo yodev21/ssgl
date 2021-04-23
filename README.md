@@ -67,8 +67,8 @@ https://github.com/yodev21/ssgl/files/4855555/default.pdf
 
 # バージョン情報
 
-- Ruby: 2.6.5
-- Ruby on Rails: 5.2.4
+- Ruby: 3.0.1
+- Ruby on Rails: 6.1.3.1
 - PostgreSQL: 12.2
 - Docker: 19.03.8
 - docker-compose: 1.25.4
