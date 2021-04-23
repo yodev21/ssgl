@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
 
 RSpec.describe 'Answers', type: :system do
   wait = Selenium::WebDriver::Wait.new(timeout: 500)

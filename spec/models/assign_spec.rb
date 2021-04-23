@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 RSpec.describe Assign, type: :model do
   describe 'アサイン機能' do
     before do

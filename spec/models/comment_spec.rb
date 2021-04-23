@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 RSpec.describe Comment, type: :model do
   describe 'コメント機能' do
     before do
