@@ -128,7 +128,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.10)
     crass (1.0.6)
     debug_inspector (1.1.0)
     devise (4.7.3)
@@ -171,9 +171,9 @@ GEM
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
     formatador (0.2.5)
-    globalid (0.4.2)
-      activesupport (>= 4.2.0)
-    i18n (1.8.10)
+    globalid (1.0.1)
+      activesupport (>= 5.0)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     ipaddress (0.8.3)
     jbuilder (2.11.2)
@@ -222,7 +222,7 @@ GEM
     mini_portile2 (2.5.0)
     mini_racer (0.4.0)
       libv8-node (~> 15.14.0.0)
-    minitest (5.14.4)
+    minitest (5.17.0)
     msgpack (1.4.2)
     multi_json (1.15.0)
     net-scp (3.0.0)
@@ -371,7 +371,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
@@ -396,7 +396,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.4.2)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   ruby
